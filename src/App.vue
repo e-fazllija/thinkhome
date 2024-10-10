@@ -9,7 +9,7 @@ import ScrollTop from './elements/ScrollTop.vue'
 import Cursor from './elements/Cursor.vue'
 </script>
 
-<template>
+<template> 
   <div class="page-wraper">
     <Cursor />
     <component :is="$route.meta.layout">
