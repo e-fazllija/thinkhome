@@ -14,18 +14,15 @@
           <div class="col-lg-6 m-b30 aos-item aos-init aos-animate">
             <div class="section-head style-2">
               <!-- <h6 class="sub-title text-primary">About Us</h6> -->
-              <h2 class="title m-b20">Servizi Vari</h2>
-               <p>•	Consulenza per interventi di miglioramento sismico</p> 
-               <p>•	Assistenza per pratiche di successione immobiliare</p>
-               <p>•	Progettazione di spazi esterni e giardini</p>
-               <p>•	Studio Notarile Convenzionato</p>
-               <p>•	Traslochi</p>
-               <p>•	Progettazione e Manutenzione Giardini</p>
-               <p>•	Progettazione e Design Interno con Convenzioni Dirette Mobilifici</p>
-               <h1>Consulenza per Edilizia</h1>
+              <h2 class="title m-b20">Consulenza Finanziaria</h2>
                <p>-	Mutui Ipotecari</p>
                <p>-	Prestiti</p>
                <p>-	Surroghe e Cessione del Quinto</p>
+               <h2 class="title m-b20">Servizi Vari</h2>
+               <p>•	Progettazione di spazi esterni e giardini</p>
+               <p>•	Studio Notarile Convenzionato</p>
+               <p>•	Traslochi</p>
+               <p>•	Progettazione e Design Interno con Convenzioni dirette Mobilifici</p>
             </div>
             <!-- <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
               <span>READ MORE</span>
@@ -35,7 +32,7 @@
           <div class="col-lg-6 m-b30">
             <div class="dz-media">
               <img
-                src="@/assets/images/banner/bnr20.jpg"
+                src="@/assets/images/banner/bnr33.jpg"
                 alt=""
                 class="img1 aos-item aos-init aos-animate"
               />
@@ -51,7 +48,7 @@ import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import Brands from '@/elements/Brands.vue'
 import Testimonial2 from '@/components/Testimonial2.vue'
-import bnr5 from '@/assets/images/banner/bnr21.jpg'
+import bnr5 from '@/assets/images/banner/bnr35.jpg'
 import bg2 from '@/assets/images/background/bg2.png'
 import { RouterLink } from 'vue-router'
 import MainBanner3 from '@/components/MainBanner3.vue'
@@ -69,7 +66,7 @@ export default defineComponent({
       description: "",
       item: {id: 0, title: '', description: ''},
       servicesCard: [
-        { id: 1, title: 'PRATICHE EDILIZIE', description: 'Devi ristrutturare un ufficio, un appartamento, un negozio? Le normative cambiano con grande rapidità: è quindi importane rivolgersi a tecnici qualificati e costantemente aggiornati per essere guidati con competenza. Ogni immobile ha la sua storia, le sue peculiarità: col nostro studio non dovrai preoccuparti dei permessi e di tutta la documentazione da presentare.' },
+        { id: 1, title: 'PRATICHE EDILIZIE', description: 'Devi ristrutturare un ufficio, un appartamento, un negozio? Le normative cambiano con grande rapidità: è quindi importante rivolgersi a tecnici qualificati e costantemente aggiornati per essere guidati con competenza. Ogni immobile ha la sua storia, le sue peculiarità: col nostro studio non dovrai preoccuparti dei permessi e di tutta la documentazione da presentare.' },
         { id: 2, title: 'PRATICHE CATASTALI', description: 'Rilievo del fabbricato, realizzazione dei modelli per l’attribuzione della rendita catastale, redazione delle planimetrie: il nostro studio si occupa di tutte le pratiche catastali e di edilizia, per privati e per imprese.  E se il vostro immobile ha subito una variazione? Ci occupiamo anche di pratiche di accatastamento a seguito di frazionamenti o ristrutturazioni.' },
         { id: 3, title: 'PERIZIE, STIME E TRIBUNALE', description: 'Devi comprare o vendere un immobile? Dividere il patrimonio immobiliare? I nostri professionisti hanno una lunga esperienza nel campo delle stime. Aiutiamo i nostri clienti nella compravendita, nella divisione, ma anche nella redazione di perizie di stima giurate e stime in campo contenzioso. Davanti al giudice possiamo essere i tuoi Consulenti Tecnici di Parte e di Ufficio, il tuo perito di fiducia.' },
         { id: 4, icon: 'flaticon-blueprint-1', title: 'SCIA - Segnalazione Certificata di Inizio Attività', description: "E' l'atto con cui le imprese possono iniziare, modificare o cessare un'attività produttiva (artigianale, commerciale, industriale); ciò avviene senza dover più attendere risposta e verifiche da parte degli enti competenti. La SCIA infatti produce effetti immediati ai sensi dell'art. 19 della legge 241/90." },

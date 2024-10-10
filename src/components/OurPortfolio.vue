@@ -134,7 +134,9 @@ export default defineComponent({
           img: work_pic2,
           // subtitle: 'ARCHITECTURAL',
           // title: 'Residential Project,',
-          text: 'Paris'
+          //text: 'Paris'
+          setStyle: 'mt-5'
+
         },
         {
           img: work_pic3,
@@ -148,6 +150,8 @@ export default defineComponent({
           // subtitle: 'ARCHITECTURAL',
           // title: 'Residential Project, ',
           // text: 'Paris'
+          setStyle: 'mt-5'
+
         },
         {
           img: work_pic5,
