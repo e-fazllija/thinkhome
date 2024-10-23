@@ -15,7 +15,7 @@
         <RouterLink to="?">{{ menu }}</RouterLink>
         <ul class="sub-menu">
           <li v-for="({ child, to }, index) in subMenu" :key="index">
-            <RouterLink :to="`${to}`">{{ child }}</RouterLink>
+            <RouterLink :to="`${to}`" @click="openMenuHeader">{{ child }}</RouterLink>
           </li>
         </ul>
       </li>
@@ -57,31 +57,6 @@ export default defineComponent({
     })
     const menuArr = reactive<MenuItem[]>([
       { menu: 'Home', className: 'menu', to: '/' },
-      
-      // {
-      //   menu: 'Pages',
-      //   subMenu: [
-      //     { child: 'About Us', to: '/about-us' },
-      //     { child: 'Team', to: '/team' },
-      //     { child: 'Coming Soon', to: '/coming-soon' },
-      //     { child: 'Under Construct', to: '/under-construct' },
-      //     { child: 'Error 404', to: '/error-404' }
-      //   ]
-      // },
-      // {
-      //   menu: 'Portfolio',
-      //   subMenu: [
-      //     { child: 'Portfolio', to: '/portfolio' },
-      //     { child: 'Portfolio Details', to: '/portfolio-details' }
-      //   ]
-      // },
-      // {
-      //   menu: 'Services',
-      //   subMenu: [
-      //     { child: 'Services', to: '/services' },
-      //     { child: 'Services Details', to: '/services-details' }
-      //   ]
-      // },
       { menu: 'I nostri servizi', subMenu: [
           { child: 'Pratiche Urbanistiche', to: '/pratiche-urbanistiche' },
            { child: 'Pratiche Catastali', to: '/pratiche-catastali' },
@@ -91,18 +66,8 @@ export default defineComponent({
            { child: 'Servizi Vari', to: '/servizi-vari' }
          ] },
       { menu: 'Chi siamo', className: 'menu', to: '/about-us' },
-      // {
-      //   menu: 'Blog',
-      //   subMenu: [
-      //     { child: 'Blog Grid', to: '/blog-grid' },
-      //     { child: 'Large Left Sidebar', to: '/blog-large-left-sidebar' },
-      //     { child: 'List Left Sidebar', to: '/blog-list-left-sidebar' },
-      //     { child: 'Blog Details', to: '/blog-details' }
-      //   ]
-      // },
-      // { menu: 'Contact Us', className: 'menu', to: '/contact-us' }
     ])
-    return { menuArr, activemenu }
+    return { menuArr, activemenu}
   },
   methods: {
     openSubMenu(ind: number) {
@@ -114,6 +79,10 @@ export default defineComponent({
           el.classList.remove('open')
         }
       })
+    },
+    openMenuHeader() {
+      let nav = document.querySelector('.header-nav')?.classList
+      nav?.remove('show')
     }
   },
   components: { RouterLink }
