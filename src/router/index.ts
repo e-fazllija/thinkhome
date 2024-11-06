@@ -94,6 +94,24 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
+      path: '/vendita',
+      name: 'vendita',
+      component: () => import('../views/services/details/Vendita.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/affitto',
+      name: 'affitto',
+      component: () => import('../views/services/details/Affitto.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/valutazione-immobile',
+      name: 'valutazione_immobile',
+      component: () => import('../views/services/details/ValutazioneImmobile.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
       path: '/pratiche-urbanistiche',
       name: 'pratiche_urbanistiche',
       component: () => import('../views/services/details/ServicesDetailsPraticheUrbanistiche.vue'),

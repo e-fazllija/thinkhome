@@ -2,27 +2,36 @@
   <Swiper
     class="swiper-container blog-swiper"
     :slides-per-view="3"
-    :speed="1500"
+    :space-between="30"
     :loop="true"
+    :modules="module"
+    :autoplay="{ delay: 1500 }"
+    :speed="1500"
     :breakpoints="{
       991: { slidesPerView: 3 },
       691: { slidesPerView: 2 },
       240: { slidesPerView: 1 }
     }"
   >
-    <SwiperSlide class="swiper-slide" v-for="({ img, img2, title }, ind) in ourBlog" :key="ind">
+    <SwiperSlide class="swiper-slide" v-for="({ img, img2, title, price, type }, ind) in ourBlog" :key="ind">
       <div class="dz-card blog-grid style-3 aos-item h-100 rounded-0">
         <div class="dz-media">
           <RouterLink to="/blog-details"><img :src="img" alt="" /></RouterLink>
         </div>
         <div class="dz-info">
+          <h4 class="dz-title">
+            <RouterLink to="/blog-details">{{ title }}</RouterLink>
+          </h4>
+          <h6 class="dz-title">
+            <RouterLink to="/blog-details">€ {{ price }}</RouterLink>
+          </h6>
           <div class="dz-meta">
             <ul>
               <li class="post-author d-flex align-items-center">
-                <img :src="img2" alt="" /><span class="text-dark m-l10 m-r5">By</span>
-                <span class="text-primary">Alex </span>
+                <!-- <img :src="img2" alt="" /><span class="text-dark m-l10 m-r5">By</span> -->
+                <h5 class="text-primary">Tipologia:</h5><h6 class="text-secondary ms-2 ">{{ type }} </h6>
               </li>
-              <li class="post-comments">
+              <!-- <li class="post-comments">
                 <span class="m-r10">
                   <svg
                     width="16"
@@ -121,19 +130,15 @@
                   </svg>
                   15
                 </span>
-              </li>
+              </li> -->
             </ul>
           </div>
-          <h4 class="dz-title">
-            <RouterLink to="/blog-details">{{ title }}</RouterLink>
-          </h4>
           <p class="text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting. Lorem Ipsum is simply
-            dummy. Lorem Ipsum is simply dummy.
+           Descrizione (può essere tolta)
           </p>
           <div class="read-more">
             <RouterLink to="/blog-details" class="btn btn-primary btn-rounded btn-sm hover-icon">
-              <span>Read More</span>
+              <span>Più dettagli</span>
               <i class="fas fa-arrow-right"></i>
             </RouterLink>
           </div>
@@ -151,17 +156,19 @@ import blog_pic5 from '@/assets/images/blog/blog-grid/pic5.jpg'
 import blog_pic6 from '@/assets/images/blog/blog-grid/pic6.jpg'
 import latest_blog_pic1 from '@/assets/images/blog/latest-blog/pic1.png'
 import latest_blog_pic2 from '@/assets/images/blog/latest-blog/pic2.png'
+import { Autoplay } from 'swiper/modules'
 
 export default defineComponent({
   components: { Swiper, SwiperSlide },
   setup() {
     return {
       ourBlog: [
-        { img: blog_pic4, img2: latest_blog_pic1, title: 'How to grow trees from seeds?' },
-        { img: blog_pic5, img2: latest_blog_pic2, title: 'A New Way To Find Architecte?' },
-        { img: blog_pic6, img2: latest_blog_pic1, title: 'Have You Got a Rubbish?' },
-        { img: blog_pic5, img2: latest_blog_pic2, title: 'A New Way To Find Architecte?' }
-      ]
+        { img: blog_pic4, img2: latest_blog_pic1, title: 'Indirizzo', price: '100', type: 'Immobile' },
+        { img: blog_pic5, img2: latest_blog_pic2, title: 'Indirizzo', price: '100', type: 'Immobile' },
+        { img: blog_pic6, img2: latest_blog_pic1, title: 'Indirizzo', price: '100', type: 'Immobile' },
+        { img: blog_pic5, img2: latest_blog_pic2, title: 'Indirizzo', price: '100', type: 'Immobile' }
+      ],
+      module: [Autoplay]
     }
   }
 })

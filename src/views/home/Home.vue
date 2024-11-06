@@ -1,7 +1,68 @@
 <template>
   <div class="page-content bg-white">
     <MainBanner3 />
-    <section class="content-inner service-area">
+    <section class="content-inner-3 bg-white line-img">
+      <div class="container">
+        <div class="row align-items-center section-head style-2">
+          <div class="col-lg-12 aos-item aos-init aos-animate">
+            <h5 class="text-primary sub-title">IN EVIDENZA</h5>
+            <h2 class="title">I nostri immobili</h2>
+          </div>
+        </div>
+        <div class="row align-items-center about-bx4 mb-5">
+          <div class="col-lg-6 m-b30">
+            <div class="dz-media">
+              <img
+                src="@/assets/images/about/pic6.jpg"
+                alt=""
+                class="img1 aos-item aos-init aos-animate"
+              />
+              <!-- <img
+                src="@/assets/images/about/pic7.jpg"
+                alt=""
+                class="img2 aos-item aos-init aos-animate"
+              /> -->
+            </div>
+          </div>
+          <div class="col-lg-6 m-b30 aos-item aos-init aos-animate">
+            <div class="section-head style-2">
+              <h2 class="title m-b10">Indirizzo</h2>
+              <h5 class="sub-title text-primary">Prezzo</h5>
+              <p>
+                Descrizione There are many variations of passages of Lorem Ipsum available, but the majority
+                have suffered alteration in some form, by injected humour, or randomised words which
+                don't look even slightly believable.
+              </p>
+            </div>
+            <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
+              <span>Più dettagli</span>
+              <i class="fas fa-arrow-right"></i>
+            </RouterLink>
+          </div>
+        </div>
+        <Home3Blog />
+        <div class="row align-items-center style-2 mt-5">
+          <div class="col-lg-12 aos-item aos-init aos-animate text-center d-none d-lg-block">
+            <RouterLink to="/blog-details" class="btn btn-secondary btn-rounded hover-icon">
+              <span>Tutti gli immobili</span>
+              <i class="fas fa-arrow-right"></i>
+            </RouterLink>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content-inner-3 service-area">
+      <div class="container">
+        <div class="row text-center section-head style-2">
+          <div class="col-lg-12 aos-item aos-init aos-animate">
+            <h5 class="text-primary sub-title">Partner ufficiali</h5>
+            <h2 class="title">I nostri partner</h2>
+          </div>
+        </div>
+      <ClientLogo />
+    </div>
+    </section>
+    <section class="content-inner-2 service-area">
       <div class="container">
         <div class="section-head style-2 text-center">
           <h6 class="sub-title text-primary"><img src="@/assets/images/banner/bnr12Home.jpg" /></h6>
@@ -56,7 +117,7 @@
     </section> -->
     <Home3Accordian />
     <!-- <Modalvideo2 /> -->
-    <!-- <ClientLogo /> -->
+    
     <!-- <section class="content-inner-1 overflow-hidden">
       <div class="container">
         <div class="row">
@@ -110,6 +171,7 @@
 <script lang="ts">
 import Home3About from '@/components/Home3About.vue'
 import Home3Services from '@/components/Home3Services.vue'
+import Testimonial2 from '@/components/Testimonial2.vue'
 import MainBanner3 from '@/components/MainBanner3.vue'
 import Home3Accordian from '@/components/Home3Accordian.vue'
 import { defineComponent, watchEffect } from 'vue'
@@ -148,7 +210,8 @@ export default defineComponent({
     Home3OurTeam,
     Home3Testimonial,
     Home3Blog,
-    RouterLink
+    RouterLink,
+    Testimonial2
   }
 })
 </script>

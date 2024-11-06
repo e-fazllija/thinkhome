@@ -140,12 +140,15 @@ export default defineComponent({
     const menuArr = reactive<MenuItem[]>([
       { menu: 'Home', className: 'menu', to: '/' },
       { menu: 'I nostri servizi', subMenu: [
-          { child: 'Pratiche Urbanistiche', to: '/pratiche-urbanistiche' },
-           { child: 'Pratiche Catastali', to: '/pratiche-catastali' },
-           { child: 'Perizie, Stime e Tribunale', to: '/perizie-stime-tribunale' },
-           { child: 'Investimenti Immobiliari', to: '/investimenti-immobiliari' },
-           { child: 'Edilizia', to: '/edilizia' },
-           { child: 'Servizi Vari', to: '/servizi-vari' }
+      { child: 'Immobili in vendita', to: '/vendita' },
+      { child: 'Immobili in affitto', to: '/affitto' },
+      { child: 'Valutazione immobile', to: '/valutazione-immobile' },
+      { child: 'Pratiche Urbanistiche', to: '/pratiche-urbanistiche' },
+      { child: 'Pratiche Catastali', to: '/pratiche-catastali' },
+      { child: 'Perizie, Stime e Tribunale', to: '/perizie-stime-tribunale' },
+      { child: 'Investimenti Immobiliari', to: '/investimenti-immobiliari' },
+      { child: 'Edilizia', to: '/edilizia' },
+      { child: 'Servizi Vari', to: '/servizi-vari' }
          ] },
       { menu: 'Chi siamo', className: 'menu', to: '/about-us' },
     ])
