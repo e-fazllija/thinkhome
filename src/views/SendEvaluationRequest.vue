@@ -143,6 +143,7 @@
 import CommonBanner from '@/elements/CommonBanner.vue'
 import { defineComponent } from 'vue'
 import bnr2 from '@/assets/images/banner/bnr2.jpg'
+import axios from 'axios';
 
 export default defineComponent({
   setup() {
@@ -173,7 +174,12 @@ export default defineComponent({
       ]
     }
   },
-  components: { CommonBanner }
+  components: { CommonBanner },
+  methods: {
+      async getAnswer() {
+        const { data } = await axios.POST("https://yesno.wtf/api");
+      },
+    },
 })
 </script>
 

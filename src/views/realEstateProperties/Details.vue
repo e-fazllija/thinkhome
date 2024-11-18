@@ -204,6 +204,7 @@
   import Lightgallery from 'lightgallery/vue'
   import lgThumbnail from 'lightgallery/plugins/thumbnail'
   import lgZoom from 'lightgallery/plugins/zoom'
+  import axios from 'axios'
 
   export default defineComponent({
     components: { CommonBanner, Lightgallery, Swiper, SwiperSlide },
@@ -257,7 +258,12 @@
         }
     },
     methods: {
-        
+      async getAnswer() {
+        const { data } = await axios.get("https://yesno.wtf/api");
+      },
+    },
+    beforeMount() {
+      this.getAnswer();
     }
   })
   </script>
