@@ -1,9 +1,32 @@
 <template>
   <div class="col-xl-4 col-lg-4 m-b30 dz-order-1" style="z-index: 99">
     <aside class="side-bar sticky-top left">
+      <div class="widget widget_tag_cloud">
+        <div class="widget-title">
+          <h4 class="title">Ricerca</h4>
+          <div class="dz-separator style-1 text-primary mb-0"></div>
+        </div>
+        <div class="search-bx">
+          <form action="#">
+            <div class="input-group">
+              <input
+                name="text"
+                class="form-control"
+                placeholder="Inserisci parola chiave..."
+                type="text"
+              />
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-primary sharp radius-no">
+                  <i class="la la-search scale3"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
       <div class="widget widget_categories">
         <div class="widget-title">
-          <h4 class="title">Categories</h4>
+          <h4 class="title">Categorie</h4>
           <div class="dz-separator style-1 text-primary mb-0"></div>
         </div>
         <ul>
@@ -16,7 +39,7 @@
       </div>
       <div class="widget recent-posts-entry">
         <div class="widget-title">
-          <h4 class="title">Recent Posts</h4>
+          <h4 class="title">Annunci recenti</h4>
           <div class="dz-separator style-1 text-primary mb-0"></div>
         </div>
         <div class="widget-post-bx">
@@ -88,44 +111,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="widget widget widget_categories">
-        <div class="widget-title">
-          <h4 class="title">Archives</h4>
-          <div class="dz-separator style-1 text-primary mb-0"></div>
-        </div>
-        <ul>
-          <li><RouterLink to="?">January</RouterLink>(3)</li>
-          <li><RouterLink to="?">Fabruary</RouterLink>(4)</li>
-          <li><RouterLink to="?">March</RouterLink>(4)</li>
-          <li><RouterLink to="?">April</RouterLink>(3)</li>
-          <li><RouterLink to="?">May</RouterLink>(4)</li>
-          <li><RouterLink to="?">Jun</RouterLink>(1)</li>
-          <li><RouterLink to="?">July</RouterLink>(4)</li>
-        </ul>
-      </div>
-      <div class="widget widget_tag_cloud">
-        <div class="widget-title">
-          <h4 class="title">Search</h4>
-          <div class="dz-separator style-1 text-primary mb-0"></div>
-        </div>
-        <div class="search-bx">
-          <form action="#">
-            <div class="input-group">
-              <input
-                name="text"
-                class="form-control"
-                placeholder="Enter your keywords..."
-                type="text"
-              />
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-primary sharp radius-no">
-                  <i class="la la-search scale3"></i>
-                </button>
-              </span>
-            </div>
-          </form>
         </div>
       </div>
     </aside>
