@@ -15,19 +15,14 @@
               <div class="section-head style-2">
                 <!-- <h6 class="sub-title text-primary">About Us</h6> -->
                 <h2 class="title m-b20">Affitta il tuo immobile.</h2>
-  <p>Affidandoti a noi per la gestione del tuo immobile in affitto, potrai contare su un servizio completo e su misura per le tue esigenze. Ecco cosa offriamo:</p>
+  <p>Vuoi affittare casa ma non sai da dove iniziare? Affidati a noi di Thinkhome! Offriamo un servizio completo e personalizzato, studiato per soddisfare tutte le tue esigenze.</p>
+  <p><strong>Ricerca e selezione accurata dell'inquilino ideale:</strong> Garantiamo una rigorosa valutazione dei potenziali affittuari, verificando attentamente la loro solvibilità economica e referenze pregresse.</p>
+  <p><strong>Visite guidate efficienti e professionali:</strong>Grazie a un'organizzazione accurata, garantiremo visite rapide e produttive. I nostri agenti saranno preparati a fornire tutte le informazioni necessarie sull'immobile e sul contesto circostante, rispondendo prontamente a ogni domanda.</p>
+  <p><strong>Stesura di contratti d'affitto personalizzati e conformi alla legge:</strong>Redigeremo per te il contratto d'affitto conforme alla legge più adatto alla tua esigenza, garantendo la massima tutela legale e fiscale sia per il proprietario che per l'inquilino. Ci occuperemo anche della relativa registrazione presso gli enti preposti del contratto. </p>
+  <h4 class="my-4">Affidandoci la gestione del tuo immobile, potrai godere di:</h4>
   <ul>
-    <li><p><strong>• Ricerca dell'inquilino ideale:</strong> Selezioneremo accuratamente i potenziali inquilini, verificando la loro solvibilità e affidabilità.</p></li>
-    <li><p><strong>• Gestione delle visite:</strong> Organizzeremo visite guidate con i potenziali inquilini, rispondendo a tutte le loro domande e fornendo loro tutte le informazioni necessarie.</p></li>
-    <li><p><strong>• Stesura del contratto d'affitto:</strong> Redigeremo un contratto d'affitto conforme alla legge, tutelando i tuoi diritti e quelli dell'inquilino.</p></li>
-    <li><p><strong>• Gestione delle manutenzioni:</strong> Ci occuperemo della gestione delle manutenzioni ordinarie e straordinarie dell'immobile, garantendo sempre la massima efficienza.</p></li>
-    <li><p><strong>• Riscossione dei canoni:</strong> Provvederemo alla riscossione puntuale dei canoni di affitto e alla gestione di eventuali morosità.</p></li>
-  </ul>
-  <h4 class="my-4">Scegliendo il nostro servizio di affitto, potrai beneficiare di:</h4>
-  <ul>
-    <li><p><strong>• Tranquillità e serenità:</strong> Potrai delegare a noi tutte le incombenze legate alla gestione dell'affitto, potendoti così dedicare ad altro.</p></li>
-    <li><p><strong>• Massima redditività:</strong> Grazie alla nostra esperienza e alle nostre strategie di marketing, riusciremo a massimizzare il rendimento del tuo investimento.</p></li>
-    <li><p><strong>• Assistenza continua:</strong> Saremo sempre a tua disposizione per qualsiasi necessità o domanda.</p></li>
+    <li><p><strong>• Massima redditività: </strong> Grazie alla nostra esperienza e alle nostre strategie di marketing, riusciremo a massimizzare il rendimento del tuo investimento.</p></li>
+    <li><p><strong>• Assistenza continua: </strong> Saremo sempre a tua disposizione per qualsiasi necessità o domanda.</p></li>
   </ul>
               </div>
               <!-- <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">

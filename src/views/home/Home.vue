@@ -1,5 +1,6 @@
 <template>
   <div class="page-content bg-white">
+    <MainBanner />
     <MainBanner3 />
     <section class="content-inner-3 bg-white line-img">
       <div class="container">
@@ -172,6 +173,7 @@
 import Home3About from '@/components/Home3About.vue'
 import Home3Services from '@/components/Home3Services.vue'
 import Testimonial2 from '@/components/Testimonial2.vue'
+import MainBanner from '@/components/MainBanner.vue'
 import MainBanner3 from '@/components/MainBanner3.vue'
 import Home3Accordian from '@/components/Home3Accordian.vue'
 import { defineComponent, watchEffect } from 'vue'
@@ -201,6 +203,7 @@ export default defineComponent({
     return {}
   },
   components: {
+    MainBanner,
     MainBanner3,
     Home3Services,
     Home3About,
