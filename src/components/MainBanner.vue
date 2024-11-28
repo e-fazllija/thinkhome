@@ -1,8 +1,8 @@
 <template>
-  <div class="slidearea ps-0">
-    <div class="silder-one">
+  <div class="slidearea ps-0" style="height: 100vh;">
+    <div class="silder-one" style="height: 100vh;">
       <Swiper
-        class="swiper-container main-silder-swiper"
+        class="swiper-container main-silder-swiper-03"
         :speed="1500"
         :parallax="true"
         :modules="module"
@@ -14,21 +14,16 @@
         }"
       >
         <SwiperSlide class="swiper-slide">
-          <div class="silder-img overlay-black-light">
-            <img src="@/assets/images/home-first.jpg" data-swiper-parallax="30%" alt="" />
+          <div class="silder-img overlay-black-light" style="height: 100vh;">
+            <img src="@/assets/images/home-first.jpg" data-swiper-parallax="30%" alt="" style="filter: brightness(80%);"/>
           </div>
           <div class="silder-content" data-swiper-parallax="-40%">
             <div class="inner-content">
-              <h6 class="sub-title">DESIGNING</h6>
+              <h6 class="sub-title">Chi siamo</h6>
               <h1 class="title">We Create</h1>
               <h3 class="title-small">Unique Architecture<br />Design Ideas</h3>
-              <RouterLink
-                to="/about-us"
-                class="btn shadow-primary btn-light btn-rounded btn-ov-secondary"
-                >READ MORE <i class="m-l10 fas fa-caret-right"></i
-              ></RouterLink>
             </div>
-            <div class="overlay-slide" data-swiper-parallax="100%"></div>
+            <!-- <div class="overlay-slide" data-swiper-parallax="100%"></div> -->
           </div>
         </SwiperSlide>
       </Swiper>

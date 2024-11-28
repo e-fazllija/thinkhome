@@ -12,22 +12,21 @@
           prevEl: '.btn-prev',
           nextEl: '.btn-next'
         }"
-        :autoplay="{ delay: 8000 }"
+        :autoplay="{ delay: 1500 }"
       >
-        <SwiperSlide class="swiper-slide" v-for="({ img,title,description }, ind) in mainSlider" :key="ind">
+        <SwiperSlide class="swiper-slide" v-for="({ img, title, description }, ind) in mainSlider" :key="ind">
           <div class="silder-content" data-swiper-parallax="-40%">
             <div class="container">
               <div class="inner-content row align-items-center g-0">
                 <div class="col-md-6">
                   <div class="inner-text">
-                    <h4 class="title">
-                      {{title}}<br />
-                    </h4>
+                    <!-- <h6 class="text text-primary">What We Do</h6> -->
+                    <h3 class="title">
+                      {{ title }}
+                    </h3>
                     <p>
-                      {{description}} 
+                     {{ description }}
                     </p>
-                    <div>
-                    </div>
                   </div>
                 </div>
                 <div class="col-md-6">

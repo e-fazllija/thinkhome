@@ -185,7 +185,7 @@ import Home3Blog from '@/components/Home3Blog.vue'
 import logoWhite from '@/assets/images/TH-6.jpg'
 import logo from '@/assets/images/TH-4.jpg'
 import { RouterLink } from 'vue-router'
-
+import backgrouBg2 from '@/assets/images/background/bg2.png'
 export default defineComponent({
   name: 'home',
   setup() {
@@ -200,7 +200,7 @@ export default defineComponent({
         document.body.setAttribute('data-color', 'color_3')
       }, 10)
     })
-    return {}
+    return {backgrouBg2}
   },
   components: {
     MainBanner,

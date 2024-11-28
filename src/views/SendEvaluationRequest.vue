@@ -177,7 +177,7 @@ export default defineComponent({
   components: { CommonBanner },
   methods: {
       async getAnswer() {
-        const { data } = await axios.POST("https://yesno.wtf/api");
+        const { data } = await axios.post("https://yesno.wtf/api");
       },
     },
 })
