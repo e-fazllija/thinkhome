@@ -139,6 +139,11 @@ export default defineComponent({
     })
     const menuArr = reactive<MenuItem[]>([
       { menu: 'Home', className: 'menu', to: '/' },
+      { menu: 'Immobili', subMenu: [
+      { child: 'Immobili in vendita', to: '/immobili-in-vendita' },
+      { child: 'Immobili in affitto', to: '/immobili-in-affitto' },
+      { child: 'Valutazione immobile', to: '/richiesta-valutazione-immobile' },
+         ] },
       { menu: 'I nostri servizi', subMenu: [
       { child: 'Immobili in vendita', to: '/vendita' },
       { child: 'Immobili in affitto', to: '/affitto' },

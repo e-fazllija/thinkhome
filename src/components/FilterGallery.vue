@@ -74,6 +74,29 @@
           </div>
         </li>
       </Lightgallery>
+      <div class="row">
+          <div class="col-xl-12 col-lg-12">
+            <nav aria-label="Blog Pagination">
+              <ul class="pagination text-center m-b30">
+                <li class="page-item">
+                  <RouterLink class="page-link prev" to="?"
+                    ><i class="la la-angle-left"></i
+                  ></RouterLink>
+                </li>
+                <li class="page-item">
+                  <RouterLink class="page-link active" to="?">1</RouterLink>
+                </li>
+                <li class="page-item"><RouterLink class="page-link" to="?">2</RouterLink></li>
+                <li class="page-item"><RouterLink class="page-link" to="?">3</RouterLink></li>
+                <li class="page-item">
+                  <RouterLink class="page-link next" to="?"
+                    ><i class="la la-angle-right"></i
+                  ></RouterLink>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
     </div>
   </section>
 </template>

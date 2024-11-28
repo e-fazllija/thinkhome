@@ -1,6 +1,6 @@
 <template>
-  <!-- <div class="slidearea bannerside"> -->
-    <!-- <div class="side-contact-info">
+  <!-- <div class="slidearea bannerside">
+    <div class="side-contact-info">
       <ul>
         <li><i class="fas fa-phone-alt"></i> +91 123 456 7890</li>
         <li><i class="fas fa-envelope"></i> Visvainfo@gmail.com</li>

@@ -1,5 +1,5 @@
 <template>
-  <!-- <div class="container">
+  <div class="container">
     <div class="row">
       <div class="col-lg-6 content-inner-1 aos-item">
         <div class="section-head style-1">
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 </template>
 
 <script lang="ts">
