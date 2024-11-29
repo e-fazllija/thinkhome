@@ -186,6 +186,7 @@ import logoWhite from '@/assets/images/TH-6.jpg'
 import logo from '@/assets/images/TH-4.jpg'
 import { RouterLink } from 'vue-router'
 import backgrouBg2 from '@/assets/images/background/bg2.png'
+import axios from 'axios'
 export default defineComponent({
   name: 'home',
   setup() {
@@ -215,6 +216,20 @@ export default defineComponent({
     Home3Blog,
     RouterLink,
     Testimonial2
+  },
+  async mounted(){
+    await this.getItems();
+  },
+  data() {
+    return {
+      items: []
+    }
+  },
+  methods: {
+    async getItems(){
+      const result = await axios.get("https://localhost:7267/api/RealEstateProperty/Get")
+      this.items = result.data.Data.$values;
+    }
   }
 })
 </script>

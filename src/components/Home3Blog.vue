@@ -13,23 +13,23 @@
       240: { slidesPerView: 1 }
     }"
   >
-    <SwiperSlide class="swiper-slide" v-for="({ img, img2, title, price, type }, ind) in ourBlog" :key="ind">
+    <SwiperSlide class="swiper-slide" v-for="(item, ind) in items" :key="ind">
       <div class="dz-card blog-grid style-3 aos-item h-100 rounded-0">
         <div class="dz-media">
-          <RouterLink to="/blog-details"><img :src="img" alt="" /></RouterLink>
+          <RouterLink to="/blog-details"><img :src="item.Photos.$values[0].Url" alt="" /></RouterLink>
         </div>
         <div class="dz-info">
           <h4 class="dz-title">
-            <RouterLink to="/blog-details">{{ title }}</RouterLink>
+            <RouterLink to="/blog-details">{{ item.Category }}</RouterLink>
           </h4>
           <h6 class="dz-title">
-            <RouterLink to="/blog-details">€ {{ price }}</RouterLink>
+            <RouterLink to="/blog-details">€ {{ item.Price }}</RouterLink>
           </h6>
           <div class="dz-meta">
             <ul>
               <li class="post-author d-flex align-items-center">
                 <!-- <img :src="img2" alt="" /><span class="text-dark m-l10 m-r5">By</span> -->
-                <h5 class="text-primary">Tipologia:</h5><h6 class="text-secondary ms-2 ">{{ type }} </h6>
+                <h5 class="text-primary">Tipologia:</h5><h6 class="text-secondary ms-2 ">{{ item.Typologie }} </h6>
               </li>
               <!-- <li class="post-comments">
                 <span class="m-r10">
@@ -134,7 +134,7 @@
             </ul>
           </div>
           <p class="text">
-           Descrizione (può essere tolta)
+           {{ item.Description }}
           </p>
           <div class="read-more">
             <RouterLink to="/blog-details" class="btn btn-primary btn-rounded btn-sm hover-icon">
@@ -157,6 +157,7 @@ import blog_pic6 from '@/assets/images/blog/blog-grid/pic6.jpg'
 import latest_blog_pic1 from '@/assets/images/blog/latest-blog/pic1.png'
 import latest_blog_pic2 from '@/assets/images/blog/latest-blog/pic2.png'
 import { Autoplay } from 'swiper/modules'
+import axios from 'axios'
 
 export default defineComponent({
   components: { Swiper, SwiperSlide },
@@ -169,6 +170,21 @@ export default defineComponent({
         { img: blog_pic5, img2: latest_blog_pic2, title: 'Indirizzo', price: '100', type: 'Immobile' }
       ],
       module: [Autoplay]
+    }
+  },
+  async mounted(){
+    await this.getItems();
+  },
+  data() {
+    return {
+      items: []
+    }
+  },
+  methods: {
+    async getItems(){
+      const result = await axios.get("https://localhost:7267/api/RealEstateProperty/Get")
+      this.items = result.data.Data.$values;
+      console.log(this.items)
     }
   }
 })
