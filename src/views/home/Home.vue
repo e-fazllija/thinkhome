@@ -4,17 +4,17 @@
     <MainBanner3 />
     <section class="content-inner-3 bg-white line-img">
       <div class="container">
-        <div class="row align-items-center section-head style-2">
+        <div class="row text-center section-head style-2">
           <div class="col-lg-12 aos-item aos-init aos-animate">
             <h5 class="text-primary sub-title">IN EVIDENZA</h5>
             <h2 class="title">I nostri immobili</h2>
           </div>
         </div>
-        <div class="row align-items-center about-bx4 mb-5">
+        <div v-if="!loading" class="row align-items-center about-bx4 mb-5">
           <div class="col-lg-6 m-b30">
             <div class="dz-media">
               <img
-                src="@/assets/images/about/pic6.jpg"
+                :src="results.RealEstatePropertiesHighlighted.Photos.$values[0].Url"
                 alt=""
                 class="img1 aos-item aos-init aos-animate"
               />
@@ -27,12 +27,10 @@
           </div>
           <div class="col-lg-6 m-b30 aos-item aos-init aos-animate">
             <div class="section-head style-2">
-              <h2 class="title m-b10">Indirizzo</h2>
-              <h5 class="sub-title text-primary">Prezzo</h5>
+              <h2 class="title m-b10"> {{results.RealEstatePropertiesHighlighted.AddressLine}}</h2>
+              <h5 class="sub-title text-primary"> € {{results.RealEstatePropertiesHighlighted.Price}}</h5>
               <p>
-                Descrizione There are many variations of passages of Lorem Ipsum available, but the majority
-                have suffered alteration in some form, by injected humour, or randomised words which
-                don't look even slightly believable.
+                {{results.RealEstatePropertiesHighlighted.Description}}
               </p>
             </div>
             <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
@@ -41,7 +39,7 @@
             </RouterLink>
           </div>
         </div>
-        <Home3Blog />
+        <Home3Blog v-if="!loading"  :items="results.RealEstatePropertiesInHome" />
         <div class="row align-items-center style-2 mt-5">
           <div class="col-lg-12 aos-item aos-init aos-animate text-center d-none d-lg-block">
             <RouterLink to="/blog-details" class="btn btn-secondary btn-rounded hover-icon">
@@ -222,13 +220,36 @@ export default defineComponent({
   },
   data() {
     return {
-      items: []
+      loading: true,
+      results: {
+        RealEstatePropertiesHighlighted: {
+          AddressLine: "",
+          Price: 0,
+          Description: "",
+          Photos: {
+            $values: [{
+              Url: ""
+            }]
+          }
+          },
+        RealEstatePropertiesInHome: {
+          AddressLine: "",
+          Price: 0,
+          Description: "",
+          Photos: {
+            $values: [{
+              Url: ""
+            }]
+          }}
+      }
     }
   },
   methods: {
     async getItems(){
-      const result = await axios.get("https://localhost:7267/api/RealEstateProperty/Get")
-      this.items = result.data.Data.$values;
+      const result = await axios.get("https://localhost:7267/api/Generic/GetHomeDetails");
+      this.results.RealEstatePropertiesInHome = result.data.RealEstatePropertiesInHome.$values;
+      this.results.RealEstatePropertiesHighlighted = result.data.RealEstatePropertiesHighlighted;
+      this.loading = false;
     }
   }
 })

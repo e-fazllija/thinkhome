@@ -88,6 +88,12 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
+      path: '/dettaglio/:id',
+      name: 'dettaglio',
+      component: () => import('../views/realEstateProperties/Details.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
       path: '/contact-us',
       name: 'contact_us',
       component: () => import('../views/ContactUs.vue'),

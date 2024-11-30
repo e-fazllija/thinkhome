@@ -22,10 +22,6 @@
                <p>•	Supporto per operazioni di compravendita immobiliare</p>
                <p>•	Valutazione opportunità di investimento</p>
             </div>
-            <!-- <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
-              <span>READ MORE</span>
-              <i class="fas fa-arrow-right"></i>
-            </RouterLink> -->
           </div>
           <div class="col-lg-6 m-b30">
             <div class="dz-media">

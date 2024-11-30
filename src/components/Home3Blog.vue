@@ -1,6 +1,7 @@
 <template>
   <Swiper
     class="swiper-container blog-swiper"
+    style="min-height: 350px;"
     :slides-per-view="3"
     :space-between="30"
     :loop="true"
@@ -16,20 +17,20 @@
     <SwiperSlide class="swiper-slide" v-for="(item, ind) in items" :key="ind">
       <div class="dz-card blog-grid style-3 aos-item h-100 rounded-0">
         <div class="dz-media">
-          <RouterLink to="/blog-details"><img :src="item.Photos.$values[0].Url" alt="" /></RouterLink>
+          <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id }}"><img :src="item.Photos.$values[0].Url" alt="" style="min-height: 40vh;" /></RouterLink>
         </div>
         <div class="dz-info">
           <h4 class="dz-title">
-            <RouterLink to="/blog-details">{{ item.Category }}</RouterLink>
+            {{ item.Category }}
           </h4>
           <h6 class="dz-title">
-            <RouterLink to="/blog-details">€ {{ item.Price }}</RouterLink>
+            € {{ item.Price }}
           </h6>
           <div class="dz-meta">
             <ul>
               <li class="post-author d-flex align-items-center">
                 <!-- <img :src="img2" alt="" /><span class="text-dark m-l10 m-r5">By</span> -->
-                <h5 class="text-primary">Tipologia:</h5><h6 class="text-secondary ms-2 ">{{ item.Typologie }} </h6>
+                <h5 class="text-primary">Indirizzo:</h5><h6 class="text-secondary ms-2 ">{{ item.AddressLine }} </h6>
               </li>
               <!-- <li class="post-comments">
                 <span class="m-r10">
@@ -137,7 +138,7 @@
            {{ item.Description }}
           </p>
           <div class="read-more">
-            <RouterLink to="/blog-details" class="btn btn-primary btn-rounded btn-sm hover-icon">
+            <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id }}" class="btn btn-primary btn-rounded btn-sm hover-icon">
               <span>Più dettagli</span>
               <i class="fas fa-arrow-right"></i>
             </RouterLink>
@@ -161,6 +162,18 @@ import axios from 'axios'
 
 export default defineComponent({
   components: { Swiper, SwiperSlide },
+  props: {
+    items: {
+      AddressLine: "",
+      Price: 0,
+      Description: "",
+      Photos: {
+        $values: [{
+          Url: ""
+        }]
+      }
+    }
+  },
   setup() {
     return {
       ourBlog: [
@@ -172,21 +185,21 @@ export default defineComponent({
       module: [Autoplay]
     }
   },
-  async mounted(){
-    await this.getItems();
-  },
-  data() {
-    return {
-      items: []
-    }
-  },
-  methods: {
-    async getItems(){
-      const result = await axios.get("https://localhost:7267/api/RealEstateProperty/Get")
-      this.items = result.data.Data.$values;
-      console.log(this.items)
-    }
-  }
+  // async mounted(){
+  //   await this.getItems();
+  // },
+  // data() {
+  //   return {
+  //     items: []
+  //   }
+  // },
+  // methods: {
+  //   async getItems(){
+  //     const result = await axios.get("https://localhost:7267/api/Generic/GetHomeDetails")
+  //     this.items = result.data;
+  //     console.log(this.items.RealEstatePropertiesHighlighted)
+  //   }
+  // }
 })
 </script>
 
