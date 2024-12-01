@@ -33,7 +33,7 @@
                 {{results.RealEstatePropertiesHighlighted.Description}}
               </p>
             </div>
-            <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
+            <RouterLink :to="{name: 'dettaglio', params: {id: results.RealEstatePropertiesHighlighted.Id}}" class="btn btn-primary btn-rounded hover-icon">
               <span>Più dettagli</span>
               <i class="fas fa-arrow-right"></i>
             </RouterLink>
@@ -185,6 +185,8 @@ import logo from '@/assets/images/TH-4.jpg'
 import { RouterLink } from 'vue-router'
 import backgrouBg2 from '@/assets/images/background/bg2.png'
 import axios from 'axios'
+
+
 export default defineComponent({
   name: 'home',
   setup() {
@@ -223,6 +225,7 @@ export default defineComponent({
       loading: true,
       results: {
         RealEstatePropertiesHighlighted: {
+          Id: 0,
           AddressLine: "",
           Price: 0,
           Description: "",
@@ -233,14 +236,15 @@ export default defineComponent({
           }
           },
         RealEstatePropertiesInHome: {
+          Id: 0,
           AddressLine: "",
           Price: 0,
           Description: "",
-          Photos: {
+          Photos: [{
             $values: [{
               Url: ""
             }]
-          }}
+          }]}
       }
     }
   },
@@ -249,6 +253,7 @@ export default defineComponent({
       const result = await axios.get("https://localhost:7267/api/Generic/GetHomeDetails");
       this.results.RealEstatePropertiesInHome = result.data.RealEstatePropertiesInHome.$values;
       this.results.RealEstatePropertiesHighlighted = result.data.RealEstatePropertiesHighlighted;
+      console.log(this.results.RealEstatePropertiesInHome)
       this.loading = false;
     }
   }

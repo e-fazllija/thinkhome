@@ -1,23 +1,32 @@
 <template>
-  <Swiper
-    class="swiper-container blog-swiper"
-    style="min-height: 350px;"
-    :slides-per-view="3"
-    :space-between="30"
-    :loop="true"
-    :modules="module"
-    :autoplay="{ delay: 1500 }"
-    :speed="1500"
-    :breakpoints="{
+  <Swiper class="swiper-container blog-swiper" style="min-height: 350px;" :slides-per-view="3" :space-between="30"
+    :loop="true" :modules="module" :autoplay="{ delay: 1500 }" :speed="1500" :breakpoints="{
       991: { slidesPerView: 3 },
       691: { slidesPerView: 2 },
       240: { slidesPerView: 1 }
-    }"
-  >
+    }">
     <SwiperSlide class="swiper-slide" v-for="(item, ind) in items" :key="ind">
       <div class="dz-card blog-grid style-3 aos-item h-100 rounded-0">
         <div class="dz-media">
-          <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id }}"><img :src="item.Photos.$values[0].Url" alt="" style="min-height: 40vh;" /></RouterLink>
+          <Swiper class="swiper-container post-swiper" :speed="1500" :loop="true" :modules="modules" :navigation="{
+            prevEl: '.prev-post-swiper-btn',
+            nextEl: '.next-post-swiper-btn'
+          }">
+          
+            <SwiperSlide v-for="(photo, ind) in item.Photos.$values" :key="ind" class="swiper-slide">
+              <RouterLink to="/blog-details"><img :src="photo.Url" alt="" style="min-height: 40vh;"/></RouterLink>
+            </SwiperSlide>
+            <!-- <SwiperSlide class="swiper-slide">
+              <RouterLink to="/blog-details"><img src="@/assets/images/blog/large/pic1.jpg" alt="" /></RouterLink>
+            </SwiperSlide>
+            <SwiperSlide class="swiper-slide">
+              <RouterLink to="/blog-details"><img src="@/assets/images/blog/large/pic3.jpg" alt="" /></RouterLink>
+            </SwiperSlide> -->
+            <div class="prev-post-swiper-btn"><i class="la fa-angle-left"></i></div>
+            <div class="next-post-swiper-btn"><i class="la fa-angle-right"></i></div>
+          </Swiper>
+          <!-- <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img :src="item.Photos.$values[0].Url" alt=""
+              style="min-height: 40vh;" /></RouterLink> -->
         </div>
         <div class="dz-info">
           <h4 class="dz-title">
@@ -30,7 +39,8 @@
             <ul>
               <li class="post-author d-flex align-items-center">
                 <!-- <img :src="img2" alt="" /><span class="text-dark m-l10 m-r5">By</span> -->
-                <h5 class="text-primary">Indirizzo:</h5><h6 class="text-secondary ms-2 ">{{ item.AddressLine }} </h6>
+                <h5 class="text-primary">Indirizzo:</h5>
+                <h6 class="text-secondary ms-2 ">{{ item.AddressLine }} </h6>
               </li>
               <!-- <li class="post-comments">
                 <span class="m-r10">
@@ -135,10 +145,11 @@
             </ul>
           </div>
           <p class="text">
-           {{ item.Description }}
+            {{ item.Description }}
           </p>
           <div class="read-more">
-            <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id }}" class="btn btn-primary btn-rounded btn-sm hover-icon">
+            <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"
+              class="btn btn-primary btn-rounded btn-sm hover-icon">
               <span>Più dettagli</span>
               <i class="fas fa-arrow-right"></i>
             </RouterLink>
@@ -157,8 +168,8 @@ import blog_pic5 from '@/assets/images/blog/blog-grid/pic5.jpg'
 import blog_pic6 from '@/assets/images/blog/blog-grid/pic6.jpg'
 import latest_blog_pic1 from '@/assets/images/blog/latest-blog/pic1.png'
 import latest_blog_pic2 from '@/assets/images/blog/latest-blog/pic2.png'
-import { Autoplay } from 'swiper/modules'
 import axios from 'axios'
+import { Navigation, Autoplay } from 'swiper/modules'
 
 export default defineComponent({
   components: { Swiper, SwiperSlide },
@@ -167,11 +178,11 @@ export default defineComponent({
       AddressLine: "",
       Price: 0,
       Description: "",
-      Photos: {
+      Photos: [{
         $values: [{
           Url: ""
         }]
-      }
+      }]
     }
   },
   setup() {
@@ -182,7 +193,7 @@ export default defineComponent({
         { img: blog_pic6, img2: latest_blog_pic1, title: 'Indirizzo', price: '100', type: 'Immobile' },
         { img: blog_pic5, img2: latest_blog_pic2, title: 'Indirizzo', price: '100', type: 'Immobile' }
       ],
-      module: [Autoplay]
+      modules: [Navigation, Autoplay]
     }
   },
   // async mounted(){

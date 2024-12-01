@@ -2,19 +2,13 @@
   <nav aria-label="Blog Pagination">
     <ul class="pagination text-center m-b30">
       <li class="page-item">
-        <RouterLink class="page-link prev" to="?"><i class="la la-angle-left"></i></RouterLink>
+        <button v-if="currentPage > 1" class="page-link prev" @click="$emit('changePage', currentPage - 1, filter, typologie)"><i class="la la-angle-left"></i></button>
       </li>
-      <li class="page-item">
-        <RouterLink class="page-link active" to="?">1</RouterLink>
+      <li v-for="page in totalPages" :key="page" class="page-item">
+        <button class="page-link" :class="currentPage == page ? 'active' : ''" @click="$emit('changePage', page, filter, typologie)">{{ page }}</button>
       </li>
-      <li class="page-item">
-        <RouterLink class="page-link" to="?">2</RouterLink>
-      </li>
-      <li class="page-item">
-        <RouterLink class="page-link" to="?">3</RouterLink>
-      </li>
-      <li class="page-item">
-        <RouterLink class="page-link next" to="?"><i class="la la-angle-right"></i></RouterLink>
+      <li v-if="currentPage < totalPages" class="page-item">
+        <button class="page-link next" @click="$emit('changePage', currentPage + 1, filter, typologie)"><i class="la la-angle-right"></i></button>
       </li>
     </ul>
   </nav>
@@ -26,10 +20,20 @@ import { RouterLink } from 'vue-router'
 
 export default defineComponent({
   name: 'blog_pagination',
+  props: { 
+    totalPages: Number,
+    currentPage: Number,
+    filter: String,
+    typologie: String
+  },
   setup() {
     return {}
   },
-  components: { RouterLink }
+  components: { RouterLink },
+  async mounted(){
+    // console.log(this.currentPage)
+    // console.log(this.totalPages)
+  }
 })
 </script>
 
