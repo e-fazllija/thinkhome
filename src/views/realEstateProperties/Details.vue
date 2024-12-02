@@ -195,7 +195,7 @@ export default defineComponent({
       const { data } = await axios.get("https://yesno.wtf/api");
     },
     async getItem() {
-      const result = await axios.get("https://localhost:7267/api/RealEstateProperty/GetById?id=" + this.$route.params.id);
+      const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetById?id=" + this.$route.params.id);
       this.item = result.data;
       this.photos = result.data.Photos.$values;
       this.imgSelected = this.photos[0].Url;

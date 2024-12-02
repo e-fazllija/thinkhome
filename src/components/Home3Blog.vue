@@ -206,7 +206,7 @@ export default defineComponent({
   // },
   // methods: {
   //   async getItems(){
-  //     const result = await axios.get("https://localhost:7267/api/Generic/GetHomeDetails")
+  //     const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/Generic/GetHomeDetails")
   //     this.items = result.data;
   //     console.log(this.items.RealEstatePropertiesHighlighted)
   //   }
