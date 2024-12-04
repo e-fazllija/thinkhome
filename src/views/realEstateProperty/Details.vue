@@ -336,7 +336,7 @@
   import { defineComponent } from 'vue'
   import CommonBanner from '@/elements/CommonBanner.vue'
   import BlogLeftContent from '@/components/BlogLeftContent.vue'
-  import bnr2 from '@/assets/images/banner/bnr2.jpg'
+  import bnr2 from '@/assets/images/banner/bnr2.png'
   
   export default defineComponent({
     components: { CommonBanner, BlogLeftContent },

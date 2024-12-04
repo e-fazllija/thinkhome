@@ -160,7 +160,7 @@
   </Swiper>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import blog_pic4 from '@/assets/images/blog/blog-grid/pic4.jpg'

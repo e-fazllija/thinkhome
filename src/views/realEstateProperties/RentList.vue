@@ -83,8 +83,8 @@
                   prevEl: '.prev-post-swiper-btn',
                   nextEl: '.next-post-swiper-btn'
                 }">
-                  <SwiperSlide v-for="(photo, ind) in item.Photos.$values" :key="ind" class="swiper-slide">
-                    <RouterLink :to="{name: 'dettaglio', params: {id: item.Id}}"><img :src="photo.Url" alt="" /></RouterLink>
+                  <SwiperSlide v-for="(photo, ind) in item.Photos" :key="ind" class="swiper-slide">
+                    <RouterLink :to="{name: 'dettaglio', params: {id: item.Id}}"><img :src="photo.$values.Url" alt="" /></RouterLink>
                   </SwiperSlide>
                   <!-- <div class="prev-post-swiper-btn"><i class="la fa-angle-left"></i></div>
                   <div class="next-post-swiper-btn"><i class="la fa-angle-right"></i></div> -->
@@ -178,8 +178,8 @@ export default defineComponent({
       this.results = result.data.Data.$values;
       this.page = _page;
       this.totalPages = 1;
-      if (result.data.Total > 1) {
-        this.totalPages = result.data.Total / 1;
+      if (result.data.Total > 10) {
+        this.totalPages = result.data.Total / 10;
       }
       this.loading = false;
     }
