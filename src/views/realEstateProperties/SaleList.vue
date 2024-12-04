@@ -120,7 +120,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import bnr3 from '@/assets/images/banner/bnr3.jpg'
@@ -173,7 +173,7 @@ export default defineComponent({
     }
   },
   methods: {
-    async getItems(_page: number, _filter: string, _typologie: string) {
+    async getItems(_page, _filter, _typologie) {
       const result = await axios.get(`https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/Get?currentPage=${_page}&filterRequest=${_filter}&status=Vendita&typologie=${_typologie}`);
       this.results = result.data.Data.$values;
       this.page = _page;
