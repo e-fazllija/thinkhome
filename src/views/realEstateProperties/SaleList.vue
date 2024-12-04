@@ -178,8 +178,8 @@ export default defineComponent({
       this.results = result.data.Data.$values;
       this.page = _page;
       this.totalPages = 1;
-      if (result.data.Total > 1) {
-        this.totalPages = result.data.Total / 1;
+      if (result.data.Total > 10) {
+        this.totalPages = result.data.Total / 10;
       }
       this.loading = false;
     }
