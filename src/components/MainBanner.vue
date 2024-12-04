@@ -20,8 +20,11 @@
           <div class="silder-content" data-swiper-parallax="-40%">
             <div class="inner-content">
               <h6 class="sub-title">Chi siamo</h6>
-              <h1 class="title">We Create</h1>
-              <h3 class="title-small">Unique Architecture<br />Design Ideas</h3>
+              <h1 class="title">ThinkHome</h1>
+              <h3 class="title-small">Non solo case:
+                <br /> il nostro nuovo sito ti offre un servizio a 360° per ogni esigenza abitativa,
+                <br /> dalla consulenza iniziale all’assistenza continua.
+                <br />Scopri la differenza!</h3>
             </div>
             <!-- <div class="overlay-slide" data-swiper-parallax="100%"></div> -->
           </div>

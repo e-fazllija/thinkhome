@@ -33,7 +33,7 @@
             <div class="col-lg-6 m-b30">
               <div class="dz-media">
                 <img
-                  src="@/assets/images/banner/bnr33.jpg"
+                  src="@/assets/images/banner/bnr42.jpg"
                   alt=""
                   class="img1 aos-item aos-init aos-animate"
                 />
@@ -49,7 +49,7 @@
   import CommonBanner from '@/elements/CommonBanner.vue'
   import Brands from '@/elements/Brands.vue'
   import Testimonial2 from '@/components/Testimonial2.vue'
-  import bnr5 from '@/assets/images/banner/bnr35.jpg'
+  import bnr5 from '@/assets/images/banner/bnr40.jpg'
   import bg2 from '@/assets/images/background/bg2.png'
   import { RouterLink } from 'vue-router'
   import MainBanner3 from '@/components/MainBanner3.vue'
