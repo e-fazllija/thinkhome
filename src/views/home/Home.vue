@@ -1,7 +1,7 @@
 <template>
   <div class="page-content bg-white">
     <MainBanner />
-    <MainBanner3 />
+    
     <section class="content-inner-3 bg-white line-img">
       <div class="container">
         <div class="row text-center section-head style-2">
@@ -50,6 +50,7 @@
         </div>
       </div>
     </section>
+    <MainBanner3 />
     <section class="content-inner-3 service-area">
       <div class="container">
         <div class="row text-center section-head style-2">
