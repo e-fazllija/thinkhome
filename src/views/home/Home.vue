@@ -27,10 +27,10 @@
           </div>
           <div class="col-lg-6 m-b30 aos-item aos-init aos-animate">
             <div class="section-head style-2">
-              <h2 class="title m-b10"> {{results.RealEstatePropertiesHighlighted.AddressLine}}</h2>
+              <h2 class="title m-b10"> {{results.RealEstatePropertiesHighlighted.ShortTitle}}</h2>
               <h5 class="sub-title text-primary"> € {{results.RealEstatePropertiesHighlighted.Price}}</h5>
               <p>
-                {{results.RealEstatePropertiesHighlighted.Description}}
+                {{results.RealEstatePropertiesHighlighted.ShortDescription}}
               </p>
             </div>
             <RouterLink :to="{name: 'dettaglio', params: {id: results.RealEstatePropertiesHighlighted.Id}}" class="btn btn-primary btn-rounded hover-icon">
@@ -42,7 +42,7 @@
         <Home3Blog v-if="!loading"  :items="results.RealEstatePropertiesInHome" />
         <div class="row align-items-center style-2 mt-5">
           <div class="col-lg-12 aos-item aos-init aos-animate text-center d-none d-lg-block">
-            <RouterLink to="/blog-details" class="btn btn-secondary btn-rounded hover-icon">
+            <RouterLink to="/immobili-in-vendita" class="btn btn-secondary btn-rounded hover-icon">
               <span>Tutti gli immobili</span>
               <i class="fas fa-arrow-right"></i>
             </RouterLink>
@@ -227,6 +227,8 @@ export default defineComponent({
       results: {
         RealEstatePropertiesHighlighted: {
           Id: 0,
+          ShortTitle:"",
+          ShortDescription:"",
           AddressLine: "",
           Price: 0,
           Description: "",

@@ -93,13 +93,11 @@
               <div class="dz-info">
                 <div class="dz-meta">
                   <ul>
-                    <li>April 26, 2021</li>
-                    <li class="post-user">By <RouterLink to="?">John Doe</RouterLink>
-                    </li>
+                    <li>Cod. 00{{item.Id}}</li>
                   </ul>
                 </div>
                 <h3 class="dz-title">
-                  <RouterLink to="/blog-details">{{ item.AddressLine }}</RouterLink>
+                 {{ item.AddressLine }}
                 </h3>
                 <div class="dz-post-text text">
                   <p>
@@ -107,7 +105,7 @@
                   </p>
                 </div>
                 <div class="read-more">
-                  <RouterLink to="?" class="btn btn-primary btn-rounded btn-sm hover-icon"><span>Dettaglio </span><i
+                  <RouterLink :to="{name: 'dettaglio', params: {id: item.Id}}" class="btn btn-primary btn-rounded btn-sm hover-icon"><span>Dettaglio </span><i
                       class="fas fa-arrow-right"></i></RouterLink>
                 </div>
               </div>
@@ -176,6 +174,7 @@ export default defineComponent({
     async getItems(_page, _filter, _typologie) {
       const result = await axios.get(`https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/Get?currentPage=${_page}&filterRequest=${_filter}&status=Vendita&typologie=${_typologie}`);
       this.results = result.data.Data.$values;
+      console.log(this.results)
       this.page = _page;
       this.totalPages = 1;
       if (result.data.Total > 10) {

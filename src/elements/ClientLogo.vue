@@ -30,12 +30,12 @@
 import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
-import logoGray1 from '@/assets/images/logo/logo-gray1.png'
-import logoGray2 from '@/assets/images/logo/logo-gray2.png'
-import logoGray3 from '@/assets/images/logo/logo-gray3.png'
-import logoGray4 from '@/assets/images/logo/logo-gray4.png'
-import logoGray5 from '@/assets/images/logo/logo-gray5.png'
-import logoGray6 from '@/assets/images/logo/logo-gray6.png'
+import logoGray1 from '@/assets/images/logo/logo-gray1.jpeg'
+import logoGray2 from '@/assets/images/logo/logo-gray2.jpeg'
+import logoGray3 from '@/assets/images/logo/logo-gray3.jpeg'
+import logoGray4 from '@/assets/images/logo/logo-gray4.jpeg'
+import logoGray5 from '@/assets/images/logo/logo-gray2.jpeg'
+import logoGray6 from '@/assets/images/logo/logo-gray4.jpeg'
 
 export default defineComponent({
   components: { Swiper, SwiperSlide },
@@ -48,7 +48,7 @@ export default defineComponent({
         { logo: logoGray4 },
         { logo: logoGray5 },
         { logo: logoGray6 },
-        { logo: logoGray1 }
+        { logo: logoGray3 }
       ],
       Autoplay
     }

@@ -19,7 +19,7 @@
                   </li>
                   <li>
                     <i class="las la-mail-bulk"></i>
-                    lucaprocesi@gmail.com 
+                    info@thinkhome.it 
                   </li>
                 </ul>
               </div>
@@ -31,6 +31,16 @@
               <ul>
                 <li><RouterLink to="/">Home</RouterLink></li>
                 <li><RouterLink to="/about-us">Chi Siamo</RouterLink></li>
+              </ul>
+            </div>
+          </div>
+          <div class="offset-lg-1 col-lg-2 col-sm-4 col-6 aos-item">
+            <div class="widget widget_services">
+              <h4 class="footer-title">IMMOBILIARE</h4>
+              <ul>
+                <li><RouterLink to="/immobili-in-vendita">Immobili in Vendita</RouterLink></li>
+                <li><RouterLink to="/immobili-in-affitto">Immobili in Affitto</RouterLink></li>
+                <li><RouterLink to="/richiesta-valutazione-immobile">Richieste Valutazioni Immobili</RouterLink></li>
               </ul>
             </div>
           </div>

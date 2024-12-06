@@ -16218,6 +16218,16 @@ button:focus {
   top: 0;
   z-index: -1;
 }
+.home-page:after {
+  width: 30%;
+  height: 90%;
+  content: '';
+  background: #c6a47ee6; /* var(--rgba-primary-9); */
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
 @media only screen and (max-width: 575px) {
   .overlay-left:after {
     width: 100%;
@@ -22582,6 +22592,7 @@ ul a.rsswidget:hover {
   max-width: 620px;
 }
 .inner-text h3 {
+  position: absolute;
   text-align: left;
   word-wrap: break-word;
   white-space: normal;
@@ -22590,6 +22601,7 @@ ul a.rsswidget:hover {
   font-size: 18px;
   font-weight: normal;
   margin: 0;
+  color: #fff;
 }
 @media only screen and (max-width: 1280px) {
   .silder-two .inner-content .inner-text {
@@ -27737,6 +27749,10 @@ footer .ft-calltoaction .title {
   background-image: url(../images/background/bg2-1.png);
   background-size: contain;
 }
+
+
+
+
 .site-footer.style-1 .footer-title:after {
   content: '';
   position: absolute;

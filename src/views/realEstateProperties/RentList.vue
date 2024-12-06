@@ -1,6 +1,6 @@
 <template>
   <div class="page-content bg-white">
-    <CommonBanner :img="bnr3" title="Immobili in vendita" text="Immobili in vendita" />
+    <CommonBanner :img="bnr3" title="Immobili in affitto" text="Immobili in affitto" />
     <div class="content-inner">
       <div class="container">
         <div class="row">

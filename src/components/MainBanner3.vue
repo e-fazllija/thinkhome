@@ -14,21 +14,20 @@
         }"
         :autoplay="{ delay: 4000 }"
       >
-        <SwiperSlide class="swiper-slide" v-for="({ img, title, description }, ind) in mainSlider" :key="ind">
-          <div class="dz-bnr-inr style-1 overlay-left" :style="`background-image: url(${img})`">
-            <div class="container-1">
-              <div class="container-fluid">
-                <div class="dz-bnr-inr-entry">
-                  <h1>{{ title }}</h1>
-                  <div class="inner-text">
-                  <h3>{{ description }}</h3>
+      <SwiperSlide class="swiper-slide" v-for="({ img, title, description }, ind) in mainSlider" :key="ind">
+             <div class="dz-bnr-inr style-1" 
+               :style="`background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${img});
+                        background-size: cover; background-position: center;`">
+                  <div class="container-fluid">
+                    <div class="dz-bnr-inr-entry">
+                     <h1>{{ title }}</h1>
+                     <div class="inner-text">
+                      <h3>{{ description }}</h3>
+                     </div>
+                    </div>
                   </div>
              </div>
-            </div>
-          </div>
-        </div>
-
-  </SwiperSlide>
+       </SwiperSlide>
         <!-- <div class="swiper-pagination style-2"></div> -->
         <div class="slider-three-pagination">
           <div class="btn-prev swiper-button-prev3 swiper-button-white">
