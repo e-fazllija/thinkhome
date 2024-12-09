@@ -84,7 +84,9 @@
                   nextEl: '.next-post-swiper-btn'
                 }">
                   <SwiperSlide v-for="(photo, ind) in item.Photos.$values" :key="ind" class="swiper-slide">
-                    <RouterLink :to="{name: 'dettaglio', params: {id: item.Id}}"><img :src="photo.Url" alt="" /></RouterLink>
+                    <RouterLink :to="{name: 'dettaglio', params: {id: item.Id}}"><img :src="photo.Url" alt="" 
+                      style=" border-radius: 5px; padding: 0px; width: 500px; height: 400px; object-fit: cover;"
+                      /></RouterLink>
                   </SwiperSlide>
                   <!-- <div class="prev-post-swiper-btn"><i class="la fa-angle-left"></i></div>
                   <div class="next-post-swiper-btn"><i class="la fa-angle-right"></i></div> -->
@@ -93,6 +95,7 @@
               <div class="dz-info">
                 <div class="dz-meta">
                   <ul>
+                    <h1>€ {{item.Price}}</h1>
                     <li>Cod. 00{{item.Id}}</li>
                   </ul>
                 </div>
@@ -101,7 +104,7 @@
                 </h3>
                 <div class="dz-post-text text">
                   <p>
-                    {{ item.Description }}
+                    {{ item.ShortDescription}}
                   </p>
                 </div>
                 <div class="read-more">
@@ -153,7 +156,7 @@ export default defineComponent({
         Id: 0,
         AddressLine: "",
         Price: 0,
-        Description: "",
+        ShortDescription: "",
         Photos: [{
           $values: {
             Url: ""

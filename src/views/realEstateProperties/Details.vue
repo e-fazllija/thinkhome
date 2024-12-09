@@ -13,15 +13,22 @@
   </div>
   <div class="page-content bg-white">
     <CommonBanner :img="bnr7" title="Dettaglio" text="Dettaglio" />
+    <section class="section-full content-inner-2 port-detail" :style="`background-image: url(${bg2});
+          background-position: right bottom;
+          background-size: 100%;
+          background-repeat: repeat;`">
     <div class="content-inner-2">
       <div v-if="item" class="container">
         <div class="row">
           <div class="col-lg-12 col-md-12 align-self-center aos-item mb-5">
-            <h1>titolooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</h1>
+            <h1> {{ item.Title }}</h1>
+            <h1>€ {{item.Price}} </h1>
+            <p>Cod. 00{{item.Id}}</p> 
           </div>
         </div>
         <div class="row justify-content-center mb-5">
-            <img :src="imgSelected" alt="" />
+            <img :src="imgSelected" alt=""
+            style=" border-radius: 5px; padding: 1px; width: 600px; height: 600px; object-fit: cover;" />
         </div>
         <Lightgallery :settings="{ speed: 500, plugins: plugins, selector: '.lightimg' }">
           <Swiper class="swiper-container swiper-portfolio lightgallery aos-item" :slides-per-view="4"
@@ -37,7 +44,9 @@
             <SwiperSlide class="swiper-slide" v-for="({ Url }, ind) in photos" :key="ind">
               <div :class="`dz-box overlay style-1 mt-5`">
                 <div class="dz-media">
-                  <img :src="Url" alt="" @click="selectImage(Url)" />
+                  <img :src="Url" alt=""
+                  style=" border-radius: 5px; padding: 1px; width: 300px; height: 300px; object-fit: cover;"
+                  @click="selectImage(Url)" />
                 </div>
                 <!-- <div class="dz-info">
                   <span :data-src="Url" class="view-btn lightimg">
@@ -50,18 +59,17 @@
         </Lightgallery>
       </div>
     </div>
-    <section class="section-full content-inner-2 port-detail" :style="`background-image: url(${bg2});
-          background-position: right bottom;
-          background-size: 100%;
-          background-repeat: no-repeat;`">
       <div class="container">
         <div class="row mb-lg-5 mb-3">
           <!-- <div class="col-lg-12 col-md-12 m-b50 aos-item m-sm-b30">
               <img src="@/assets/images/work/pic1.jpg" alt="" />
             </div> -->
           <div class="col-lg-5 col-md-5 align-self-center aos-item">
-            <h2 class="dz-title">{{ item.Id }}</h2>
-            <p>
+            <div class="dz-meta">
+                  <ul>
+                    <h1>Cod. 00{{item.Id}}</h1>
+                  </ul>
+                </div>            <p>
               {{ item.Description }}
             </p>
             <div class="icon-bx-wraper style-7 left m-b30">
@@ -105,7 +113,7 @@
 import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
-import bnr7 from '@/assets/images/banner/bnr7.jpg'
+import bnr7 from '@/assets/images/banner/bnr44.jpg'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import bg2 from '@/assets/images/background/bg2.png'
 import service_pic1 from '@/assets/images/services/pic1.jpg'
@@ -176,6 +184,7 @@ export default defineComponent({
       }],
       item: {
         Id: 0,
+        Title:"",
         AddressLine: "",
         Town: "",
         PostCode: "",
