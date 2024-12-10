@@ -1,26 +1,24 @@
 <template>
-  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-    tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <button class="mfp-close" style="top: -23px" data-bs-dismiss="modal" aria-label="Close">
-          <i class="ti-close"></i>
-        </button>
-        <iframe height="100%" src="https://www.youtube.com/embed/sNCv3_NTNtU" frameborder="0" allowfullscreen
-          allow="autoplay"></iframe>
-      </div>
-    </div>
-  </div>
   <div class="page-content bg-white">
-    <CommonBanner :img="bnr7" title="Dettaglio" text="Dettaglio" />
-    <section class="section-full content-inner-2 port-detail" :style="`background-image: url(${bg2});
+   
+    <div class="container" style="display: flex; align-items: center; margin-top: 20px; margin-left: 0;">
+      <div style="margin-right: 10px;">
+                 <img src="@/assets/images/work/pic4.jpg" alt="Icona" style="height: 350px; width: 350px; object-fit: cover;" />
+           </div>
+           <div class="icon-content">
+                 <h4 style="font-size: 35px; margin: 0;">Dettaglio</h4>
+                 <p style="font-size: 18px; margin: 0; color: #555;"><RouterLink to="/">Home</RouterLink> - Dettaglio</p>
+           </div>
+      </div>
+
+    <section class="section-full content-inner-5 port-detail" :style="`background-image: url(${bg2});
           background-position: right bottom;
           background-size: 100%;
           background-repeat: repeat;`">
-    <div class="content-inner-2">
+    <div class="content-inner-5">
       <div v-if="item" class="container">
         <div class="row">
-          <div class="col-lg-12 col-md-12 align-self-center aos-item mb-5">
+          <div class="col-lg-12 col-md-12 align-self-center aos-item mb-6">
             <h1> {{ item.Title }}</h1>
             <h1>€ {{item.Price}} </h1>
             <p>Cod. 00{{item.Id}}</p> 
@@ -59,27 +57,57 @@
         </Lightgallery>
       </div>
     </div>
+
+       <div class="container" style="display: flex; align-items: center; margin-top: 20px;">
+             <div class="icon-bx-sm bg-primary" style="margin-right: 10px;">
+                   <span class="icon-cell"><i class="flaticon-placeholder"></i></span>
+             </div>
+             <div class="icon-content">
+                  <h4 class="title m-b2">Indirizzo</h4>
+                  <p>{{ item.AddressLine }} {{ item.Town }} {{ item.PostCode }} {{ item.State }}</p>
+             </div>
+       </div>
+
+      <div class="container" style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
+                  <i class="fa fa-bed"  style="font-size: 40px; margin-right: 10px;"></i>
+                  <strong>{{item.Bedrooms}} Camere</strong>
+             </div>
+             <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
+                   <i class="fa fa-home" style="font-size: 40px; margin-right: 10px;"></i>
+                   <strong>{{item.CommercialSurfaceate}}m²</strong>
+             </div>
+             <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
+                   <i class="fa fa-car" style="font-size: 40px; margin-right: 10px;"></i>
+                   <strong>{{item.ParkingSpaces}}  Posti Auto</strong>
+             </div>
+       </div>
+
+       <div class="container" style="display: flex; justify-content: space-between; margin-top: 20px; margin-bottom: 70px;">
+             <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
+                   <i class="fa fa-thermometer-empty" style="font-size: 40px; margin-right: 10px;"></i>
+                   <strong>Riscaldamento  {{item.Heating}}</strong>
+             </div>
+             <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
+                   <i class="fas fa-bath" style="font-size: 40px; margin-right: 10px;"></i>
+                   <strong>{{item.Bathrooms}}  Bagno</strong>
+             </div>
+             <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
+                   <i class="fa fa-fire" aria-hidden="true" style="font-size: 40px; margin-right: 10px;"></i>
+                   <strong>Classe Energetica  {{item.EnergyClass}}</strong>
+             </div>
+      </div>
+
       <div class="container">
-        <div class="row mb-lg-5 mb-3">
-          <!-- <div class="col-lg-12 col-md-12 m-b50 aos-item m-sm-b30">
-              <img src="@/assets/images/work/pic1.jpg" alt="" />
-            </div> -->
-          <div class="col-lg-5 col-md-5 align-self-center aos-item">
-            <div class="dz-meta">
-                  <ul>
-                    <h1>Cod. 00{{item.Id}}</h1>
-                  </ul>
-                </div>            <p>
-              {{ item.Description }}
-            </p>
+        <div class="row mb-lg-5 mb-5">
+          <p style="font-size: 1.4rem; line-height: 1.3;"><strong>Agente: </strong> {{ item.Agent.Name}} {{ item.Agent.LastName}} </p>
+          <p>Cod. 00{{item.Id}}</p> 
+          <div class="col-lg-6 col-md-6 align-self-center aos-item">
+              <p style="font-size: 1.4rem; line-height: 1.3;">
+              <h1>Descrizione</h1>
+              <h1 style="font-size: 1.4rem; line-height: 1.3;">{{item.Title}}  -   € {{ item.Price }}
+              </h1>- {{ item.Description }}</p>
             <div class="icon-bx-wraper style-7 left m-b30">
-              <div class="icon-bx-sm bg-primary">
-                <span class="icon-cell"><i class="flaticon-placeholder"></i></span>
-              </div>
-              <div class="icon-content">
-                <h4 class="title m-b5">Indirizzo</h4>
-                <p>{{ item.AddressLine }} {{ item.Town }} {{ item.PostCode }} {{ item.State }}</p>
-              </div>
             </div>
             <div class="icon-bx-wraper style-7 left m-b30">
               <div class="icon-bx-sm bg-primary">
@@ -91,8 +119,8 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-7 col-md-7 aos-item">
-            <img src="@/assets/images/work/pic3.jpg" alt="" />
+          <div class="col-lg-6 col-md-6 aos-item">
+            <img src="@/assets/images/work/pic4.jpg" alt="" />
           </div>
           <!-- <div class="col-lg-6 col-md-12 m-b30 aos-item">
               <img src="@/assets/images/work/pic2.jpg" class="d-lg-block d-none" alt="" />
@@ -113,7 +141,7 @@
 import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
-import bnr7 from '@/assets/images/banner/bnr44.jpg'
+import bnr7 from '@/assets/images/banner/bnr4.jpg'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import bg2 from '@/assets/images/background/bg2.png'
 import service_pic1 from '@/assets/images/services/pic1.jpg'
@@ -130,7 +158,7 @@ import axios from 'axios'
 import Home3Accordian from '@/components/Home3Accordian.vue'
 
 export default defineComponent({
-  components: { CommonBanner, Lightgallery, Swiper, SwiperSlide, Home3Accordian },
+  components: {  Lightgallery, Swiper, SwiperSlide, Home3Accordian },
   setup() {
     return {
       bnr7,
@@ -185,11 +213,18 @@ export default defineComponent({
       item: {
         Id: 0,
         Title:"",
+        Agent:{Name:"",LastName:"",Email:"", MobilePhoneNumber:""},
         AddressLine: "",
         Town: "",
         PostCode: "",
         State: "",
         Price: 0,
+        CommercialSurfaceate:"",
+        ParkingSpaces:"",
+        Heating:"",
+        Bathrooms:"",
+        EnergyClass:"",
+        Bedrooms:"",
         Description: "",
         Photos: {
           $values: [{
