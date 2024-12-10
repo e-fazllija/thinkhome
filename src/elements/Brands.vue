@@ -1,5 +1,5 @@
 <template>
-  <!-- <section class="content-inner-1">
+  <section class="content-inner-1">
     <div class="container">
       <div class="section-head style-1 text-center">
         <h6 class="sub-title text-primary">Brands</h6>
@@ -27,7 +27,7 @@
         </SwiperSlide>
       </Swiper>
     </div>
-  </section> -->
+  </section>
 </template>
 
 <script lang="ts">
@@ -44,20 +44,20 @@ import logoGray6 from '@/assets/images/logo/logo-gray6.jpeg'
 export default defineComponent({
   name: 'brans_',
   components: { Swiper, SwiperSlide },
-  // setup() {
-  //   return {
-  //     clientLogoArr: [
-  //       { logo: logoGray1 },
-  //       { logo: logoGray2 },
-  //       { logo: logoGray3 },
-  //       { logo: logoGray4 },
-  //       { logo: logoGray5 },
-  //       { logo: logoGray6 },
-  //       { logo: logoGray1 }
-  //     ],
-  //     Autoplay
-  //   }
-  // }
+  setup() {
+    return {
+      clientLogoArr: [
+        { logo: logoGray1 },
+        { logo: logoGray2 },
+        { logo: logoGray3 },
+        { logo: logoGray4 },
+        { logo: logoGray5 },
+        { logo: logoGray6 },
+        { logo: logoGray1 }
+      ],
+      Autoplay
+    }
+  }
 })
 </script>
 

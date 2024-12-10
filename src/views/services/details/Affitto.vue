@@ -47,7 +47,6 @@
   <script lang="ts">
   import { defineComponent } from 'vue'
   import CommonBanner from '@/elements/CommonBanner.vue'
-  import Brands from '@/elements/Brands.vue'
   import Testimonial2 from '@/components/Testimonial2.vue'
   import bnr5 from '@/assets/images/banner/bnr40.jpg'
   import bg2 from '@/assets/images/background/bg2.png'
@@ -56,7 +55,7 @@
   
   export default defineComponent({
     name: 'affitto',
-    components: { CommonBanner, Testimonial2, Brands, RouterLink, MainBanner3 },
+    components: { CommonBanner, Testimonial2, RouterLink, MainBanner3 },
     setup() {
       return { bnr5, bg2 }
     },
