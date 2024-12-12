@@ -29,14 +29,14 @@
              </div>
        </SwiperSlide>
         <!-- <div class="swiper-pagination style-2"></div> -->
-        <div class="slider-three-pagination">
+        <!-- <div class="slider-three-pagination">
           <div class="btn-prev swiper-button-prev3 swiper-button-white">
             <i class="las la-angle-left"></i>
           </div>
           <div class="btn-next swiper-button-next3 swiper-button-white">
             <i class="las la-angle-right"></i>
           </div>
-        </div>
+        </div> -->
       </Swiper>
     </div>
   </div>
@@ -88,5 +88,22 @@ export default defineComponent({
   }
 })
 </script>
+<style>
+  .inner-text h3 {
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    margin: 5px;
+  }
+
+  @media (max-width: 768px) {
+    .inner-text h3 {
+      font-size: 14px; /* Adatta la dimensione del font per schermi più piccoli */
+      color: #fff; /* Colore leggermente più chiaro per il mobile */
+      line-height: 1.5; /* Migliora la leggibilità su schermi piccoli */
+      padding: 5px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
+    }
+  }
+</style>
 
 <style scoped></style>

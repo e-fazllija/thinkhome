@@ -16,6 +16,7 @@
               <img
                 :src="results.RealEstatePropertiesHighlighted.Photos.$values[0].Url"
                 alt=""
+                style=" border-radius: 5px;"
                 class="img1 aos-item aos-init aos-animate"
               />
               <!-- <img

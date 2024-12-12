@@ -24,20 +24,32 @@
             <p>Cod. 00{{item.Id}}</p> 
           </div>
         </div>
-        <div class="row justify-content-center mb-5">
-            <img :src="imgSelected" alt=""
-            style=" border-radius: 5px; padding: 1px; width: 600px; height: 600px; object-fit: cover;" />
-        </div>
+     
+
         <Lightgallery :settings="{ speed: 500, plugins: plugins, selector: '.lightimg' }">
-          <Swiper class="swiper-container swiper-portfolio lightgallery aos-item" :slides-per-view="4"
-            :space-between="30" :loop="true" :breakpoints="{
+          <div class="row justify-content-center align-items-center mb-5 position-relative">
+            <button  class="btn btn-outline-primary position-absolute left" @click="previousImage">&#8249;
+            </button>
+      
+             <img :src="imgSelected" alt=""
+             style="border-radius: 5px; padding: 1px; width: 600px; height: 600px; object-fit: cover;" />
+      
+           <button class="btn btn-outline-primary position-absolute right" @click="nextImage">&#8250;
+           </button>
+          </div>
+
+          <Swiper class="swiper-container swiper-portfolio lightgallery aos-item"
+           :slides-per-view="4"
+           :space-between="30" 
+           :loop="true"
+           :breakpoints="{
               // 1391: { slidesPerView: 3 },
               // 975: { slidesPerView: 2 },
               // 640: { slidesPerView: 1 }
-              1200: { slidesPerView: 4 },
-          991: { slidesPerView: 3 },
-          575: { slidesPerView: 2 },
-          240: { slidesPerView: 1 }
+           1200: { slidesPerView: 4 },
+           991: { slidesPerView: 3 },
+           575: { slidesPerView: 2 },
+           240: { slidesPerView: 1 }
             }" :modules="module" :autoplay="{ delay: 1500 }" :speed="1500">
             <SwiperSlide class="swiper-slide" v-for="({ Url }, ind) in photos" :key="ind">
               <div :class="`dz-box overlay style-1 mt-5`">
@@ -55,6 +67,7 @@
             </SwiperSlide>
           </Swiper>
         </Lightgallery>
+
       </div>
     </div>
 
@@ -64,7 +77,7 @@
              </div>
              <div class="icon-content">
                   <h4 class="title m-b2">Indirizzo</h4>
-                  <p>{{ item.AddressLine }} {{ item.Town }} {{ item.PostCode }} {{ item.State }}</p>
+                  <p>{{ item.AddressLine }} - {{ item.Town }} - {{ item.PostCode }} - {{ item.State }}</p>
              </div>
        </div>
 
@@ -109,7 +122,7 @@
               </h1>- {{ item.Description }}</p>
             <div class="icon-bx-wraper style-7 left m-b30">
             </div>
-            <div class="icon-bx-wraper style-7 left m-b30">
+            <div class="icon-bx-wraper style-3 left m-b30">
               <div class="icon-bx-sm bg-primary">
                 <span class="icon-cell"><i class="flaticon-telephone"></i></span>
               </div>
@@ -128,7 +141,73 @@
         </div>
       </div>
     </section>
-
+    <section class="content-inner-1 pt-6">
+      <div class="map-iframe">
+      </div>
+      <div class="container">
+        <div class="contact-area aos-item">
+          <div class="section-head style-1 text-center">
+            <h6 class="sub-title text-secondary">Richiedi Infromazioni</h6>
+            <h2 class="title">Inserisci i dati</h2>
+          </div>
+          <form class="dz-form dzForm contact-bx" method="POST">
+            <input type="hidden" class="form-control" name="dzToDo" value="Contact" />
+            <div class="dzFormMsg"></div>
+            <div class="row sp10">
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" required name="dzFirstName"  placeholder="Nome" />
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text"  class="form-control"  required  name="dzLastName" placeholder="Cognome" />
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" required name="dzEmail" placeholder="Email" />
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" required name="dzPhoneNumber" placeholder="Cell." />
+                </div>
+              </div>
+              <div class="col-sm-12 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" required name="dzOther" placeholder="Oggetto" />
+                </div>
+              </div>
+              <div class="col-sm-12 m-b20">
+                <div class="input-group">
+                  <textarea name="dzMessage" rows="5" class="form-control" placeholder="Messaggio" ></textarea>
+                </div>
+              </div>
+              <div class="col-sm-12 m-b20">
+                <div class="input-recaptcha">
+                  <div class="g-recaptcha"></div>
+                  <input class="form-control d-none" style="display: none" data-recaptcha="true" required data-error="Please complete the Captcha" />
+                </div>
+              </div>
+              <div class="col-sm-12 text-center">
+                <button
+                  name="submit"
+                  type="reset"
+                  value="submit"
+                  class="btn btn-primary btn-rounded"
+                  style="font-size: 20px; padding: 20px 50px; 
+                  border-radius: 30px; color: black; display: inline-flex;
+                   margin-top: 240px; margin-left: 0px;"
+                >
+                  Invia <span class="icon-caret-right"></span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
     <section class="content-inner-1">
       <div class="container-fluid">
         <Home3Accordian />
@@ -247,7 +326,19 @@ export default defineComponent({
     },
     selectImage(url: string){
       this.imgSelected = url;
-    }
+    },
+    previousImage() {
+      // Passa all'immagine precedente
+      const currentIndex = this.photos.findIndex(photo => photo.Url === this.imgSelected);
+      const newIndex = (currentIndex - 1 + this.photos.length) % this.photos.length;
+      this.imgSelected = this.photos[newIndex].Url;
+    },
+    nextImage() {
+      // Passa all'immagine successiva
+      const currentIndex = this.photos.findIndex(photo => photo.Url === this.imgSelected);
+      const newIndex = (currentIndex + 1) % this.photos.length;
+      this.imgSelected = this.photos[newIndex].Url;
+    },
   },
   async beforeMount() {
     this.getAnswer();
@@ -287,4 +378,82 @@ export default defineComponent({
   background-color: transparent;
   color: white;
 }
+/* Stile per migliorare il layout delle frecce */
+.row {
+  position: relative; /* Per posizionare i pulsanti rispetto al contenitore */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom:50px;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  background: var(--primary);
+  color: #fff;
+  font-size: 18px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+button:hover {
+  background: rgba(198, 164, 126, 0.2);
+  color: #eb860b4e;
+  
+}
+
+/* Posizioni specifiche per le frecce */
+button.left {
+  left: 300px; /* Avvicina la freccia sinistra */
+}
+
+button.right {
+  right:300px; /* Avvicina la freccia destra */
+}
+
+/* Media query per schermi più piccoli */
+@media (max-width: 991px) {
+  button {
+    width: 40px; /* Riduci ulteriormente dimensioni pulsanti */
+    height: 40px;
+    font-size: 20px;
+  }
+
+  button.left {
+    left: -0px; /* Allinea la freccia sinistra per il mobile */
+  }
+
+  button.right {
+    right: -0px; /* Allinea la freccia destra per il mobile */
+  }
+}
+
+/* Per schermi molto piccoli (mobile stretto) */
+@media (max-width: 576px) {
+  button {
+    width: 30px; /* Riduci ulteriormente dimensioni */
+    height: 30px;
+    font-size: 16px;
+  }
+
+  button.left {
+    left: -20px; /* Sposta la freccia sinistra */
+  }
+
+  button.right {
+    right: -20px; /* Sposta la freccia destra */
+  }
+
+  img {
+    width: 100%; /* Rendi l'immagine responsiva */
+    height: auto; /* Mantieni proporzioni */
+  }
+}
+
+
 </style>
