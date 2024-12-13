@@ -11,7 +11,7 @@
            </div>
       </div>
 
-    <section class="section-full content-inner-5 port-detail" :style="`background-image: url(${bg2});
+    <section class="section-full content-inner-5 port-detail" :style="`background-image: url(${bg2}); margin-top: 20px;
           background-position: right bottom;
           background-size: 100%;
           background-repeat: repeat;`">
@@ -83,30 +83,30 @@
 
       <div class="container" style="display: flex; justify-content: space-between; margin-top: 20px;">
             <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
-                  <i class="fa fa-bed"  style="font-size: 40px; margin-right: 10px;"></i>
+                  <i class="fa fa-bed"  style="font-size: 30px; margin-right: 8px;"></i>
                   <strong>{{item.Bedrooms}} Camere</strong>
              </div>
              <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
-                   <i class="fa fa-home" style="font-size: 40px; margin-right: 10px;"></i>
+                   <i class="fa fa-home" style="font-size: 30px; margin-right: 8px;"></i>
                    <strong>{{item.CommercialSurfaceate}}m²</strong>
              </div>
              <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
-                   <i class="fa fa-car" style="font-size: 40px; margin-right: 10px;"></i>
+                   <i class="fa fa-car" style="font-size: 30px; margin-right: 8px;"></i>
                    <strong>{{item.ParkingSpaces}}  Posti Auto</strong>
              </div>
        </div>
 
        <div class="container" style="display: flex; justify-content: space-between; margin-top: 20px; margin-bottom: 70px;">
              <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
-                   <i class="fa fa-thermometer-empty" style="font-size: 40px; margin-right: 10px;"></i>
+                   <i class="fa fa-thermometer-empty" style="font-size: 30px; margin-right: 8px;"></i>
                    <strong>Riscaldamento  {{item.Heating}}</strong>
              </div>
              <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
-                   <i class="fas fa-bath" style="font-size: 40px; margin-right: 10px;"></i>
+                   <i class="fas fa-bath" style="font-size: 30px; margin-right: 8px;"></i>
                    <strong>{{item.Bathrooms}}  Bagno</strong>
              </div>
              <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
-                   <i class="fa fa-fire" aria-hidden="true" style="font-size: 40px; margin-right: 10px;"></i>
+                   <i class="fa fa-fire" aria-hidden="true" style="font-size: 30px; margin-right: 8px;"></i>
                    <strong>Classe Energetica  {{item.EnergyClass}}</strong>
              </div>
       </div>
@@ -418,6 +418,7 @@ export default defineComponent({
 
 button.btn.btn-outline-secondary.position-absolute {
   position: absolute;
+  background-color: rgba(198, 164, 126, 0.4);
   top: 50%;
   width: 45px;
   height: 45px;
@@ -427,12 +428,12 @@ button.btn.btn-outline-secondary.position-absolute {
   transform: translateY(-50%);
   z-index: 1;
 }
-
-/* button:hover {
+/* 
+button:hover {
   background: rgba(198, 164, 126, 0.2);
   color: #eb860b4e;
   
-} */
+}  */
 
 /* Posizioni specifiche per le frecce */
 button.left {

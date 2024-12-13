@@ -18,7 +18,7 @@
              <div class="dz-bnr-inr style-1" 
                :style="`background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${img});
                         background-size: cover; background-position: center;`">
-                  <div class="container-fluid">
+                  <div class="container-fluid" >
                     <div class="dz-bnr-inr-entry">
                      <h1>{{ title }}</h1>
                      <div class="inner-text">
@@ -93,7 +93,13 @@ export default defineComponent({
     font-size: 18px;
     color: #fff;
     text-align: center;
-    margin: 5px;
+    margin: -10 px;
+  }
+  .dz-bnr-inr-entry h1{
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    margin: -10px;
   }
 
   @media (max-width: 768px) {
@@ -101,7 +107,13 @@ export default defineComponent({
       font-size: 14px; /* Adatta la dimensione del font per schermi più piccoli */
       color: #fff; /* Colore leggermente più chiaro per il mobile */
       line-height: 1.5; /* Migliora la leggibilità su schermi piccoli */
-      padding: 5px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
+      padding: -10px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
+    }
+    .dz-bnr-inr-entry h1 {
+      font-size: 14px; /* Adatta la dimensione del font per schermi più piccoli */
+      color: #fff; /* Colore leggermente più chiaro per il mobile */
+      line-height: 1; /* Migliora la leggibilità su schermi piccoli */
+      padding: -10px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
     }
   }
   @media (max-width: 991px) {
@@ -109,7 +121,13 @@ export default defineComponent({
       font-size: 14px; /* Adatta la dimensione del font per schermi più piccoli */
       color: #fff; /* Colore leggermente più chiaro per il mobile */
       line-height: 1; /* Migliora la leggibilità su schermi piccoli */
-      padding: -20px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
+      padding: -10px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
+    }
+    .dz-bnr-inr-entry h1 {
+      font-size: 14px; /* Adatta la dimensione del font per schermi più piccoli */
+      color: #fff; /* Colore leggermente più chiaro per il mobile */
+      line-height: 1; /* Migliora la leggibilità su schermi piccoli */
+      padding: -10px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
     }
   }
 </style>
