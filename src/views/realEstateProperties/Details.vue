@@ -84,30 +84,30 @@
       <div class="container" style="display: flex; justify-content: space-between; margin-top: 20px;">
             <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
                   <i class="fa fa-bed"  style="font-size: 30px; margin-right: 8px;"></i>
-                  <strong>{{item.Bedrooms}} Camere</strong>
+                  <strong style="font-size: 12px">{{item.Bedrooms}} Camere</strong>
              </div>
              <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
                    <i class="fa fa-home" style="font-size: 30px; margin-right: 8px;"></i>
-                   <strong>{{item.CommercialSurfaceate}}m²</strong>
+                   <strong style="font-size: 12px">{{item.CommercialSurfaceate}}m²</strong>
              </div>
              <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
                    <i class="fa fa-car" style="font-size: 30px; margin-right: 8px;"></i>
-                   <strong>{{item.ParkingSpaces}}  Posti Auto</strong>
+                   <strong style="font-size: 12px">{{item.ParkingSpaces}}  Posti Auto</strong>
              </div>
        </div>
 
        <div class="container" style="display: flex; justify-content: space-between; margin-top: 20px; margin-bottom: 70px;">
              <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
                    <i class="fa fa-thermometer-empty" style="font-size: 30px; margin-right: 8px;"></i>
-                   <strong>Riscaldamento  {{item.Heating}}</strong>
+                   <strong style="font-size: 12px">Riscaldamento  {{item.Heating}}</strong>
              </div>
              <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
                    <i class="fas fa-bath" style="font-size: 30px; margin-right: 8px;"></i>
-                   <strong>{{item.Bathrooms}}  Bagno</strong>
+                   <strong style="font-size: 12px">{{item.Bathrooms}}  Bagno</strong>
              </div>
              <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
                    <i class="fa fa-fire" aria-hidden="true" style="font-size: 30px; margin-right: 8px;"></i>
-                   <strong>Classe Energetica  {{item.EnergyClass}}</strong>
+                   <strong style="font-size: 12px">Classe Energetica  {{item.EnergyClass}}</strong>
              </div>
       </div>
 
