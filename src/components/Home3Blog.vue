@@ -145,7 +145,7 @@
             </ul>
           </div>
           <p class="text">
-            {{ item.Description }}
+            {{ item.ShortDescription }}
           </p>
           <div class="read-more">
             <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"

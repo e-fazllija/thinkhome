@@ -1,7 +1,7 @@
 <template>
   <div class="page-content bg-white">
    
-    <div class="container" style="display: flex; align-items: center; margin-top: 20px; margin-left: 0;">
+    <div class="container1" style="display: flex; align-items: center; margin-top: 20px; margin-left: 0;">
       <div style="margin-right: 10px;">
                  <img src="@/assets/images/work/pic4.jpg" alt="Icona" style="height: 350px; width: 350px; object-fit: cover;" />
            </div>
@@ -28,13 +28,13 @@
 
         <Lightgallery :settings="{ speed: 500, plugins: plugins, selector: '.lightimg' }">
           <div class="row justify-content-center align-items-center mb-5 position-relative">
-            <button  class="btn btn-outline-primary position-absolute left" @click="previousImage">&#8249;
+            <button  class="btn btn-outline-secondary position-absolute left" @click="previousImage">&#8249;
             </button>
       
              <img :src="imgSelected" alt=""
              style="border-radius: 5px; padding: 1px; width: 600px; height: 600px; object-fit: cover;" />
       
-           <button class="btn btn-outline-primary position-absolute right" @click="nextImage">&#8250;
+           <button class="btn btn-outline-secondary position-absolute right" @click="nextImage">&#8250;
            </button>
           </div>
 
@@ -132,7 +132,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 aos-item">
+          <div class="col-lg-6 col-md-6 aos-item-Foto">
             <img src="@/assets/images/work/pic4.jpg" alt="" />
           </div>
           <!-- <div class="col-lg-6 col-md-12 m-b30 aos-item">
@@ -196,11 +196,8 @@
                   type="reset"
                   value="submit"
                   class="btn btn-primary btn-rounded"
-                  style="font-size: 20px; padding: 20px 50px; 
-                  border-radius: 30px; color: black; display: inline-flex;
-                   margin-top: 240px; margin-left: 0px;"
                 >
-                  Invia <span class="icon-caret-right"></span>
+                  Invia <i class="m-l10 fas fa-caret-right"></i>
                 </button>
               </div>
             </div>
@@ -356,12 +353,44 @@ export default defineComponent({
   .modal-content {
     height: 282px;
   }
+  .col-lg-6.col-md-6.aos-item-Foto{
+    height: 380px;
+
+  }
+  .container1 {
+      flex-direction: column; /* Dispone gli elementi verticalmente su schermi piccoli */
+      align-items: center;
+    }
+
+    .container img {
+      height: auto; /* Adatta l'altezza per schermi piccoli */
+      width: 80%; /* Limita la larghezza al 90% dello schermo */
+    }
+
+    .icon-content h4 {
+      font-size: 28px; /* Riduce la dimensione del titolo per il mobile */
+      margin-bottom: 8px; /* Aggiunge uno spazio sotto il titolo */
+    }
+
+    .icon-content p {
+      font-size: 16px; /* Riduce il testo per schermi piccoli */
+      color: #666; /* Un colore più morbido per il mobile */
+    }
 }
 
 @media screen and (max-width: 575px) {
   .modal-content {
     height: 30vmax;
   }
+  .icon-content h4 {
+      font-size: 28px; /* Riduce la dimensione del titolo per il mobile */
+      margin-bottom: 8px; /* Aggiunge uno spazio sotto il titolo */
+    }
+
+    .icon-content p {
+      font-size: 16px; /* Riduce il testo per schermi piccoli */
+      color: #666; /* Un colore più morbido per il mobile */
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -387,25 +416,23 @@ export default defineComponent({
   margin-bottom:50px;
 }
 
-button {
+button.btn.btn-outline-secondary.position-absolute {
   position: absolute;
   top: 50%;
   width: 45px;
   height: 45px;
   line-height: 45px;
   text-align: center;
-  background: var(--primary);
-  color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   transform: translateY(-50%);
   z-index: 1;
 }
 
-button:hover {
+/* button:hover {
   background: rgba(198, 164, 126, 0.2);
   color: #eb860b4e;
   
-}
+} */
 
 /* Posizioni specifiche per le frecce */
 button.left {
@@ -418,7 +445,7 @@ button.right {
 
 /* Media query per schermi più piccoli */
 @media (max-width: 991px) {
-  button {
+  button.btn.btn-outline-secondary.position-absolute {
     width: 40px; /* Riduci ulteriormente dimensioni pulsanti */
     height: 40px;
     font-size: 20px;
@@ -435,18 +462,18 @@ button.right {
 
 /* Per schermi molto piccoli (mobile stretto) */
 @media (max-width: 576px) {
-  button {
+  button.btn.btn-outline-secondary.position-absolute {
     width: 30px; /* Riduci ulteriormente dimensioni */
     height: 30px;
     font-size: 16px;
   }
 
   button.left {
-    left: -20px; /* Sposta la freccia sinistra */
+    left: -0px; /* Sposta la freccia sinistra */
   }
 
   button.right {
-    right: -20px; /* Sposta la freccia destra */
+    right: -0px; /* Sposta la freccia destra */
   }
 
   img {

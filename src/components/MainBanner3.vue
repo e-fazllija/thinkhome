@@ -104,6 +104,14 @@ export default defineComponent({
       padding: 5px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
     }
   }
+  @media (max-width: 991px) {
+    .inner-text h3 {
+      font-size: 14px; /* Adatta la dimensione del font per schermi più piccoli */
+      color: #fff; /* Colore leggermente più chiaro per il mobile */
+      line-height: 1; /* Migliora la leggibilità su schermi piccoli */
+      padding: -20px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
+    }
+  }
 </style>
 
 <style scoped></style>
