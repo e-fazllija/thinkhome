@@ -56,3 +56,12 @@ export default defineComponent({
   }
 })
 </script>
+<style>
+.title-small {
+  font-family: ui-rounded;
+  letter-spacing: -3px;  /* Avvicina i caratteri */
+  
+}
+
+</style>
+

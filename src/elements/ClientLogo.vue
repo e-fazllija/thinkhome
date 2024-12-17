@@ -3,14 +3,13 @@
     <div class="container">
       <Swiper
         class="swiper-container clients-swiper"
-        :slides-per-view="6"
-        :modules="[Autoplay]"
+        :slides-per-view="4"
+    
         :loop="true"
         :speed="1500"
         :autoplay="{ delay: 1500 }"
         :breakpoints="{
-          1200: { slidesPerView: 6 },
-          991: { slidesPerView: 5 },
+          991: { slidesPerView: 1 },
           775: { slidesPerView: 4 },
           575: { slidesPerView: 3 },
           240: { slidesPerView: 2 }
