@@ -22,7 +22,13 @@
                 </div>
             </div>
         </section>
-        <section class="content-inner">
+        <section class="content-inner-1 pt-0">
+            <div class="map-iframe">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2972.9715352011317!2d12.836399376219518!3d41.82891107124728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13257f9392c2da5d%3A0x1bced43d5b6f2683!2sThinkHome%20-Progettazioni%20-Edilizia-%20Investimenti!5e0!3m2!1sit!2sit!4v1731944561395!5m2!1sit!2sit"
+          class="align-self-stretch radius-sm" style="border: 0; width: 100%; min-height: 100%"
+          allowfullscreen></iframe>
+      </div>
             <div class="container">
                 <div class="contact-area aos-item">
                     <div class="section-head style-1 text-center">

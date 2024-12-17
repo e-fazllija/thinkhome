@@ -32,7 +32,7 @@
       <div class="container">
         <div class="contact-area aos-item">
           <div class="section-head style-1 text-center">
-            <h6 class="sub-title text-primary">Contattaci</h6>
+            <h6 class="sub-title text-primary">Richiesta di valutazione</h6>
             <h2 class="title">Inserisci i dati</h2>
           </div>
           <form class="dz-form dzForm contact-bx" method="POST" @submit.prevent="submit()">
