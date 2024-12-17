@@ -16,6 +16,18 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
+      path: '/work-with-us',
+      name: 'work-with-us',
+      component: () => import('../views/WorkWithUs.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/send-request',
+      name: 'send-request',
+      component: () => import('../views/SendRequest.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
       path: '/team',
       name: 'team',
       component: () => import('../views/Team.vue'),

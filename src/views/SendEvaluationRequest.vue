@@ -4,11 +4,8 @@
     <section class="content-inner">
       <div class="container">
         <div class="row">
-          <div
-            class="col-lg-4 col-md-6 m-b30 aos-item"
-            v-for="({ dataName, icon, title, text, text2 }, ind) in contactDtail"
-            :key="ind"
-          >
+          <div class="col-lg-4 col-md-6 m-b30 aos-item"
+            v-for="({ dataName, icon, title, text, text2 }, ind) in contactDtail" :key="ind">
             <div class="icon-bx-wraper style-8 bg-white" :data-name="dataName">
               <div class="icon-md m-r20">
                 <span class="icon-cell text-primary"><i :class="icon"></i></span>
@@ -29,10 +26,8 @@
       <div class="map-iframe">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2972.9715352011317!2d12.836399376219518!3d41.82891107124728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13257f9392c2da5d%3A0x1bced43d5b6f2683!2sThinkHome%20-Progettazioni%20-Edilizia-%20Investimenti!5e0!3m2!1sit!2sit!4v1731944561395!5m2!1sit!2sit"
-          class="align-self-stretch radius-sm"
-          style="border: 0; width: 100%; min-height: 100%"
-          allowfullscreen
-        ></iframe>
+          class="align-self-stretch radius-sm" style="border: 0; width: 100%; min-height: 100%"
+          allowfullscreen></iframe>
       </div>
       <div class="container">
         <div class="contact-area aos-item">
@@ -40,94 +35,193 @@
             <h6 class="sub-title text-primary">Contattaci</h6>
             <h2 class="title">Inserisci i dati</h2>
           </div>
-          <form class="dz-form dzForm contact-bx" method="POST">
-            <input type="hidden" class="form-control" name="dzToDo" value="Contact" />
-            <div class="dzFormMsg"></div>
+          <form class="dz-form dzForm contact-bx" method="POST" @submit.prevent="submit()">
             <div class="row sp10">
+              <div class="col-sm-12 m-b20">
+                <h4>Caratteristiche dell'immobile</h4>
+              </div>
               <div class="col-sm-6 m-b20">
                 <div class="input-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    required
-                    name="dzFirstName"
-                    placeholder="Nome"
-                  />
+                  <select class="form-control" v-model="formData.RequestType">
+                    <option value="Vendita">Vendita</option>
+                    <option value="Affitto">Affitto</option>
+                  </select>
                 </div>
               </div>
               <div class="col-sm-6 m-b20">
                 <div class="input-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    required
-                    name="dzLastName"
-                    placeholder="Cognome"
-                  />
+                  <select class="form-control" v-model="formData.PropertyType">
+                    <option value="Appartamenti">Appartamenti</option>
+                    <option value="Attività Commerciale">Attività Commerciale</option>
+                    <option value="Box">Box</option>
+                    <option value="Capannoni, Loc. Artigianali">Capannoni, Loc. Artigianali</option>
+                    <option value="Casali e Ruderi">Casali e Ruderi</option>
+                    <option value="Case Semindipendenti">Case Semindipendenti</option>
+                    <option value="Locali Commerciali">Locali Commerciali</option>
+                    <option value="Nuove Costruzioni">Nuove Costruzioni</option>
+                    <option value="Terreni">Terreni</option>
+                    <option value="Ville e Case Indipendenti">Ville e Case Indipendenti</option>
+                  </select>
                 </div>
               </div>
               <div class="col-sm-6 m-b20">
                 <div class="input-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    required
-                    name="dzEmail"
-                    placeholder="Email"
-                  />
+                  <input type="text" class="form-control" required placeholder="Provincia *"
+                    v-model="formData.Province" />
                 </div>
               </div>
               <div class="col-sm-6 m-b20">
                 <div class="input-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    required
-                    name="dzPhoneNumber"
-                    placeholder="Cell."
-                  />
+                  <input type="text" class="form-control" required placeholder="Località *"
+                    v-model="formData.Location" />
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Indirizzo" v-model="formData.Address" />
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" required placeholder="Numero vani *"
+                    v-model="formData.NumberRooms" />
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" required placeholder="Numero camere *"
+                    v-model="formData.NumberBedRooms" />
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" required placeholder="Numero servizi *"
+                    v-model="formData.NumberServices" />
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" required placeholder="Metri quadri *" v-model="formData.MQ" />
+                </div>
+              </div>
+              <div class="row m-b20">
+                <div class="col-sm-3 m-b20">
+                  <div class="input-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" v-model="formData.Garden">
+                      <label class="form-check-label">
+                        Giardino
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 m-b20">
+                  <div class="input-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" v-model="formData.Terrace">
+                      <label class="form-check-label">
+                        Terrazzo
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 m-b20">
+                  <div class="input-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" v-model="formData.Lift">
+                      <label class="form-check-label">
+                        Ascensore
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 m-b20">
+                  <div class="input-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" v-model="formData.Furnished">
+                      <label class="form-check-label">
+                        Arredato
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <select class="form-control" v-model="formData.Heating">
+                    <option value="Non Presente">Non Presente</option>
+                    <option value="Autonomo">Autonomo</option>
+                    <option value="Centralizzato">Centralizzato</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <select class="form-control" v-model="formData.Box">
+                    <option value="Non Presente">Non Presente</option>
+                    <option value="Assegnato">Assegnato</option>
+                    <option value="Box">Box Auto</option>
+                    <option value="Condominiale">Condominiale</option>
+                    <option value="PostoAutoCoperto">Posto Auto Coperto</option>
+                    <option value="PostoAutoScoperto">Posto Auto Scoperto</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" required placeholder="Canone mensile / prezzo *"
+                    v-model="formData.Price" />
                 </div>
               </div>
               <div class="col-sm-12 m-b20">
                 <div class="input-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    required
-                    name="dzOther"
-                    placeholder="Oggetto"
-                  />
+                  <textarea rows="5" class="form-control" placeholder="Informazioni supplementari"
+                    v-model="formData.Information"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row sp10">
+              <div class="col-sm-12 m-b20">
+                <h4>Informazioni personali</h4>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" required placeholder="Nome" v-model="formData.Name" />
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" required placeholder="Cognome" v-model="formData.LastName" />
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Telefono" v-model="formData.Phone" />
+                </div>
+              </div>
+              <div class="col-sm-6 m-b20">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Cellulare"
+                    v-model="formData.MobilePhone" />
                 </div>
               </div>
               <div class="col-sm-12 m-b20">
                 <div class="input-group">
-                  <textarea
-                    name="dzMessage"
-                    rows="5"
-                    class="form-control"
-                    placeholder="Messaggio"
-                  ></textarea>
+                  <input type="text" class="form-control" required placeholder="Email" v-model="formData.FromEmail" />
                 </div>
               </div>
               <div class="col-sm-12 m-b20">
-                <div class="input-recaptcha">
-                  <div class="g-recaptcha"></div>
-                  <input
-                    class="form-control d-none"
-                    style="display: none"
-                    data-recaptcha="true"
-                    required
-                    data-error="Please complete the Captcha"
-                  />
+                <div class="input-group">
+                  <textarea rows="5" class="form-control" placeholder="Messaggio" v-model="formData.Body"></textarea>
                 </div>
               </div>
-              <div class="col-sm-12 text-center">
-                <button
-                  name="submit"
-                  type="reset"
-                  value="submit"
-                  class="btn btn-primary btn-rounded"
-                >
+              <div v-if="loading" class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+              <div v-else class="col-sm-12 text-center">
+                <button name="submit" type="submit" class="btn btn-primary btn-rounded">
                   Invia <i class="m-l10 fas fa-caret-right"></i>
                 </button>
               </div>
@@ -144,6 +238,7 @@ import CommonBanner from '@/elements/CommonBanner.vue'
 import { defineComponent } from 'vue'
 import bnr2 from '@/assets/images/banner/bnr2.png'
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 export default defineComponent({
   setup() {
@@ -175,11 +270,83 @@ export default defineComponent({
     }
   },
   components: { CommonBanner },
+  data() {
+    return {
+      loading: false,
+      formData: {
+        RequestType: "Vendita",
+        PropertyType: "Appartamenti",
+        Province: "",
+        Location: "",
+        Address: "",
+        NumberRooms: "",
+        NumberBedRooms: "",
+        NumberServices: "",
+        MQ: "",
+        Garden: false,
+        Terrace: false,
+        Lift: false,
+        Furnished: false,
+        Heating: "Non Presente",
+        Box: "Non Presente",
+        Price: "",
+        Information: "",
+        Name: "",
+        LastName: "",
+        FromEmail: "",
+        Subject: "",
+        Body: "",
+        Phone: "",
+        MobilePhone: "",
+      }
+    }
+  },
   methods: {
-      async getAnswer() {
-        const { data } = await axios.post("https://yesno.wtf/api");
-      },
+    async submit() {
+      this.loading = true;
+      axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/SendEvaluationRequest', this.formData)
+        .then(() => {
+          this.formData.RequestType = "Vendita";
+          this.formData.PropertyType = "Appartamenti";
+          this.formData.Province= "";
+          this.formData.Location= "";
+          this.formData.Address= "";
+          this.formData.NumberRooms= "";
+          this.formData.NumberBedRooms= "";
+          this.formData.NumberServices= "";
+          this.formData.MQ= "";
+          this.formData.Garden = false;
+          this.formData.Terrace = false;
+          this.formData.Lift = false;
+          this.formData.Furnished = false;
+          this.formData.Heating = "Non Presente";
+          this.formData.Box = "Non Presente";
+          this.formData.Price = "";
+          this.formData.Information = "";
+          this.formData.Name = "";
+          this.formData.LastName = "";
+          this.formData.FromEmail = "";
+          this.formData.Subject = "";
+          this.formData.Body = "";
+          this.formData.Phone = "";
+          this.formData.MobilePhone = "";
+          this.loading = false;
+          Swal.fire({
+            title: "Richiesta inviata con successo",
+            icon: "success"
+          });
+        })
+        .catch((error) => {
+          this.loading = false;
+          Swal.fire({
+            title: "Si è verificato un errore",
+            icon: "success"
+          });
+          console.log(error)
+        })
+
     },
+  },
 })
 </script>
 

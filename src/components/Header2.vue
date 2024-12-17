@@ -155,7 +155,9 @@ export default defineComponent({
       { child: 'Edilizia', to: '/edilizia' },
       { child: 'Servizi Vari', to: '/servizi-vari' }
          ] },
+      { menu: 'Invia una richiesta', className: 'menu', to: '/send-request' },
       { menu: 'Chi siamo', className: 'menu', to: '/about-us' },
+      { menu: 'Lavora con noi', className: 'menu', to: '/work-with-us' },
     ])
     return { headerPosition, openMenu, sidebarShow, menuArr, activemenu }
   },
