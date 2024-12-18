@@ -112,13 +112,13 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
-      path: '/immobili-in-vendita',
+      path: '/immobili-in-vendita/:tipologia/:localita/:da/:codice/:a?',
       name: 'immobili_in_vendita',
       component: () => import('../views/realEstateProperties/SaleList.vue'),
       meta: { layout3: 'layout3' }
     },
     {
-      path: '/immobili-in-affitto',
+      path: '/immobili-in-affitto/:tipologia/:localita/:codice/:da/:a?',
       name: 'immobili_in_affitto',
       component: () => import('../views/realEstateProperties/RentList.vue'),
       meta: { layout3: 'layout3' }

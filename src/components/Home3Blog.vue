@@ -1,6 +1,6 @@
 <template>
   <Swiper class="swiper-container blog-swiper" style="min-height: 350px;" :slides-per-view="3" :space-between="30"
-    :loop="true" :modules="module" :autoplay="{ delay: 1500 }" :speed="1500" :breakpoints="{
+    :loop="true" :autoplay="{ delay: 1500 }" :speed="1500" :breakpoints="{
       991: { slidesPerView: 3 },
       691: { slidesPerView: 2 },
       240: { slidesPerView: 1 }
@@ -33,7 +33,8 @@
             {{ item.Category }}
           </h4>
           <h6 class="dz-title">
-            € {{ item.Price }}
+            € {{ item.Price.toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}
           </h6>
           <div class="dz-meta">
             <ul>
@@ -145,7 +146,7 @@
             </ul>
           </div>
           <p class="text">
-            {{ item.ShortDescription }}
+            {{ item.Description.substring(0, 300) }}...
           </p>
           <div class="read-more">
             <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"

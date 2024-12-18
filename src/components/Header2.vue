@@ -140,8 +140,8 @@ export default defineComponent({
     const menuArr = reactive<MenuItem[]>([
       { menu: 'Home', className: 'menu', to: '/' },
       { menu: 'Immobili', subMenu: [
-      { child: 'Immobili in vendita', to: '/immobili-in-vendita' },
-      { child: 'Immobili in affitto', to: '/immobili-in-affitto' },
+      { child: 'Immobili in vendita', to: `/immobili-in-vendita/Qualsiasi/Qualsiasi/0/0/-1` },
+      { child: 'Immobili in affitto', to: '/immobili-in-affitto/Qualsiasi/Qualsiasi/0/0/-1' },
       { child: 'Valutazione immobile', to: '/richiesta-valutazione-immobile' },
          ] },
       { menu: 'I nostri servizi', subMenu: [
