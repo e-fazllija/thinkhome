@@ -6,7 +6,7 @@
 
     <section class="content-inner-3 bg-white line-img">
       <div class="form-wrapper" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 30px; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 10px;">
-
+      <h1 style="color: #2d6872; text-align: center; position: relative; top: -30px;">Trova il tuo immobile</h1>
       <div class="container">
         <div class="row align-items-center about-bx3 mb-3">
 
