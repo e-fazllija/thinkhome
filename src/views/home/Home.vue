@@ -5,6 +5,26 @@
 
 
     <section class="content-inner-3 bg-white line-img">
+<<<<<<< HEAD
+      <div class="form-wrapper" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 30px; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+      <h1 style="color: #2d6872; text-align: center; position: relative; top: -30px;">Trova il tuo immobile</h1>
+      <div class="container">
+        <div class="row align-items-center about-bx3 mb-3">
+
+          <div class="col-3 mb-3" style="width: 30%;">
+              <select name="Tipologia" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; flex: 1;">
+               <option value="selected" >Qualsiasi</option>
+               <option value="1">Appartamenti</option>
+               <option value="11">Attività Commerciale</option>
+               <option value="10">Box</option>
+               <option value="9">Capannoni, Loc. Artigianali</option>
+               <option value="5">Casali e Ruderi</option>
+               <option value="3">Case Semindipendenti</option>
+               <option value="8">Locali Commerciali</option>
+               <option value="4">Nuove Costruzioni</option>
+               <option value="6">Terreni</option>
+               <option value="2">Ville e Case Indipendenti</option>
+=======
       <form class="container" @submit.prevent="submit()">
         <div class="contact-area aos-item mt-0">
           <div class="section-head style-1 text-center">
@@ -27,6 +47,7 @@
                 <option value="Villa Bifamiliare">Villa Bifamiliare</option>
                 <option value="Villa Plurifamiliare">Villa Plurifamiliare</option>
                 <option value="Villa a Schiera">Villa a Schiera</option>
+>>>>>>> 464a06f0b909a3b43836c973f9986fec0664b8b7
               </select>
             </div>
             <div class="col-lg-4 mb-3">

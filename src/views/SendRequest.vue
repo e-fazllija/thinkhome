@@ -1,6 +1,6 @@
 <template>
     <div class="page-content bg-white">
-        <CommonBanner :img="bnr2" title="Lavora con noi" text="Lavora con noi" />
+        <CommonBanner :img="bannerImg" title="Invia la tua richiesta" text="Invia una richiesta" />
         <section class="content-inner">
             <div class="container">
                 <div class="row">
@@ -246,14 +246,14 @@
 <script lang="ts">
 import CommonBanner from '@/elements/CommonBanner.vue'
 import { defineComponent } from 'vue'
-import bnr2 from '@/assets/images/work/workwithus.jpg'
+import bannerImg from '@/assets/images/banner/1920x700.jpg'
 import axios from 'axios';
 import Swal from 'sweetalert2'
 
 export default defineComponent({
     setup() {
         return {
-            bnr2,
+            bannerImg,
             contactDtail: [
                 {
                     dataName: '01',

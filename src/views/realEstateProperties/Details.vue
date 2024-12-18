@@ -1,7 +1,9 @@
 <template>
   <div class="page-content bg-white">
 
-    <div class="container1" style="display: flex; align-items: center; margin-top: 20px; margin-left: 0;">
+    <CommonBanner :img="bannerImg" title="Dettaglio Immobile" text="Dettaglio Immobile" />
+
+    <!-- <div class="container1" style="display: flex; align-items: center; margin-top: 20px; margin-left: 0;">
       <div style="margin-right: 10px;">
         <img src="@/assets/images/work/pic4.jpg" alt="Icona" style="height: 350px; width: 350px; object-fit: cover;" />
       </div>
@@ -11,7 +13,7 @@
           <RouterLink to="/">Home</RouterLink> - Dettaglio
         </p>
       </div>
-    </div>
+    </div> -->
 
     <div v-if="loading" class="d-flex justify-content-center">
       <div class="spinner-border" role="status">
@@ -214,7 +216,8 @@
 import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
-import bnr7 from '@/assets/images/banner/bnr4.jpg'
+import bnr7 from '@/assets/images/banner/bnr7.jpg'
+import bannerImg from '@/assets/images/banner/1920x700.jpg'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import bg2 from '@/assets/images/background/bg2.png'
 import Lightgallery from 'lightgallery/vue'
@@ -225,11 +228,12 @@ import Home3Accordian from '@/components/Home3Accordian.vue'
 import work_pic1 from '@/assets/images/work/work-1/pic-13.jpg'
 
 export default defineComponent({
-  components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian },
+  components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner },
   setup() {
     return {
       bnr7,
       bg2,
+      bannerImg,
       module: [Autoplay],
       work_pic1
     }
