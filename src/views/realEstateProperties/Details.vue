@@ -28,38 +28,30 @@
         </div>
       </div>
 
-      <div v-if="item" class="container-fluid">       
-        <div class="container-fluid mb-5">
-          <Lightgallery :settings="{ speed: 500, plugins: plugins, selector: '.lightimg' }">
-            <Swiper class="swiper-container swiper-portfolio lightgallery aos-item"
-        :slides-per-view="4"
-        :space-between="30"
-        :loop="true"
-        :breakpoints="{
-          1200: { slidesPerView: 4 },
-          991: { slidesPerView: 3 },
-          575: { slidesPerView: 2 },
-          240: { slidesPerView: 1 }
-        }"
-        :modules="module"
-        :autoplay="{ delay: 1500 }"
-        :speed="1500">
-              <SwiperSlide class="swiper-slide" v-for="({ Url }, ind) in photos" :key="ind">
-                <div :class="`dz-box overlay style-1`">
-                  <div class="dz-media" style="max-height: 300px;">
-                    <img :src="Url" alt="" />
-                  </div>
-                  <div class="dz-info">
-                    <span :data-src="Url" class="view-btn lightimg">
-                      <img :src="Url" alt="" style="display: none" />
-                    </span>
-                  </div>
+      <div v-if="item" class="container-fluid">
+        <Lightgallery :settings="{ speed: 500, plugins: plugins, selector: '.lightimg' }">
+          <Swiper class="swiper-container swiper-portfolio lightgallery aos-item" :slides-per-view="4"
+            :space-between="30" :loop="true" :breakpoints="{
+              1200: { slidesPerView: 4 },
+              991: { slidesPerView: 3 },
+              575: { slidesPerView: 2 },
+              240: { slidesPerView: 1 }
+            }" :modules="module" :autoplay="{ delay: 1500 }" :speed="1500">
+            <SwiperSlide class="swiper-slide" v-for="({ Url }, ind) in photos" :key="ind">
+              <div :class="`dz-box overlay style-1`">
+                <div class="dz-media" style="max-height: 300px;">
+                  <img :src="Url" alt="" />
                 </div>
-              </SwiperSlide>
-            </Swiper>
-          </Lightgallery>
+                <div class="dz-info">
+                  <span :data-src="Url" class="view-btn lightimg">
+                    <img :src="Url" alt="" style="display: none" />
+                  </span>
+                </div>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </Lightgallery>
       </div>
-    </div>   
       <div class="container">
         <div class="row mt-5">
           <div class="icon-content">

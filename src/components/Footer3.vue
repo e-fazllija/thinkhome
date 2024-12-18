@@ -38,8 +38,8 @@
             <div class="widget widget_services">
               <h4 class="footer-title">IMMOBILIARE</h4>
               <ul>
-                <li><RouterLink to="/immobili-in-vendita">Immobili in Vendita</RouterLink></li>
-                <li><RouterLink to="/immobili-in-affitto">Immobili in Affitto</RouterLink></li>
+                <li><RouterLink to="/immobili-in-vendita/Qualsiasi/Qualsiasi/0/0/-1">Immobili in Vendita</RouterLink></li>
+                <li><RouterLink to="/immobili-in-affitto/Qualsiasi/Qualsiasi/0/0/-1">Immobili in Affitto</RouterLink></li>
                 <li><RouterLink to="/richiesta-valutazione-immobile">Richieste Valutazioni Immobili</RouterLink></li>
               </ul>
             </div>
