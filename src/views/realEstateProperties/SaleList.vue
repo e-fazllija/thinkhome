@@ -189,19 +189,17 @@
               </div>
               <div class="dz-info">
                 <div class="dz-meta">
-                  <ul>
-                    <h1>€ {{ item.Price.toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
-                    <li>Cod. 00{{ item.Id }}</li>
-                  </ul>
-                </div>
-                <h3 class="dz-title">
-                  {{ item.AddressLine }}
-                </h3>
-                <div class="dz-post-text text">
-                  <p>
-                    {{ item.Description.substring(0, 300) }}...
-                  </p>
+                  <p>Cod. 00{{ item.Id }}</p>
+              <h1 class="sub-title text-primary"> € {{ item.Price.toString()
+               .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
+              <h3><i class="fa fa-map-pin"></i> {{ item.Town }}, {{
+                item.AddressLine }}</h3>
+              <h6> {{ item.TypeOfProperty }}</h6>
+              <h6><img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
+              </h6>
+              <p>
+                {{ item.Description.substring(0, 300) }}...
+              </p>
                 </div>
                 <div class="read-more">
                   <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"

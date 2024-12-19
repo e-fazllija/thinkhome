@@ -29,20 +29,17 @@
               style="min-height: 40vh;" /></RouterLink> -->
         </div>
         <div class="dz-info">
-          <h4 class="dz-title">
-            {{ item.Category }}
-          </h4>
-          <h6 class="dz-title">
-            € {{ item.Price.toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}
-          </h6>
-          <div class="dz-meta">
-            <ul>
-              <li class="post-author d-flex align-items-center">
-                <!-- <img :src="img2" alt="" /><span class="text-dark m-l10 m-r5">By</span> -->
-                <h5 class="text-primary">Indirizzo:</h5>
-                <h6 class="text-secondary ms-2 ">{{ item.AddressLine }} </h6>
-              </li>
+          <p>Cod. 00{{ item.Id }}</p>
+              <h1 class="sub-title text-primary"> € {{ item.Price.toString()
+               .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
+              <h3><i class="fa fa-map-pin"></i> {{ item.Town }}, {{
+                item.AddressLine }}</h3>
+              <h6> {{ item.TypeOfProperty }}</h6>
+              <h6><img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
+              </h6>
+              <p>
+                {{ item.Description.substring(0, 300) }}...
+              </p>
               <!-- <li class="post-comments">
                 <span class="m-r10">
                   <svg
@@ -143,11 +140,7 @@
                   15
                 </span>
               </li> -->
-            </ul>
           </div>
-          <p class="text">
-            {{ item.Description.substring(0, 300) }}...
-          </p>
           <div class="read-more">
             <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"
               class="btn btn-primary btn-rounded btn-sm hover-icon">
@@ -156,7 +149,6 @@
             </RouterLink>
           </div>
         </div>
-      </div>
     </SwiperSlide>
   </Swiper>
 </template>

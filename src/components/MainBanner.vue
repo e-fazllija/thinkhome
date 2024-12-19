@@ -41,7 +41,7 @@ import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Parallax, Pagination, Navigation } from 'swiper/modules'
 import video from '@/assets/video/home.mp4'
-import videoSmall from '@/assets/video/home.mp4'
+import videoSmall from '@/assets/video/homeSmall.mp4'
 
 export default defineComponent({
   name: 'mainBanner',
@@ -66,7 +66,7 @@ export default defineComponent({
   methods: {
     updateVideo() {
       const screenWidth = window.innerWidth; // Ottieni larghezza dello schermo
-      if (screenWidth < 768) {
+      if (screenWidth < 991) {
         this.currentVideo = videoSmall; // Video per schermi piccoli
       } else {
         this.currentVideo = video; // Video per schermi grandi
@@ -87,6 +87,34 @@ export default defineComponent({
   font-family: ui-rounded;
   letter-spacing: -3px;  /* Avvicina i caratteri */
   
+}
+@media screen and (max-width: 768px) {
+  .video-container {
+    padding-bottom: 177.77%; /* Mantieni il rapporto 9:16 */
+  }
+
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Adatta il video */
+  }
+}
+@media screen and (max-width: 991px) {
+  .video-container {
+    padding-bottom: 177.77%; /* Mantieni il rapporto 9:16 */
+  }
+
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Adatta il video */
+  }
 }
 
 </style>

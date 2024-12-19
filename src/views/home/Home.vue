@@ -188,8 +188,8 @@
             <div class="section-head style-2">
               <p>Cod. 00{{ results.RealEstatePropertiesHighlighted.Id }}</p>
               <h1 class="sub-title text-primary"> € {{ results.RealEstatePropertiesHighlighted.Price.toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
-              <h3><i class="fa fa-map-pin"></i> {{ results.RealEstatePropertiesHighlighted.Town }}({{ }}), {{
+               .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
+              <h3><i class="fa fa-map-pin"></i> {{ results.RealEstatePropertiesHighlighted.Town }}, {{
                 results.RealEstatePropertiesHighlighted.AddressLine }}</h3>
               <h6> {{ results.RealEstatePropertiesHighlighted.TypeOfProperty }}</h6>
               <h6><img src="@/assets/images/energy.png" /> {{ results.RealEstatePropertiesHighlighted.EnergyClass }}

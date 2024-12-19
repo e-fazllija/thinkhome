@@ -120,17 +120,24 @@
 
       <div class="container">
         <div class="row mb-lg-5 mb-3">
-          <div class="col-lg-6 col-md-12 align-self-center aos-item">
+          <div class="col-lg-12 col-md-12 align-self-center aos-item">
             <h6 class="dz-title">
               <p><strong>Agente: </strong> {{ item.Agent.Name }} {{
                 item.Agent.LastName }} </p>
+                </h6>
               <p>Cod. 00{{ item.Id }}</p>
-            </h6>
-            <h2 class="dz-title">{{ item.Title }} - € {{ item.Price }} </h2>
-            <p style="font-size: 18px; font-weight: 500;">
-              {{ item.Description }}
-            </p>
-            <div class="icon-bx-wraper style-3 left m-b30">
+              <h1 class="sub-title text-primary"> € {{ item.Price.toString()
+               .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
+              <h3><i class="fa fa-map-pin"></i> {{ item.Town }}, {{
+                item.AddressLine }}</h3>
+              <h6> {{ item.TypeOfProperty }}</h6>
+              <h6><img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
+              </h6>
+              <p>
+                {{ item.Description}}...
+              </p>
+          </div>
+          <div class=" col-lg-6 icon-bx-wraper style-3 left m-b0">
               <div class="icon-bx-sm bg-primary">
                 <span class="icon-cell"><i class="flaticon-telephone"></i></span>
               </div>
@@ -139,7 +146,6 @@
                 <p>info@thinkhome.it</p>
               </div>
             </div>
-          </div>
           <div class="col-lg-6 col-md-12 m-b30 aos-item">
             <img src="@/assets/images/work/pic4.jpg" class="d-lg-block d-none" alt="" />
           </div>
@@ -148,7 +154,7 @@
     </section>
     <section class="content-inner">
       <div class="container">
-        <div class="contact-area aos-item mt-0">
+        <div class="contact-area aos-item mt--2">
           <div class="section-head style-1 text-center">
             <h6 class="sub-title text-secondary">Richiedi Infromazioni</h6>
             <h2 class="title">Inserisci i dati</h2>
@@ -263,6 +269,7 @@ export default defineComponent({
         EnergyClass: "",
         Bedrooms: "",
         Description: "",
+        TypeOfProperty: "",
         Photos: {
           $values: [{
             Url: ""
