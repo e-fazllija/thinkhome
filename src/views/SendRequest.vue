@@ -360,4 +360,28 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+@media screen and (max-width: 991px) {
+
+.col-sm-12 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+}
+
+@media screen and (max-width: 575px) {
+
+.col-sm-12 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+}
+
+@media screen and (max-width: 400px) {
+
+.col-sm-12 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+}
+</style>

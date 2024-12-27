@@ -143,8 +143,18 @@
               </div>
               <div class="icon-content">
                 <h4 class="title m-b5">Contatti</h4>
-                <p>info@thinkhome.it</p>
-              </div>
+                <li>
+                    <i class="las la-phone-volume"></i>
+                    +39 333/9123388  
+                  </li>
+                  <li>
+                    <i class="las la-phone-volume"></i>
+                    +39 06/95595263
+                  </li>
+                  <li>
+                    <i class="las la-mail-bulk"></i>
+                    info@thinkhome.it 
+                  </li>              </div>
             </div>
           <div class="col-lg-6 col-md-12 m-b30 aos-item">
             <img src="@/assets/images/work/pic4.jpg" class="d-lg-block d-none" alt="" />
@@ -326,6 +336,14 @@ export default defineComponent({
     height: 380px;
 
   }
+  .col-sm-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .row.mb-lg-5.mb-3 img {
+    height: 50px;
+    width: 50px;
+  }
 
   .container1 {
     flex-direction: column;
@@ -366,6 +384,14 @@ export default defineComponent({
     margin-bottom: 8px;
     /* Aggiunge uno spazio sotto il titolo */
   }
+  .col-sm-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .row.mb-lg-5.mb-3 img {
+    height: 50px;
+    width: 50px;
+  }
 
   .icon-content p {
     font-size: 16px;
@@ -380,6 +406,14 @@ export default defineComponent({
     height: 23vmax;
   }
 }
+.col-sm-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .row.mb-lg-5.mb-3 img {
+    height: 50px;
+    width: 50px;
+  }
 
 .mfp-close {
   border: none;
