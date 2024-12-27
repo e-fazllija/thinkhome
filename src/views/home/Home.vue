@@ -208,7 +208,7 @@
         <Home3Blog v-if="!loading" :items="results.RealEstatePropertiesInHome" />
         <div class="row align-items-center style-2 mt-5">
           <div class="col-lg-12 aos-item aos-init aos-animate text-center d-none d-lg-block">
-            <RouterLink to="/immobili-in-vendita/Qualsiasi/Qualsiasi/0/0/-1" class="btn btn-secondary btn-rounded hover-icon">
+            <RouterLink to="/immobili-in-vendita/Qualsiasi/Qualsiasi/0/0/-1" class="btn btn-primary btn-rounded hover-icon">
               <span>Tutti gli immobili</span>
               <i class="fas fa-arrow-right"></i>
             </RouterLink>
@@ -473,7 +473,13 @@ export default defineComponent({
     padding: 12px;
     font-size: 16px;
   }
-}
+  .col-sm-12 {
+    width: 35%;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  }
 
 @media (max-width: 768px) {
   .content-inner-3 .row {
@@ -496,4 +502,34 @@ export default defineComponent({
     font-size: 16px;
   }
 }
+@media (max-width: 991px) { 
+  .d-lg-block {
+    display: block !important; /* Mostra l'elemento per schermi piccoli */
+  }
+
+  .aos-item.text-center {
+    text-align: center;
+    margin-top: 20px; /* Spazio aggiuntivo per separare */
+  }
+
+  .btn.btn-secondary.btn-rounded.hover-icon {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 30px; /* Stile arrotondato */
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .btn.btn-secondary.btn-rounded.hover-icon i {
+    margin-left: 10px; /* Spazio tra l'icona e il testo */
+  }
+
+  .btn.btn-secondary.btn-rounded.hover-icon:hover {
+    background-color: #555; /* Cambia colore al passaggio */
+    color: #fff; /* Testo in bianco */
+  }
+}
+
+
 </style>

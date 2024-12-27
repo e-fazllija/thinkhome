@@ -15377,7 +15377,7 @@ button:focus {
 
 .btn-primary {
   border-color: var(--primary);
-  background-color: var(--primary);
+  background-color: #2d6872;
 }
 .btn-primary:active,
 .btn-primary:focus,

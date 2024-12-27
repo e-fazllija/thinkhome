@@ -1,5 +1,5 @@
 <template>
-  <div
+  <!-- <div
     id="pointer-ring"
     :style="`border-color: rgb(117, 12, 126); padding: 15px; transform: translate(${position.x}px, ${position.y}px)`"
     class=""
@@ -7,7 +7,7 @@
   <div
     id="pointer-dot"
     :style="`border-color: white; transform: translate(${position.x}px, ${position.y}px)`"
-  ></div>
+  ></div> -->
 </template>
 
 <script lang="ts">

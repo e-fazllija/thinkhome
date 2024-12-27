@@ -116,6 +116,16 @@ export default defineComponent({
     object-fit: cover; /* Adatta il video */
   }
 }
+@media only screen and (max-width: 1680px) {
+    .silder-one .silder-content .title-small {
+        font-size: 50px;
+    }
+  }
+  @media only screen and (max-width: 991px) {
+    .silder-one .silder-content .title-small {
+        font-size: 30px;
+    }
+  }
 
 </style>
 
