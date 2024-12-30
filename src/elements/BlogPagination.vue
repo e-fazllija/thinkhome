@@ -30,7 +30,7 @@ export default defineComponent({
     return {}
   },
   components: { RouterLink },
-  async mounted(){
+  async mounted(){ 
     // console.log(this.currentPage!)
     // console.log(this.totalPages)
   }
