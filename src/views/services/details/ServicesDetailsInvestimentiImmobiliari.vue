@@ -22,10 +22,6 @@
                <p>•	Supporto per operazioni di compravendita immobiliare</p>
                <p>•	Valutazione opportunità di investimento</p>
             </div>
-            <!-- <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
-              <span>READ MORE</span>
-              <i class="fas fa-arrow-right"></i>
-            </RouterLink> -->
           </div>
           <div class="col-lg-6 m-b30">
             <div class="dz-media">
@@ -45,7 +41,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
-import Brands from '@/elements/Brands.vue'
 import Testimonial2 from '@/components/Testimonial2.vue'
 import bnr5 from '@/assets/images/banner/bnr16.jpg'
 import bg2 from '@/assets/images/background/bg2.png'
@@ -54,7 +49,7 @@ import MainBanner3 from '@/components/MainBanner3.vue'
 
 export default defineComponent({
   name: 'services_detail',
-  components: { CommonBanner, Testimonial2, Brands, RouterLink, MainBanner3 },
+  components: { CommonBanner, Testimonial2, RouterLink, MainBanner3 },
   setup() {
     return { bnr5, bg2 }
   },

@@ -1,5 +1,5 @@
 <template>
-  <!-- <section class="content-inner-1">
+  <section class="content-inner-1">
     <div class="container">
       <div class="section-head style-1 text-center">
         <h6 class="sub-title text-primary">Brands</h6>
@@ -27,7 +27,7 @@
         </SwiperSlide>
       </Swiper>
     </div>
-  </section> -->
+  </section>
 </template>
 
 <script lang="ts">
@@ -35,12 +35,12 @@ import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
 
-import logoGray1 from '@/assets/images/logo/logo-gray1.png'
-import logoGray2 from '@/assets/images/logo/logo-gray2.png'
-import logoGray3 from '@/assets/images/logo/logo-gray3.png'
-import logoGray4 from '@/assets/images/logo/logo-gray4.png'
-import logoGray5 from '@/assets/images/logo/logo-gray5.png'
-import logoGray6 from '@/assets/images/logo/logo-gray6.png'
+import logoGray1 from '@/assets/images/logo/logo-gray1.jpeg'
+import logoGray2 from '@/assets/images/logo/logo-gray2.jpeg'
+import logoGray3 from '@/assets/images/logo/logo-gray3.jpeg'
+import logoGray4 from '@/assets/images/logo/logo-gray4.jpeg'
+import logoGray5 from '@/assets/images/logo/logo-gray5.jpeg'
+import logoGray6 from '@/assets/images/logo/logo-gray6.jpeg'
 export default defineComponent({
   name: 'brans_',
   components: { Swiper, SwiperSlide },

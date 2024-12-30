@@ -1,12 +1,13 @@
 <template>
-  <!-- <div class="slidearea bannerside"> -->
-    <!-- <div class="side-contact-info">
+  <!-- <div class="slidearea bannerside">
+    <div class="side-contact-info">
       <ul>
         <li><i class="fas fa-phone-alt"></i> +91 123 456 7890</li>
         <li><i class="fas fa-envelope"></i> Visvainfo@gmail.com</li>
       </ul>
     </div> -->
-    <div class="dz-bnr-inr style-1 overlay-left" :style="`background-image: url(${img})`">
+    <div class="dz-bnr-inr style-1 overlay-left" :style="`background-image: url(${img})`"
+     >
       <div class="container-fluid">
         <div class="dz-bnr-inr-entry">
           <h1>{{ title }}</h1>

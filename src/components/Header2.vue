@@ -139,15 +139,25 @@ export default defineComponent({
     })
     const menuArr = reactive<MenuItem[]>([
       { menu: 'Home', className: 'menu', to: '/' },
-      { menu: 'I nostri servizi', subMenu: [
-          { child: 'Pratiche Urbanistiche', to: '/pratiche-urbanistiche' },
-           { child: 'Pratiche Catastali', to: '/pratiche-catastali' },
-           { child: 'Perizie, Stime e Tribunale', to: '/perizie-stime-tribunale' },
-           { child: 'Investimenti Immobiliari', to: '/investimenti-immobiliari' },
-           { child: 'Edilizia', to: '/edilizia' },
-           { child: 'Servizi Vari', to: '/servizi-vari' }
+      { menu: 'Immobili', subMenu: [
+      { child: 'Immobili in vendita', to: `/immobili-in-vendita/Qualsiasi/Qualsiasi/0/0/-1` },
+      { child: 'Immobili in affitto', to: '/immobili-in-affitto/Qualsiasi/Qualsiasi/0/0/-1' },
+      { child: 'Valutazione immobile', to: '/richiesta-valutazione-immobile' },
          ] },
+      { menu: 'I nostri servizi', subMenu: [
+      { child: 'Immobili in vendita', to: '/vendita' },
+      { child: 'Immobili in affitto', to: '/affitto' },
+      { child: 'Valutazione immobile', to: '/valutazione-immobile' },
+      { child: 'Pratiche Urbanistiche', to: '/pratiche-urbanistiche' },
+      { child: 'Pratiche Catastali', to: '/pratiche-catastali' },
+      { child: 'Perizie, Stime e Tribunale', to: '/perizie-stime-tribunale' },
+      { child: 'Investimenti Immobiliari', to: '/investimenti-immobiliari' },
+      { child: 'Edilizia', to: '/edilizia' },
+      { child: 'Servizi Vari', to: '/servizi-vari' }
+         ] },
+      { menu: 'Invia una richiesta', className: 'menu', to: '/send-request' },
       { menu: 'Chi siamo', className: 'menu', to: '/about-us' },
+      { menu: 'Lavora con noi', className: 'menu', to: '/work-with-us' },
     ])
     return { headerPosition, openMenu, sidebarShow, menuArr, activemenu }
   },

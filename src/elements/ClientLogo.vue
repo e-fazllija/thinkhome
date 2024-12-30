@@ -3,15 +3,15 @@
     <div class="container">
       <Swiper
         class="swiper-container clients-swiper"
-        :slides-per-view="6"
+        :slides-per-view="4"
         :modules="[Autoplay]"
         :loop="true"
         :speed="1500"
         :autoplay="{ delay: 1500 }"
         :breakpoints="{
-          1200: { slidesPerView: 6 },
-          991: { slidesPerView: 5 },
-          775: { slidesPerView: 4 },
+          1200: { slidesPerView: 4 },
+          // 991: { slidesPerView: 4 },
+          // 775: { slidesPerView: 4 },
           575: { slidesPerView: 3 },
           240: { slidesPerView: 2 }
         }"
@@ -29,13 +29,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import logoGray1 from '@/assets/images/logo/logo-gray1.jpeg'
+import logoGray2 from '@/assets/images/logo/logo-gray2.jpeg'
+import logoGray3 from '@/assets/images/logo/logo-gray3.jpeg'
+import logoGray4 from '@/assets/images/logo/logo-gray4.jpeg'
 import { Autoplay } from 'swiper/modules'
-import logoGray1 from '@/assets/images/logo/logo-gray1.png'
-import logoGray2 from '@/assets/images/logo/logo-gray2.png'
-import logoGray3 from '@/assets/images/logo/logo-gray3.png'
-import logoGray4 from '@/assets/images/logo/logo-gray4.png'
-import logoGray5 from '@/assets/images/logo/logo-gray5.png'
-import logoGray6 from '@/assets/images/logo/logo-gray6.png'
 
 export default defineComponent({
   components: { Swiper, SwiperSlide },
@@ -46,9 +44,6 @@ export default defineComponent({
         { logo: logoGray2 },
         { logo: logoGray3 },
         { logo: logoGray4 },
-        { logo: logoGray5 },
-        { logo: logoGray6 },
-        { logo: logoGray1 }
       ],
       Autoplay
     }

@@ -17,6 +17,12 @@
         <h4>I Nostri Servizi</h4>
         <div class="dz-separator style-1 text-primary mb-0"></div>
       </div>
+      <RouterLink to="/vendita" class="btn btn-primary btn-sm btn-rounded">Immobili in Vendita</RouterLink>
+      <h2></h2>
+      <RouterLink to="/affitto" class="btn btn-primary btn-sm btn-rounded">Immobili in Affitto</RouterLink>
+      <h2></h2>
+      <RouterLink to="/valutazione-immobile" class="btn btn-primary btn-sm btn-rounded">Valutazione Immobile</RouterLink>
+      <h2></h2>
       <RouterLink to="/pratiche-urbanistiche" class="btn btn-primary btn-sm btn-rounded">Pratiche Urbanistiche</RouterLink>
       <h2></h2>
       <RouterLink to="/pratiche-catastali" class="btn btn-primary btn-sm btn-rounded">Pratiche Catastali</RouterLink>

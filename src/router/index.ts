@@ -16,6 +16,18 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
+      path: '/work-with-us',
+      name: 'work-with-us',
+      component: () => import('../views/WorkWithUs.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/send-request',
+      name: 'send-request',
+      component: () => import('../views/SendRequest.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
       path: '/team',
       name: 'team',
       component: () => import('../views/Team.vue'),
@@ -88,9 +100,57 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
+      path: '/dettaglio/:id',
+      name: 'dettaglio',
+      component: () => import('../views/realEstateProperties/Details.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
       path: '/contact-us',
       name: 'contact_us',
       component: () => import('../views/ContactUs.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/immobili-in-vendita/:tipologia/:localita/:da/:codice/:a?',
+      name: 'immobili_in_vendita',
+      component: () => import('../views/realEstateProperties/SaleList.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/immobili-in-affitto/:tipologia/:localita/:codice/:da/:a?',
+      name: 'immobili_in_affitto',
+      component: () => import('../views/realEstateProperties/RentList.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/dettaglio/:id',
+      name: 'dettaglio',
+      component: () => import('../views/realEstateProperties/Details.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/richiesta-valutazione-immobile',
+      name: 'richiesta_valutazione_immobile',
+      component: () => import('../views/SendEvaluationRequest.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/vendita',
+      name: 'vendita',
+      component: () => import('../views/services/details/Vendita.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/affitto',
+      name: 'affitto',
+      component: () => import('../views/services/details/Affitto.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/valutazione-immobile',
+      name: 'valutazione_immobile',
+      component: () => import('../views/services/details/ValutazioneImmobile.vue'),
       meta: { layout3: 'layout3' }
     },
     {

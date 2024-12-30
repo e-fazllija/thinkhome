@@ -142,7 +142,7 @@
 <script lang="ts">
 import CommonBanner from '@/elements/CommonBanner.vue'
 import { defineComponent } from 'vue'
-import bnr2 from '@/assets/images/banner/bnr2.jpg'
+import bnr2 from '@/assets/images/banner/bnr2.png'
 
 export default defineComponent({
   setup() {

@@ -94,14 +94,12 @@
         <OurStrategy />
       </div>
     </section>
-    <Brands />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
-import Brands from '@/elements/Brands.vue'
 import CounterVideo from '@/components/CounterVideo.vue'
 import Testimonial from '@/components/Testimonial.vue'
 import Testimonial2 from '@/components/Testimonial2.vue'
@@ -122,7 +120,6 @@ export default defineComponent({
     Testimonial2,
     HomeFaq,
     OurStrategy,
-    Brands,
     RouterLink
   },
   setup() {
