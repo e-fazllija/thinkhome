@@ -144,7 +144,7 @@ export default defineComponent({
           dataName: '01',
           icon: 'flaticon-telephone',
           title: 'Chiamaci',
-          text: '+39 333/9123388,',
+          text: '+39 333/9123388',
           text2: '+39 06/95595263'
         },
         {
