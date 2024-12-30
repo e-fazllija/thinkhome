@@ -27,7 +27,7 @@ export default defineComponent({
     typologie: String
   },
   setup() {
-    return {}
+    return {} 
   },
   components: { RouterLink },
   async mounted(){ 
