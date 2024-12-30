@@ -2,7 +2,13 @@
   <div class="page-content bg-white">
 
     <CommonBanner :img="bannerImg" title="Dettaglio Immobile" text="Dettaglio Immobile" />
-
+    <div v-if="loading" class="container">
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
     <!-- <div class="container1" style="display: flex; align-items: center; margin-top: 20px; margin-left: 0;">
       <div style="margin-right: 10px;">
         <img src="@/assets/images/work/pic4.jpg" alt="Icona" style="height: 350px; width: 350px; object-fit: cover;" />
@@ -15,13 +21,9 @@
       </div>
     </div> -->
 
-    <div v-if="loading" class="d-flex justify-content-center">
-      <div class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
 
-    <section v-if="!loading" class="content-inner-1 mt-2" :style="`background-image: url(${bg2});`">
+
+    <section v-if="!loading" class="content-inner-1 mt-2 pb-0" :style="`background-image: url(${bg2});`">
       <div class="container">
         <div class="section-head style-1">
           <h1> {{ item.Title }}</h1>
@@ -119,99 +121,115 @@
 
 
       <div class="container">
-        <div class="row mb-lg-5 mb-3">
-          <div class="col-lg-12 col-md-12 align-self-center aos-item">
+        <div class="row">
+          <div class="col-12">
             <h6 class="dz-title">
               <p><strong>Agente: </strong> {{ item.Agent.Name }} {{
                 item.Agent.LastName }} </p>
-                </h6>
-              <p>Cod. 00{{ item.Id }}</p>
-              <h1 class="sub-title text-primary"> € {{ item.Price.toString()
-               .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
-              <h3><i class="fa fa-map-pin"></i> {{ item.Town }}, {{
-                item.AddressLine }}</h3>
-              <h6> {{ item.TypeOfProperty }}</h6>
-              <h6><img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
-              </h6>
-              <p>
-                {{ item.Description}}...
-              </p>
+            </h6>
           </div>
-          <div class=" col-lg-6 icon-bx-wraper style-3 left m-b0">
-              <div class="icon-bx-sm bg-primary">
-                <span class="icon-cell"><i class="flaticon-telephone"></i></span>
-              </div>
-              <div class="icon-content">
-                <h4 class="title m-b5">Contatti</h4>
-                <li>
-                    <i class="las la-phone-volume"></i>
-                    +39 333/9123388  
-                  </li>
-                  <li>
-                    <i class="las la-phone-volume"></i>
-                    +39 06/95595263
-                  </li>
-                  <li>
-                    <i class="las la-mail-bulk"></i>
-                    info@thinkhome.it 
-                  </li>              </div>
+          <div class="col-12">
+            <p>Cod. 00{{ item.Id }}</p>
+          </div>
+          <div class="col-12">
+            <h1 class="sub-title text-primary"> € {{ item.Price.toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
+          </div>
+          <div class="col-12">
+            <h3><i class="fa fa-map-pin"></i> {{ item.Town }}, {{
+              item.AddressLine }}</h3>
+          </div>
+          <div class="col-12">
+            <h6> {{ item.TypeOfProperty }}</h6>
+          </div>
+          <div class="col-lg-12 col-md-12 align-self-center aos-item">
+            <h6><img src="@/assets/images/energy.png" style="max-width: 50px; max-height: 50px;" /> {{ item.EnergyClass
+              }}
+            </h6>
+          </div>
+          <div class="col-12">
+            <p>
+              {{ item.Description }}
+            </p>
+          </div>
+        </div>
+        <div class="row mb-lg-5 mb-3">
+          <div class=" col-lg-6 icon-bx-wraper style-3 left">
+            <div class="icon-bx-sm bg-primary">
+              <span class="icon-cell"><i class="flaticon-telephone"></i></span>
             </div>
+            <div class="icon-content">
+              <h4 class="title m-b5">Contatti</h4>
+              <li>
+                <i class="las la-phone-volume"></i>
+                +39 333/9123388
+              </li>
+              <li>
+                <i class="las la-phone-volume"></i>
+                +39 06/95595263
+              </li>
+              <li>
+                <i class="las la-mail-bulk"></i>
+                info@thinkhome.it
+              </li>
+            </div>
+          </div>
           <div class="col-lg-6 col-md-12 m-b30 aos-item">
             <img src="@/assets/images/work/pic4.jpg" class="d-lg-block d-none" alt="" />
           </div>
         </div>
       </div>
     </section>
-    <section class="content-inner">
+    <section v-if="!loading" class="content-inner-1 pt-0 pb-0">
       <div class="container">
-        <div class="contact-area aos-item mt--2">
+        <div class="contact-area aos-item mt-0">
           <div class="section-head style-1 text-center">
             <h6 class="sub-title text-secondary">Richiedi Infromazioni</h6>
             <h2 class="title">Inserisci i dati</h2>
           </div>
-          <form class="dz-form dzForm contact-bx" method="POST">
+          <form class="dz-form dzForm contact-bx" method="POST" @submit.prevent="submit()">
             <input type="hidden" class="form-control" name="dzToDo" value="Contact" />
             <div class="dzFormMsg"></div>
             <div class="row sp10">
               <div class="col-sm-6 m-b20">
                 <div class="input-group">
-                  <input type="text" class="form-control" required name="dzFirstName" placeholder="Nome" />
+                  <input type="text" class="form-control" required placeholder="Nome *" v-model="formData.Name" />
                 </div>
               </div>
               <div class="col-sm-6 m-b20">
                 <div class="input-group">
-                  <input type="text" class="form-control" required name="dzLastName" placeholder="Cognome" />
+                  <input type="text" class="form-control" required placeholder="Cognome *"
+                    v-model="formData.LastName" />
                 </div>
               </div>
               <div class="col-sm-6 m-b20">
                 <div class="input-group">
-                  <input type="text" class="form-control" required name="dzEmail" placeholder="Email" />
+                  <input type="text" class="form-control" placeholder="Telefono" v-model="formData.Phone" />
                 </div>
               </div>
               <div class="col-sm-6 m-b20">
                 <div class="input-group">
-                  <input type="text" class="form-control" required name="dzPhoneNumber" placeholder="Cell." />
+                  <input type="text" class="form-control" placeholder="Cellulare" v-model="formData.MobilePhone" />
                 </div>
               </div>
               <div class="col-sm-12 m-b20">
                 <div class="input-group">
-                  <input type="text" class="form-control" required name="dzOther" placeholder="Oggetto" />
+                  <input type="text" class="form-control" required placeholder="Email *" v-model="formData.FromEmail" />
                 </div>
               </div>
               <div class="col-sm-12 m-b20">
                 <div class="input-group">
-                  <textarea name="dzMessage" rows="5" class="form-control" placeholder="Messaggio"></textarea>
+                  <textarea rows="5" class="form-control" required placeholder="Messaggio *"
+                    v-model="formData.Body"></textarea>
                 </div>
               </div>
-              <div class="col-sm-12 m-b20">
-                <div class="input-recaptcha">
-                  <div class="g-recaptcha"></div>
-                  <input class="form-control d-none" style="display: none" data-recaptcha="true" required
-                    data-error="Please complete the Captcha" />
+              <div v-if="loadingRequest" class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
                 </div>
               </div>
-              <div class="col-sm-12 text-center">
-                <button name="submit" type="reset" value="submit" class="btn btn-primary btn-rounded">
+              <div v-else class="col-sm-12 text-center">
+                <button name="submit" type="submit" class="btn btn-primary btn-rounded">
                   Invia <i class="m-l10 fas fa-caret-right"></i>
                 </button>
               </div>
@@ -220,7 +238,7 @@
         </div>
       </div>
     </section>
-    <section class="content-inner-1">
+    <section class="content-inner-1 pt-0">
       <div class="container-fluid">
         <Home3Accordian />
       </div>
@@ -242,6 +260,7 @@ import lgZoom from 'lightgallery/plugins/zoom'
 import axios from 'axios'
 import Home3Accordian from '@/components/Home3Accordian.vue'
 import work_pic1 from '@/assets/images/work/work-1/pic-13.jpg'
+import Swal from 'sweetalert2'
 
 export default defineComponent({
   components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner },
@@ -260,6 +279,7 @@ export default defineComponent({
       plugins: [lgThumbnail, lgZoom],
       imgSelected: "",
       loading: true,
+      loadingRequest: false,
       photos: [{
         Url: ""
       }],
@@ -286,11 +306,62 @@ export default defineComponent({
           }]
         }
       },
+      formData: {
+        RequestType: "",
+        PropertyType: "",
+        Province: "",
+        Location: "",
+        Address: "",
+        NumberRooms: "",
+        NumberBedRooms: "",
+        NumberServices: "",
+        MQ: "",
+        Garden: false,
+        Terrace: false,
+        Lift: false,
+        Furnished: false,
+        Heating: "",
+        Box: "",
+        Price: "",
+        Information: "",
+        Name: "",
+        LastName: "",
+        FromEmail: "",
+        Subject: "",
+        Body: "",
+        Phone: "",
+        MobilePhone: "",
+      }
     }
   },
   methods: {
-    async getAnswer() {
-      const { data } = await axios.get("https://yesno.wtf/api");
+    async submit() {
+      this.loadingRequest = true;
+      this.formData.Information = this.item.Id.toString();
+      axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/InformationRequest', this.formData)
+        .then(() => {
+          this.loadingRequest = false;
+          this.formData.Name = "";
+          this.formData.LastName = "";
+          this.formData.FromEmail = "";
+          this.formData.Subject = "";
+          this.formData.Body = "";
+          this.formData.Phone = "";
+          this.formData.MobilePhone = "";
+          Swal.fire({
+            title: "Richiesta inviata con successo",
+            icon: "success"
+          });
+        })
+        .catch((error) => {
+          this.loadingRequest = false;
+          Swal.fire({
+            title: "Si è verificato un errore",
+            icon: "success"
+          });
+          console.log(error)
+        })
+
     },
     async getItem() {
       const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetById?id=" + this.$route.params.id);
@@ -316,7 +387,6 @@ export default defineComponent({
     },
   },
   async beforeMount() {
-    this.getAnswer();
     await this.getItem();
   }
 })
@@ -336,13 +406,15 @@ export default defineComponent({
     height: 380px;
 
   }
+
   .col-sm-12 {
     flex: 0 0 auto;
     width: 100%;
   }
+
   .row.mb-lg-5.mb-3 img {
-    height: 50px;
-    width: 50px;
+    max-height: 400px;
+    max-width: 400px;
   }
 
   .container1 {
@@ -384,13 +456,15 @@ export default defineComponent({
     margin-bottom: 8px;
     /* Aggiunge uno spazio sotto il titolo */
   }
+
   .col-sm-12 {
     flex: 0 0 auto;
     width: 100%;
   }
+
   .row.mb-lg-5.mb-3 img {
-    height: 50px;
-    width: 50px;
+    max-height: 400px;
+    max-width: 400px;
   }
 
   .icon-content p {
@@ -406,14 +480,16 @@ export default defineComponent({
     height: 23vmax;
   }
 }
+
 .col-sm-12 {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-  .row.mb-lg-5.mb-3 img {
-    height: 50px;
-    width: 50px;
-  }
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.row.mb-lg-5.mb-3 img {
+  max-height: 400px;
+  max-width: 400px;
+}
 
 .mfp-close {
   border: none;
