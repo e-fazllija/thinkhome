@@ -22,6 +22,12 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
+      path: '/academy',
+      name: 'academy',
+      component: () => import('../views/Academy.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
       path: '/send-request',
       name: 'send-request',
       component: () => import('../views/SendRequest.vue'),

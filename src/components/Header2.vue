@@ -158,6 +158,7 @@ export default defineComponent({
       { menu: 'Invia una richiesta', className: 'menu', to: '/send-request' },
       { menu: 'Chi siamo', className: 'menu', to: '/about-us' },
       { menu: 'Lavora con noi', className: 'menu', to: '/work-with-us' },
+      { menu: 'Academy', className: 'menu', to: '/academy' },
     ])
     return { headerPosition, openMenu, sidebarShow, menuArr, activemenu }
   },
