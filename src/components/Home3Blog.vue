@@ -14,7 +14,7 @@
           }">
           
             <SwiperSlide v-for="(photo, ind) in item.Photos.$values" :key="ind" class="swiper-slide">
-              <RouterLink to="/blog-details"><img :src="photo.Url" alt="" style=" border-radius: 5px; padding: 0px; width: 500px; height: 400px; object-fit: cover;"/></RouterLink>
+              <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img :src="photo.Url" alt="" style=" border-radius: 5px; padding: 0px; width: 500px; height: 400px; object-fit: cover;"/></RouterLink>
             </SwiperSlide>
             <!-- <SwiperSlide class="swiper-slide">
               <RouterLink to="/blog-details"><img src="@/assets/images/blog/large/pic1.jpg" alt="" /></RouterLink>
