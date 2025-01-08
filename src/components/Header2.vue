@@ -5,8 +5,8 @@
     }`"
   >
     <div class="sticky-header main-bar-wraper navbar-expand-lg">
-      <div class="main-bar clearfix">
-        <div class="container clearfix">
+      <div class="main-bar clearfix" style="background: #231f1e;">
+        <div class="container clearfix" style="max-width: 1320px;">
           <div class="logo-header mostion logo-light" style="width: 20%;">
             <RouterLink to="/"
               ><img class="header_logo2"  src="@/assets/images/TH-6.jpg" alt=""
