@@ -31,6 +31,7 @@
               <ul>
                 <li><RouterLink to="/">Home</RouterLink></li>
                 <li><RouterLink to="/about-us">Chi Siamo</RouterLink></li>
+                <li><a href="#" download="https://thinkhomestorage.blob.core.windows.net/generic/rivista-thinkhome.pdf"><h6 style="color: white;">Scarica rivista</h6></a></li>
               </ul>
             </div>
           </div>
@@ -77,9 +78,9 @@
         <div class="row align-items-center">
           <div class="col-md-6 text-center text-md-start">
             <span class="copyright-text"
-              >Copyright © {{ new Date().getFullYear() }}
-              <a href="https://dexignzone.com/" class="text-primary" target="_blank">DexignZone</a>
-              All rights reserved.</span
+              >© {{ new Date().getFullYear() }}
+              ThinkHome
+              tutti i Diritti Riservati.</span
             >
           </div>
           <!-- <div class="col-md-6 text-center text-md-end">
