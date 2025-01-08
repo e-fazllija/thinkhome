@@ -13,6 +13,7 @@
           <div class="row align-items-center about-bx3 mb-3">
             <div class="col-lg-4 mb-3">
               <select class="form-control" v-model="formData.PropertyType">
+                <option value="Qualsiasi">Qualsiasi</option>
                 <option value="Appartamento">Appartamento</option>
                 <option value="Attico">Attico</option>
                 <option value="Mansarda">Mansarda</option>
@@ -36,7 +37,8 @@
               </select>
             </div>
             <div class="col-lg-4 mb-3">
-              <select class="form-control" v-model="formData.Location">
+              <input type="text" class="form-control" placeholder="Località" v-model="formData.Location" />
+              <!-- <select class="form-control" v-model="formData.Location">
                 <option value="Qualsiasi">Località</option>
                 <option value="Qualsiasi">Qualsiasi</option>
                 <option value="L'AQUILA">ABRUZZO \ L'AQUILA (AQ)</option>
@@ -93,7 +95,7 @@
                 <option value="VALMONTONE">LAZIO \ ROMA (RM) \ VALMONTONE</option>
                 <option value="VELLETRI">LAZIO \ ROMA (RM) \ VELLETRI</option>
                 <option value="ZAGAROLO">LAZIO \ ROMA (RM) \ ZAGAROLO</option>
-              </select>
+              </select> -->
             </div>
           </div>
           <div class="row align-items-center about-bx3 mb-4">
@@ -392,8 +394,8 @@ export default defineComponent({
       loading: true,
       formData: {
         RequestType: "Vendita",
-        PropertyType: "Appartamento",
-        Location: "Qualsiasi",
+        PropertyType: "Qualsiasi",
+        Location: null,
         Code: null,
         From: 0,
         To: -1,
@@ -438,9 +440,11 @@ export default defineComponent({
     },
     async submit() {
       this.loading = true;
+      console.log(this.formData.Code)
+      
       this.$router.push({
         name: 'immobili_in_vendita', params: {
-          tipologia: this.formData.PropertyType, localita: this.formData.Location, da: this.formData.From,
+          tipologia: this.formData.PropertyType, localita: this.formData.Location ?? "Qualsiasi", da: this.formData.From,
           codice: this.formData.Code ?? 0, a: this.formData.To
         }
       })

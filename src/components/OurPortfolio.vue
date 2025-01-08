@@ -93,6 +93,7 @@ import work_pic7 from '@/assets/images/work/work-1/pic-7.jpg'
 import work_pic8 from '@/assets/images/work/work-1/pic-8.jpg'
 import work_pic9 from '@/assets/images/work/work-1/pic-9.jpg'
 import work_pic10 from '@/assets/images/work/work-1/pic-10.jpg'
+import work_pic11 from '@/assets/images/work/work-1/pic-11.jpg'
 import Lightgallery from 'lightgallery/vue'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
@@ -190,6 +191,13 @@ export default defineComponent({
         },
         {
           img: work_pic10,
+          // subtitle: 'ARCHITECTURAL',
+          // title: 'Residential Project,',
+          // text: 'Paris',
+          setStyle: 'mt-5'
+        },
+        {
+          img: work_pic11,
           // subtitle: 'ARCHITECTURAL',
           // title: 'Residential Project,',
           // text: 'Paris',

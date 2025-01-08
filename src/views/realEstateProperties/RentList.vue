@@ -11,6 +11,7 @@
           <div class="row align-items-center about-bx3 mb-3">
             <div class="col-lg-4 mb-3">
               <select class="form-control" v-model="formData.PropertyType">
+                <option value="Qualsiasi">Qualsiasi</option>
                 <option value="Appartamento">Appartamento</option>
                 <option value="Attico">Attico</option>
                 <option value="Mansarda">Mansarda</option>
@@ -34,7 +35,8 @@
               </select>
             </div>
             <div class="col-lg-4 mb-3">
-              <select class="form-control" v-model="formData.Location">
+              <input type="text" class="form-control" placeholder="Località" v-model="formData.Location" />
+              <!-- <select class="form-control" v-model="formData.Location">
                 <option value="Qualsiasi">Località</option>
                 <option value="Qualsiasi">Qualsiasi</option>
                 <option value="R4">ABRUZZO</option>
@@ -93,7 +95,7 @@
                 <option value="C9">LAZIO \ ROMA (RM) \ VALMONTONE</option>
                 <option value="C42">LAZIO \ ROMA (RM) \ VELLETRI</option>
                 <option value="C6">LAZIO \ ROMA (RM) \ ZAGAROLO</option>
-              </select>
+              </select> -->
             </div>
           </div>
           <div class="row align-items-center about-bx3 mb-4">
@@ -243,20 +245,21 @@ export default defineComponent({
       modules: [Navigation, Autoplay]
     }
   },
-  async beforeMount() {
-    await this.getItems(1, "", "");
-  },
   data() {
     return {
       loading: true,
+      typologie: this.$route.params.tipologia,
+      location: this.$route.params.localita,
+      code: this.$route.params.codice,
+      from: this.$route.params.da,
+      to: this.$route.params.a,
       page: 1,
       totalPages: 1,
       filter: "",
-      typologie: "",
       formData: {
-        RequestType: "Vendita",
-        PropertyType: "Appartamento",
-        Location: "Qualsiasi",
+        RequestType: "Affitto",
+        PropertyType: "Qualsiasi",
+        Location: null,
         Code: null,
         From: 0,
         To: -1,
@@ -274,17 +277,15 @@ export default defineComponent({
       }]
     }
   },
-  watch: {
-    async filter(val){
-      this.getItems(1, val, this.typologie);
-    },
-    async typologie(val){
-      this.getItems(1, this.filter, val);
-    }
+  async beforeMount() {
+    await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to);
   },
   methods: {
-    async getItems(_page, _filter, _typologie) {
-      const result = await axios.get(`https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/Get?currentPage=${_page}&filterRequest=${_filter}&status=Affitto&typologie=${_typologie}`);
+    async getItems(_page, _filter, _typologie, _location, _code, _from, _to) {
+      this.loading = true;
+      const result = 
+      await axios.get
+      (`https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/Get?currentPage=${_page}&filterRequest=${_filter}&status=Affitto&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}`);
       this.results = result.data.Data.$values;
       this.page = _page;
       this.totalPages = 1;
@@ -295,13 +296,7 @@ export default defineComponent({
     },
     async submit() {
       this.loading = true;
-      this.$router.push({
-        name: 'immobili_in_affitto', params: {
-          tipologia: this.formData.PropertyType, localita: this.formData.Location, da: this.formData.From,
-          codice: this.formData.Code ?? 0, a: this.formData.To
-        }
-      })
-
+      await this.getItems(1, "", this.formData.PropertyType, this.formData.Location ?? "Qualsiasi", this.formData.Code ?? 0, this.formData.From, this.formData.To)
       this.loading = false;
     }
   }
