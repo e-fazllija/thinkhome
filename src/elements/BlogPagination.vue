@@ -37,8 +37,17 @@ export default defineComponent({
   async mounted(){
     // console.log(this.currentPage!)
     // console.log(this.totalPages)
+  },
+  methods: {
+  newPageClick(newpage: number) {
+    this.$emit('changePage', newpage, this.filter, this.typologie);
+    window.scrollTo({
+      top: 920,          
+      behavior: 'smooth' 
+    });
   }
-})
+}
+  })
 </script>
 
 <style scoped></style>
