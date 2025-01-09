@@ -210,7 +210,15 @@
                 </div>
               </div>
             </div>
-            <BlogPagination :currentPage="page" :totalPages="totalPages" :filter="filter" :typologie="typologie"
+            <BlogPagination 
+            :currentPage="page" 
+            :totalPages="totalPages" 
+            :filter="filter" 
+            :typologie="typologie"
+            :location="location"
+            :code="code"
+            :from="from"
+            :to="to"
               @changePage="getItems" />
           </div>
         </div>

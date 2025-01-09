@@ -2,13 +2,13 @@
   <nav aria-label="Blog Pagination">
     <ul class="pagination text-center m-b30">
       <li class="page-item">
-        <button v-if="currentPage! > 1" class="page-link prev" @click="$emit('changePage', currentPage! - 1, filter, typologie)"><i class="la la-angle-left"></i></button>
+        <button v-if="currentPage! > 1" class="page-link prev" @click="$emit('changePage', currentPage! - 1, filter, typologie, location, code, from, to)"><i class="la la-angle-left"></i></button>
       </li>
       <li v-for="page in totalPages" :key="page" class="page-item">
-        <button class="page-link" :class="currentPage! == page ? 'active' : ''" @click="$emit('changePage', page, filter, typologie)">{{ page }}</button>
+        <button class="page-link" :class="currentPage! == page ? 'active' : ''" @click="$emit('changePage', page, filter, typologie, location, code, from, to)">{{ page }}</button>
       </li>
       <li v-if="currentPage! < totalPages!" class="page-item">
-        <button class="page-link next" @click="$emit('changePage', currentPage! + 1, filter, typologie)"><i class="la la-angle-right"></i></button>
+        <button class="page-link next" @click="$emit('changePage', currentPage! + 1, filter, typologie, location, code, from, to)"><i class="la la-angle-right"></i></button>
       </li>
     </ul>
   </nav>
@@ -24,7 +24,11 @@ export default defineComponent({
     totalPages: Number,
     currentPage: Number,
     filter: String,
-    typologie: String
+    typologie: String,
+    location: String,
+    code: String,
+    from: String,
+    to: String,
   },
   setup() {
     return {} 
@@ -33,8 +37,17 @@ export default defineComponent({
   async mounted(){ 
     // console.log(this.currentPage!)
     // console.log(this.totalPages)
+  },
+  methods: {
+  newPageClick(newpage: number) {
+    this.$emit('changePage', newpage, this.filter, this.typologie);
+    window.scrollTo({
+      top: 920,          
+      behavior: 'smooth' 
+    });
   }
-})
+}
+  })
 </script>
 
 <style scoped></style>
