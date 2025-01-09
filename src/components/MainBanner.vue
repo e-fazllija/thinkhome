@@ -16,7 +16,7 @@
         <SwiperSlide class="swiper-slide">
           <div class="silder-img overlay-black-light" style="height: 100vh;">
             <video autoplay loop muted>
-              <source :src="currentVideo" data-swiper-parallax="30%"  style="width: 100%;" type="video/mp4">
+              <source :src="currentVideo" data-swiper-parallax="30%"  style="width: 80%;" type="video/mp4">
             </video> 
             <!-- <img src="@/assets/images/home-first.jpg" data-swiper-parallax="30%" alt="" style="filter: brightness(80%);"/> -->
           </div>
