@@ -24,11 +24,7 @@ export default defineComponent({
     totalPages: Number,
     currentPage: Number,
     filter: String,
-    typologie: String,
-    location: String,
-    code: String,
-    from: String,
-    to: String,
+    typologie: String
   },
   setup() {
     return {} 
