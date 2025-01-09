@@ -1,14 +1,36 @@
 <template>
   <nav aria-label="Blog Pagination">
     <ul class="pagination text-center m-b30">
+      <!-- Pulsante pagina precedente -->
       <li class="page-item">
-        <button v-if="currentPage! > 1" class="page-link prev" @click="newPageClick(currentPage! - 1)"><i class="la la-angle-left"></i></button>
+        <button 
+          v-if="currentPage! > 1" 
+          class="page-link prev" 
+          @click="newPageClick(currentPage! - 1)">
+          <i class="la la-angle-left"></i>
+        </button>
       </li>
-      <li v-for="page in totalPages" :key="page" class="page-item">
-        <button class="page-link" :class="currentPage! == page ? 'active' : ''" @click="newPageClick(page)">{{ page }}</button>
+
+      <!-- Range delle pagine -->
+      <li 
+        v-for="page in visiblePages" 
+        :key="page" 
+        class="page-item">
+        <button 
+          class="page-link" 
+          :class="currentPage! == page ? 'active' : ''" 
+          @click="newPageClick(page)">
+          {{ page }}
+        </button>
       </li>
+
+      <!-- Pulsante pagina successiva -->
       <li v-if="currentPage! < totalPages!" class="page-item">
-        <button class="page-link next" @click="newPageClick(currentPage! + 1)"><i class="la la-angle-right"></i></button>
+        <button 
+          class="page-link next" 
+          @click="newPageClick(currentPage! + 1)">
+          <i class="la la-angle-right"></i>
+        </button>
       </li>
     </ul>
   </nav>
@@ -24,26 +46,37 @@ export default defineComponent({
     totalPages: Number,
     currentPage: Number,
     filter: String,
-    typologie: String
+    typologie: String,
+    location: String,
+    code: String,
+    from: String,
+    to: String,
   },
   setup() {
     return {} 
   },
   components: { RouterLink },
-  async mounted(){ 
-    // console.log(this.currentPage!)
-    // console.log(this.totalPages)
+  computed: {
+    visiblePages(): number[] {
+      const start = Math.max(1, this.currentPage! - 2); // Inizio del range
+      const end = Math.min(this.totalPages!, this.currentPage! + 2); // Fine del range
+      const pages: number[] = [];
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+      return pages;
+    }
   },
   methods: {
-  newPageClick(newpage: number) {
-    this.$emit('changePage', newpage, this.filter, this.typologie, this.location, this.code, this.from, this.to);
-    window.scrollTo({
-      top: 920,          
-      behavior: 'smooth' 
-    });
+    newPageClick(newpage: number) {
+      this.$emit('changePage', newpage, this.filter, this.typologie, this.location, this.code, this.from, this.to);
+      window.scrollTo({
+        top: 500,          
+        behavior: 'smooth' 
+      });
+    }
   }
-}
-  })
+})
 </script>
 
 <style scoped></style>
