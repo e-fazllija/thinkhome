@@ -231,7 +231,6 @@
 import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import bnr3 from '@/assets/images/banner/bnr3.jpg'
-import BlogLeftContent from '@/components/BlogLeftContent.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Autoplay } from 'swiper/modules'
 import BlogPagination from '@/elements/BlogPagination.vue'
@@ -239,7 +238,7 @@ import axios from 'axios'
 
 export default defineComponent({
   name: 'sale-list',
-  components: { CommonBanner, BlogLeftContent, Swiper, SwiperSlide, BlogPagination },
+  components: { CommonBanner, Swiper, SwiperSlide, BlogPagination },
   setup() {
     return {
       bnr3,

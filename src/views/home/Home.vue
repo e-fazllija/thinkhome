@@ -233,7 +233,7 @@
     <section class="content-inner-2 service-area">
       <div class="container">
         <div class="section-head style-2 text-center">
-          <h6 class="sub-title text-primary"><img v-lazy="'@/assets/images/banner/bnr12Home.jpg'" /></h6>
+          <h6 class="sub-title text-primary"><img src="@/assets/images/banner/bnr12Home.jpg" /></h6>
           <h2 class="title">
             Servizi e consulenze
           </h2>
@@ -248,15 +248,12 @@
 <script lang="ts">
 import Home3About from '@/components/Home3About.vue'
 import Home3Services from '@/components/Home3Services.vue'
-import Testimonial2 from '@/components/Testimonial2.vue'
 import MainBanner from '@/components/MainBanner.vue'
 import MainBanner3 from '@/components/MainBanner3.vue'
 import Home3Accordian from '@/components/Home3Accordian.vue'
 import { defineComponent, watchEffect } from 'vue'
 import Modalvideo2 from '@/elements/Modalvideo2.vue'
 import ClientLogo from '@/elements/ClientLogo.vue'
-import Home3OurTeam from '@/components/Home3OurTeam.vue'
-import Home3Testimonial from '@/components/Home3Testimonial.vue'
 import Home3Blog from '@/components/Home3Blog.vue'
 import logoWhite from '@/assets/images/TH-6.jpg'
 import logo from '@/assets/images/TH-4.jpg'
@@ -289,11 +286,8 @@ export default defineComponent({
     Home3Accordian,
     Modalvideo2,
     ClientLogo,
-    Home3OurTeam,
-    Home3Testimonial,
     Home3Blog,
     RouterLink,
-    Testimonial2
   },
   async mounted() {
     await this.getItems();

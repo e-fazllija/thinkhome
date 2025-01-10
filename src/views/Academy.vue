@@ -33,9 +33,7 @@ import bnr3 from '@/assets/images/banner/bnr45.jpg'
 import HomeAbout from '@/components/HomeAcademy.vue'
 import OurPortfolio from '@/components/OurPortfolio.vue'
 import bg1 from '@/assets/images/background/bg1.png'
-import Testimonial from '@/components/Testimonial.vue'
 import backgrouBg2 from '@/assets/images/background/bg2.png'
-import Testimonial2 from '@/components/Testimonial2.vue'
 import HomeFaq from '@/components/HomeFaq.vue'
 
 export default defineComponent({
@@ -53,7 +51,7 @@ export default defineComponent({
       ]
     }
   },
-  components: { CommonBanner, HomeAbout, OurPortfolio, Testimonial, Testimonial2, HomeFaq }
+  components: { CommonBanner, HomeAbout, OurPortfolio, HomeFaq }
 })
 </script>
 

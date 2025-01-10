@@ -250,7 +250,6 @@
 import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
-import bnr7 from '@/assets/images/banner/bnr7.jpg'
 import bannerImg from '@/assets/images/banner/1920x700.jpg'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import bg2 from '@/assets/images/background/bg2.png'
@@ -266,7 +265,6 @@ export default defineComponent({
   components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner },
   setup() {
     return {
-      bnr7,
       bg2,
       bannerImg,
       module: [Autoplay],

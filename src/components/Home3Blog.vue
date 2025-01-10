@@ -14,7 +14,7 @@
           }">
           
             <SwiperSlide v-for="(photo, ind) in item.Photos.$values" :key="ind" class="swiper-slide">
-              <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img v-lazy="photo.Url" loading="lazy" alt="" style=" border-radius: 5px; padding: 0px; width: 500px; height: 400px; object-fit: cover;"/></RouterLink>
+              <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img v-lazy="photo.Url" alt="" style=" border-radius: 5px; padding: 0px; width: 500px; height: 400px; object-fit: cover;"/></RouterLink>
             </SwiperSlide>
             <!-- <SwiperSlide class="swiper-slide">
               <RouterLink to="/blog-details"><img src="@/assets/images/blog/large/pic1.jpg" alt="" /></RouterLink>
@@ -156,12 +156,6 @@
 <script lang="js">
 import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import blog_pic4 from '@/assets/images/blog/blog-grid/pic4.jpg'
-import blog_pic5 from '@/assets/images/blog/blog-grid/pic5.jpg'
-import blog_pic6 from '@/assets/images/blog/blog-grid/pic6.jpg'
-import latest_blog_pic1 from '@/assets/images/blog/latest-blog/pic1.png'
-import latest_blog_pic2 from '@/assets/images/blog/latest-blog/pic2.png'
-import axios from 'axios'
 import { Navigation, Autoplay } from 'swiper/modules'
 
 export default defineComponent({
@@ -180,12 +174,6 @@ export default defineComponent({
   },
   setup() {
     return {
-      ourBlog: [
-        { img: blog_pic4, img2: latest_blog_pic1, title: 'Indirizzo', price: '100', type: 'Immobile' },
-        { img: blog_pic5, img2: latest_blog_pic2, title: 'Indirizzo', price: '100', type: 'Immobile' },
-        { img: blog_pic6, img2: latest_blog_pic1, title: 'Indirizzo', price: '100', type: 'Immobile' },
-        { img: blog_pic5, img2: latest_blog_pic2, title: 'Indirizzo', price: '100', type: 'Immobile' }
-      ],
       modules: [Navigation, Autoplay]
     }
   },

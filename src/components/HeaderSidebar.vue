@@ -57,12 +57,6 @@ import { defineComponent, type PropType } from 'vue'
 import Lightgallery from 'lightgallery/vue'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
-import service_pic1 from '@/assets/images/services/pic1.jpg'
-import service_pic2 from '@/assets/images/services/pic2.jpg'
-import service_pic3 from '@/assets/images/services/pic3.jpg'
-import service_pic4 from '@/assets/images/services/pic4.jpg'
-import service_pic5 from '@/assets/images/services/pic5.jpg'
-import service_pic6 from '@/assets/images/services/pic6.jpg'
 
 export default defineComponent({
   props: {

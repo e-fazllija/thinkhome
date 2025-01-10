@@ -65,26 +65,6 @@
     <section class="dz-content-bx style-3">
       <CounterVideo />
     </section>
-    <!-- <section
-      class="content-inner-2"
-      :style="` background-image: url(${bg2});
-        background-position: right bottom;
-        background-size: 100%;
-        background-repeat: no-repeat;`"
-    >
-      <Testimonial />
-    </section> -->
-    <!-- <section
-      class="content-inner-2"
-      :style="`background-image: url(${bg1});
-            background-position: left top;
-            background-size: 100%;
-            background-repeat: no-repeat;`"
-    >
-      <div class="container-fluid">
-        <Testimonial2 />
-      </div>
-    </section> -->
     <HomeFaq />
     <section class="section-full dz-content-bx style-2 text-white">
       <div
@@ -100,11 +80,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
-import CounterVideo from '@/components/CounterVideo.vue'
-import Testimonial from '@/components/Testimonial.vue'
-import Testimonial2 from '@/components/Testimonial2.vue'
 import HomeFaq from '@/components/HomeFaq.vue'
-import OurStrategy from '@/components/OurStrategy.vue'
 import bnr6 from '@/assets/images/banner/bnr10.jpg'
 import bg2 from '@/assets/images/background/bg2.png'
 import bg1 from '@/assets/images/background/bg1.png'
@@ -115,11 +91,7 @@ export default defineComponent({
   name: 'services_',
   components: {
     CommonBanner,
-    CounterVideo,
-    Testimonial,
-    Testimonial2,
     HomeFaq,
-    OurStrategy,
     RouterLink
   },
   setup() {

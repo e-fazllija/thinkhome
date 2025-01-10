@@ -75,19 +75,12 @@
         </div>
       </div>
     </section>
-    <!-- <section class="content-inner-2">
-      <div class="container-fluid">
-        <Testimonial2 />
-      </div>
-    </section>
-    <Brands /> -->
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
-import Testimonial2 from '@/components/Testimonial2.vue'
 import bnr5 from '@/assets/images/banner/bnr5.jpg'
 import bg2 from '@/assets/images/background/bg2.png'
 import { RouterLink } from 'vue-router'
@@ -95,7 +88,7 @@ import MainBanner3 from '@/components/MainBanner3.vue'
 
 export default defineComponent({
   name: 'services_detail',
-  components: { CommonBanner, Testimonial2, RouterLink, MainBanner3 },
+  components: { CommonBanner, RouterLink, MainBanner3 },
   setup() {
     return { bnr5, bg2 }
   },
