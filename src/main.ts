@@ -14,12 +14,19 @@ import App from './App.vue'
 import router from './router'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import VueLazyload from 'vue-lazyload';
 
 const options = {
     confirmButtonColor: '#c6a47e',
     cancelButtonColor: '#ff7674',
   };
 const app = createApp(App)
+app.use(VueLazyload, {
+  preLoad: 1.3,
+  error: 'error.png',
+  loading: 'loading.gif',
+  attempt: 1
+});
 app.use(VueSweetalert2, options);
 app.use(router)
 app.mount('#app')

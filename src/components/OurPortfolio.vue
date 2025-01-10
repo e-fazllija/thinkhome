@@ -23,7 +23,7 @@
         >
           <div :class="`dz-box overlay style-1 ${setStyle}`">
             <div class="dz-media">
-              <img :src="img" alt="" style="min-height: 300px;" />
+              <img v-lazy="img" loading="lazy" alt="" style="min-height: 300px;" />
             </div>
             <div class="dz-info">
               <span :data-src="img" class="view-btn lightimg" >

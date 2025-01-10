@@ -177,7 +177,7 @@
         <div v-if="!loading" class="row align-items-center about-bx4 mb-5">
           <div class="col-lg-6 m-b30">
             <div class="dz-media">
-              <img :src="results.RealEstatePropertiesHighlighted.Photos.$values[0].Url" alt=""
+              <img v-lazy="results.RealEstatePropertiesHighlighted.Photos.$values[0].Url" alt=""
                 style=" border-radius: 5px;" class="img1 aos-item aos-init aos-animate" />
               <!-- <img
                 src="@/assets/images/about/pic7.jpg"
@@ -233,7 +233,7 @@
     <section class="content-inner-2 service-area">
       <div class="container">
         <div class="section-head style-2 text-center">
-          <h6 class="sub-title text-primary"><img src="@/assets/images/banner/bnr12Home.jpg" /></h6>
+          <h6 class="sub-title text-primary"><img v-lazy="'@/assets/images/banner/bnr12Home.jpg'" /></h6>
           <h2 class="title">
             Servizi e consulenze
           </h2>
@@ -241,98 +241,7 @@
         <Home3Services />
       </div>
     </section>
-    <!-- <section class="content-inner-3">
-      <div class="container">
-        <div class="row align-items-center about-bx4">
-          <div class="col-lg-6 m-b30">
-            <div class="dz-media">
-              <img
-                src="@/assets/images/about/pic12.jpg"
-                alt=""
-                class="img1 aos-item aos-init aos-animate"
-              />
-              <img
-                src="@/assets/images/about/Pic11.jpg"
-                alt=""
-                class="img2 aos-item aos-init aos-animate"
-              />
-            </div>
-          </div>
-          <div class="col-lg-6 m-b30 aos-item aos-init aos-animate">
-            <div class="section-head style-2">
-              <h6 class="sub-title text-primary">About Us</h6>
-              <h2 class="title m-b20">Progettazione e ristrutturazioni</h2>
-              <p>
-                Affidati ai nostri professionisti per la progettazione e ristrutturazione di case, ville, uffici, negozi, ma anche impianti, edifici industriali, alberghi, strutture sanitarie e supermercati. Da oltre 40 anni operiamo in vari settori grazie un team completo: architetti, ingegneri, geometri ed altri esperti in materia di edilizia.
-              </p>
-            </div>
-            <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
-              <span>READ MORE</span>
-              <i class="fas fa-arrow-right"></i>
-            </RouterLink>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- <section class="content-inner-2">
-      <div class="container">
-        <div class="section-head style-2 text-center">
-          <h6 class="sub-title text-primary">About Services</h6>
-          <h2 class="title">Coworking Space</h2>
-        </div>
-        <Home3About />
-      </div>
-    </section> -->
     <Home3Accordian />
-    <!-- <Modalvideo2 /> -->
-
-    <!-- <section class="content-inner-1 overflow-hidden">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-4 col-lg-4 align-self-center px-3 mb-lg-0 mb-4">
-            <div class="section-head style-2">
-              <h6 class="sub-title text-primary">Team</h6>
-              <h2 class="title">Meet Our Team</h2>
-              <p>
-                There are many variations of passages of Lorem Ipsum available, but the majority
-                don't look even slightly believable.
-              </p>
-            </div>
-            <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
-              <span>View All Members</span>
-              <i class="fas fa-arrow-right"></i>
-            </RouterLink>
-          </div>
-          <Home3OurTeam />
-        </div>
-      </div>
-    </section> -->
-    <!-- <section class="content-inner-1 bg-gray over">
-      <div class="container">
-        <div class="section-head style-2 text-center">
-          <h6 class="sub-title text-primary">Testimonial</h6>
-          <h2 class="title">What The People Thinks About Us</h2>
-        </div>
-        <Home3Testimonial />
-      </div>
-    </section> -->
-    <!-- <section class="content-inner bg-white line-img">
-      <div class="container">
-        <div class="row align-items-center section-head style-2">
-          <div class="col-lg-8 aos-item aos-init aos-animate">
-            <h5 class="text-primary sub-title">Blog Details</h5>
-            <h2 class="title">Read Our Latest Blog & News</h2>
-          </div>
-          <div class="col-lg-4 aos-item aos-init aos-animate text-end d-none d-lg-block">
-            <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
-              <span>View All Post</span>
-              <i class="fas fa-arrow-right"></i>
-            </RouterLink>
-          </div>
-        </div>
-        <Home3Blog />
-      </div>
-    </section> -->
   </div>
 </template>
 
