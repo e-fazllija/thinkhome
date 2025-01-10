@@ -23,7 +23,7 @@
         >
           <div :class="`dz-box overlay style-1 ${setStyle}`">
             <div class="dz-media">
-              <img :src="img" alt="" />
+              <img :src="img" alt="" style="min-height: 300px;" />
             </div>
             <div class="dz-info">
               <span :data-src="img" class="view-btn lightimg" >
@@ -94,6 +94,16 @@ import work_pic8 from '@/assets/images/work/work-1/pic-8.jpg'
 import work_pic9 from '@/assets/images/work/work-1/pic-9.jpg'
 import work_pic10 from '@/assets/images/work/work-1/pic-10.jpg'
 import work_pic11 from '@/assets/images/work/work-1/pic-11.jpg'
+import work_pic12 from '@/assets/images/work/work-1/pic-12.jpg'
+import work_pic13 from '@/assets/images/work/work-1/pic-13.jpg'
+import work_pic14 from '@/assets/images/work/work-1/pic-14.jpg'
+import work_pic15 from '@/assets/images/work/work-1/pic-15.jpg'
+import work_pic16 from '@/assets/images/work/work-1/pic-16.jpg'
+import work_pic17 from '@/assets/images/work/work-1/pic-17.jpg'
+import work_pic18 from '@/assets/images/work/work-1/pic-18.jpg'
+import work_pic19 from '@/assets/images/work/work-1/pic-19.jpg'
+import work_pic20 from '@/assets/images/work/work-1/pic-20.jpg'
+import work_pic21 from '@/assets/images/work/work-1/pic-21.jpg'
 import Lightgallery from 'lightgallery/vue'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
@@ -198,6 +208,86 @@ export default defineComponent({
         },
         {
           img: work_pic11,
+          // subtitle: 'ARCHITECTURAL',
+          // title: 'Residential Project,',
+          // text: 'Paris',
+          setStyle: 'mt-5'
+        }
+        ,
+        {
+          img: work_pic12,
+          // subtitle: 'ARCHITECTURAL',
+          // title: 'Residential Project,',
+          // text: 'Paris',
+          setStyle: 'mt-5'
+        }
+        ,
+        {
+          img: work_pic13,
+          // subtitle: 'ARCHITECTURAL',
+          // title: 'Residential Project,',
+          // text: 'Paris',
+          setStyle: 'mt-5'
+        }
+        ,
+        {
+          img: work_pic14,
+          // subtitle: 'ARCHITECTURAL',
+          // title: 'Residential Project,',
+          // text: 'Paris',
+          setStyle: 'mt-5'
+        }
+        ,
+        {
+          img: work_pic15,
+          // subtitle: 'ARCHITECTURAL',
+          // title: 'Residential Project,',
+          // text: 'Paris',
+          setStyle: 'mt-5'
+        }
+        ,
+        {
+          img: work_pic16,
+          // subtitle: 'ARCHITECTURAL',
+          // title: 'Residential Project,',
+          // text: 'Paris',
+          setStyle: 'mt-5'
+        }
+        ,
+        {
+          img: work_pic17,
+          // subtitle: 'ARCHITECTURAL',
+          // title: 'Residential Project,',
+          // text: 'Paris',
+          setStyle: 'mt-5'
+        }
+        ,
+        {
+          img: work_pic18,
+          // subtitle: 'ARCHITECTURAL',
+          // title: 'Residential Project,',
+          // text: 'Paris',
+          setStyle: 'mt-5'
+        }
+        ,
+        {
+          img: work_pic19,
+          // subtitle: 'ARCHITECTURAL',
+          // title: 'Residential Project,',
+          // text: 'Paris',
+          setStyle: 'mt-5'
+        }
+        ,
+        {
+          img: work_pic20,
+          // subtitle: 'ARCHITECTURAL',
+          // title: 'Residential Project,',
+          // text: 'Paris',
+          setStyle: 'mt-5'
+        }
+        ,
+        {
+          img: work_pic21,
           // subtitle: 'ARCHITECTURAL',
           // title: 'Residential Project,',
           // text: 'Paris',

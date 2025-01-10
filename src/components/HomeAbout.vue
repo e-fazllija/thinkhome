@@ -43,7 +43,7 @@
     </li>
     <li style="margin-top: 10px;">
         <h6 style="display: inline; margin-right: 10px;">Coordinamento Pratiche Urbanistiche:</h6>
-        <span>Cristina del prete</span>
+        <span>Cristina Del Prete</span>
     </li>
     <li style="display: flex; align-items: flex-start; margin-top: 10px;">
         <h6 style="margin-right: 10px;">Consulenti:</h6>

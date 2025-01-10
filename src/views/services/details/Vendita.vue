@@ -17,17 +17,17 @@
                 <h2 class="title m-b20">Affidaci la vendita del tuo Immobile.</h2>
   <p>Il nostro team di esperti ti accompagnerà in ogni fase della vendita, garantendoti un servizio completo e personalizzato. Ecco cosa offriamo:</p>
   <ul>
-    <li><p><strong>• Valutazione accurata:</strong> Determineremo insieme il valore di mercato del tuo immobile...</p></li>
-    <li><p><strong>• Marketing strategico:</strong> Creeremo un piano di marketing su misura...</p></li>
-    <li><p><strong>• Gestione delle visite:</strong> Organizzeremo visite guidate...</p></li>
-    <li><p><strong>• Trattative e negoziazione:</strong> Ti assisteremo durante tutte le fasi delle trattative...</p></li>
-    <li><p><strong>• Supporto legale e burocratico:</strong> Ti forniremo assistenza legale...</p></li>
+    <li><p><strong>• Valutazione accurata:</strong> Determineremo insieme il valore di mercato del tuo immobile.</p></li>
+    <li><p><strong>• Marketing strategico:</strong> Creeremo un piano di marketing su misura.</p></li>
+    <li><p><strong>• Gestione delle visite:</strong> Organizzeremo visite guidate.</p></li>
+    <li><p><strong>• Trattative e negoziazione:</strong> Ti assisteremo durante tutte le fasi delle trattative.</p></li>
+    <li><p><strong>• Supporto legale e burocratico:</strong> Ti forniremo assistenza legale.</p></li>
   </ul>
   <h4 class="my-4">Scegliendo il nostro servizio di vendita, potrai beneficiare di:</h4>
   <ul>
-    <li><p><strong>• Esperienza e professionalità:</strong> Il nostro team è composto da agenti immobiliari esperti...</p></li>
-    <li><p><strong>• Massima trasparenza:</strong> Ti terremo costantemente aggiornato...</p></li>
-    <li><p><strong>• Vendita rapida e sicura:</strong> Grazie alla nostra vasta rete di contatti...</p></li>
+    <li><p><strong>• Esperienza e professionalità:</strong> Il nostro team è composto da agenti immobiliari esperti.</p></li>
+    <li><p><strong>• Massima trasparenza:</strong> Ti terremo costantemente aggiornato.</p></li>
+    <li><p><strong>• Vendita rapida e sicura:</strong> Grazie alla nostra vasta rete di contatti.</p></li>
   </ul>
               </div>
               <!-- <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
