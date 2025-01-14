@@ -1,7 +1,21 @@
 <template>
   <div class="page-content bg-white">
 
-    <CommonBanner :img="bannerImg" title="Dettaglio Immobile" text="Dettaglio Immobile" />
+    <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
+      <div class="container-fluid">
+        <div class="dz-bnr-inr-entry">
+          <h1>Dettaglio Immobile</h1>
+          <!-- Breadcrumb Row -->
+          <nav aria-label="breadcrumb" class="breadcrumb-row">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
+              <li class="breadcrumb-item">Dettaglio Immobile</li>
+            </ul>
+          </nav>
+          <!-- Breadcrumb Row End -->
+        </div>
+      </div>
+    </div>    
     <div v-if="loading" class="container">
       <div class="d-flex justify-content-center">
         <div class="spinner-border" role="status">
@@ -27,7 +41,7 @@
       <div class="container">
         <div class="section-head style-1">
           <h1> {{ item.Title }}</h1>
-          <h1>€ {{ item.Price }} </h1>
+          <h1 class="sub-title text-primary"> € {{ item.Price.toString() .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00" }}</h1>
           <p>Cod. 00{{ item.Id }}</p>
         </div>
       </div>
@@ -133,7 +147,7 @@
           </div>
           <div class="col-12">
             <h1 class="sub-title text-primary"> € {{ item.Price.toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
+               .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00"}}</h1>
           </div>
           <div class="col-12">
             <h3><i class="fa fa-map-pin"></i> {{ item.Town }}, {{

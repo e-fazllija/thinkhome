@@ -12,8 +12,8 @@
           </div>
           <div class="row align-items-center about-bx3 mb-3">
             <div class="col-lg-4 mb-3">
-              <select class="form-control" v-model="formData.PropertyType">
-                <option value="Qualsiasi">Qualsiasi</option>
+              <select  class="form-control" v-model="formData.PropertyType">
+                <option value="Qualsiasi">Tipologia</option>
                 <option value="Appartamento">Appartamento</option>
                 <option value="Attico">Attico</option>
                 <option value="Mansarda">Mansarda</option>
@@ -37,10 +37,8 @@
               </select>
             </div>
             <div class="col-lg-4 mb-3">
-              <input type="text" class="form-control" placeholder="Località" v-model="formData.Location" />
-              <!-- <select class="form-control" v-model="formData.Location">
-                <option value="Qualsiasi">Località</option>
-                <option value="Qualsiasi">Qualsiasi</option>
+              <input placeholder="Località" class="form-control" list="datalistOptions"  v-model="formData.Location">
+              <datalist id="datalistOptions">
                 <option value="L'AQUILA">ABRUZZO \ L'AQUILA (AQ)</option>
                 <option value="FROSINONE">LAZIO \ FROSINONE (FR)</option>
                 <option value="LATINA">LAZIO \ LATINA (LT)</option>
@@ -95,7 +93,7 @@
                 <option value="VALMONTONE">LAZIO \ ROMA (RM) \ VALMONTONE</option>
                 <option value="VELLETRI">LAZIO \ ROMA (RM) \ VELLETRI</option>
                 <option value="ZAGAROLO">LAZIO \ ROMA (RM) \ ZAGAROLO</option>
-              </select> -->
+              </datalist>
             </div>
           </div>
           <div class="row align-items-center about-bx3 mb-4">
@@ -190,9 +188,9 @@
             <div class="section-head style-2">
               <p>Cod. 00{{ results.RealEstatePropertiesHighlighted.Id }}</p>
               <h1 class="sub-title text-primary"> € {{ results.RealEstatePropertiesHighlighted.Price.toString()
-               .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
-              <h3><i class="fa fa-map-pin"></i> {{ results.RealEstatePropertiesHighlighted.Town }}, {{
-                results.RealEstatePropertiesHighlighted.AddressLine }}</h3>
+               .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00"}}</h1>
+              <h3> {{ results.RealEstatePropertiesHighlighted.Town }}</h3>
+              <h3><i class="fa fa-map-pin"></i> {{ results.RealEstatePropertiesHighlighted.AddressLine }}</h3>
               <h6> {{ results.RealEstatePropertiesHighlighted.TypeOfProperty }}</h6>
               <h6><img src="@/assets/images/energy.png" /> {{ results.RealEstatePropertiesHighlighted.EnergyClass }}
               </h6>

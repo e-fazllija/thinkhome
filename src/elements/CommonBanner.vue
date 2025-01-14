@@ -6,8 +6,7 @@
         <li><i class="fas fa-envelope"></i> Visvainfo@gmail.com</li>
       </ul>
     </div> -->
-    <div class="dz-bnr-inr style-1 overlay-left" :style="`background-image: url(${img})`"
-     >
+    <div class="dz-bnr-inr style-1 overlay-left" :style="`background-image: url(${img})`">
       <div class="container-fluid">
         <div class="dz-bnr-inr-entry">
           <h1>{{ title }}</h1>

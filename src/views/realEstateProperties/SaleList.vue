@@ -11,7 +11,7 @@
           <div class="row align-items-center about-bx3 mb-3">
             <div class="col-lg-4 mb-3">
               <select class="form-control" v-model="formData.PropertyType">
-                <option value="Qualsiasi">Qualsiasi</option>
+                <option value="Qualsiasi">Tipologia</option>
                 <option value="Appartamento">Appartamento</option>
                 <option value="Attico">Attico</option>
                 <option value="Mansarda">Mansarda</option>
@@ -35,67 +35,63 @@
               </select>
             </div>
             <div class="col-lg-4 mb-3">
-              <input type="text" class="form-control" placeholder="Località" v-model="formData.Location" />
-              <!-- <select class="form-control" v-model="formData.Location">
-                <option value="Qualsiasi">Località</option>
-                <option value="Qualsiasi">Qualsiasi</option>
-                <option value="R4">ABRUZZO</option>
-                <option value="R1">LAZIO</option>
-                <option value="P7">ABRUZZO \ L'AQUILA (AQ)</option>
-                <option value="P2">LAZIO \ FROSINONE (FR)</option>
-                <option value="P4">LAZIO \ LATINA (LT)</option>
-                <option value="P1">LAZIO \ ROMA (RM)</option>
-                <option value="C56">ABRUZZO \ L'AQUILA (AQ) \ TAGLIACOZZO</option>
-                <option value="C24">LAZIO \ FROSINONE (FR) \ FIUGGI</option>
-                <option value="C107">LAZIO \ FROSINONE (FR) \ FROSINONE</option>
-                <option value="C27">LAZIO \ FROSINONE (FR) \ PALIANO</option>
-                <option value="C74">LAZIO \ FROSINONE (FR) \ SERRONE</option>
-                <option value="C32">LAZIO \ LATINA (LT) \ APRILIA</option>
-                <option value="C68">LAZIO \ LATINA (LT) \ CORI</option>
-                <option value="C69">LAZIO \ LATINA (LT) \ ROCCA MASSIMA</option>
-                <option value="C63">LAZIO \ LATINA (LT) \ SABAUDIA</option>
-                <option value="C54">LAZIO \ LATINA (LT) \ SAN FELICE CIRCEO</option>
-                <option value="C33">LAZIO \ ROMA (RM) \ ALBANO LAZIALE</option>
-                <option value="C22">LAZIO \ ROMA (RM) \ ANZIO</option>
-                <option value="C62">LAZIO \ ROMA (RM) \ ARDEA</option>
-                <option value="C25">LAZIO \ ROMA (RM) \ ARTENA</option>
-                <option value="C122">LAZIO \ ROMA (RM) \ BELLEGRA</option>
-                <option value="C72">LAZIO \ ROMA (RM) \ CASAPE</option>
-                <option value="C117">LAZIO \ ROMA (RM) \ CASTEL SAN PIETRO ROMANO</option>
-                <option value="C12">LAZIO \ ROMA (RM) \ CAVE</option>
-                <option value="C29">LAZIO \ ROMA (RM) \ COLLEFERRO</option>
-                <option value="C8">LAZIO \ ROMA (RM) \ COLONNA</option>
-                <option value="C125">LAZIO \ ROMA (RM) \ FIANO ROMANO</option>
-                <option value="C34">LAZIO \ ROMA (RM) \ FIUMICINO</option>
-                <option value="C15">LAZIO \ ROMA (RM) \ FRASCATI</option>
-                <option value="C10">LAZIO \ ROMA (RM) \ GALLICANO NEL LAZIO</option>
-                <option value="C120">LAZIO \ ROMA (RM) \ GAVIGNANO</option>
-                <option value="C36">LAZIO \ ROMA (RM) \ GENAZZANO</option>
-                <option value="C21">LAZIO \ ROMA (RM) \ GROTTAFERRATA</option>
-                <option value="C2">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO</option>
-                <option value="C7">LAZIO \ ROMA (RM) \ LABICO</option>
-                <option value="C90">LAZIO \ ROMA (RM) \ LANUVIO</option>
-                <option value="C37">LAZIO \ ROMA (RM) \ LARIANO</option>
-                <option value="C30">LAZIO \ ROMA (RM) \ MARINO</option>
-                <option value="C13">LAZIO \ ROMA (RM) \ MONTECOMPATRI</option>
-                <option value="C51">LAZIO \ ROMA (RM) \ MONTELANICO</option>
-                <option value="C48">LAZIO \ ROMA (RM) \ NETTUNO</option>
-                <option value="C81">LAZIO \ ROMA (RM) \ OLEVANO ROMANO</option>
-                <option value="C11">LAZIO \ ROMA (RM) \ PALESTRINA</option>
-                <option value="C23">LAZIO \ ROMA (RM) \ POLI</option>
-                <option value="C85">LAZIO \ ROMA (RM) \ POMEZIA</option>
-                <option value="C46">LAZIO \ ROMA (RM) \ RIANO</option>
-                <option value="C80">LAZIO \ ROMA (RM) \ ROCCA DI CAVE</option>
-                <option value="C14">LAZIO \ ROMA (RM) \ ROCCA PRIORA</option>
-                <option value="C1">LAZIO \ ROMA (RM) \ ROMA</option>
-                <option value="C5">LAZIO \ ROMA (RM) \ SAN CESAREO</option>
-                <option value="C28">LAZIO \ ROMA (RM) \ SAN VITO ROMANO</option>
-                <option value="C95">LAZIO \ ROMA (RM) \ SUBIACO</option>
-                <option value="C17">LAZIO \ ROMA (RM) \ TIVOLI</option>
-                <option value="C9">LAZIO \ ROMA (RM) \ VALMONTONE</option>
-                <option value="C42">LAZIO \ ROMA (RM) \ VELLETRI</option>
-                <option value="C6">LAZIO \ ROMA (RM) \ ZAGAROLO</option>
-              </select> -->
+              <input placeholder="Località" class="form-control" list="datalistOptions"  v-model="formData.Location">
+              <datalist id="datalistOptions">
+                <option value="L'AQUILA">ABRUZZO \ L'AQUILA (AQ)</option>
+                <option value="FROSINONE">LAZIO \ FROSINONE (FR)</option>
+                <option value="LATINA">LAZIO \ LATINA (LT)</option>
+                <option value="ROMA">LAZIO \ ROMA (RM)</option>
+                <option value="TAGLIACOZZO">ABRUZZO \ L'AQUILA (AQ) \ TAGLIACOZZO</option>
+                <option value="FIUGGI">LAZIO \ FROSINONE (FR) \ FIUGGI</option>
+                <option value="FROSINONE">LAZIO \ FROSINONE (FR) \ FROSINONE</option>
+                <option value="PALIANO">LAZIO \ FROSINONE (FR) \ PALIANO</option>
+                <option value="SERRONE">LAZIO \ FROSINONE (FR) \ SERRONE</option>
+                <option value="APRILIA">LAZIO \ LATINA (LT) \ APRILIA</option>
+                <option value="CORI">LAZIO \ LATINA (LT) \ CORI</option>
+                <option value="ROCCA MASSIMA">LAZIO \ LATINA (LT) \ ROCCA MASSIMA</option>
+                <option value="SABAUDIA">LAZIO \ LATINA (LT) \ SABAUDIA</option>
+                <option value="SAN FELICE CIRCEO">LAZIO \ LATINA (LT) \ SAN FELICE CIRCEO</option>
+                <option value="ALBANO LAZIALE">LAZIO \ ROMA (RM) \ ALBANO LAZIALE</option>
+                <option value="ANZIO">LAZIO \ ROMA (RM) \ ANZIO</option>
+                <option value="ARDEA">LAZIO \ ROMA (RM) \ ARDEA</option>
+                <option value="ARTENA">LAZIO \ ROMA (RM) \ ARTENA</option>
+                <option value="BELLEGRA">LAZIO \ ROMA (RM) \ BELLEGRA</option>
+                <option value="CASAPE">LAZIO \ ROMA (RM) \ CASAPE</option>
+                <option value="CASTEL SAN PIETRO ROMANO">LAZIO \ ROMA (RM) \ CASTEL SAN PIETRO ROMANO</option>
+                <option value="CAVE">LAZIO \ ROMA (RM) \ CAVE</option>
+                <option value="COLLEFERRO">LAZIO \ ROMA (RM) \ COLLEFERRO</option>
+                <option value="COLONNA">LAZIO \ ROMA (RM) \ COLONNA</option>
+                <option value="FIANO ROMANO">LAZIO \ ROMA (RM) \ FIANO ROMANO</option>
+                <option value="FIUMICINO">LAZIO \ ROMA (RM) \ FIUMICINO</option>
+                <option value="FRASCATI">LAZIO \ ROMA (RM) \ FRASCATI</option>
+                <option value="GALLICANO NEL LAZI">LAZIO \ ROMA (RM) \ GALLICANO NEL LAZIO</option>
+                <option value="GAVIGNANO">LAZIO \ ROMA (RM) \ GAVIGNANO</option>
+                <option value="GENAZZANO">LAZIO \ ROMA (RM) \ GENAZZANO</option>
+                <option value="GROTTAFERRATA">LAZIO \ ROMA (RM) \ GROTTAFERRATA</option>
+                <option value="GUIDONIA MONTECELI">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO</option>
+                <option value="LABICO">LAZIO \ ROMA (RM) \ LABICO</option>
+                <option value="LANUVIO">LAZIO \ ROMA (RM) \ LANUVIO</option>
+                <option value="LARIANO">LAZIO \ ROMA (RM) \ LARIANO</option>
+                <option value="MARINO">LAZIO \ ROMA (RM) \ MARINO</option>
+                <option value="MONTECOMPATRI">LAZIO \ ROMA (RM) \ MONTECOMPATRI</option>
+                <option value="MONTELANICO">LAZIO \ ROMA (RM) \ MONTELANICO</option>
+                <option value="NETTUNO">LAZIO \ ROMA (RM) \ NETTUNO</option>
+                <option value="OLEVANO ROMANO">LAZIO \ ROMA (RM) \ OLEVANO ROMANO</option>
+                <option value="PALESTRINA">LAZIO \ ROMA (RM) \ PALESTRINA</option>
+                <option value="POLI">LAZIO \ ROMA (RM) \ POLI</option>
+                <option value="POMEZIA">LAZIO \ ROMA (RM) \ POMEZIA</option>
+                <option value="RIANO">LAZIO \ ROMA (RM) \ RIANO</option>
+                <option value="ROCCA DI CAVE">LAZIO \ ROMA (RM) \ ROCCA DI CAVE</option>
+                <option value="ROCCA PRIORA">LAZIO \ ROMA (RM) \ ROCCA PRIORA</option>
+                <option value="ROMA">LAZIO \ ROMA (RM) \ ROMA</option>
+                <option value="SAN CESAREO">LAZIO \ ROMA (RM) \ SAN CESAREO</option>
+                <option value="SAN VITO ROMANO">LAZIO \ ROMA (RM) \ SAN VITO ROMANO</option>
+                <option value="SUBIACO">LAZIO \ ROMA (RM) \ SUBIACO</option>
+                <option value="TIVOLI">LAZIO \ ROMA (RM) \ TIVOLI</option>
+                <option value="VALMONTONE">LAZIO \ ROMA (RM) \ VALMONTONE</option>
+                <option value="VELLETRI">LAZIO \ ROMA (RM) \ VELLETRI</option>
+                <option value="ZAGAROLO">LAZIO \ ROMA (RM) \ ZAGAROLO</option>
+              </datalist>
             </div>
           </div>
           <div class="row align-items-center about-bx3 mb-4">
@@ -193,9 +189,9 @@
                 <div class="dz-meta">
                   <p>Cod. 00{{ item.Id }}</p>
               <h1 class="sub-title text-primary"> € {{ item.Price.toString()
-               .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
-              <h3><i class="fa fa-map-pin"></i> {{ item.Town }}, {{
-                item.AddressLine }}</h3>
+               .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00"}}</h1>
+              <h3> {{ item.Town }}</h3>
+                <h3><i class="fa fa-map-pin"></i> {{item.AddressLine }}</h3>
               <h6> {{ item.TypeOfProperty }}</h6>
               <h6><img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
               </h6>
