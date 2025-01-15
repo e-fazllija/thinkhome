@@ -83,22 +83,22 @@
 import { defineComponent, ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
-import work_pic1 from '@/assets/images/work/work-1/pic-1.jpg'
-import work_pic2 from '@/assets/images/work/work-1/pic-2.jpg'
-import work_pic3 from '@/assets/images/work/work-1/pic-3.jpg'
-import work_pic4 from '@/assets/images/work/work-1/pic-4.jpg'
+import work_pic1 from '@/assets/images/work/work-1/pic-3.jpg'
+import work_pic2 from '@/assets/images/work/work-1/pic-7.jpg'
+import work_pic3 from '@/assets/images/work/work-1/pic-9.jpg'
+import work_pic4 from '@/assets/images/work/work-1/pic-16.jpg'
 import work_pic5 from '@/assets/images/work/work-1/pic-5.jpg'
 import work_pic6 from '@/assets/images/work/work-1/pic-6.jpg'
-import work_pic7 from '@/assets/images/work/work-1/pic-7.jpg'
+import work_pic7 from '@/assets/images/work/work-1/pic-1.jpg'
 import work_pic8 from '@/assets/images/work/work-1/pic-8.jpg'
-import work_pic9 from '@/assets/images/work/work-1/pic-9.jpg'
+import work_pic9 from '@/assets/images/work/work-1/pic-2.jpg'
 import work_pic10 from '@/assets/images/work/work-1/pic-10.jpg'
 import work_pic11 from '@/assets/images/work/work-1/pic-11.jpg'
 import work_pic12 from '@/assets/images/work/work-1/pic-12.jpg'
 import work_pic13 from '@/assets/images/work/work-1/pic-13.jpg'
 import work_pic14 from '@/assets/images/work/work-1/pic-14.jpg'
 import work_pic15 from '@/assets/images/work/work-1/pic-15.jpg'
-import work_pic16 from '@/assets/images/work/work-1/pic-16.jpg'
+import work_pic16 from '@/assets/images/work/work-1/pic-4.jpg'
 import work_pic17 from '@/assets/images/work/work-1/pic-17.jpg'
 import work_pic18 from '@/assets/images/work/work-1/pic-18.jpg'
 import work_pic19 from '@/assets/images/work/work-1/pic-19.jpg'
@@ -294,7 +294,7 @@ export default defineComponent({
           setStyle: 'mt-5'
         }
       ],
-      module: [Autoplay]
+      module: []
     }
   },
   data: () => ({

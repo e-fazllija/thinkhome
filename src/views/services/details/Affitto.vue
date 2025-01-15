@@ -17,7 +17,7 @@
                 <h2 class="title m-b20">Affitta il tuo immobile.</h2>
   <p>Vuoi affittare casa ma non sai da dove iniziare? Affidati a noi di Thinkhome! Offriamo un servizio completo e personalizzato, studiato per soddisfare tutte le tue esigenze.</p>
   <p><strong>Ricerca e selezione accurata dell'inquilino ideale:</strong> Garantiamo una rigorosa valutazione dei potenziali affittuari, verificando attentamente la loro solvibilità economica e referenze pregresse.</p>
-  <p><strong>Visite guidate efficienti e professionali:</strong>Grazie a un'organizzazione accurata, garantiremo visite rapide e produttive. I nostri agenti saranno preparati a fornire tutte le informazioni necessarie sull'immobile e sul contesto circostante, rispondendo prontamente a ogni domanda.</p>
+  <p><strong>Visite guidate efficienti e professionali:</strong>Grazie a un'organizzazione accurata, garantiremo visite rapide e produttive. I nostri consulenti saranno preparati a fornire tutte le informazioni necessarie sull'immobile e sul contesto circostante, rispondendo prontamente a ogni domanda.</p>
   <p><strong>Stesura di contratti d'affitto personalizzati e conformi alla legge:</strong>Redigeremo per te il contratto d'affitto conforme alla legge più adatto alla tua esigenza, garantendo la massima tutela legale e fiscale sia per il proprietario che per l'inquilino. Ci occuperemo anche della relativa registrazione presso gli enti preposti del contratto. </p>
   <h4 class="my-4">Affidandoci la gestione del tuo immobile, potrai godere di:</h4>
   <ul>

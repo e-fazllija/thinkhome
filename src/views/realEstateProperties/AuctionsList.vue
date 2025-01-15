@@ -1,6 +1,6 @@
 <template>
   <div class="page-content bg-white">
-    <CommonBanner :img="bnr3" title="Immobili in vendita" text="Immobili in vendita" />
+    <CommonBanner :img="bnr3" title="Aste Immobiliari" text="Aste Immobiliari" />
     
     <section class="content-inner-3 bg-white line-img">
       <form class="container" @submit.prevent="submit()">
@@ -163,17 +163,15 @@
     </section>
     
     <div class="content-inner">
-  <div class="container">
-    <div class="row">
-      <div v-if="loading" class="d-flex justify-content-center w-100">
-        <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-      </div>
-      <div v-if="!loading">
-        <div class="row">
-          <div v-for="(item, ind) in results" :key="ind" class="col-xl-6 col-lg-6 col-md-6 mb-4">
-            <div class="dz-card blog-grid style-1 m-b50 aos-item">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div v-if="loading" class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div v-if="!loading" class="col-xl-6 col-lg-6">
+            <div v-for="(item, ind) in results" :key="ind" class="dz-card blog-grid style-1 m-b50 aos-item">
               <div class="dz-media">
                 <Swiper class="swiper-container post-swiper" :speed="1500" :loop="true" :modules="modules" :navigation="{
                   prevEl: '.prev-post-swiper-btn',
@@ -208,8 +206,6 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
             <BlogPagination 
             :currentPage="page" 
             :totalPages="totalPages" 
@@ -237,7 +233,7 @@ import BlogPagination from '@/elements/BlogPagination.vue'
 import axios from 'axios'
 
 export default defineComponent({
-  name: 'sale-list',
+  name: 'auctions-list',
   components: { CommonBanner, Swiper, SwiperSlide, BlogPagination },
   setup() {
     return {
@@ -286,7 +282,7 @@ export default defineComponent({
       this.loading = true;
       const result = 
       await axios.get
-      (`https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/Get?currentPage=${_page}&filterRequest=${_filter}&status=Vendita&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}`);
+      (`https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/Get?currentPage=${_page}&filterRequest=${_filter}&status=Aste&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}`);
       this.results = result.data.Data.$values;
       this.page = _page;
       this.totalPages = 1;
@@ -304,21 +300,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-.dz-info {
-  width: 590px; /* Larghezza fissa, puoi modificarla */
-  height: 450px; /* Altezza fissa, puoi modificarla */
-  display: flex; /* Per allineare il contenuto */
-  justify-content: space-between; /* Spazia gli elementi uniformemente */
-  box-sizing: border-box; /* Include il padding nella dimensione totale */
-  border-radius: 5px; /* Angoli arrotondati */
-  background-color: #f9f9f9; /* Colore di sfondo */
-}
-@media (max-width: 768px) {
-  .dz-info {
-    width: 100%; /* Adatta alla larghezza del contenitore genitore */
-    height: auto; /* Altezza flessibile per contenuti variabili */
-    padding: 15px; /* Riduce il padding per schermi più piccoli */
-  }
-}
-</style>
+<style scoped></style>

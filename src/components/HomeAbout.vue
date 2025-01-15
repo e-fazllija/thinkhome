@@ -52,6 +52,7 @@
             <span>Omar Verducci</span>
             <span>Luigi D'Arienzo</span>
             <span>Valerio Bonafede</span>
+            <span>Cristian Gerosi</span>
         </div>
     </li>
 </ul>

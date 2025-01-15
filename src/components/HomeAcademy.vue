@@ -58,7 +58,7 @@
             </li>
             <li class="program-item mb-3">
               <h4 class="date text-primary">29-apr</h4>
-              <p class="title">Come aumentare tua reputazione e notorietà da Agente Immobiliare</p>
+              <p class="title">Come aumentare tua reputazione e notorietà da Consulente Immobiliare</p>
             </li>
             <li class="program-item mb-3">
               <h4 class="date text-primary">13-mag</h4>

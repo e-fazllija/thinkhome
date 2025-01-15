@@ -88,6 +88,12 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
+      path: '/aste-immobiliari/:tipologia/:localita/:codice/:da/:a?',
+      name: 'aste_immobiliari',
+      component: () => import('../views/realEstateProperties/AuctionsList.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
       path: '/dettaglio/:id',
       name: 'dettaglio',
       component: () => import('../views/realEstateProperties/Details.vue'),

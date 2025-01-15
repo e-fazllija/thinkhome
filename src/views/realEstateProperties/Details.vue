@@ -138,7 +138,7 @@
         <div class="row">
           <div class="col-12">
             <h6 class="dz-title">
-              <p><strong>Agente: </strong> {{ item.Agent.Name }} {{
+              <p><strong>Consulente: </strong> {{ item.Agent.Name }} {{
                 item.Agent.LastName }} </p>
             </h6>
           </div>
@@ -154,7 +154,7 @@
               item.AddressLine }}</h3>
           </div>
           <div class="col-12">
-            <h6> {{ item.TypeOfProperty }}</h6>
+            <h6> {{ item.Typology }}</h6>
           </div>
           <div class="col-lg-12 col-md-12 align-self-center aos-item">
             <h6><img src="@/assets/images/energy.png" style="max-width: 50px; max-height: 50px;" /> {{ item.EnergyClass
@@ -311,7 +311,7 @@ export default defineComponent({
         EnergyClass: "",
         Bedrooms: "",
         Description: "",
-        TypeOfProperty: "",
+        Typology: "",
         Photos: {
           $values: [{
             Url: ""

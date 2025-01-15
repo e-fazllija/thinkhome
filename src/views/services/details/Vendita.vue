@@ -19,7 +19,7 @@
   </ul>
   <h4 class="my-4">Scegliendo il nostro servizio di vendita, potrai beneficiare di:</h4>
   <ul>
-    <li><p><strong>• Esperienza e professionalità:</strong> Il nostro team è composto da agenti immobiliari esperti.</p></li>
+    <li><p><strong>• Esperienza e professionalità:</strong> Il nostro team è composto da consulenti immobiliari esperti.</p></li>
     <li><p><strong>• Massima trasparenza:</strong> Ti terremo costantemente aggiornato.</p></li>
     <li><p><strong>• Vendita rapida e sicura:</strong> Grazie alla nostra vasta rete di contatti.</p></li>
   </ul>
