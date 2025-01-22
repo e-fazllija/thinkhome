@@ -153,8 +153,8 @@ export default defineComponent({
       { child: 'Pratiche Catastali', to: '/pratiche-catastali' },
       { child: 'Perizie, Stime e Tribunale', to: '/perizie-stime-tribunale' },
       { child: 'Investimenti Immobiliari', to: '/investimenti-immobiliari' },
-      { child: 'Edilizia', to: '/edilizia' },
-      { child: 'Servizi Vari', to: '/servizi-vari' }
+      { child: 'Edilizia e Progettazione', to: '/edilizia' },
+      { child: 'Consulenza Creditizia e Servizi Vari', to: '/servizi-vari' }
          ] },
       { menu: 'Invia una richiesta', className: 'menu', to: '/send-request' },
       { menu: 'Chi siamo', className: 'menu', to: '/about-us' },

@@ -1,20 +1,13 @@
 <template>
   <div class="page-content bg-white">
-    <CommonBanner :img="bnr5" title="Edilizia" text="Edilizia" />
-       <!-- <section class="content-inner-2">
-      <div class="container-fluid">
-        <Testimonial2 />
-      </div>
-    </section>
-    <Brands /> -->
+    <CommonBanner :img="bnr5" title="Edilizia e Progettazione" text="Edilizia e Progettazione" />
   </div>
   <section class="content-inner-3">
       <div class="container">
         <div class="row align-items-center about-bx4">
           <div class="col-lg-6 m-b30 aos-item aos-init aos-animate">
             <div class="section-head style-2">
-              <!-- <h6 class="sub-title text-primary">About Us</h6> -->
-              <h2 class="title m-b20">Edilizia</h2>
+              <h2 class="title m-b20">Edilizia e Progettazione</h2>
                <p>•	Progettazione e gestione di ristrutturazioni edilizie</p>
                <p>•	Recupero di edifici storici</p> 
                <p>•	Consulenza per la riqualificazione energetica</p>
@@ -24,10 +17,6 @@
                <p>•	Render Lavori Interni ed Esterni</p>
                <p>•	Certificazioni Edilizie</p>
             </div>
-            <!-- <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
-              <span>READ MORE</span>
-              <i class="fas fa-arrow-right"></i>
-            </RouterLink> -->
           </div>
           <div class="col-lg-6 m-b31">
             <div class="dz-media">
@@ -46,12 +35,24 @@
           </div>
         </div>
       </div>
+      <div class="container">
+        <div class="row section-head-bx align-items-center">
+          <div class="col-md-5">
+            <div class="section-head style-1">
+              <h4 class="sub-title text-primary">IL NOSTRO PORTAFOGLIO</h4>
+             </div>
+          </div>
+      </div>
+    </div>
+      <OurPortfolio2 />
     </section>
+    
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
+import OurPortfolio2 from '@/components/OurPortfolio2.vue'
 import bnr5 from '@/assets/images/banner/bnr19.jpg'
 import bg2 from '@/assets/images/background/bg2.png'
 import { RouterLink } from 'vue-router'
@@ -59,7 +60,7 @@ import MainBanner3 from '@/components/MainBanner3.vue'
 
 export default defineComponent({
   name: 'services_detail',
-  components: { CommonBanner, RouterLink, MainBanner3 },
+  components: { CommonBanner, RouterLink, MainBanner3, OurPortfolio2 },
   setup() {
     return { bnr5, bg2 }
   },
