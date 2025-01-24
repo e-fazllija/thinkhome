@@ -34,7 +34,7 @@
                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00"}}</h1>
               <h3> {{ item.Town }}</h3>
               <h3><i class="fa fa-map-pin"></i> {{ item.AddressLine }} </h3>
-              <h6> {{ item.Typology }}</h6>
+              <h6> {{ item.TypeOfProperty }}</h6>
               <h6><img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
               </h6>
               <p>
@@ -166,6 +166,8 @@ export default defineComponent({
       Typology:"",
       Price: 0,
       Description: "",
+      TypeOfProperty:"",
+      Title:"",
       Photos: [{
         $values: [{
           Url: ""

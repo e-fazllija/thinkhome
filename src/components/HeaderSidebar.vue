@@ -31,9 +31,9 @@
       <h2></h2>
       <RouterLink to="/investimenti-immobiliari" class="btn btn-primary btn-sm btn-rounded">Investimenti Immobiliari</RouterLink>
       <h2></h2>
-      <RouterLink to="/edilizia" class="btn btn-primary btn-sm btn-rounded">Edilizia</RouterLink>
+      <RouterLink to="/edilizia" class="btn btn-primary btn-sm btn-rounded">Edilizia e Progettazione</RouterLink>
       <h2></h2>
-      <RouterLink to="/servizi-vari" class="btn btn-primary btn-sm btn-rounded">Servizi Vari</RouterLink>
+      <RouterLink to="/servizi-vari" class="btn btn-primary btn-sm btn-rounded">Consulenza Creditizia e Servizi Vari</RouterLink>
       <!-- <div class="widget bg-white widget_gallery" style="z-index: 99999">
         <Lightgallery
           :settings="{ speed: 500, plugins: plugins, selector: '.lightimg' }"

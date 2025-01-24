@@ -191,7 +191,7 @@
                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00"}}</h1>
               <h3> {{ results.RealEstatePropertiesHighlighted.Town }}</h3>
               <h3><i class="fa fa-map-pin"></i> {{ results.RealEstatePropertiesHighlighted.AddressLine }}</h3>
-              <h6> {{ results.RealEstatePropertiesHighlighted.Typology }}</h6>
+              <h6> {{ results.RealEstatePropertiesHighlighted.TypeOfProperty }}</h6>
               <h6><img src="@/assets/images/energy.png" /> {{ results.RealEstatePropertiesHighlighted.EnergyClass }}
               </h6>
               <p>
@@ -310,6 +310,7 @@ export default defineComponent({
           Price: 0,
           Description: "",
           Typology: "",
+          TypeOfProperty:"",
           EnergyClass: "",
           Town: "",
           Photos: {
