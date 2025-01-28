@@ -2,8 +2,6 @@
   <div class="page-content bg-white">
     <MainBanner />
 
-
-
     <section class="content-inner-3 bg-white line-img">
       <form class="container" @submit.prevent="submit()">
         <div class="contact-area aos-item mt-0">
@@ -342,13 +340,13 @@ export default defineComponent({
     },
     async submit() {
       this.loading = true;
-      console.log(this.formData.Code)
-      
+            
+      const routeName = this.formData.RequestType === 'Affitto' ? 'immobili_in_affitto' : 'immobili_in_vendita';
       this.$router.push({
-        name: 'immobili_in_vendita', params: {
+        name: routeName, params: {
           tipologia: this.formData.PropertyType, localita: this.formData.Location ?? "Qualsiasi", da: this.formData.From,
           codice: this.formData.Code ?? 0, a: this.formData.To
-        }
+        },
       })
 
       this.loading = false;

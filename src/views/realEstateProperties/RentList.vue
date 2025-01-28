@@ -104,52 +104,44 @@
               <select class="form-control" v-model="formData.From">
                 <option value="0">Prezzo Minimo</option>
                 <option value="0">€ 0</option>
-                <option value="50000">€ 50,000</option>
-                <option value="100000">€ 100,000</option>
-                <option value="150000">€ 150,000</option>
-                <option value="200000">€ 200,000</option>
-                <option value="250000">€ 250,000</option>
-                <option value="300000">€ 300,000</option>
-                <option value="350000">€ 350,000</option>
-                <option value="400000">€ 400,000</option>
-                <option value="450000">€ 450,000</option>
-                <option value="500000">€ 500,000</option>
-                <option value="550000">€ 550,000</option>
-                <option value="600000">€ 600,000</option>
-                <option value="650000">€ 650,000</option>
-                <option value="700000">€ 700,000</option>
-                <option value="750000">€ 750,000</option>
-                <option value="800000">€ 800,000</option>
-                <option value="850000">€ 850,000</option>
-                <option value="900000">€ 900,000</option>
-                <option value="950000">€ 950,000</option>
-                <option value="1000000">€ 1,000,000</option>
+                <option value="250">€ 250</option>
+                <option value="500">€ 500</option>
+                <option value="750">€ 750</option>
+                <option value="1000">€ 1,000</option>
+                <option value="1250">€ 1,250</option>
+                <option value="1500">€ 1,500</option>
+                <option value="1750">€ 1,750</option>
+                <option value="2000">€ 2,000</option>
+                <option value="3000">€ 3,000</option>
+                <option value="4000">€ 4,000</option>
+                <option value="5000">€ 5,000</option>
+                <option value="6000">€ 6,000</option>
+                <option value="7000">€ 7,000</option>
+                <option value="8000">€ 8,000</option>
+                <option value="9000">€ 9,000</option>
+                <option value="10000">€ 10,000</option>
               </select>
             </div>
             <div class="col-lg-4 mb-4">
               <select class="form-control" v-model="formData.To">
                 <option value="-1">Prezzo Massimo</option>
                 <option value="0">€ 0</option>
-                <option value="50000">€ 50,000</option>
-                <option value="100000">€ 100,000</option>
-                <option value="150000">€ 150,000</option>
-                <option value="200000">€ 200,000</option>
-                <option value="250000">€ 250,000</option>
-                <option value="300000">€ 300,000</option>
-                <option value="350000">€ 350,000</option>
-                <option value="400000">€ 400,000</option>
-                <option value="450000">€ 450,000</option>
-                <option value="500000">€ 500,000</option>
-                <option value="550000">€ 550,000</option>
-                <option value="600000">€ 600,000</option>
-                <option value="650000">€ 650,000</option>
-                <option value="700000">€ 700,000</option>
-                <option value="750000">€ 750,000</option>
-                <option value="800000">€ 800,000</option>
-                <option value="850000">€ 850,000</option>
-                <option value="900000">€ 900,000</option>
-                <option value="950000">€ 950,000</option>
-                <option value="1000000">€ 1,000,000</option>
+                <option value="250">€ 250</option>
+                <option value="500">€ 500</option>
+                <option value="750">€ 750</option>
+                <option value="1000">€ 1,000</option>
+                <option value="1250">€ 1,250</option>
+                <option value="1500">€ 1,500</option>
+                <option value="1750">€ 1,750</option>
+                <option value="2000">€ 2,000</option>
+                <option value="3000">€ 3,000</option>
+                <option value="4000">€ 4,000</option>
+                <option value="5000">€ 5,000</option>
+                <option value="6000">€ 6,000</option>
+                <option value="7000">€ 7,000</option>
+                <option value="8000">€ 8,000</option>
+                <option value="9000">€ 9,000</option>
+                <option value="10000">€ 10,000</option>
               </select>
             </div>
           </div>
@@ -170,8 +162,9 @@
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
-          <div v-if="!loading" class="col-xl-6 col-lg-6">
-            <div v-for="(item, ind) in results" :key="ind" class="dz-card blog-grid style-1 m-b50 aos-item">
+          <div v-if="!loading">
+            <div class="row">
+            <div v-for="(item, ind) in results" :key="ind" class="col-xl-6 col-lg-6 col-md-6 mb-4">
               <div class="dz-media">
                 <Swiper class="swiper-container post-swiper" 
                 :speed="1500" 
@@ -211,6 +204,7 @@
                 </div>
               </div>
             </div>
+          </div>
             <BlogPagination 
             :currentPage="page" 
             :totalPages="totalPages" 
