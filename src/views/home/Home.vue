@@ -32,6 +32,7 @@
               <select class="form-control" v-model="formData.RequestType">
                 <option value="Vendita">Vendita</option>
                 <option value="Affitto">Affitto</option>
+                <option value="Aste">Aste</option>
               </select>
             </div>
             <div class="col-lg-4 mb-3">
@@ -97,7 +98,7 @@
           <div class="row align-items-center about-bx3 mb-4">
             <div class="col-lg-4 mb-4">
               <div>
-                <input type="number" class="form-control" placeholder="Cod. Immobile" v-model="formData.Code" />
+                <input type="number" class="form-control" placeholder="Cod. Immobile" v-model="formData.Code"/>
               </div>
             </div>
             <div class="col-lg-4 mb-4">
@@ -341,7 +342,11 @@ export default defineComponent({
     async submit() {
       this.loading = true;
             
-      const routeName = this.formData.RequestType === 'Affitto' ? 'immobili_in_affitto' : 'immobili_in_vendita';
+      let routeName;
+      if (this.formData.RequestType === 'Affitto') {routeName = 'immobili_in_affitto';
+      } else if (this.formData.RequestType === 'Vendita') {routeName = 'immobili_in_vendita';
+      } else if (this.formData.RequestType === 'Aste') {routeName = 'aste_immobiliari';
+      }      
       this.$router.push({
         name: routeName, params: {
           tipologia: this.formData.PropertyType, localita: this.formData.Location ?? "Qualsiasi", da: this.formData.From,

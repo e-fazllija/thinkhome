@@ -41,7 +41,7 @@
               <ul>
                 <li><RouterLink to="/immobili-in-vendita/Qualsiasi/Qualsiasi/0/0/-1">Immobili in Vendita</RouterLink></li>
                 <li><RouterLink to="/immobili-in-affitto/Qualsiasi/Qualsiasi/0/0/-1">Immobili in Affitto</RouterLink></li>
-                <li><RouterLink to="/aste-immobiliari">Aste Immobiliari</RouterLink></li>
+                <li><RouterLink to="/aste-immobiliari/Qualsiasi/Qualsiasi/0/0/-1">Aste Immobiliari</RouterLink></li>
                 <li><RouterLink to="/richiesta-valutazione-immobile">Richieste Valutazioni Immobili</RouterLink></li>
               </ul>
             </div>

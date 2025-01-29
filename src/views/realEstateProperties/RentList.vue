@@ -32,6 +32,7 @@
               <select class="form-control" v-model="formData.RequestType">
                 <option value="Vendita">Vendita</option>
                 <option value="Affitto">Affitto</option>
+                <option value="Aste">Aste</option>
               </select>
             </div>
             <div class="col-lg-4 mb-3">
@@ -280,25 +281,35 @@ export default defineComponent({
     await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to);
   },
   methods: {
-    async getItems(_page, _filter, _typologie, _location, _code, _from, _to) {
-      this.loading = true;
-      const result = 
-      await axios.get
-      (`https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/Get?currentPage=${_page}&filterRequest=${_filter}&status=Affitto&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}`);
-      this.results = result.data.Data.$values;
-      this.page = _page;
-      this.totalPages = 1;
-      if (result.data.Total > 10) {
-        this.totalPages = Math.ceil(result.data.Total / 10);
-      }
-      this.loading = false;
-    },
-    async submit() {
-      this.loading = true;
-      await this.getItems(1, "", this.formData.PropertyType, this.formData.Location ?? "Qualsiasi", this.formData.Code ?? 0, this.formData.From, this.formData.To)
-      this.loading = false;
+  async getItems(_page, _filter, _typologie, _location, _code, _from, _to) {
+    this.loading = true;
+    const result = await axios.get(
+      `https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/Get?currentPage=${_page}&filterRequest=${_filter}&status=Affitto&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}`
+    );
+    this.results = result.data.Data.$values;
+    const totalItems = result.data.Total;
+    this.totalPages = totalItems > 0 ? Math.ceil(totalItems / 10) : 1;
+    this.loading = false;
+  },
+  async handlePageChange(newPage) {
+    this.page = newPage;
+    await this.getItems(this.page, this.filter, this.typologie, this.location, this.code, this.from, this.to);
+  },
+  async submit() {this.loading = true;this.typologie = this.formData.PropertyType;this.location = this.formData.Location ?? "Qualsiasi";
+    this.code = this.formData.Code ?? 0;this.from = this.formData.From;this.to = this.formData.To;
+
+    if (this.formData.RequestType === "Affitto") {await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to);
+    } else {let routeName;
+            if (this.formData.RequestType === "Vendita") {routeName = "immobili_in_vendita";
+            } else if (this.formData.RequestType === "Aste") {routeName = "aste_immobiliari";
+            }
+
+      this.$router.push({name: routeName,params: {tipologia: this.typologie,localita: this.location, codice: this.code, da: this.from, a: this.to}
+      });
     }
+    this.loading = false;
   }
+}
 })
 </script>
 
