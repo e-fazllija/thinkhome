@@ -164,7 +164,7 @@
           </div>
         </div>
 
-        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <!-- <div class="modal-dialog modal-lg modal-dialog-centered">
            <div class="modal-content">
             <button class="mfp-close" style="top: -23px" data-bs-dismiss="modal" aria-label="Close">
              <i class="ti-close"></i>
@@ -172,7 +172,7 @@
             <iframe height="100%" src="//https://www.youtube.com/embed/shorts/DZGuytINTY8" frameborder="0" allowfullscreen allow="autoplay"></iframe>
            </div>
         </div>
-        <p></p>
+        <p></p> -->
         
         <div class="row mb-lg-5 mb-3">
              <div class="col-lg-4 icon-bx-wraper style-3 left">
