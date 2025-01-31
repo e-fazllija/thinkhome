@@ -411,11 +411,9 @@ export default defineComponent({
           TypeOfProperty: "",
           EnergyClass: "",
           Town: "",
-          Photos: {
-            $values: [{
+          Photos: [{
               Url: ""
-            }]
-          }
+          }]
         },
         RealEstatePropertiesInHome: {
           Id: 0,
@@ -423,9 +421,7 @@ export default defineComponent({
           Price: 0,
           Description: "",
           Photos: [{
-            $values: [{
               Url: ""
-            }]
           }]
         }
       }

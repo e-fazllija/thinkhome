@@ -271,9 +271,7 @@ export default defineComponent({
         Price: 0,
         ShortDescription: "",
         Photos: [{
-          $values: {
             Url: ""
-          }
         }]
       }]
     }

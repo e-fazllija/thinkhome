@@ -301,9 +301,7 @@ export default defineComponent({
         Description: "",
         TypeOfProperty: "",
         Photos: {
-          $values: [{
             Url: ""
-          }]
         }
       },
       formData: {
