@@ -177,7 +177,7 @@
         <div v-if="!loading" class="row align-items-center about-bx4 mb-5">
           <div class="col-lg-6 m-b30">
             <div class="dz-media">
-              <img :src="results.RealEstatePropertiesHighlighted.Photos.$values[0].Url" alt=""
+              <img :src="results.RealEstatePropertiesHighlighted.Photos[0].Url" alt=""
                 style=" border-radius: 5px;" class="img1 aos-item aos-init aos-animate" />
               <!-- <img
                 src="@/assets/images/about/pic7.jpg"
@@ -434,7 +434,7 @@ export default defineComponent({
   methods: {
     async getItems() {
       const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/Generic/GetHomeDetails");
-      this.results.RealEstatePropertiesInHome = result.data.RealEstatePropertiesInHome.$values;
+      this.results.RealEstatePropertiesInHome = result.data.RealEstatePropertiesInHome;
       this.results.RealEstatePropertiesHighlighted = result.data.RealEstatePropertiesHighlighted;
       this.loading = false;
     },

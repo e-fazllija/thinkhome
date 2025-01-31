@@ -366,7 +366,7 @@ export default defineComponent({
     async getItem() {
       const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetById?id=" + this.$route.params.id);
       this.item = result.data;
-      this.photos = result.data.Photos.$values;
+      this.photos = result.data.Photos;
       this.imgSelected = this.photos[0].Url;
       this.loading = false;
     },
