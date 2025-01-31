@@ -181,7 +181,7 @@
                   prevEl: '.prev-post-swiper-btn',
                   nextEl: '.next-post-swiper-btn'
                 }">
-                  <SwiperSlide v-for="(photo, ind) in item.Photos.$values" :key="ind" class="swiper-slide">
+                  <SwiperSlide v-for="(photo, ind) in item.Photos" :key="ind" class="swiper-slide">
                     <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img :src="photo.Url" alt=""
                         style="border-radius: 5px; padding: 0px; height: 400px; object-fit: cover;" /></RouterLink>
                   </SwiperSlide>
@@ -274,9 +274,7 @@ export default defineComponent({
         ShortDescription: "",
         TypeOfProperty:"",
         Photos: [{
-          $values: {
             Url: ""
-          }
         }]
       }]
     }
