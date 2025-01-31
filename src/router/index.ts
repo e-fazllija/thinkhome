@@ -34,12 +34,6 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
-      path: '/team',
-      name: 'team',
-      component: () => import('../views/Team.vue'),
-      meta: { layout3: 'layout3' }
-    },
-    {
       path: '/coming-soon',
       name: 'coming_soon',
       component: () => import('../views/socialPages/ComingSoon.vue'),
@@ -58,18 +52,6 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
-      path: '/portfolio',
-      name: 'portfolio',
-      component: () => import('../views/portfolio/PortfolioView.vue'),
-      meta: { layout3: 'layout3' }
-    },
-    {
-      path: '/portfolio-details',
-      name: 'portfolio_detail',
-      component: () => import('../views/portfolio/PortfolioDetail.vue'),
-      meta: { layout3: 'layout3' }
-    },
-    {
       path: '/services',
       name: 'services',
       component: () => import('../views/services/Services.vue'),
@@ -79,30 +61,6 @@ const router = createRouter({
       path: '/services-details/:id',
       name: 'services_details',
       component: () => import('../views/services/ServicesDetails.vue'),
-      meta: { layout3: 'layout3' }
-    },
-    {
-      path: '/blog-grid',
-      name: 'blog_grid',
-      component: () => import('../views/blogs/Blog.vue'),
-      meta: { layout3: 'layout3' }
-    },
-    {
-      path: '/blog-large-left-sidebar',
-      name: 'blog_large_left_sidebar',
-      component: () => import('../views/blogs/BlogLargeLeftSidebar.vue'),
-      meta: { layout3: 'layout3' }
-    },
-    {
-      path: '/blog-list-left-sidebar',
-      name: 'blog_list_left_sidebar',
-      component: () => import('../views/blogs/BlogListLeftSidebar.vue'),
-      meta: { layout3: 'layout3' }
-    },
-    {
-      path: '/blog-details',
-      name: 'blog_details',
-      component: () => import('../views/blogs/BlogDetails.vue'),
       meta: { layout3: 'layout3' }
     },
     {
@@ -127,6 +85,12 @@ const router = createRouter({
       path: '/immobili-in-affitto/:tipologia/:localita/:codice/:da/:a?',
       name: 'immobili_in_affitto',
       component: () => import('../views/realEstateProperties/RentList.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/aste-immobiliari/:tipologia/:localita/:codice/:da/:a?',
+      name: 'aste_immobiliari',
+      component: () => import('../views/realEstateProperties/AuctionsList.vue'),
       meta: { layout3: 'layout3' }
     },
     {

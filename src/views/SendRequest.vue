@@ -1,7 +1,21 @@
 <template>
     <div class="page-content bg-white">
-        <CommonBanner :img="bannerImg" title="Invia la tua richiesta" text="Invia una richiesta" />
-        <section class="content-inner">
+        <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
+      <div class="container-fluid">
+        <div class="dz-bnr-inr-entry">
+          <h1>Invia una richiesta</h1>
+          <!-- Breadcrumb Row -->
+          <nav aria-label="breadcrumb" class="breadcrumb-row">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
+              <li class="breadcrumb-item">Invia una richiesta</li>
+            </ul>
+          </nav>
+          <!-- Breadcrumb Row End -->
+        </div>
+      </div>
+    </div>    
+            <section class="content-inner">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 m-b30 aos-item"

@@ -1,71 +1,75 @@
 <template>
-  <footer class="site-footer style-1" id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 aos-item">
-          <div class="footer-bg" :style="`background-image: url(${footerBg})`"></div>
-        </div>
-        <div class="col-lg-7">
-          <div class="footer-top">
-            <div class="row">
-              <div class="col-md-12 aos-item">
-                <div class="footer-logo logo-light">
-                  <RouterLink to="/"
-                    ><img
-                      class="header_logo2"
-                      src="@/assets/images/logo-white.png"
-                      alt="Footer Logo"
-                  /></RouterLink>
-                </div>
-              </div>
-              <div class="col-md-5 col-sm-6 aos-item">
-                <div class="widget widget_services">
-                  <h4 class="footer-title">Our Links</h4>
-                  <ul>
-                    <li><RouterLink to="/">Home</RouterLink></li>
-                    <li><RouterLink to="/about-us">About Us</RouterLink></li>
-                    <li><RouterLink to="/services">Services</RouterLink></li>
-                    <li><RouterLink to="/portfolio">Portfolio</RouterLink></li>
-                    <li><RouterLink to="/blog-grid">Blogs</RouterLink></li>
-                    <li><RouterLink to="/contact-us">Contact Us</RouterLink></li>
-                    <li><RouterLink to="/team">Team</RouterLink></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-md-7 col-sm-6 aos-item">
-                <div class="widget widget_about">
-                  <h4 class="footer-title">About Us</h4>
-                  <p>
-                    Nullam nec rutrum eros. Maecenas maximus augue eget libero dictum, vitae tempus
-                    erat pretium. Fusce fermentum lacus ut nunc dignissim hendrerit. Quisque sit
-                    amet dignissim orci, eget laoreet eros.
-                  </p>
-                  <ul class="social-list style-1">
-                    <!-- <li>
-                      <a href="https://www.facebook.com/dexignzone/" target="_blank"
-                        ><i class="fab fa-facebook-f"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a href="https://www.instagram.com/dexignzone/" target="_blank"
-                        ><i class="fab fa-instagram"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a href="https://twitter.com/dexignzones/" target="_blank"
-                        ><i class="fab fa-twitter"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a href="https://www.youtube.com/@dexignzone1723" target="_blank"
-                        ><i class="fab fa-youtube"></i
-                      ></a>
-                    </li> -->
-                  </ul>
-                </div>
+  <footer class="site-footer style-2" id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-12 aos-item">
+            <div class="widget widget_about">
+              <h4 class="footer-title">CONTATTI</h4>
+              <div class="widget_getintuch">
+                <ul>
+                  <li>
+                    <i class="las la-map-marker-alt"></i>
+                    Viale Ungheria, 91, Zagarolo, Roma, Italia
+                  </li>
+                  <li>
+                    <i class="las la-phone-volume"></i>
+                    +39 333/9123388  
+                    +39 06/95595263
+                  </li>
+                  <li>
+                    <i class="las la-mail-bulk"></i>
+                    info@thinkhome.it 
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
+          <div class="col-lg-4 col-sm-6 col-6 aos-item">
+            <div class="widget widget_services">
+              <h4 class="footer-title">LINK</h4>
+              <ul>
+                <li><RouterLink to="/">Home</RouterLink></li>
+                <li><RouterLink to="/about-us">Chi Siamo</RouterLink></li>
+                <li><a href="https://thinkhomestorage.blob.core.windows.net/generic/rivista-thinkhome.pdf" download="rivista" target="_blank"><h6 style="color: white;">Scarica rivista</h6></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-6 aos-item">
+            <div class="widget widget_services">
+              <h4 class="footer-title">IMMOBILIARE</h4>
+              <ul>
+                <li><RouterLink to="/immobili-in-vendita/Qualsiasi/Qualsiasi/0/0/-1">Immobili in Vendita</RouterLink></li>
+                <li><RouterLink to="/immobili-in-affitto/Qualsiasi/Qualsiasi/0/0/-1">Immobili in Affitto</RouterLink></li>
+                <li><RouterLink to="/aste-immobiliari/Qualsiasi/Qualsiasi/0/0/-1">Aste Immobiliari</RouterLink></li>
+                <li><RouterLink to="/richiesta-valutazione-immobile">Richieste Valutazioni Immobili</RouterLink></li>
+              </ul>
+            </div>
+          </div>
+          <!-- <div class="col-lg-3 col-sm-4 col-6 aos-item">
+            <div class="widget widget_services">
+              <h4 class="footer-title">OUR SERVICES</h4>
+              <ul>
+                <li><RouterLink to="?">Strategy & Research</RouterLink></li>
+                <li><RouterLink to="?">Web Development</RouterLink></li>
+                <li><RouterLink to="?">Web Solution</RouterLink></li>
+                <li><RouterLink to="?">Digital Marketing</RouterLink></li>
+                <li><RouterLink to="?">App Design</RouterLink></li>
+              </ul>
+            </div>
+          </div> -->
+          <!-- <div class="col-lg-3 col-sm-4 col-6 aos-item">
+            <div class="widget widget_services">
+              <h4 class="footer-title">OTHER LINKS</h4>
+              <ul>
+                <li><RouterLink to="?">FAQ</RouterLink></li>
+                <li><RouterLink to="?">Portfolio</RouterLink></li>
+                <li><RouterLink to="?">Privacy Policy</RouterLink></li>
+                <li><RouterLink to="?">Terms & Condition</RouterLink></li>
+                <li><RouterLink to="?">Support</RouterLink></li>
+              </ul>
+            </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -75,17 +79,18 @@
         <div class="row align-items-center">
           <div class="col-md-6 text-center text-md-start">
             <span class="copyright-text"
-              >Copyright © {{ new Date().getFullYear() }}
-              <a href="https://dexignzone.com/" class="text-primary" target="_blank">DexignZone</a>
-              All rights reserved.</span
+              >© {{ new Date().getFullYear() }}
+              ThinkHome
+              tutti i Diritti Riservati.</span
             >
           </div>
-          <div class="col-md-6 text-center text-md-end">
+          <!-- <div class="col-md-6 text-center text-md-end">
             <ul class="footer-link d-inline-block">
+              <li><RouterLink to="?">About</RouterLink></li>
+              <li><RouterLink to="?">Help Desk</RouterLink></li>
               <li><RouterLink to="?">Privacy Policy</RouterLink></li>
-              <li><RouterLink to="?">Team & Condition</RouterLink></li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -94,12 +99,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import footerBg from '@/assets/images/footer-bg.jpg'
 
 export default defineComponent({
   name: 'footer_',
   setup() {
-    return { footerBg }
+    return {}
   }
 })
 </script>

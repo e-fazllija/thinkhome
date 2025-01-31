@@ -31,9 +31,9 @@
         <div class="dz-info">
           <p>Cod. 00{{ item.Id }}</p>
               <h1 class="sub-title text-primary"> € {{ item.Price.toString()
-               .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
-              <h3><i class="fa fa-map-pin"></i> {{ item.Town }}, {{
-                item.AddressLine }}</h3>
+               .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00"}}</h1>
+              <h3> {{ item.Town }}</h3>
+              <h3><i class="fa fa-map-pin"></i> {{ item.AddressLine }} </h3>
               <h6> {{ item.TypeOfProperty }}</h6>
               <h6><img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
               </h6>
@@ -156,12 +156,6 @@
 <script lang="js">
 import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import blog_pic4 from '@/assets/images/blog/blog-grid/pic4.jpg'
-import blog_pic5 from '@/assets/images/blog/blog-grid/pic5.jpg'
-import blog_pic6 from '@/assets/images/blog/blog-grid/pic6.jpg'
-import latest_blog_pic1 from '@/assets/images/blog/latest-blog/pic1.png'
-import latest_blog_pic2 from '@/assets/images/blog/latest-blog/pic2.png'
-import axios from 'axios'
 import { Navigation, Autoplay } from 'swiper/modules'
 
 export default defineComponent({
@@ -169,8 +163,11 @@ export default defineComponent({
   props: {
     items: {
       AddressLine: "",
+      Typology:"",
       Price: 0,
       Description: "",
+      TypeOfProperty:"",
+      Title:"",
       Photos: [{
           Url: ""
       }]
@@ -178,12 +175,6 @@ export default defineComponent({
   },
   setup() {
     return {
-      ourBlog: [
-        { img: blog_pic4, img2: latest_blog_pic1, title: 'Indirizzo', price: '100', type: 'Immobile' },
-        { img: blog_pic5, img2: latest_blog_pic2, title: 'Indirizzo', price: '100', type: 'Immobile' },
-        { img: blog_pic6, img2: latest_blog_pic1, title: 'Indirizzo', price: '100', type: 'Immobile' },
-        { img: blog_pic5, img2: latest_blog_pic2, title: 'Indirizzo', price: '100', type: 'Immobile' }
-      ],
       modules: [Navigation, Autoplay]
     }
   },

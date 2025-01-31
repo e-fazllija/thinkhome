@@ -69,7 +69,7 @@ export default defineComponent({
   },
   methods: {
     newPageClick(newpage: number) {
-      this.$emit('changePage', newpage, this.filter, this.typologie, this.location, this.code, this.from, this.to);
+      this.$emit('changePage', newpage);
       window.scrollTo({
         top: 500,          
         behavior: 'smooth' 

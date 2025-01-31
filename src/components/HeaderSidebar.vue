@@ -31,9 +31,9 @@
       <h2></h2>
       <RouterLink to="/investimenti-immobiliari" class="btn btn-primary btn-sm btn-rounded">Investimenti Immobiliari</RouterLink>
       <h2></h2>
-      <RouterLink to="/edilizia" class="btn btn-primary btn-sm btn-rounded">Edilizia</RouterLink>
+      <RouterLink to="/edilizia" class="btn btn-primary btn-sm btn-rounded">Edilizia e Progettazione</RouterLink>
       <h2></h2>
-      <RouterLink to="/servizi-vari" class="btn btn-primary btn-sm btn-rounded">Servizi Vari</RouterLink>
+      <RouterLink to="/servizi-vari" class="btn btn-primary btn-sm btn-rounded">Consulenza Creditizia e Servizi Vari</RouterLink>
       <!-- <div class="widget bg-white widget_gallery" style="z-index: 99999">
         <Lightgallery
           :settings="{ speed: 500, plugins: plugins, selector: '.lightimg' }"
@@ -57,12 +57,6 @@ import { defineComponent, type PropType } from 'vue'
 import Lightgallery from 'lightgallery/vue'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
-import service_pic1 from '@/assets/images/services/pic1.jpg'
-import service_pic2 from '@/assets/images/services/pic2.jpg'
-import service_pic3 from '@/assets/images/services/pic3.jpg'
-import service_pic4 from '@/assets/images/services/pic4.jpg'
-import service_pic5 from '@/assets/images/services/pic5.jpg'
-import service_pic6 from '@/assets/images/services/pic6.jpg'
 
 export default defineComponent({
   props: {

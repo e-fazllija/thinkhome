@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
-import Footer2 from '@/components/Footer2.vue'
-import Header2 from './components/Header2.vue'
-import Footer3 from './components/Footer3.vue'
+import Header from './components/Header.vue'
+import Footer3 from './components/Footer.vue'
 import ScrollTop from './elements/ScrollTop.vue'
 import Cursor from './elements/Cursor.vue'
 </script>
@@ -12,21 +9,9 @@ import Cursor from './elements/Cursor.vue'
 <template>
   <div class="page-wraper">
     <Cursor />
-    <component :is="$route.meta.layout">
-      <ScrollTop />
-      <Header />
-      <RouterView />
-      <Footer />
-    </component>
-    <component :is="$route.meta.layout2">
-      <ScrollTop />
-      <Header />
-      <RouterView />
-      <Footer2 />
-    </component>
     <component :is="$route.meta.layout3">
       <ScrollTop />
-      <Header2 />
+      <Header />
       <RouterView />
       <Footer3 />
     </component>

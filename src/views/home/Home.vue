@@ -2,8 +2,6 @@
   <div class="page-content bg-white">
     <MainBanner />
 
-
-
     <section class="content-inner-3 bg-white line-img">
       <form class="container" @submit.prevent="submit()">
         <div class="contact-area aos-item mt-0">
@@ -12,8 +10,8 @@
           </div>
           <div class="row align-items-center about-bx3 mb-3">
             <div class="col-lg-4 mb-3">
-              <select class="form-control" v-model="formData.PropertyType">
-                <option value="Qualsiasi">Qualsiasi</option>
+              <select  class="form-control" v-model="formData.PropertyType">
+                <option value="Qualsiasi">Tipologia</option>
                 <option value="Appartamento">Appartamento</option>
                 <option value="Attico">Attico</option>
                 <option value="Mansarda">Mansarda</option>
@@ -34,13 +32,12 @@
               <select class="form-control" v-model="formData.RequestType">
                 <option value="Vendita">Vendita</option>
                 <option value="Affitto">Affitto</option>
+                <option value="Aste">Aste</option>
               </select>
             </div>
             <div class="col-lg-4 mb-3">
-              <input type="text" class="form-control" placeholder="Località" v-model="formData.Location" />
-              <!-- <select class="form-control" v-model="formData.Location">
-                <option value="Qualsiasi">Località</option>
-                <option value="Qualsiasi">Qualsiasi</option>
+              <input placeholder="Località" class="form-control" list="datalistOptions"  v-model="formData.Location">
+              <datalist id="datalistOptions">
                 <option value="L'AQUILA">ABRUZZO \ L'AQUILA (AQ)</option>
                 <option value="FROSINONE">LAZIO \ FROSINONE (FR)</option>
                 <option value="LATINA">LAZIO \ LATINA (LT)</option>
@@ -95,13 +92,13 @@
                 <option value="VALMONTONE">LAZIO \ ROMA (RM) \ VALMONTONE</option>
                 <option value="VELLETRI">LAZIO \ ROMA (RM) \ VELLETRI</option>
                 <option value="ZAGAROLO">LAZIO \ ROMA (RM) \ ZAGAROLO</option>
-              </select> -->
+              </datalist>
             </div>
           </div>
           <div class="row align-items-center about-bx3 mb-4">
             <div class="col-lg-4 mb-4">
               <div>
-                <input type="number" class="form-control" placeholder="Cod. Immobile" v-model="formData.Code" />
+                <input type="number" class="form-control" placeholder="Cod. Immobile" v-model="formData.Code"/>
               </div>
             </div>
             <div class="col-lg-4 mb-4">
@@ -190,9 +187,9 @@
             <div class="section-head style-2">
               <p>Cod. 00{{ results.RealEstatePropertiesHighlighted.Id }}</p>
               <h1 class="sub-title text-primary"> € {{ results.RealEstatePropertiesHighlighted.Price.toString()
-               .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
-              <h3><i class="fa fa-map-pin"></i> {{ results.RealEstatePropertiesHighlighted.Town }}, {{
-                results.RealEstatePropertiesHighlighted.AddressLine }}</h3>
+               .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00"}}</h1>
+              <h3> {{ results.RealEstatePropertiesHighlighted.Town }}</h3>
+              <h3><i class="fa fa-map-pin"></i> {{ results.RealEstatePropertiesHighlighted.AddressLine }}</h3>
               <h6> {{ results.RealEstatePropertiesHighlighted.TypeOfProperty }}</h6>
               <h6><img src="@/assets/images/energy.png" /> {{ results.RealEstatePropertiesHighlighted.EnergyClass }}
               </h6>
@@ -241,113 +238,19 @@
         <Home3Services />
       </div>
     </section>
-    <!-- <section class="content-inner-3">
-      <div class="container">
-        <div class="row align-items-center about-bx4">
-          <div class="col-lg-6 m-b30">
-            <div class="dz-media">
-              <img
-                src="@/assets/images/about/pic12.jpg"
-                alt=""
-                class="img1 aos-item aos-init aos-animate"
-              />
-              <img
-                src="@/assets/images/about/Pic11.jpg"
-                alt=""
-                class="img2 aos-item aos-init aos-animate"
-              />
-            </div>
-          </div>
-          <div class="col-lg-6 m-b30 aos-item aos-init aos-animate">
-            <div class="section-head style-2">
-              <h6 class="sub-title text-primary">About Us</h6>
-              <h2 class="title m-b20">Progettazione e ristrutturazioni</h2>
-              <p>
-                Affidati ai nostri professionisti per la progettazione e ristrutturazione di case, ville, uffici, negozi, ma anche impianti, edifici industriali, alberghi, strutture sanitarie e supermercati. Da oltre 40 anni operiamo in vari settori grazie un team completo: architetti, ingegneri, geometri ed altri esperti in materia di edilizia.
-              </p>
-            </div>
-            <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
-              <span>READ MORE</span>
-              <i class="fas fa-arrow-right"></i>
-            </RouterLink>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- <section class="content-inner-2">
-      <div class="container">
-        <div class="section-head style-2 text-center">
-          <h6 class="sub-title text-primary">About Services</h6>
-          <h2 class="title">Coworking Space</h2>
-        </div>
-        <Home3About />
-      </div>
-    </section> -->
     <Home3Accordian />
-    <!-- <Modalvideo2 /> -->
-
-    <!-- <section class="content-inner-1 overflow-hidden">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-4 col-lg-4 align-self-center px-3 mb-lg-0 mb-4">
-            <div class="section-head style-2">
-              <h6 class="sub-title text-primary">Team</h6>
-              <h2 class="title">Meet Our Team</h2>
-              <p>
-                There are many variations of passages of Lorem Ipsum available, but the majority
-                don't look even slightly believable.
-              </p>
-            </div>
-            <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
-              <span>View All Members</span>
-              <i class="fas fa-arrow-right"></i>
-            </RouterLink>
-          </div>
-          <Home3OurTeam />
-        </div>
-      </div>
-    </section> -->
-    <!-- <section class="content-inner-1 bg-gray over">
-      <div class="container">
-        <div class="section-head style-2 text-center">
-          <h6 class="sub-title text-primary">Testimonial</h6>
-          <h2 class="title">What The People Thinks About Us</h2>
-        </div>
-        <Home3Testimonial />
-      </div>
-    </section> -->
-    <!-- <section class="content-inner bg-white line-img">
-      <div class="container">
-        <div class="row align-items-center section-head style-2">
-          <div class="col-lg-8 aos-item aos-init aos-animate">
-            <h5 class="text-primary sub-title">Blog Details</h5>
-            <h2 class="title">Read Our Latest Blog & News</h2>
-          </div>
-          <div class="col-lg-4 aos-item aos-init aos-animate text-end d-none d-lg-block">
-            <RouterLink to="/blog-details" class="btn btn-primary btn-rounded hover-icon">
-              <span>View All Post</span>
-              <i class="fas fa-arrow-right"></i>
-            </RouterLink>
-          </div>
-        </div>
-        <Home3Blog />
-      </div>
-    </section> -->
   </div>
 </template>
 
 <script lang="ts">
 import Home3About from '@/components/Home3About.vue'
 import Home3Services from '@/components/Home3Services.vue'
-import Testimonial2 from '@/components/Testimonial2.vue'
 import MainBanner from '@/components/MainBanner.vue'
 import MainBanner3 from '@/components/MainBanner3.vue'
 import Home3Accordian from '@/components/Home3Accordian.vue'
 import { defineComponent, watchEffect } from 'vue'
 import Modalvideo2 from '@/elements/Modalvideo2.vue'
 import ClientLogo from '@/elements/ClientLogo.vue'
-import Home3OurTeam from '@/components/Home3OurTeam.vue'
-import Home3Testimonial from '@/components/Home3Testimonial.vue'
 import Home3Blog from '@/components/Home3Blog.vue'
 import logoWhite from '@/assets/images/TH-6.jpg'
 import logo from '@/assets/images/TH-4.jpg'
@@ -380,11 +283,8 @@ export default defineComponent({
     Home3Accordian,
     Modalvideo2,
     ClientLogo,
-    Home3OurTeam,
-    Home3Testimonial,
     Home3Blog,
     RouterLink,
-    Testimonial2
   },
   async mounted() {
     await this.getItems();
@@ -408,7 +308,8 @@ export default defineComponent({
           AddressLine: "",
           Price: 0,
           Description: "",
-          TypeOfProperty: "",
+          Typology: "",
+          TypeOfProperty:"",
           EnergyClass: "",
           Town: "",
           Photos: [{
@@ -436,13 +337,17 @@ export default defineComponent({
     },
     async submit() {
       this.loading = true;
-      console.log(this.formData.Code)
-      
+            
+      let routeName;
+      if (this.formData.RequestType === 'Affitto') {routeName = 'immobili_in_affitto';
+      } else if (this.formData.RequestType === 'Vendita') {routeName = 'immobili_in_vendita';
+      } else if (this.formData.RequestType === 'Aste') {routeName = 'aste_immobiliari';
+      }      
       this.$router.push({
-        name: 'immobili_in_vendita', params: {
+        name: routeName, params: {
           tipologia: this.formData.PropertyType, localita: this.formData.Location ?? "Qualsiasi", da: this.formData.From,
           codice: this.formData.Code ?? 0, a: this.formData.To
-        }
+        },
       })
 
       this.loading = false;

@@ -1,7 +1,21 @@
 <template>
   <div class="page-content bg-white">
 
-    <CommonBanner :img="bannerImg" title="Dettaglio Immobile" text="Dettaglio Immobile" />
+    <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
+      <div class="container-fluid">
+        <div class="dz-bnr-inr-entry">
+          <h1>Dettaglio Immobile</h1>
+          <!-- Breadcrumb Row -->
+          <nav aria-label="breadcrumb" class="breadcrumb-row">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
+              <li class="breadcrumb-item">Dettaglio Immobile</li>
+            </ul>
+          </nav>
+          <!-- Breadcrumb Row End -->
+        </div>
+      </div>
+    </div>    
     <div v-if="loading" class="container">
       <div class="d-flex justify-content-center">
         <div class="spinner-border" role="status">
@@ -27,7 +41,7 @@
       <div class="container">
         <div class="section-head style-1">
           <h1> {{ item.Title }}</h1>
-          <h1>€ {{ item.Price }} </h1>
+          <h1 class="sub-title text-primary"> € {{ item.Price.toString() .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00" }}</h1>
           <p>Cod. 00{{ item.Id }}</p>
         </div>
       </div>
@@ -124,7 +138,7 @@
         <div class="row">
           <div class="col-12">
             <h6 class="dz-title">
-              <p><strong>Agente: </strong> {{ item.Agent.Name }} {{
+              <p><strong>Consulente: </strong> {{ item.Agent.Name }} {{
                 item.Agent.LastName }} </p>
             </h6>
           </div>
@@ -133,14 +147,14 @@
           </div>
           <div class="col-12">
             <h1 class="sub-title text-primary"> € {{ item.Price.toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ".") }}</h1>
+               .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00"}}</h1>
           </div>
           <div class="col-12">
             <h3><i class="fa fa-map-pin"></i> {{ item.Town }}, {{
               item.AddressLine }}</h3>
           </div>
           <div class="col-12">
-            <h6> {{ item.TypeOfProperty }}</h6>
+            <h6> {{ item.Typology }}</h6>
           </div>
           <div class="col-lg-12 col-md-12 align-self-center aos-item">
             <h6><img src="@/assets/images/energy.png" style="max-width: 50px; max-height: 50px;" /> {{ item.EnergyClass
@@ -154,28 +168,32 @@
           </div>
         </div>
         <div class="row mb-lg-5 mb-3">
-          <div class=" col-lg-6 icon-bx-wraper style-3 left">
-            <div class="icon-bx-sm bg-primary">
-              <span class="icon-cell"><i class="flaticon-telephone"></i></span>
+             <div class="col-lg-4 icon-bx-wraper style-3 left">
+                  <div class="icon-bx-sm bg-primary">
+                   <span class="icon-cell"><i class="flaticon-telephone"></i></span>
+                  </div>
+              <div class="icon-content">
+               <h4 class="title m-b5">Contatti</h4>
+               <ul>
+                <li><i class="las la-phone-volume"></i> +39 333/9123388</li>
+                <li><i class="las la-phone-volume"></i> +39 06/95595263</li>
+                <li><i class="las la-mail-bulk"></i> info@thinkhome.it</li>
+               </ul>
+              </div>
+             </div>
+         <div class="col-lg-4 icon-bx-wraper style-3 left">
+           <div class="icon-bx-sm bg-primary">
+             <span class="icon-cell"><i class="fa fa-calculator"></i></span>
             </div>
-            <div class="icon-content">
-              <h4 class="title m-b5">Contatti</h4>
-              <li>
-                <i class="las la-phone-volume"></i>
-                +39 333/9123388
-              </li>
-              <li>
-                <i class="las la-phone-volume"></i>
-                +39 06/95595263
-              </li>
-              <li>
-                <i class="las la-mail-bulk"></i>
-                info@thinkhome.it
-              </li>
+             <div class="icon-content">
+               <h4 class="title m-b5">Scopri la rata del tuo mutuo</h4>
+                 <a href="https://www.affida.credit/agente/5fca6411f21fd0352c0dc3ae" class="btn btn-primary">
+                 Calcola Mutuo
+                 </a>
+              </div>
             </div>
-          </div>
-          <div class="col-lg-6 col-md-12 m-b30 aos-item">
-            <img src="@/assets/images/work/pic4.jpg" class="d-lg-block d-none" alt="" />
+          <div class="col-lg-4 col-md-12 m-b30 aos-item">
+              <img src="@/assets/images/work/pic5.jpg" class="d-lg-block d-none" alt="" />
           </div>
         </div>
       </div>
@@ -238,7 +256,7 @@
         </div>
       </div>
     </section>
-    <section class="content-inner-1 pt-0">
+    <section class="content-inner-1 pt-1">
       <div class="container-fluid">
         <Home3Accordian />
       </div>
@@ -250,7 +268,6 @@
 import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
-import bnr7 from '@/assets/images/banner/bnr7.jpg'
 import bannerImg from '@/assets/images/banner/1920x700.jpg'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import bg2 from '@/assets/images/background/bg2.png'
@@ -266,7 +283,6 @@ export default defineComponent({
   components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner },
   setup() {
     return {
-      bnr7,
       bg2,
       bannerImg,
       module: [Autoplay],
@@ -299,7 +315,7 @@ export default defineComponent({
         EnergyClass: "",
         Bedrooms: "",
         Description: "",
-        TypeOfProperty: "",
+        Typology: "",
         Photos: {
             Url: ""
         }
@@ -585,4 +601,32 @@ button.right {
     /* Mantieni proporzioni */
   }
 }
+.row.mb-lg-5.mb-3 {
+  display: flex; /* Attiva Flexbox */
+  justify-content: space-between; /* Distribuisce uniformemente gli elementi */
+  align-items: stretch; /* Assicura che tutti gli elementi abbiano la stessa altezza */
+  flex-wrap: wrap; /* Consente agli elementi di andare a capo su schermi piccoli */
+  gap: 20px; /* Spazio tra gli elementi */
+}
+
+.row.mb-lg-5.mb-3 > .col-lg-4 {
+  flex: 1 1 calc(33.333% - 20px); /* Ogni colonna occupa un terzo dello spazio disponibile */
+  display: flex; /* Rende ogni colonna flessibile */
+  box-sizing: border-box; /* Garantisce che padding e bordi non influiscano sulle dimensioni */
+  min-height: 200px; /* Imposta un'altezza minima per uniformare le colonne */
+  padding: 10px; /* (Facoltativo) Spazio interno per il contenuto */
+  height: 100px;
+}
+@media (max-width: 768px) {
+  .row.mb-lg-5.mb-3 {
+    flex-direction: column; /* Dispone gli elementi verticalmente */
+  }
+
+  .row.mb-lg-5.mb-3 > .col-lg-4 {
+    flex: 1 1 100%; /* Ogni colonna occupa il 100% della larghezza */
+    min-height: auto; /* Rimuove l'altezza minima per un migliore adattamento */
+    height: auto; /* Rende l'altezza dinamica in base al contenuto */
+  }
+}
+
 </style>
