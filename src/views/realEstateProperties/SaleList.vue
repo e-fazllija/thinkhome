@@ -288,7 +288,7 @@ export default defineComponent({
     const result = await axios.get(
       `https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/Get?currentPage=${_page}&filterRequest=${_filter}&status=Vendita&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}`
     );
-    this.results = result.data.Data.$values;
+    this.results = result.data.Data;
     const totalItems = result.data.Total;
     this.totalPages = totalItems > 0 ? Math.ceil(totalItems / 10) : 1;
     this.loading = false;
