@@ -13,8 +13,8 @@
             nextEl: '.next-post-swiper-btn'
           }">
           
-            <SwiperSlide v-for="(photo, ind) in item.Photos.$values" :key="ind" class="swiper-slide">
-              <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img v-lazy="photo.Url" alt="" style=" border-radius: 5px; padding: 0px; width: 500px; height: 400px; object-fit: cover;"/></RouterLink>
+            <SwiperSlide v-for="(photo, ind) in item.Photos" :key="ind" class="swiper-slide">
+              <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img :src="photo.Url" alt="" style=" border-radius: 5px; padding: 0px; width: 500px; height: 400px; object-fit: cover;"/></RouterLink>
             </SwiperSlide>
             <!-- <SwiperSlide class="swiper-slide">
               <RouterLink to="/blog-details"><img src="@/assets/images/blog/large/pic1.jpg" alt="" /></RouterLink>
@@ -25,7 +25,7 @@
             <div class="prev-post-swiper-btn"><i class="la fa-angle-left"></i></div>
             <div class="next-post-swiper-btn"><i class="la fa-angle-right"></i></div>
           </Swiper>
-          <!-- <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img :src="item.Photos.$values[0].Url" alt=""
+          <!-- <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img :src="item.Photos[0].Url" alt=""
               style="min-height: 40vh;" /></RouterLink> -->
         </div>
         <div class="dz-info">
@@ -169,9 +169,7 @@ export default defineComponent({
       TypeOfProperty:"",
       Title:"",
       Photos: [{
-        $values: [{
           Url: ""
-        }]
       }]
     }
   },
