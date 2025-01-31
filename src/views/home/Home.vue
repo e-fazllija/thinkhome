@@ -249,7 +249,6 @@ import MainBanner from '@/components/MainBanner.vue'
 import MainBanner3 from '@/components/MainBanner3.vue'
 import Home3Accordian from '@/components/Home3Accordian.vue'
 import { defineComponent, watchEffect } from 'vue'
-import Modalvideo2 from '@/elements/Modalvideo2.vue'
 import ClientLogo from '@/elements/ClientLogo.vue'
 import Home3Blog from '@/components/Home3Blog.vue'
 import logoWhite from '@/assets/images/TH-6.jpg'
@@ -281,7 +280,6 @@ export default defineComponent({
     Home3Services,
     Home3About,
     Home3Accordian,
-    Modalvideo2,
     ClientLogo,
     Home3Blog,
     RouterLink,

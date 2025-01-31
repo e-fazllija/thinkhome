@@ -6,7 +6,7 @@
       <form class="container" @submit.prevent="submit()">
         <div class="contact-area aos-item mt-0">
           <div class="section-head style-1 text-center">
-            <h6 class="sub-title text-primary">Trova il tuo immobile</h6>
+            <h6 class="sub-title text-primary">Trova la tua Operazione Immobiliare</h6>
           </div>
           <div class="row align-items-center about-bx3 mb-3">
             <div class="col-lg-4 mb-3">
@@ -232,7 +232,7 @@
 <script>
 import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
-import bnr3 from '@/assets/images/banner/bnr3.jpg'
+import bnr3 from '@/assets/images/banner/bnr46.jpg'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Autoplay } from 'swiper/modules'
 import BlogPagination from '@/elements/BlogPagination.vue'
