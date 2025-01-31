@@ -1,6 +1,7 @@
 <template>
   <div class="page-content bg-white">
-    <CommonBanner :img="bnr5" title="Servizi Vari" text="Servizi Vari" />
+    <CommonBanner :img="bnr5"         style="letter-spacing: 0px; line-height: 0.4; text-align: right;" 
+    title="Consulenza Creditizia e Servizi Vari" text="Consulenza Creditizia e Servizi Vari" />
   </div>
   <section class="content-inner-3">
       <div class="container">
@@ -9,9 +10,12 @@
             <div class="section-head style-2">
               <!-- <h6 class="sub-title text-primary">About Us</h6> -->
               <h2 class="title m-b20">Consulenza Finanziaria</h2>
-               <p>-	Mutui Ipotecari</p>
-               <p>-	Prestiti</p>
-               <p>-	Surroghe e Cessione del Quinto</p>
+               <h1>-	Mutui Ipotecari</h1>
+               <p>Prima o seconda casa, acquisto, ristrutturazione, surroga, consolidamento debiti e liquidità. Affida è convenzionata con molti istituti bancari per fornirti tutte le soluzioni possibili in un solo appuntamento.</p>
+               <h1>-	Prestiti</h1>
+               <p>Dai forma ai tuoi sogni con i Prestiti Affida. Da 2.000 a 70.000 € subito per te, rimborsabili in rate mensili fino ad un massimo di 120 mesi.</p>
+               <h1>-	Surroghe e Cessione del Quinto</h1>
+               <p>Per dipendenti e pensionati, permette di avere liquidità fino a 100.000 euro, con addebito diretto sullo stipendio/pensione, rimborsabili entro 120 mesi!</p>
                <h2 class="title m-b20">Servizi Vari</h2>
                <p>•	Progettazione di spazi esterni e giardini</p>
                <p>•	Studio Notarile Convenzionato</p>
@@ -40,7 +44,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
-import bnr5 from '@/assets/images/banner/bnr35.jpg'
+import bnr5 from '@/assets/images/banner/bnr46.jpg'
 import bg2 from '@/assets/images/background/bg2.png'
 import { RouterLink } from 'vue-router'
 import MainBanner3 from '@/components/MainBanner3.vue'
@@ -87,4 +91,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+
+
+</style>

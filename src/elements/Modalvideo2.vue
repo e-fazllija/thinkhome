@@ -1,5 +1,5 @@
 <template>
-  <!-- <div
+  <div
     class="modal fade"
     id="exampleModalToggle"
     aria-hidden="true"
@@ -20,8 +20,8 @@
         ></iframe>
       </div>
     </div>
-  </div> -->
-<!-- 
+  </div>
+
   <section class="dz-content-bx style-5 content-inner-1">
     <div class="dz-content-inner">
       <div class="container">
@@ -32,7 +32,7 @@
         <div class="row spno">
           <div class="col-lg-12">
             <div class="video-bx content-media style-3">
-              <img src="@/assets/images/video/pic3.jpg" alt="" />
+              <img src="/src/assets/images/TH-4.jpg" alt="" />
               <div class="video-btn aos-item">
                 <RouterLink
                   to="?"
@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
 </template>
 
 <script lang="ts">
