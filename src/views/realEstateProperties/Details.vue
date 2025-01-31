@@ -35,8 +35,6 @@
       </div>
     </div> -->
 
-
-
     <section v-if="!loading" class="content-inner-1 mt-2 pb-0" :style="`background-image: url(${bg2});`">
       <div class="container">
         <div class="section-head style-1">
@@ -132,8 +130,6 @@
         </div>
       </div>
 
-
-
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -167,6 +163,17 @@
             </p>
           </div>
         </div>
+
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+           <div class="modal-content">
+            <button class="mfp-close" style="top: -23px" data-bs-dismiss="modal" aria-label="Close">
+             <i class="ti-close"></i>
+            </button>
+            <iframe height="100%" src="//https://www.youtube.com/embed/shorts/DZGuytINTY8" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+           </div>
+        </div>
+        <p></p>
+        
         <div class="row mb-lg-5 mb-3">
              <div class="col-lg-4 icon-bx-wraper style-3 left">
                   <div class="icon-bx-sm bg-primary">
@@ -280,7 +287,7 @@ import work_pic1 from '@/assets/images/work/work-1/pic-13.jpg'
 import Swal from 'sweetalert2'
 
 export default defineComponent({
-  components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner },
+  components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner},
   setup() {
     return {
       bg2,
@@ -628,5 +635,6 @@ button.right {
     height: auto; /* Rende l'altezza dinamica in base al contenuto */
   }
 }
+
 
 </style>
