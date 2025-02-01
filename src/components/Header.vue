@@ -142,7 +142,7 @@ export default defineComponent({
       { menu: 'Immobili', subMenu: [
       { child: 'Immobili in vendita', to: `/immobili-in-vendita/Qualsiasi/Qualsiasi/0/0/-1` },
       { child: 'Immobili in affitto', to: '/immobili-in-affitto/Qualsiasi/Qualsiasi/0/0/-1' },
-      { child: 'Aste Immobiliari', to: '/aste-immobiliari/Qualsiasi/0/0/-1' },
+      { child: 'Aste Immobiliari', to: '/aste-immobiliari/Qualsiasi/Qualsiasi/0/0/-1' },
       { child: 'Valutazione immobile', to: '/richiesta-valutazione-immobile' },
          ] },
       { menu: 'I nostri servizi', subMenu: [
