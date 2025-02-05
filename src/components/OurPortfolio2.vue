@@ -32,7 +32,6 @@ import work_pic3 from '@/assets/images/work/work-1/pic-9.jpg'
 import work_pic4 from '@/assets/images/work/work-1/pic-16.jpg'
 import work_pic5 from '@/assets/images/work/work-1/pic-5.jpg'
 import work_pic6 from '@/assets/images/work/work-1/pic-6.jpg'
-import work_pic7 from '@/assets/images/work/work-1/pic-1.jpg'
 import work_pic8 from '@/assets/images/work/work-1/pic-8.jpg'
 import work_pic9 from '@/assets/images/work/work-1/pic-2.jpg'
 import work_pic10 from '@/assets/images/work/work-1/pic-10.jpg'
@@ -60,7 +59,6 @@ export default defineComponent({
         { img: work_pic4, setStyle: "mt-5" },
         { img: work_pic5, setStyle: "mt-5" },
         { img: work_pic6, setStyle: "mt-5" },
-        { img: work_pic7, setStyle: "mt-5" },
         { img: work_pic8, setStyle: "mt-5" },
         { img: work_pic9, setStyle: "mt-5" },
         { img: work_pic10, setStyle: "mt-5" },

@@ -8,14 +8,16 @@
           <!-- Breadcrumb Row -->
           <nav aria-label="breadcrumb" class="breadcrumb-row">
             <ul class="breadcrumb">
-              <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
+              <li class="breadcrumb-item">
+                <RouterLink to="/">Home</RouterLink>
+              </li>
               <li class="breadcrumb-item">Dettaglio Immobile</li>
             </ul>
           </nav>
           <!-- Breadcrumb Row End -->
         </div>
       </div>
-    </div>    
+    </div>
     <div v-if="loading" class="container">
       <div class="d-flex justify-content-center">
         <div class="spinner-border" role="status">
@@ -39,7 +41,8 @@
       <div class="container">
         <div class="section-head style-1">
           <h1> {{ item.Title }}</h1>
-          <h1 class="sub-title text-primary"> € {{ item.Price.toString() .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00" }}</h1>
+          <h1 class="sub-title text-primary"> € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ",00"
+            }}</h1>
           <p>Cod. 00{{ item.Id }}</p>
         </div>
       </div>
@@ -143,7 +146,7 @@
           </div>
           <div class="col-12">
             <h1 class="sub-title text-primary"> € {{ item.Price.toString()
-               .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00"}}</h1>
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ",00" }}</h1>
           </div>
           <div class="col-12">
             <h3><i class="fa fa-map-pin"></i> {{ item.Town }}, {{
@@ -163,47 +166,48 @@
             </p>
           </div>
         </div>
+      </div>
 
-        <!-- <div class="modal-dialog modal-lg modal-dialog-centered">
-           <div class="modal-content">
-            <button class="mfp-close" style="top: -23px" data-bs-dismiss="modal" aria-label="Close">
-             <i class="ti-close"></i>
-            </button>
-            <iframe height="100%" src="//https://www.youtube.com/embed/shorts/DZGuytINTY8" frameborder="0" allowfullscreen allow="autoplay"></iframe>
-           </div>
-        </div>
-        <p></p> -->
-        
-        <div class="row mb-lg-5 mb-3">
-             <div class="col-lg-4 icon-bx-wraper style-3 left">
-                  <div class="icon-bx-sm bg-primary">
-                   <span class="icon-cell"><i class="flaticon-telephone"></i></span>
-                  </div>
-              <div class="icon-content">
-               <h4 class="title m-b5">Contatti</h4>
-               <ul>
-                <li><i class="las la-phone-volume"></i> +39 333/9123388</li>
-                <li><i class="las la-phone-volume"></i> +39 06/95595263</li>
-                <li><i class="las la-mail-bulk"></i> info@thinkhome.it</li>
-               </ul>
-              </div>
-             </div>
-         <div class="col-lg-4 icon-bx-wraper style-3 left">
-           <div class="icon-bx-sm bg-primary">
-             <span class="icon-cell"><i class="fa fa-calculator"></i></span>
-            </div>
-             <div class="icon-content">
-               <h4 class="title m-b5">Scopri la rata del tuo mutuo</h4>
-                 <a href="https://www.affida.credit/agente/5fca6411f21fd0352c0dc3ae" class="btn btn-primary">
-                 Calcola Mutuo
-                 </a>
-              </div>
-            </div>
-          <div class="col-lg-4 col-md-12 m-b30 aos-item">
-              <img src="@/assets/images/work/pic5.jpg" class="d-lg-block d-none" alt="" />
-          </div>
+      <div v-if="showVideo" id="videoModal" class="modal-dialog modal-lg modal-dialog-centered mb-5">
+        <div class="modal-content">
+          <button class="mfp-close" style="top: -23px" data-bs-dismiss="modal" aria-label="Close">
+            <i class="ti-close"></i>
+          </button>
+          <iframe :src="videoEmbedUrl" height="100%" frameborder="0" allowfullscreen allow="autoplay"></iframe>
         </div>
       </div>
+      
+      <div class="container">
+      <div class="row mb-lg-5 mb-3">
+        <div class="col-lg-4 icon-bx-wraper style-3 left">
+          <div class="icon-bx-sm bg-primary">
+            <span class="icon-cell"><i class="flaticon-telephone"></i></span>
+          </div>
+          <div class="icon-content">
+            <h4 class="title m-b5">Contatti</h4>
+            <ul>
+              <li><i class="las la-phone-volume"></i> +39 333/9123388</li>
+              <li><i class="las la-phone-volume"></i> +39 06/95595263</li>
+              <li><i class="las la-mail-bulk"></i> info@thinkhome.it</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 icon-bx-wraper style-3 left">
+          <div class="icon-bx-sm bg-primary">
+            <span class="icon-cell"><i class="fa fa-calculator"></i></span>
+          </div>
+          <div class="icon-content">
+            <h4 class="title m-b5">Scopri la rata del tuo mutuo</h4>
+            <a href="https://www.affida.credit/agente/5fca6411f21fd0352c0dc3ae" class="btn btn-primary">
+              Calcola Mutuo
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 m-b30 aos-item">
+          <img src="@/assets/images/work/pic5.jpg" class="d-lg-block d-none" alt="" />
+        </div>
+      </div>
+    </div>
     </section>
     <section v-if="!loading" class="content-inner-1 pt-0 pb-0">
       <div class="container">
@@ -287,7 +291,7 @@ import work_pic1 from '@/assets/images/work/work-1/pic-13.jpg'
 import Swal from 'sweetalert2'
 
 export default defineComponent({
-  components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner},
+  components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner },
   setup() {
     return {
       bg2,
@@ -303,6 +307,9 @@ export default defineComponent({
       imgSelected: "",
       loading: true,
       loadingRequest: false,
+      videoEmbedUrl: "",
+      showVideo: false,
+      videoUrl: "",
       photos: [{
         Url: ""
       }],
@@ -323,8 +330,9 @@ export default defineComponent({
         Bedrooms: "",
         Description: "",
         Typology: "",
+        VideoUrl: "",
         Photos: {
-            Url: ""
+          Url: ""
         }
       },
       formData: {
@@ -352,6 +360,7 @@ export default defineComponent({
         Body: "",
         Phone: "",
         MobilePhone: "",
+        VideoUrl: "",
       }
     }
   },
@@ -359,9 +368,12 @@ export default defineComponent({
     async submit() {
       this.loadingRequest = true;
       this.formData.Information = this.item.Id.toString();
+
       axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/InformationRequest', this.formData)
-        .then(() => {
+        .then(async () => {
           this.loadingRequest = false;
+
+          // Reset dei campi del form
           this.formData.Name = "";
           this.formData.LastName = "";
           this.formData.FromEmail = "";
@@ -369,6 +381,8 @@ export default defineComponent({
           this.formData.Body = "";
           this.formData.Phone = "";
           this.formData.MobilePhone = "";
+
+          // Mostra messaggio di successo
           Swal.fire({
             title: "Richiesta inviata con successo",
             icon: "success"
@@ -378,7 +392,7 @@ export default defineComponent({
           this.loadingRequest = false;
           Swal.fire({
             title: "Si è verificato un errore",
-            icon: "success"
+            icon: "error"  // Corretto l'icona "error" invece di "success"
           });
           console.log(error)
         })
@@ -386,11 +400,56 @@ export default defineComponent({
     },
     async getItem() {
       const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetById?id=" + this.$route.params.id);
+
       this.item = result.data;
       this.photos = result.data.Photos;
-      this.imgSelected = this.photos[0].Url;
+      this.imgSelected = this.photos.length > 0 ? this.photos[0].Url : '';
+
+      // Controlla se esiste un VideoUrl
+      if (this.item.VideoUrl) {
+        this.videoEmbedUrl = this.convertVideoUrl(this.item.VideoUrl);
+        this.showVideo = true;
+      } else {
+        this.showVideo = false;
+      }
+
       this.loading = false;
     },
+
+    convertVideoUrl(url: string) {
+      try {
+        let videoId = "";
+
+        // Cattura ID dai vari formati di link YouTube
+        const patterns = [
+          /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]+)/, // Standard, Shorts e Embed
+          /youtube\.com\/v\/([a-zA-Z0-9_-]+)/, // Formato vecchio
+          /youtube\.com\/.*[?&]v=([a-zA-Z0-9_-]+)/ // Link con parametri multipli
+        ];
+
+        for (const pattern of patterns) {
+          const match = url.match(pattern);
+          if (match) {
+            videoId = match[1];
+            break;
+          }
+        }
+
+        // Se non è stato trovato un ID, restituisce l'URL originale
+        if (!videoId) {
+          console.warn("Impossibile estrarre ID video da URL:", url);
+          return url;
+        }
+
+        // Costruisce il link embed corretto
+        return `https://www.youtube.com/embed/${videoId}`;
+      } catch (error) {
+        console.error("Errore nella conversione dell'URL del video:", error);
+        return "";
+      }
+    },
+
+
     selectImage(url: string) {
       this.imgSelected = url;
     },
@@ -608,33 +667,47 @@ button.right {
     /* Mantieni proporzioni */
   }
 }
+
 .row.mb-lg-5.mb-3 {
-  display: flex; /* Attiva Flexbox */
-  justify-content: space-between; /* Distribuisce uniformemente gli elementi */
-  align-items: stretch; /* Assicura che tutti gli elementi abbiano la stessa altezza */
-  flex-wrap: wrap; /* Consente agli elementi di andare a capo su schermi piccoli */
-  gap: 20px; /* Spazio tra gli elementi */
+  display: flex;
+  /* Attiva Flexbox */
+  justify-content: space-between;
+  /* Distribuisce uniformemente gli elementi */
+  align-items: stretch;
+  /* Assicura che tutti gli elementi abbiano la stessa altezza */
+  flex-wrap: wrap;
+  /* Consente agli elementi di andare a capo su schermi piccoli */
+  gap: 20px;
+  /* Spazio tra gli elementi */
 }
 
-.row.mb-lg-5.mb-3 > .col-lg-4 {
-  flex: 1 1 calc(33.333% - 20px); /* Ogni colonna occupa un terzo dello spazio disponibile */
-  display: flex; /* Rende ogni colonna flessibile */
-  box-sizing: border-box; /* Garantisce che padding e bordi non influiscano sulle dimensioni */
-  min-height: 200px; /* Imposta un'altezza minima per uniformare le colonne */
-  padding: 10px; /* (Facoltativo) Spazio interno per il contenuto */
+.row.mb-lg-5.mb-3>.col-lg-4 {
+  flex: 1 1 calc(33.333% - 20px);
+  /* Ogni colonna occupa un terzo dello spazio disponibile */
+  display: flex;
+  /* Rende ogni colonna flessibile */
+  box-sizing: border-box;
+  /* Garantisce che padding e bordi non influiscano sulle dimensioni */
+  min-height: 200px;
+  /* Imposta un'altezza minima per uniformare le colonne */
+  padding: 10px;
+  /* (Facoltativo) Spazio interno per il contenuto */
   height: 100px;
 }
+
 @media (max-width: 768px) {
   .row.mb-lg-5.mb-3 {
-    flex-direction: column; /* Dispone gli elementi verticalmente */
+    flex-direction: column;
+    /* Dispone gli elementi verticalmente */
   }
 
-  .row.mb-lg-5.mb-3 > .col-lg-4 {
-    flex: 1 1 100%; /* Ogni colonna occupa il 100% della larghezza */
-    min-height: auto; /* Rimuove l'altezza minima per un migliore adattamento */
-    height: auto; /* Rende l'altezza dinamica in base al contenuto */
+  .row.mb-lg-5.mb-3>.col-lg-4 {
+    flex: 1 1 100%;
+    /* Ogni colonna occupa il 100% della larghezza */
+    min-height: auto;
+    /* Rimuove l'altezza minima per un migliore adattamento */
+    height: auto;
+    /* Rende l'altezza dinamica in base al contenuto */
   }
 }
-
-
 </style>
