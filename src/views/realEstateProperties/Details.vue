@@ -164,12 +164,12 @@
           </div>
         </div>
 
-        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div v-if="showVideo" id="videoModal" class="modal-dialog modal-lg modal-dialog-centered">
            <div class="modal-content">
-            <button class="mfp-close" style="top: -23px" data-bs-dismiss="modal" aria-label="Close">
-             <i class="ti-close"></i>
-            </button>
-            <iframe height="100%" src="//https://www.youtube.com/embed/shorts/DZGuytINTY8" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+             <button class="mfp-close" style="top: -23px" data-bs-dismiss="modal" aria-label="Close">
+               <i class="ti-close"></i>
+             </button>
+             <iframe :src="videoEmbedUrl" height="100%" frameborder="0" allowfullscreen allow="autoplay"></iframe>
            </div>
         </div>
         <p></p>
@@ -303,6 +303,9 @@ export default defineComponent({
       imgSelected: "",
       loading: true,
       loadingRequest: false,
+      videoEmbedUrl: "",
+      showVideo:false,
+      videoUrl:"",
       photos: [{
         Url: ""
       }],
@@ -323,6 +326,7 @@ export default defineComponent({
         Bedrooms: "",
         Description: "",
         Typology: "",
+        VideoUrl:"",
         Photos: {
             Url: ""
         }
@@ -352,45 +356,96 @@ export default defineComponent({
         Body: "",
         Phone: "",
         MobilePhone: "",
+        VideoUrl:"",
       }
     }
   },
   methods: {
     async submit() {
-      this.loadingRequest = true;
-      this.formData.Information = this.item.Id.toString();
-      axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/InformationRequest', this.formData)
-        .then(() => {
-          this.loadingRequest = false;
-          this.formData.Name = "";
-          this.formData.LastName = "";
-          this.formData.FromEmail = "";
-          this.formData.Subject = "";
-          this.formData.Body = "";
-          this.formData.Phone = "";
-          this.formData.MobilePhone = "";
-          Swal.fire({
-            title: "Richiesta inviata con successo",
-            icon: "success"
-          });
-        })
-        .catch((error) => {
-          this.loadingRequest = false;
-          Swal.fire({
-            title: "Si è verificato un errore",
-            icon: "success"
-          });
+  this.loadingRequest = true;
+  this.formData.Information = this.item.Id.toString();
+
+  axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/InformationRequest', this.formData)
+    .then(async () => {
+      this.loadingRequest = false;
+
+      // Reset dei campi del form
+      this.formData.Name = "";
+      this.formData.LastName = "";
+      this.formData.FromEmail = "";
+      this.formData.Subject = "";
+      this.formData.Body = "";
+      this.formData.Phone = "";
+      this.formData.MobilePhone = "";
+
+      // Mostra messaggio di successo
+      Swal.fire({
+        title: "Richiesta inviata con successo",
+        icon: "success"
+      });
+    })
+    .catch((error) => {
+      this.loadingRequest = false;
+      Swal.fire({
+        title: "Si è verificato un errore",
+        icon: "error"  // Corretto l'icona "error" invece di "success"
+      });
           console.log(error)
         })
 
     },
     async getItem() {
-      const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetById?id=" + this.$route.params.id);
-      this.item = result.data;
-      this.photos = result.data.Photos;
-      this.imgSelected = this.photos[0].Url;
-      this.loading = false;
-    },
+  const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetById?id=" + this.$route.params.id);
+  
+  this.item = result.data;
+  this.photos = result.data.Photos;
+  this.imgSelected = this.photos.length > 0 ? this.photos[0].Url : '';
+
+  // Controlla se esiste un VideoUrl
+  if (this.item.VideoUrl) {
+    this.videoEmbedUrl = this.convertVideoUrl(this.item.VideoUrl);
+    this.showVideo = true;
+  } else {
+    this.showVideo = false;
+  }
+
+  this.loading = false;
+},
+
+convertVideoUrl(url) {
+  try {
+    let videoId = "";
+
+    // Cattura ID dai vari formati di link YouTube
+    const patterns = [
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]+)/, // Standard, Shorts e Embed
+      /youtube\.com\/v\/([a-zA-Z0-9_-]+)/, // Formato vecchio
+      /youtube\.com\/.*[?&]v=([a-zA-Z0-9_-]+)/ // Link con parametri multipli
+    ];
+
+    for (const pattern of patterns) {
+      const match = url.match(pattern);
+      if (match) {
+        videoId = match[1];
+        break;
+      }
+    }
+
+    // Se non è stato trovato un ID, restituisce l'URL originale
+    if (!videoId) {
+      console.warn("Impossibile estrarre ID video da URL:", url);
+      return url;
+    }
+
+    // Costruisce il link embed corretto
+    return `https://www.youtube.com/embed/${videoId}`;
+  } catch (error) {
+    console.error("Errore nella conversione dell'URL del video:", error);
+    return "";
+  }
+},
+
+
     selectImage(url: string) {
       this.imgSelected = url;
     },
