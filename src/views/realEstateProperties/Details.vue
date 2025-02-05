@@ -163,6 +163,7 @@
             </p>
           </div>
         </div>
+      </div>
 
         <div v-if="showVideo" id="videoModal" class="modal-dialog modal-lg modal-dialog-centered">
            <div class="modal-content">
@@ -203,7 +204,6 @@
               <img src="@/assets/images/work/pic5.jpg" class="d-lg-block d-none" alt="" />
           </div>
         </div>
-      </div>
     </section>
     <section v-if="!loading" class="content-inner-1 pt-0 pb-0">
       <div class="container">
