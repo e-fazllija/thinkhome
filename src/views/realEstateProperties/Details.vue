@@ -161,8 +161,7 @@
             </h6>
           </div>
           <div class="col-12">
-            <p>
-              {{ item.Description }}
+            <p v-html="item.Description.replace('\n', '<br>')">
             </p>
           </div>
         </div>
