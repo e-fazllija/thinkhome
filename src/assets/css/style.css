@@ -25659,7 +25659,7 @@ pre {
 }
 @media only screen and (max-width: 575px) {
   .logo-header {
-    width: 130px;
+    width: 130px !important;
   }
 }
 .logo-header a {
