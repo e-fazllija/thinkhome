@@ -72,12 +72,9 @@
                         <br>
                         a. cookie propri, di sessione e persistenti, necessari per consentire la navigazione sul Sito,
                         per finalità di sicurezza interna e di amministrazione del sistema;
+                        <br>
                         b. cookie terze parti, di sessione e persistenti, necessari per consentire all’utente di
                         utilizzare elementi multimediali presenti sul Sito, come ad esempio immagini e video;
-                        c. cookie terze parti, persistenti, utilizzati dal Sito per inviare informazioni statistiche al
-                        sistema Google Analytics, attraverso il quale la Promedia S.r.l. effettuare analisi statistiche
-                        degli accessi / visite al Sito. I cookie utilizzati perseguono esclusivamente scopi statistici e
-                        raccolgono informazioni in forma aggregata
                         <br>
                         cookie terze parti, persistenti, utilizzati dal Sito per includere nelle sue pagine i pulsanti
                         di alcuni social-network (Facebook, Twitter e Google+). Selezionando uno di questi pulsanti,
@@ -86,34 +83,6 @@
                         Il Sito potrebbe contenere link ad altri siti (c.d. siti terzi). La Promedia S.r.l. non effettua
                         alcun accesso o controllo su cookie, web beacon e altre tecnologie di tracciamento degli utenti
                         che potrebbero essere utilizzate dai siti terzi cui l’utente può accedere dal Sito. La Promedia S.r.l. 
-                        non effettua alcun controllo su contenuti e materiali pubblicati da o ottenuti attraverso
-                        siti terzi, né sulle relative modalità di trattamento dei dati personali dell’utente, ed
-                        espressamente declina ogni relativa responsabilità per tali eventualità. L’utente è tenuto a
-                        verificare la privacy policy dei siti terzi cui accede tramite il Sito e ad informarsi circa le
-                        condizioni applicabili al trattamento dei propri dati personali. La presente Privacy Policy si
-                        applica solo al Sito come sopra definito.
-                        <br>
-                        <br>
-                        <h4>Cookies e dati di navigazione</h4>
-                        Cookies utilizzati sul sito
-                        Il Sito utilizza le seguenti tipologie di cookie:
-                        <br>
-                        a. cookie propri, di sessione e persistenti, necessari per consentire la navigazione sul Sito,
-                        per finalità di sicurezza interna e di amministrazione del sistema;
-                        b. cookie terze parti, di sessione e persistenti, necessari per consentire all’utente di
-                        utilizzare elementi multimediali presenti sul Sito, come ad esempio immagini e video;
-                        c. cookie terze parti, persistenti, utilizzati dal Sito per inviare informazioni statistiche al
-                        sistema Google Analytics, attraverso il quale la Promedia S.r.l. effettuare analisi statistiche
-                        degli accessi / visite al Sito. I cookie utilizzati perseguono esclusivamente scopi statistici e
-                        raccolgono informazioni in forma aggregata
-                        <br>
-                        cookie terze parti, persistenti, utilizzati dal Sito per includere nelle sue pagine i pulsanti
-                        di alcuni social-network (Facebook, Twitter e Google+). Selezionando uno di questi pulsanti,
-                        l’utente può pubblicare sulla propria pagina personale del relativo social-network i contenuti
-                        della pagina web del Sito che sta visitando.
-                        Il Sito potrebbe contenere link ad altri siti (c.d. siti terzi). La Promedia S.r.l. non effettua
-                        alcun accesso o controllo su cookie, web beacon e altre tecnologie di tracciamento degli utenti
-                        che potrebbero essere utilizzate dai siti terzi cui l’utente può accedere dal Sito. La Promedia S.r.l.
                         non effettua alcun controllo su contenuti e materiali pubblicati da o ottenuti attraverso
                         siti terzi, né sulle relative modalità di trattamento dei dati personali dell’utente, ed
                         espressamente declina ogni relativa responsabilità per tali eventualità. L’utente è tenuto a
