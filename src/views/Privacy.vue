@@ -27,8 +27,8 @@
                         <p class="m-b30 aos-item">
                             La Promedia S.r.l. prende in seria considerazione la privacy dell’utente e si impegna al
                             rispetto della stessa. La presente privacy policy descrive le attività di trattamento di
-                            dati personali realizzate dalla Intent tramite il sito thinkhome.com e i relativi impegni
-                            assunti in tal senso dalla Società.
+                            dati personali realizzate dalla società tramite il sito thinkhome.com e i relativi impegni
+                            assunti in tal senso dalla stessa.
                             <br><br>
                             La Promedia S.r.l. può trattare i dati personali dell’utente quando questi visita il Sito e
                             utilizza i servizi e le funzionalità presenti sul Sito. Ove previsto dal Reg. UE 2016/679
