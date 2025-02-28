@@ -192,8 +192,11 @@
               <div class="dz-info">
                 <div class="dz-meta">
                   <p>Cod. 00{{ item.Id }}</p>
-              <h1 class="sub-title text-primary"> € {{ item.Price.toString()
-               .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00"}}</h1>
+                  <h1 class="sub-title text-primary">
+                     <span :class="{ 'text-muted': item.Sold }" :style="item.Sold ? 'text-decoration: line-through;' : ''">
+                      € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00 </span>
+                    <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Venduto</span>
+                  </h1>
               <h3> {{ item.Town }}</h3>
                 <h3><i class="fa fa-map-pin"></i> {{item.AddressLine }}</h3>
               <h6> {{ item.TypeOfProperty }}</h6>
@@ -265,6 +268,7 @@ export default defineComponent({
         Code: null,
         From: 0,
         To: -1,
+        Sold:true,
       },
       results: [{
         Id: 0,
