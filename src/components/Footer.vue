@@ -77,20 +77,21 @@
     <div class="footer-bottom">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-md-6 text-center text-md-start">
+          <div class="col-md-4 text-center text-md-start">
             <span class="copyright-text"
               >© {{ new Date().getFullYear() }}
               ThinkHome
               tutti i Diritti Riservati.</span
             >
           </div>
-          <!-- <div class="col-md-6 text-center text-md-end">
+          <div class="col-md-8 text-center text-md-end">
             <ul class="footer-link d-inline-block">
-              <li><RouterLink to="?">About</RouterLink></li>
-              <li><RouterLink to="?">Help Desk</RouterLink></li>
-              <li><RouterLink to="?">Privacy Policy</RouterLink></li>
+              <li>Promedia S.r.l - Viale Ungheria 91, 00039 Zagarolo (RM)</li>
+              <li>P. Iva: 13244951003</li>
+              <li><RouterLink target="_blank" to="privacy-policy">Privacy Policy</RouterLink></li>
+              <!-- <li><RouterLink target="_blank"  to="general-conditions">Condizioni generali</RouterLink></li> -->
             </ul>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>

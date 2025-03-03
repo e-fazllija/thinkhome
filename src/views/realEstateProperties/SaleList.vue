@@ -1,7 +1,24 @@
 <template>
   <div class="page-content bg-white">
-    <CommonBanner :img="bnr3" title="Immobili in vendita" text="Immobili in vendita" />
-    
+
+    <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
+      <div class="container-fluid">
+        <div class="dz-bnr-inr-entry">
+          <h1>Immobili in vendita</h1>
+          <!-- Breadcrumb Row -->
+          <nav aria-label="breadcrumb" class="breadcrumb-row">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <RouterLink to="/">Home</RouterLink>
+              </li>
+              <li class="breadcrumb-item">Immobili in vendita</li>
+            </ul>
+          </nav>
+          <!-- Breadcrumb Row End -->
+        </div>
+      </div>
+    </div>
+
     <section class="content-inner-3 bg-white line-img">
       <form class="container" @submit.prevent="submit()">
         <div class="contact-area aos-item mt-0">
@@ -37,7 +54,7 @@
               </select>
             </div>
             <div class="col-lg-4 mb-3">
-              <input placeholder="Località" class="form-control" list="datalistOptions"  v-model="formData.Location">
+              <input placeholder="Località" class="form-control" list="datalistOptions" v-model="formData.Location">
               <datalist id="datalistOptions">
                 <option value="L'AQUILA">ABRUZZO \ L'AQUILA (AQ)</option>
                 <option value="FROSINONE">LAZIO \ FROSINONE (FR)</option>
@@ -163,16 +180,9 @@
         </div>
       </form>
     </section>
-    
+
     <div class="content-inner">
-  <div class="container">
-    <div class="row">
-      <div v-if="loading" class="d-flex justify-content-center w-100">
-        <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-      </div>
-      <div v-if="!loading">
+      <div class="container">
         <div class="row">
           <div v-for="(item, ind) in results" :key="ind" class="col-xl-6 col-lg-6 col-md-6 mb-4">
             <div class="dz-card blog-grid style-1 m-b50 aos-item">
@@ -213,18 +223,8 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-            <BlogPagination 
-            :currentPage="page" 
-            :totalPages="totalPages" 
-            :filter="filter" 
-            :typologie="typologie"
-            :location="location"
-            :code="code"
-            :from="from"
-            :to="to"
-              @changePage="handlePageChange" />
+            <BlogPagination :currentPage="page" :totalPages="totalPages" :filter="filter" :typologie="typologie"
+              :location="location" :code="code" :from="from" :to="to" @changePage="handlePageChange" />
           </div>
         </div>
       </div>
@@ -273,12 +273,12 @@ export default defineComponent({
       results: [{
         Id: 0,
         AddressLine: "",
-        Typology:"",
+        Typology: "",
         Price: 0,
         ShortDescription: "",
-        TypeOfProperty:"",
+        TypeOfProperty: "",
         Photos: [{
-            Url: ""
+          Url: ""
         }]
       }]
     }
@@ -287,53 +287,70 @@ export default defineComponent({
     await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to);
   },
   methods: {
-  async getItems(_page, _filter, _typologie, _location, _code, _from, _to) {
-    this.loading = true;
-    const result = await axios.get(
-      `https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/Get?currentPage=${_page}&filterRequest=${_filter}&status=Vendita&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}`
-    );
-    this.results = result.data.Data;
-    const totalItems = result.data.Total;
-    this.totalPages = totalItems > 0 ? Math.ceil(totalItems / 10) : 1;
-    this.loading = false;
-  },
-  async handlePageChange(newPage) {
-    this.page = newPage;
-    await this.getItems(this.page, this.filter, this.typologie, this.location, this.code, this.from, this.to);
-  },
-  async submit() {this.loading = true;this.typologie = this.formData.PropertyType;this.location = this.formData.Location ?? "Qualsiasi";
-    this.code = this.formData.Code ?? 0;this.from = this.formData.From;this.to = this.formData.To;
+    async getItems(_page, _filter, _typologie, _location, _code, _from, _to) {
+      this.loading = true;
+      const result = await axios.get(
+        `https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/Get?currentPage=${_page}&filterRequest=${_filter}&status=Vendita&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}`
+      );
+      this.results = result.data.Data;
+      const totalItems = result.data.Total;
+      this.totalPages = totalItems > 0 ? Math.ceil(totalItems / 10) : 1;
+      this.loading = false;
+    },
+    async handlePageChange(newPage) {
+      this.page = newPage;
+      await this.getItems(this.page, this.filter, this.typologie, this.location, this.code, this.from, this.to);
+    },
+    async submit() {
+      this.loading = true; this.typologie = this.formData.PropertyType; this.location = this.formData.Location ?? "Qualsiasi";
+      this.code = this.formData.Code ?? 0; this.from = this.formData.From; this.to = this.formData.To;
 
-    if (this.formData.RequestType === "Vendita") {await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to);
-    } else {let routeName;
-            if (this.formData.RequestType === "Affitto") {routeName = "immobili_in_affitto";
-            } else if (this.formData.RequestType === "Aste") {routeName = "aste_immobiliari";
-            }
+      if (this.formData.RequestType === "Vendita") {
+        await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to);
+      } else {
+        let routeName;
+        if (this.formData.RequestType === "Affitto") {
+          routeName = "immobili_in_affitto";
+        } else if (this.formData.RequestType === "Aste") {
+          routeName = "aste_immobiliari";
+        }
 
-      this.$router.push({name: routeName,params: {tipologia: this.typologie,localita: this.location, codice: this.code, da: this.from, a: this.to}
-      });
+        this.$router.push({
+          name: routeName, params: { tipologia: this.typologie, localita: this.location, codice: this.code, da: this.from, a: this.to }
+        });
+      }
+      this.loading = false;
     }
-    this.loading = false;
   }
-}
 })
 </script>
 
 <style scoped>
 .dz-info {
-  width: 590px; /* Larghezza fissa, puoi modificarla */
-  height: 450px; /* Altezza fissa, puoi modificarla */
-  display: flex; /* Per allineare il contenuto */
-  justify-content: space-between; /* Spazia gli elementi uniformemente */
-  box-sizing: border-box; /* Include il padding nella dimensione totale */
-  border-radius: 5px; /* Angoli arrotondati */
-  background-color: #f9f9f9; /* Colore di sfondo */
+  width: 590px;
+  /* Larghezza fissa, puoi modificarla */
+  height: 450px;
+  /* Altezza fissa, puoi modificarla */
+  display: flex;
+  /* Per allineare il contenuto */
+  justify-content: space-between;
+  /* Spazia gli elementi uniformemente */
+  box-sizing: border-box;
+  /* Include il padding nella dimensione totale */
+  border-radius: 5px;
+  /* Angoli arrotondati */
+  background-color: #f9f9f9;
+  /* Colore di sfondo */
 }
+
 @media (max-width: 768px) {
   .dz-info {
-    width: 100%; /* Adatta alla larghezza del contenitore genitore */
-    height: auto; /* Altezza flessibile per contenuti variabili */
-    padding: 15px; /* Riduce il padding per schermi più piccoli */
+    width: 100%;
+    /* Adatta alla larghezza del contenitore genitore */
+    height: auto;
+    /* Altezza flessibile per contenuti variabili */
+    padding: 15px;
+    /* Riduce il padding per schermi più piccoli */
   }
 }
 </style>

@@ -158,8 +158,19 @@ const router = createRouter({
       name: 'servizi_vari',
       component: () => import('../views/services/details/ServicesDetailsServizi-Vari.vue'),
       meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/privacy-policy',
+      name: 'privacy-policy',
+      component: () => import('../views/Privacy.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
+      path: '/general-conditions',
+      name: 'general-conditions',
+      component: () => import('../views/GeneralConditions.vue'),
+      meta: { layout3: 'layout3' }
     }
-
   ]
 })
 
