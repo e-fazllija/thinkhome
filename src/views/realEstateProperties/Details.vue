@@ -41,8 +41,11 @@
       <div class="container">
         <div class="section-head style-1">
           <h1> {{ item.Title }}</h1>
-          <h1 class="sub-title text-primary"> € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ",00"
-            }}</h1>
+          <h1 class="sub-title text-primary">
+                     <span :class="{ 'text-muted': item.Sold }" :style="item.Sold ? 'text-decoration: line-through;' : ''">
+                      € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00 </span>
+                    <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Venduto</span>
+                  </h1>
           <p>Cod. 00{{ item.Id }}</p>
         </div>
       </div>
@@ -321,6 +324,7 @@ export default defineComponent({
         PostCode: "",
         State: "",
         Price: 0,
+        Sold: true,
         CommercialSurfaceate: "",
         ParkingSpaces: "",
         Heating: "",
