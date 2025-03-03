@@ -183,48 +183,61 @@
 
     <div class="content-inner">
       <div class="container">
-        <div class="row">
-          <div v-for="(item, ind) in results" :key="ind" class="col-xl-6 col-lg-6 col-md-6 mb-4">
-            <div class="dz-card blog-grid style-1 m-b50 aos-item">
-              <div class="dz-media">
-                <Swiper class="swiper-container post-swiper" :speed="1500" :loop="true" :modules="modules" :navigation="{
-                  prevEl: '.prev-post-swiper-btn',
-                  nextEl: '.next-post-swiper-btn'
-                }">
-                  <SwiperSlide v-for="(photo, ind) in item.Photos" :key="ind" class="swiper-slide">
-                    <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img :src="photo.Url" alt=""
-                        style="border-radius: 5px; padding: 0px; height: 400px; object-fit: cover;" /></RouterLink>
-                  </SwiperSlide>
-                  <div class="prev-post-swiper-btn"><i class="la fa-angle-left"></i></div>
-                  <div class="next-post-swiper-btn"><i class="la fa-angle-right"></i></div>
-                </Swiper>
-              </div>
-              <div class="dz-info">
-                <div class="dz-meta">
-                  <p>Cod. 00{{ item.Id }}</p>
-                  <h1 class="sub-title text-primary">
-                     <span :class="{ 'text-muted': item.Sold }" :style="item.Sold ? 'text-decoration: line-through;' : ''">
-                      € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00 </span>
-                    <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Venduto</span>
-                  </h1>
-              <h3> {{ item.Town }}</h3>
-                <h3><i class="fa fa-map-pin"></i> {{item.AddressLine }}</h3>
-              <h6> {{ item.TypeOfProperty }}</h6>
-              <h6><img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
-              </h6>
-              <p>
-                {{ item.Description.substring(0, 300) }}...
-              </p>
-                </div>
-                <div class="read-more">
-                  <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"
-                    class="btn btn-primary btn-rounded btn-sm hover-icon"><span>Dettaglio </span><i
-                      class="fas fa-arrow-right"></i></RouterLink>
-                </div>
-              </div>
+        <div class="row justify-content-center">
+          <div v-if="loading" class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
             </div>
-            <BlogPagination :currentPage="page" :totalPages="totalPages" :filter="filter" :typologie="typologie"
-              :location="location" :code="code" :from="from" :to="to" @changePage="handlePageChange" />
+          </div>
+          <div v-if="!loading">
+            <div class="row">
+              <div v-for="(item, ind) in results" :key="ind" class="col-xl-6 col-lg-6 col-md-6 mb-4">
+                <div class="dz-card blog-grid style-1 m-b50 aos-item">
+                  <div class="dz-media">
+                    <Swiper class="swiper-container post-swiper" :speed="1500" :loop="true" :modules="modules"
+                      :navigation="{
+                        prevEl: '.prev-post-swiper-btn',
+                        nextEl: '.next-post-swiper-btn'
+                      }">
+                      <SwiperSlide v-for="(photo, ind) in item.Photos" :key="ind" class="swiper-slide">
+                        <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img :src="photo.Url" alt=""
+                            style="border-radius: 5px; padding: 0px; height: 400px; object-fit: cover;" /></RouterLink>
+                      </SwiperSlide>
+                      <div class="prev-post-swiper-btn"><i class="la fa-angle-left"></i></div>
+                      <div class="next-post-swiper-btn"><i class="la fa-angle-right"></i></div>
+                    </Swiper>
+                  </div>
+                  <div class="dz-info">
+                    <div class="dz-meta">
+                      <p>Cod. 00{{ item.Id }}</p>
+                      <h1 class="sub-title text-primary">
+                        <span :class="{ 'text-muted': item.Sold }"
+                          :style="item.Sold ? 'text-decoration: line-through;' : ''">
+                          € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00 </span>
+                        <span v-if="item.Sold" class="badge ms-2"
+                          style="background-color: #3d6871; color: white;">Venduto</span>
+                      </h1>
+                      <h3> {{ item.Town }}</h3>
+                      <h3><i class="fa fa-map-pin"></i> {{ item.AddressLine }}</h3>
+                      <h6> {{ item.TypeOfProperty }}</h6>
+                      <h6><img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
+                      </h6>
+                      <p>
+                        {{ item.Description.substring(0, 300) }}...
+                      </p>
+                    </div>
+                    <div class="read-more">
+                      <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"
+                        class="btn btn-primary btn-rounded btn-sm hover-icon"><span>Dettaglio </span><i
+                          class="fas fa-arrow-right"></i></RouterLink>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <BlogPagination :currentPage="page" :totalPages="totalPages" :filter="filter" :typologie="typologie"
+                :location="location" :code="code" :from="from" :to="to" @changePage="handlePageChange" />
+            </div>
           </div>
         </div>
       </div>
@@ -268,7 +281,7 @@ export default defineComponent({
         Code: null,
         From: 0,
         To: -1,
-        Sold:true,
+        Sold: true,
       },
       results: [{
         Id: 0,
