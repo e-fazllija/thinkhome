@@ -9,15 +9,6 @@
               <div class="widget_getintuch">
                 <ul>
                   <li>
-                    <i class="las la-map-marker-alt"></i>
-                    Viale Ungheria, 91, Zagarolo, Roma, Italia
-                  </li>
-                  <li>
-                    <i class="las la-phone-volume"></i>
-                    +39 333/9123388  
-                    +39 06/95595263
-                  </li>
-                  <li>
                     <i class="las la-mail-bulk"></i>
                     info@thinkhome.it 
                   </li>

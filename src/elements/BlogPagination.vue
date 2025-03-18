@@ -1,6 +1,12 @@
 <template>
   <nav aria-label="Blog Pagination">
     <ul class="pagination text-center m-b30">
+      <li v-if="currentPage! > 1" class="page-item">
+       <button  class="page-link prev" 
+       @click="newPageClick(1)">
+       <i class="la la-angle-double-left"></i> <!-- Doppia freccia per la prima pagina -->
+       </button>
+      </li>
       <!-- Pulsante pagina precedente -->
       <li class="page-item">
         <button 
@@ -10,7 +16,6 @@
           <i class="la la-angle-left"></i>
         </button>
       </li>
-
       <!-- Range delle pagine -->
       <li 
         v-for="page in visiblePages" 
@@ -23,13 +28,24 @@
           {{ page }}
         </button>
       </li>
-
+      <li v-if="currentPage! < totalPages!" class="page-item">
+       <button   class="page-link" 
+       @click="newPageClick(totalPages!)">
+       {{ totalPages }}
+      </button>
+     </li>
       <!-- Pulsante pagina successiva -->
       <li v-if="currentPage! < totalPages!" class="page-item">
         <button 
           class="page-link next" 
           @click="newPageClick(currentPage! + 1)">
           <i class="la la-angle-right"></i>
+        </button>
+      </li>
+      <li v-if="currentPage! < totalPages!" class="page-item">
+        <button  class="page-link next" 
+        @click="newPageClick(totalPages!)">
+        <i class="la la-angle-double-right"></i> <!-- Doppia freccia -->
         </button>
       </li>
     </ul>
