@@ -182,7 +182,7 @@
                   nextEl: '.next-post-swiper-btn'
                 }">
                   <SwiperSlide v-for="(photo, ind) in item.Photos" :key="ind" class="swiper-slide">
-                    <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img :src="photo.Url" alt=""
+                    <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }" target="_blank"><img :src="photo.Url" alt=""
                         style="border-radius: 5px; padding: 0px; height: 400px; object-fit: cover;" /></RouterLink>
                   </SwiperSlide>
                   <div class="prev-post-swiper-btn"><i class="la fa-angle-left"></i></div>
@@ -204,7 +204,7 @@
               </p>
                 </div>
                 <div class="read-more">
-                  <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"
+                  <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }" target="_blank"
                     class="btn btn-primary btn-rounded btn-sm hover-icon"><span>Dettaglio </span><i
                       class="fas fa-arrow-right"></i></RouterLink>
                 </div>
