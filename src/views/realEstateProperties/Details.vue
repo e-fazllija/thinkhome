@@ -79,7 +79,7 @@
       </div>
       <div class="container">
   <div class="row mt-5">
-    <div class="col-md-4">
+    <div class="col-md-12">
       <div class="icon-content">
         <div class="icon-bx-wraper style-7 left m-b30">
           <div class="icon-bx-sm bg-primary">
@@ -92,7 +92,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <div class="icon-content">
         <div class="icon-bx-wraper style-7 left m-b30" >
             <button class="btn btn-primary"  onclick="shareProperty()">
@@ -100,8 +100,8 @@
             </button>
         </div>
       </div>
-    </div>
-    <div class="col-md-4"></div>
+    </div> -->
+    <!-- <div class="col-md-4"></div> -->
   </div>
 </div>
 <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
