@@ -239,13 +239,21 @@
                                         v-model="formData.Body"></textarea>
                                 </div>
                             </div>
+                            <div class="col-sm-12 m-b20">
+                              <div class="form-check">
+                               <input type="checkbox" class="form-check-input" id="privacyCheckbox" v-model="acceptPrivacy" required />
+                                             <label class="form-check-label" for="privacyCheckbox">
+                               Accetto il trattamento dei dati personali in conformità alla <RouterLink to="/privacy-policy">Privacy Policy</RouterLink> *
+                               </label>
+                            </div>
+                        </div>
                             <div v-if="loading" class="d-flex justify-content-center">
                                 <div class="spinner-border" role="status">
                                     <span class="sr-only">Loading...</span>
                                 </div>
                             </div>
                             <div v-else class="col-sm-12 text-center">
-                                <button name="submit" type="submit" class="btn btn-primary btn-rounded">
+                                <button name="submit" type="submit" class="btn btn-primary btn-rounded" :disabled="!acceptPrivacy">
                                     Invia <i class="m-l10 fas fa-caret-right"></i>
                                 </button>
                             </div>
@@ -296,6 +304,7 @@ export default defineComponent({
     components: { CommonBanner },
     data() {
         return {
+            acceptPrivacy: false,
             loading: false,
             formData: {
                 RequestType: "Vendita",
@@ -327,49 +336,63 @@ export default defineComponent({
     },
     methods: {
         async submit() {
-            this.loading = true;
-            axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/SendRequest', this.formData)
-                .then(() => {
-                    this.formData.RequestType = "Vendita";
-                    this.formData.PropertyType = "Appartamenti";
-                    this.formData.Province= "";
-                    this.formData.Location= "";
-                    this.formData.Address= "";
-                    this.formData.NumberRooms= "";
-                    this.formData.NumberBedRooms= "";
-                    this.formData.NumberServices= "";
-                    this.formData.MQ= "";
-                    this.formData.Garden = false;
-                    this.formData.Terrace = false;
-                    this.formData.Lift = false;
-                    this.formData.Furnished = false;
-                    this.formData.Heating = "Non Presente";
-                    this.formData.Box = "Non Presente";
-                    this.formData.Price = "";
-                    this.formData.Information = "";
-                    this.formData.Name = "";
-                    this.formData.LastName = "";
-                    this.formData.FromEmail = "";
-                    this.formData.Subject = "";
-                    this.formData.Body = "";
-                    this.formData.Phone = "";
-                    this.formData.MobilePhone = "";
-                    this.loading = false;
-                    Swal.fire({
-                        title: "Richiesta inviata con successo",
-                        icon: "success"
-                    });
-                })
-                .catch((error) => {
-                    this.loading = false;
-                    Swal.fire({
-                        title: "Si è verificato un errore",
-                        icon: "success"
-                    });
-                    console.log(error)
-                })
+    if (!this.acceptPrivacy) {
+        Swal.fire({
+            title: "Devi accettare la Privacy Policy",
+            icon: "warning"
+        });
+        return;
+    }
 
-        },
+    this.loading = true;
+
+    try {
+        await axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/SendRequest', this.formData);
+
+        // Reset solo se la richiesta ha successo
+        this.formData = {
+            RequestType: "Vendita",
+            PropertyType: "Appartamenti",
+            Province: "",
+            Location: "",
+            Address: "",
+            NumberRooms: "",
+            NumberBedRooms: "",
+            NumberServices: "",
+            MQ: "",
+            Garden: false,
+            Terrace: false,
+            Lift: false,
+            Furnished: false,
+            Heating: "Non Presente",
+            Box: "Non Presente",
+            Price: "",
+            Information: "",
+            Name: "",
+            LastName: "",
+            FromEmail: "",
+            Subject: "",
+            Body: "",
+            Phone: "",
+            MobilePhone: "",
+        };
+
+        Swal.fire({
+            title: "Richiesta inviata con successo",
+            icon: "success"
+        });
+
+    } catch (error) {
+        Swal.fire({
+            title: "Si è verificato un errore",
+            icon: "error"
+        });
+        console.error("Errore nell'invio della richiesta:", error);
+    } finally {
+        this.loading = false;
+    }
+}
+
     },
 })
 </script>
