@@ -224,9 +224,11 @@
                     class="btn btn-primary btn-rounded btn-sm hover-icon"><span>Dettaglio </span><i
                       class="fas fa-arrow-right"></i></RouterLink>
                 </div>
+
               </div>
+              <BlogPagination :currentPage="page" :totalPages="totalPages" :filter="filter" :typologie="typologie"
+                :location="location" :code="code" :from="from" :to="to" @changePage="handlePageChange" />
             </div>
- 
           </div>
         </div>
       </div>
@@ -273,7 +275,7 @@ export default defineComponent({
         From: 0,
         To: -1,
         Sold:true,
-        Negotiation:true,
+        Negotiation:true
       },
       results: [{
         Id: 0,
