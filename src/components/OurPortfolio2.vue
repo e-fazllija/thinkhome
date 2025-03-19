@@ -10,7 +10,7 @@
           <div :class="`dz-box overlay style-1 ${setStyle}`">
             <div class="dz-media">
               <a :data-src="img" class="lightimg">
-                <img v-lazy="img" alt="" class="img-fluid" />
+                <img :src="img" alt="" class="img-fluid" />
               </a>
             </div>
           </div>

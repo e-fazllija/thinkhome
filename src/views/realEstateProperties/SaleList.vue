@@ -183,7 +183,12 @@
 
     <div class="content-inner">
       <div class="container">
-        <div class="row">
+        <div v-if="loading" class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        <div v-else class="row">
           <div v-for="(item, ind) in results" :key="ind" class="col-xl-6 col-lg-6 col-md-6 mb-4">
             <div class="dz-card blog-grid style-1 m-b50 aos-item">
               <div class="dz-media">

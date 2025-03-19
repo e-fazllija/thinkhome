@@ -4,14 +4,14 @@
     <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
       <div class="container-fluid">
         <div class="dz-bnr-inr-entry">
-          <h1>Immobili in affitto</h1>
+          <h1>Immobili in vendita</h1>
           <!-- Breadcrumb Row -->
           <nav aria-label="breadcrumb" class="breadcrumb-row">
             <ul class="breadcrumb">
               <li class="breadcrumb-item">
                 <RouterLink to="/">Home</RouterLink>
               </li>
-              <li class="breadcrumb-item">Immobili in affitto</li>
+              <li class="breadcrumb-item">Immobili in vendita</li>
             </ul>
           </nav>
           <!-- Breadcrumb Row End -->
@@ -50,6 +50,7 @@
                 <option value="Vendita">Vendita</option>
                 <option value="Affitto">Affitto</option>
                 <option value="Aste">Aste</option>
+
               </select>
             </div>
             <div class="col-lg-4 mb-3">
@@ -122,44 +123,52 @@
               <select class="form-control" v-model="formData.From">
                 <option value="0">Prezzo Minimo</option>
                 <option value="0">€ 0</option>
-                <option value="250">€ 250</option>
-                <option value="500">€ 500</option>
-                <option value="750">€ 750</option>
-                <option value="1000">€ 1,000</option>
-                <option value="1250">€ 1,250</option>
-                <option value="1500">€ 1,500</option>
-                <option value="1750">€ 1,750</option>
-                <option value="2000">€ 2,000</option>
-                <option value="3000">€ 3,000</option>
-                <option value="4000">€ 4,000</option>
-                <option value="5000">€ 5,000</option>
-                <option value="6000">€ 6,000</option>
-                <option value="7000">€ 7,000</option>
-                <option value="8000">€ 8,000</option>
-                <option value="9000">€ 9,000</option>
-                <option value="10000">€ 10,000</option>
+                <option value="50000">€ 50,000</option>
+                <option value="100000">€ 100,000</option>
+                <option value="150000">€ 150,000</option>
+                <option value="200000">€ 200,000</option>
+                <option value="250000">€ 250,000</option>
+                <option value="300000">€ 300,000</option>
+                <option value="350000">€ 350,000</option>
+                <option value="400000">€ 400,000</option>
+                <option value="450000">€ 450,000</option>
+                <option value="500000">€ 500,000</option>
+                <option value="550000">€ 550,000</option>
+                <option value="600000">€ 600,000</option>
+                <option value="650000">€ 650,000</option>
+                <option value="700000">€ 700,000</option>
+                <option value="750000">€ 750,000</option>
+                <option value="800000">€ 800,000</option>
+                <option value="850000">€ 850,000</option>
+                <option value="900000">€ 900,000</option>
+                <option value="950000">€ 950,000</option>
+                <option value="1000000">€ 1,000,000</option>
               </select>
             </div>
             <div class="col-lg-4 mb-4">
               <select class="form-control" v-model="formData.To">
                 <option value="-1">Prezzo Massimo</option>
                 <option value="0">€ 0</option>
-                <option value="250">€ 250</option>
-                <option value="500">€ 500</option>
-                <option value="750">€ 750</option>
-                <option value="1000">€ 1,000</option>
-                <option value="1250">€ 1,250</option>
-                <option value="1500">€ 1,500</option>
-                <option value="1750">€ 1,750</option>
-                <option value="2000">€ 2,000</option>
-                <option value="3000">€ 3,000</option>
-                <option value="4000">€ 4,000</option>
-                <option value="5000">€ 5,000</option>
-                <option value="6000">€ 6,000</option>
-                <option value="7000">€ 7,000</option>
-                <option value="8000">€ 8,000</option>
-                <option value="9000">€ 9,000</option>
-                <option value="10000">€ 10,000</option>
+                <option value="50000">€ 50,000</option>
+                <option value="100000">€ 100,000</option>
+                <option value="150000">€ 150,000</option>
+                <option value="200000">€ 200,000</option>
+                <option value="250000">€ 250,000</option>
+                <option value="300000">€ 300,000</option>
+                <option value="350000">€ 350,000</option>
+                <option value="400000">€ 400,000</option>
+                <option value="450000">€ 450,000</option>
+                <option value="500000">€ 500,000</option>
+                <option value="550000">€ 550,000</option>
+                <option value="600000">€ 600,000</option>
+                <option value="650000">€ 650,000</option>
+                <option value="700000">€ 700,000</option>
+                <option value="750000">€ 750,000</option>
+                <option value="800000">€ 800,000</option>
+                <option value="850000">€ 850,000</option>
+                <option value="900000">€ 900,000</option>
+                <option value="950000">€ 950,000</option>
+                <option value="1000000">€ 1,000,000</option>
               </select>
             </div>
           </div>
@@ -174,67 +183,64 @@
 
     <div class="content-inner">
       <div class="container">
-        <div class="row justify-content-center">
-          <div v-if="loading" class="d-flex justify-content-center">
+        <div v-if="loading" class="d-flex justify-content-center">
             <div class="spinner-border" role="status">
               <span class="sr-only">Loading...</span>
             </div>
           </div>
-          <div v-if="!loading">
-            <div class="row">
-              <div v-for="(item, ind) in results" :key="ind" class="col-xl-6 col-lg-6 col-md-6 mb-4">
-                <div class="dz-media">
-                  <Swiper class="swiper-container post-swiper" :speed="1500" :loop="true" :modules="modules"
-                    :navigation="{
-                      prevEl: '.prev-post-swiper-btn',
-                      nextEl: '.next-post-swiper-btn'
-                    }">
-                    <SwiperSlide v-for="(photo, ind) in item.Photos" :key="ind" class="swiper-slide">
-                      <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }" target="_blank"><img :src="photo.Url" alt=""
-                          style="border-radius: 5px; padding: 0px; height: 400px; object-fit: cover;" /></RouterLink>
-                    </SwiperSlide>
-                    <div class="prev-post-swiper-btn"><i class="la fa-angle-left"></i></div>
-                    <div class="next-post-swiper-btn"><i class="la fa-angle-right"></i></div>
-                  </Swiper>
+        <div v-else class="row">
+          <div v-for="(item, ind) in results" :key="ind" class="col-xl-6 col-lg-6 col-md-6 mb-4">
+            <div class="dz-card blog-grid style-1 m-b50 aos-item">
+              <div class="dz-media">
+                <Swiper class="swiper-container post-swiper" :speed="1500" :loop="true" :modules="modules" :navigation="{
+                  prevEl: '.prev-post-swiper-btn',
+                  nextEl: '.next-post-swiper-btn'
+                }">
+                  <SwiperSlide v-for="(photo, ind) in item.Photos" :key="ind" class="swiper-slide">
+                    <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }" target="_blank"><img :src="photo.Url" alt=""
+                        style="border-radius: 5px; padding: 0px; height: 400px; object-fit: cover;" /></RouterLink>
+                  </SwiperSlide>
+                  <div class="prev-post-swiper-btn"><i class="la fa-angle-left"></i></div>
+                  <div class="next-post-swiper-btn"><i class="la fa-angle-right"></i></div>
+                </Swiper>
+              </div>
+              <div class="dz-info">
+                <div class="dz-meta">
+                  <p>Cod. 00{{ item.Id }}</p>
+          <h1 class="sub-title text-primary">
+              <span :class="{ 'text-muted': item.Sold }" :style="item.Sold ? 'text-decoration: line-through;' : ''">
+                    € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
+              </span>
+              <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Venduto</span>
+              <span v-if="!item.Sold && item.Negotiation" class="badge ms-2" style="background-color: #c0a480;
+               color: white;">In Trattativa</span>
+          </h1>
+              <h3> {{ item.Town }}</h3>
+                <h3><i class="fa fa-map-pin"></i> {{item.AddressLine }}</h3>
+              <h6> {{ item.TypeOfProperty }}</h6>
+              <h6><img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
+              </h6>
+              <p>
+                {{ item.Description.substring(0, 300) }}...
+              </p>
                 </div>
-                <div class="dz-info">
-                  <div class="dz-meta">
-                    <p>Cod. 00{{ item.Id }}</p>
-                <h1 class="sub-title text-primary">
-                      <span :class="{ 'text-muted': item.Sold }" :style="item.Sold ? 'text-decoration: line-through;' : ''">
-                      € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
-                      </span>
-                      <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Venduto</span>
-                      <span v-if="!item.Sold && item.Negotiation" class="badge ms-2" style="background-color: #c0a480;
-                      color: white;">In Trattativa</span>
-                </h1>
-                    <h3> {{ item.Town }}</h3>
-                    <h3><i class="fa fa-map-pin"></i> {{ item.AddressLine }}</h3>
-                    <h6> {{ item.TypeOfProperty }}</h6>
-                    <h6><img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
-                    </h6>
-                    <p>
-                      {{ item.Description.substring(0, 300) }}...
-                    </p>
-                  </div>
-                  <div class="read-more">
-                    <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }" target="_blank"
-                      class="btn btn-primary btn-rounded btn-sm hover-icon"><span>Dettaglio </span><i
-                        class="fas fa-arrow-right"></i></RouterLink>
-                  </div>
+                <div class="read-more">
+                  <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }" target="_blank"
+                    class="btn btn-primary btn-rounded btn-sm hover-icon"><span>Dettaglio </span><i
+                      class="fas fa-arrow-right"></i></RouterLink>
                 </div>
               </div>
             </div>
-            <BlogPagination :currentPage="page" :totalPages="totalPages" :filter="filter" :typologie="typologie"
-            :location="location" :code="code" :from="from" :to="to" @changePage="handlePageChange" />
           </div>
         </div>
       </div>
+      <BlogPagination :currentPage="page" :totalPages="totalPages" :filter="filter" :typologie="typologie"
+      :location="location" :code="code" :from="from" :to="to" @changePage="handlePageChange" />
     </div>
   </div>
 </template>
 
-<script lang="js">
+<script>
 import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import bnr3 from '@/assets/images/banner/bnr3.jpg'
@@ -244,13 +250,11 @@ import BlogPagination from '@/elements/BlogPagination.vue'
 import axios from 'axios'
 
 export default defineComponent({
-  name: 'blog_list_sidebar',
+  name: 'sale-list',
   components: { CommonBanner, Swiper, SwiperSlide, BlogPagination },
-
   setup() {
     return {
       bnr3,
-
       modules: [Navigation, Autoplay]
     }
   },
@@ -272,8 +276,8 @@ export default defineComponent({
         Code: null,
         From: 0,
         To: -1,
-        Sold: true,
-        Negotiation: true,
+        Sold:true,
+        Negotiation:true
       },
       results: [{
         Id: 0,
@@ -310,12 +314,12 @@ export default defineComponent({
       this.loading = true; this.typologie = this.formData.PropertyType; this.location = this.formData.Location ?? "Qualsiasi";
       this.code = this.formData.Code ?? 0; this.from = this.formData.From; this.to = this.formData.To;
 
-      if (this.formData.RequestType === "Affitto") {
+      if (this.formData.RequestType === "Vendita") {
         await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to);
       } else {
         let routeName;
-        if (this.formData.RequestType === "Vendita") {
-          routeName = "immobili_in_vendita";
+        if (this.formData.RequestType === "Affitto") {
+          routeName = "immobili_in_affitto";
         } else if (this.formData.RequestType === "Aste") {
           routeName = "aste_immobiliari";
         }
@@ -329,3 +333,33 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+.dz-info {
+  width: 590px;
+  /* Larghezza fissa, puoi modificarla */
+  height: 450px;
+  /* Altezza fissa, puoi modificarla */
+  display: flex;
+  /* Per allineare il contenuto */
+  justify-content: space-between;
+  /* Spazia gli elementi uniformemente */
+  box-sizing: border-box;
+  /* Include il padding nella dimensione totale */
+  border-radius: 5px;
+  /* Angoli arrotondati */
+  background-color: #f9f9f9;
+  /* Colore di sfondo */
+}
+
+@media (max-width: 768px) {
+  .dz-info {
+    width: 100%;
+    /* Adatta alla larghezza del contenitore genitore */
+    height: auto;
+    /* Altezza flessibile per contenuti variabili */
+    padding: 15px;
+    /* Riduce il padding per schermi più piccoli */
+  }
+}
+</style>

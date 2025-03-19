@@ -28,12 +28,12 @@
           {{ page }}
         </button>
       </li>
-      <li v-if="currentPage! < totalPages!" class="page-item">
+      <!-- <li v-if="currentPage! < totalPages!" class="page-item">
        <button   class="page-link" 
        @click="newPageClick(totalPages!)">
        {{ totalPages }}
       </button>
-     </li>
+     </li> -->
       <!-- Pulsante pagina successiva -->
       <li v-if="currentPage! < totalPages!" class="page-item">
         <button 
