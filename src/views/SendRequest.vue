@@ -1,21 +1,23 @@
 <template>
     <div class="page-content bg-white">
         <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
-      <div class="container-fluid">
-        <div class="dz-bnr-inr-entry">
-          <h1>Invia una richiesta</h1>
-          <!-- Breadcrumb Row -->
-          <nav aria-label="breadcrumb" class="breadcrumb-row">
-            <ul class="breadcrumb">
-              <li class="breadcrumb-item"><RouterLink to="/">Home</RouterLink></li>
-              <li class="breadcrumb-item">Invia una richiesta</li>
-            </ul>
-          </nav>
-          <!-- Breadcrumb Row End -->
+            <div class="container-fluid">
+                <div class="dz-bnr-inr-entry">
+                    <h1>Invia una richiesta</h1>
+                    <!-- Breadcrumb Row -->
+                    <nav aria-label="breadcrumb" class="breadcrumb-row">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <RouterLink to="/">Home</RouterLink>
+                            </li>
+                            <li class="breadcrumb-item">Invia una richiesta</li>
+                        </ul>
+                    </nav>
+                    <!-- Breadcrumb Row End -->
+                </div>
+            </div>
         </div>
-      </div>
-    </div>    
-            <section class="content-inner">
+        <section class="content-inner">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 m-b30 aos-item"
@@ -38,11 +40,11 @@
         </section>
         <section class="content-inner-1 pt-0">
             <div class="map-iframe">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2972.9715352011317!2d12.836399376219518!3d41.82891107124728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13257f9392c2da5d%3A0x1bced43d5b6f2683!2sThinkHome%20-Progettazioni%20-Edilizia-%20Investimenti!5e0!3m2!1sit!2sit!4v1731944561395!5m2!1sit!2sit"
-          class="align-self-stretch radius-sm" style="border: 0; width: 100%; min-height: 100%"
-          allowfullscreen></iframe>
-      </div>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2972.9715352011317!2d12.836399376219518!3d41.82891107124728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13257f9392c2da5d%3A0x1bced43d5b6f2683!2sThinkHome%20-Progettazioni%20-Edilizia-%20Investimenti!5e0!3m2!1sit!2sit!4v1731944561395!5m2!1sit!2sit"
+                    class="align-self-stretch radius-sm" style="border: 0; width: 100%; min-height: 100%"
+                    allowfullscreen></iframe>
+            </div>
             <div class="container">
                 <div class="contact-area aos-item">
                     <div class="section-head style-1 text-center">
@@ -239,13 +241,24 @@
                                         v-model="formData.Body"></textarea>
                                 </div>
                             </div>
+                            <div class="col-sm-12 m-b20">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="privacyCheckbox"
+                                        v-model="acceptPrivacy" required />
+                                    <label class="form-check-label" for="privacyCheckbox">
+                                        Accetto il trattamento dei dati personali in conformità alla <RouterLink
+                                            to="/privacy-policy">Privacy Policy</RouterLink> *
+                                    </label>
+                                </div>
+                            </div>
                             <div v-if="loading" class="d-flex justify-content-center">
                                 <div class="spinner-border" role="status">
                                     <span class="sr-only">Loading...</span>
                                 </div>
                             </div>
                             <div v-else class="col-sm-12 text-center">
-                                <button name="submit" type="submit" class="btn btn-primary btn-rounded">
+                                <button name="submit" type="submit" class="btn btn-primary btn-rounded"
+                                    :disabled="!acceptPrivacy">
                                     Invia <i class="m-l10 fas fa-caret-right"></i>
                                 </button>
                             </div>
@@ -296,6 +309,7 @@ export default defineComponent({
     components: { CommonBanner },
     data() {
         return {
+            acceptPrivacy: false,
             loading: false,
             formData: {
                 RequestType: "Vendita",
@@ -327,49 +341,63 @@ export default defineComponent({
     },
     methods: {
         async submit() {
-            this.loading = true;
-            axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/SendRequest', this.formData)
-                .then(() => {
-                    this.formData.RequestType = "Vendita";
-                    this.formData.PropertyType = "Appartamenti";
-                    this.formData.Province= "";
-                    this.formData.Location= "";
-                    this.formData.Address= "";
-                    this.formData.NumberRooms= "";
-                    this.formData.NumberBedRooms= "";
-                    this.formData.NumberServices= "";
-                    this.formData.MQ= "";
-                    this.formData.Garden = false;
-                    this.formData.Terrace = false;
-                    this.formData.Lift = false;
-                    this.formData.Furnished = false;
-                    this.formData.Heating = "Non Presente";
-                    this.formData.Box = "Non Presente";
-                    this.formData.Price = "";
-                    this.formData.Information = "";
-                    this.formData.Name = "";
-                    this.formData.LastName = "";
-                    this.formData.FromEmail = "";
-                    this.formData.Subject = "";
-                    this.formData.Body = "";
-                    this.formData.Phone = "";
-                    this.formData.MobilePhone = "";
-                    this.loading = false;
-                    Swal.fire({
-                        title: "Richiesta inviata con successo",
-                        icon: "success"
-                    });
-                })
-                .catch((error) => {
-                    this.loading = false;
-                    Swal.fire({
-                        title: "Si è verificato un errore",
-                        icon: "success"
-                    });
-                    console.log(error)
-                })
+            if (!this.acceptPrivacy) {
+                Swal.fire({
+                    title: "Devi accettare la Privacy Policy",
+                    icon: "warning"
+                });
+                return;
+            }
 
-        },
+            this.loading = true;
+
+            try {
+                await axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/SendRequest', this.formData);
+
+                // Reset solo se la richiesta ha successo
+                this.formData = {
+                    RequestType: "Vendita",
+                    PropertyType: "Appartamenti",
+                    Province: "",
+                    Location: "",
+                    Address: "",
+                    NumberRooms: "",
+                    NumberBedRooms: "",
+                    NumberServices: "",
+                    MQ: "",
+                    Garden: false,
+                    Terrace: false,
+                    Lift: false,
+                    Furnished: false,
+                    Heating: "Non Presente",
+                    Box: "Non Presente",
+                    Price: "",
+                    Information: "",
+                    Name: "",
+                    LastName: "",
+                    FromEmail: "",
+                    Subject: "",
+                    Body: "",
+                    Phone: "",
+                    MobilePhone: "",
+                };
+
+                Swal.fire({
+                    title: "Richiesta inviata con successo",
+                    icon: "success"
+                });
+
+            } catch (error) {
+                Swal.fire({
+                    title: "Si è verificato un errore",
+                    icon: "error"
+                });
+                console.error("Errore nell'invio della richiesta:", error);
+            } finally {
+                this.loading = false;
+            }
+        }
+
     },
 })
 </script>
@@ -377,25 +405,25 @@ export default defineComponent({
 <style scoped>
 @media screen and (max-width: 991px) {
 
-.col-sm-12 {
-  flex: 0 0 auto;
-  width: 100%;
-}
+    .col-sm-12 {
+        flex: 0 0 auto;
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 575px) {
 
-.col-sm-12 {
-  flex: 0 0 auto;
-  width: 100%;
-}
+    .col-sm-12 {
+        flex: 0 0 auto;
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 400px) {
 
-.col-sm-12 {
-  flex: 0 0 auto;
-  width: 100%;
-}
+    .col-sm-12 {
+        flex: 0 0 auto;
+        width: 100%;
+    }
 }
 </style>

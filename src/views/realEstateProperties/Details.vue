@@ -78,20 +78,51 @@
         </Lightgallery>
       </div>
       <div class="container">
-        <div class="row mt-5">
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <div class="icon-content">
+        <div class="icon-bx-wraper style-7 left m-b30">
+          <div class="icon-bx-sm bg-primary">
+            <span class="icon-cell"><i class="flaticon-placeholder"></i></span>
+          </div>
           <div class="icon-content">
-            <div class="icon-bx-wraper style-7 left m-b30">
-              <div class="icon-bx-sm bg-primary">
-                <span class="icon-cell"><i class="flaticon-placeholder"></i></span>
-              </div>
-              <div class="icon-content">
-                <h4 class="title m-b5">Indirizzo</h4>
-                <p>{{ item.AddressLine }} - {{ item.Town }} - {{ item.PostCode }} - {{ item.State }}</p>
-              </div>
-            </div>
+            <h4 class="title m-b5">Indirizzo</h4>
+            <p>{{ item.AddressLine }} - {{ item.Town }} - {{ item.PostCode }} - {{ item.State }}</p>
           </div>
         </div>
       </div>
+    </div>
+    <div class="col-md-4">
+      <div class="icon-content">
+        <div class="icon-bx-wraper style-7 left m-b30" >
+            <button class="btn btn-primary"  onclick="shareProperty()">
+              <i class="fa fa-share-alt"></i>   Condividi Annuncio
+            </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="shareModalLabel">Condividi l'Annuncio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Contenuto della modale, per esempio un form o i link di condivisione -->
+        <p>Condividi questo annuncio sui social media o via email.</p>
+        <!-- Aggiungi qui il contenuto che desideri, come pulsanti di condivisione -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+        <button type="button" class="btn btn-primary">Condividi</button>
+      </div>
+    </div>
+  </div>
+</div>
 
       <div class="container">
         <div class="row mt-5">
@@ -257,13 +288,21 @@
                     v-model="formData.Body"></textarea>
                 </div>
               </div>
+              <div class="col-sm-12 m-b20">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="privacyCheckbox" v-model="acceptPrivacy" required />
+              <label class="form-check-label" for="privacyCheckbox">
+                Accetto il trattamento dei dati personali in conformità alla <RouterLink to="/privacy-policy">Privacy Policy</RouterLink> *
+              </label>
+            </div>
+          </div>
               <div v-if="loadingRequest" class="d-flex justify-content-center">
                 <div class="spinner-border" role="status">
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
               <div v-else class="col-sm-12 text-center">
-                <button name="submit" type="submit" class="btn btn-primary btn-rounded">
+                <button name="submit" type="submit" class="btn btn-primary btn-rounded" :disabled="!acceptPrivacy">
                   Invia <i class="m-l10 fas fa-caret-right"></i>
                 </button>
               </div>
@@ -315,6 +354,7 @@ export default defineComponent({
       videoEmbedUrl: "",
       showVideo: false,
       videoUrl: "",
+      acceptPrivacy: false,
       photos: [{
         Url: ""
       }],
@@ -373,38 +413,48 @@ export default defineComponent({
   },
   methods: {
     async submit() {
-      this.loadingRequest = true;
-      this.formData.Information = this.item.Id.toString();
+  // Verifica se la checkbox è selezionata
+  if (!this.acceptPrivacy) {
+    Swal.fire({
+      title: "Devi accettare il trattamento dei dati personali.",
+      icon: "warning"
+    });
+    return; 
+  }
 
-      axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/InformationRequest', this.formData)
-        .then(async () => {
-          this.loadingRequest = false;
+  this.loadingRequest = true;
+  this.formData.Information = this.item.Id.toString();
 
-          // Reset dei campi del form
-          this.formData.Name = "";
-          this.formData.LastName = "";
-          this.formData.FromEmail = "";
-          this.formData.Subject = "";
-          this.formData.Body = "";
-          this.formData.Phone = "";
-          this.formData.MobilePhone = "";
+  try {
+    // Invia la richiesta con Axios
+    await axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/InformationRequest', this.formData);
+    
+    // Reset dei campi del form
+    this.formData.Name = "";
+    this.formData.LastName = "";
+    this.formData.FromEmail = "";
+    this.formData.Subject = "";
+    this.formData.Body = "";
+    this.formData.Phone = "";
+    this.formData.MobilePhone = "";
 
-          // Mostra messaggio di successo
-          Swal.fire({
-            title: "Richiesta inviata con successo",
-            icon: "success"
-          });
-        })
-        .catch((error) => {
-          this.loadingRequest = false;
-          Swal.fire({
-            title: "Si è verificato un errore",
-            icon: "error"  // Corretto l'icona "error" invece di "success"
-          });
-          console.log(error)
-        })
+    // Mostra messaggio di successo
+    Swal.fire({
+      title: "Richiesta inviata con successo",
+      icon: "success"
+    });
+  } catch (error) {
+    this.loadingRequest = false;
+    Swal.fire({
+      title: "Si è verificato un errore",
+      icon: "error"
+    });
+    console.log(error);
+  } finally {
+    this.loadingRequest = false;
+  }
+},
 
-    },
     async getItem() {
       const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetById?id=" + this.$route.params.id);
 
