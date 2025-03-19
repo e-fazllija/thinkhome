@@ -213,6 +213,7 @@
           </div>
         </div>
             <BlogPagination 
+            v-if="!loading"
             :currentPage="page" 
             :totalPages="totalPages" 
             :filter="filter" 
