@@ -95,35 +95,16 @@
     <div class="col-md-4">
       <div class="icon-content">
         <div class="icon-bx-wraper style-7 left m-b30" >
-            <button class="btn btn-primary"  onclick="shareProperty()">
-              <i class="fa fa-share-alt"></i>   Condividi Annuncio
-            </button>
+          <button class="btn btn-primary"   @click="shareProperty" aria-label="Condividi annuncio"
+           style="background-color: #c0a480;border-color: #c0a480; color: white;border-radius: 10px;
+           padding: 10px 20px; transition: all 0.3s ease; /* Transizione fluida */">
+                 <i class="fa fa-share-alt"></i></button>
         </div>
       </div>
     </div>
     <div class="col-md-4"></div>
   </div>
 </div>
-<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="shareModalLabel">Condividi l'Annuncio</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Contenuto della modale, per esempio un form o i link di condivisione -->
-        <p>Condividi questo annuncio sui social media o via email.</p>
-        <!-- Aggiungi qui il contenuto che desideri, come pulsanti di condivisione -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-        <button type="button" class="btn btn-primary">Condividi</button>
-      </div>
-    </div>
-  </div>
-</div>
-
       <div class="container">
         <div class="row mt-5">
           <div class="col-4">
@@ -522,6 +503,34 @@ export default defineComponent({
       const newIndex = (currentIndex + 1) % this.photos.length;
       this.imgSelected = this.photos[newIndex].Url;
     },
+  shareProperty() {
+      const propertyUrl = window.location.href; // Ottieni l'URL della pagina corrente
+      if (navigator.share) {
+        // Utilizza l'API Web Share se supportata
+        navigator.share({
+          title: 'Dettaglio Immobile',
+          url: propertyUrl
+        })
+        .then(() => console.log('Condivisione avvenuta con successo'))
+        .catch((error) => console.error('Errore durante la condivisione', error));
+      } else {
+        // Fallback per browser che non supportano l'API Web Share
+        navigator.clipboard.writeText(propertyUrl)
+          .then(() => {
+            Swal.fire({
+              title: 'Link copiato negli appunti!',
+              icon: 'success'
+            });
+          })
+          .catch((error) => {
+            console.error('Errore durante la copia del link', error);
+            Swal.fire({
+              title: 'Errore durante la copia del link',
+              icon: 'error'
+            });
+          });
+      }
+    }
   },
   async beforeMount() {
     await this.getItem();
