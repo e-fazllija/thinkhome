@@ -183,7 +183,12 @@
 
     <div class="content-inner">
       <div class="container">
-        <div class="row">
+        <div v-if="loading" class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        <div v-else class="row">
           <div v-for="(item, ind) in results" :key="ind" class="col-xl-6 col-lg-6 col-md-6 mb-4">
             <div class="dz-card blog-grid style-1 m-b50 aos-item">
               <div class="dz-media">
@@ -192,7 +197,7 @@
                   nextEl: '.next-post-swiper-btn'
                 }">
                   <SwiperSlide v-for="(photo, ind) in item.Photos" :key="ind" class="swiper-slide">
-                    <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img :src="photo.Url" alt=""
+                    <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }" target="_blank"><img :src="photo.Url" alt=""
                         style="border-radius: 5px; padding: 0px; height: 400px; object-fit: cover;" /></RouterLink>
                   </SwiperSlide>
                   <div class="prev-post-swiper-btn"><i class="la fa-angle-left"></i></div>
@@ -220,19 +225,16 @@
               </p>
                 </div>
                 <div class="read-more">
-                  <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"
+                  <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }" target="_blank"
                     class="btn btn-primary btn-rounded btn-sm hover-icon"><span>Dettaglio </span><i
                       class="fas fa-arrow-right"></i></RouterLink>
                 </div>
-
               </div>
-              <BlogPagination :currentPage="page" :totalPages="totalPages" :filter="filter" :typologie="typologie"
-                :location="location" :code="code" :from="from" :to="to" @changePage="handlePageChange" />
             </div>
           </div>
         </div>
       </div>
-      <BlogPagination :currentPage="page" :totalPages="totalPages" :filter="filter" :typologie="typologie"
+      <BlogPagination v-if="!loading" :currentPage="page" :totalPages="totalPages" :filter="filter" :typologie="typologie"
       :location="location" :code="code" :from="from" :to="to" @changePage="handlePageChange" />
     </div>
   </div>

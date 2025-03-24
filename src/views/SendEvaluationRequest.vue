@@ -201,8 +201,7 @@
               </div>
               <div class="col-sm-6 m-b20">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Cellulare"
-                    v-model="formData.MobilePhone" />
+                  <input type="text" class="form-control" placeholder="Cellulare" v-model="formData.MobilePhone" />
                 </div>
               </div>
               <div class="col-sm-12 m-b20">
@@ -215,13 +214,20 @@
                   <textarea rows="5" class="form-control" placeholder="Messaggio" v-model="formData.Body"></textarea>
                 </div>
               </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="privacyCheckbox" v-model="acceptPrivacy" required />
+                <label class="form-check-label" for="privacyCheckbox">
+                  Accetto il trattamento dei dati personali in conformità alla <RouterLink to="/privacy-policy">Privacy
+                    Policy</RouterLink> *
+                </label>
+              </div>
               <div v-if="loading" class="d-flex justify-content-center">
                 <div class="spinner-border" role="status">
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
               <div v-else class="col-sm-12 text-center">
-                <button name="submit" type="submit" class="btn btn-primary btn-rounded">
+                <button name="submit" type="submit" class="btn btn-primary btn-rounded" :disabled="!acceptPrivacy">
                   Invia <i class="m-l10 fas fa-caret-right"></i>
                 </button>
               </div>
@@ -272,6 +278,7 @@ export default defineComponent({
   components: { CommonBanner },
   data() {
     return {
+      acceptPrivacy: false,
       loading: false,
       formData: {
         RequestType: "Vendita",
@@ -303,18 +310,26 @@ export default defineComponent({
   },
   methods: {
     async submit() {
+      if (!this.acceptPrivacy) {
+        Swal.fire({
+          title: "Devi accettare la Privacy Policy",
+          icon: "warning"
+        });
+        return;
+      }
+
       this.loading = true;
       axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/SendEvaluationRequest', this.formData)
         .then(() => {
           this.formData.RequestType = "Vendita";
           this.formData.PropertyType = "Appartamenti";
-          this.formData.Province= "";
-          this.formData.Location= "";
-          this.formData.Address= "";
-          this.formData.NumberRooms= "";
-          this.formData.NumberBedRooms= "";
-          this.formData.NumberServices= "";
-          this.formData.MQ= "";
+          this.formData.Province = "";
+          this.formData.Location = "";
+          this.formData.Address = "";
+          this.formData.NumberRooms = "";
+          this.formData.NumberBedRooms = "";
+          this.formData.NumberServices = "";
+          this.formData.MQ = "";
           this.formData.Garden = false;
           this.formData.Terrace = false;
           this.formData.Lift = false;

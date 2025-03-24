@@ -21,12 +21,12 @@ const options = {
     cancelButtonColor: '#ff7674',
   };
 const app = createApp(App)
-app.use(VueLazyload, {
-  preLoad: 1.3,
-  error: 'https://thinkhomestorage.blob.core.windows.net/generic/TH-5.png',
-  loading: 'https://thinkhomestorage.blob.core.windows.net/generic/TH-5.png',
-  attempt: 1
-});
+// app.use(VueLazyload, {
+//   preLoad: 1.3,
+//   error: 'https://thinkhomestorage.blob.core.windows.net/generic/TH-5.png',
+//   loading: 'https://thinkhomestorage.blob.core.windows.net/generic/TH-5.png',
+//   attempt: 1
+// });
 app.use(VueSweetalert2, options);
 app.use(router)
 app.mount('#app')
