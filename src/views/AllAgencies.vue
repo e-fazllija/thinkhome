@@ -19,7 +19,7 @@
     <div class="container">
       <div class="row" v-for="(agency, index) in agencies" :key="index">
         <div class="col-md-4">
-          <img :src="agency.image" :alt="agency.name" class="img-fluid rounded" />
+          <img src="/src/assets/images/about/pic16.jpg" :alt="agency.name" class="img-fluid rounded" />
         </div>
         <div class="col-md-8 d-flex flex-column justify-content-center">
           <div class="agency-card p-4 shadow-sm rounded border">
