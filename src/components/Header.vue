@@ -157,7 +157,10 @@ export default defineComponent({
       { child: 'Consulenza Creditizia e Servizi Vari', to: '/servizi-vari' }
          ] },
       { menu: 'Invia una richiesta', className: 'menu', to: '/send-request' },
-      { menu: 'Chi siamo', className: 'menu', to: '/about-us' },
+      { menu: 'Agenzie', subMenu: [
+      { child: 'Agenzie', to: '/all-agencies' },
+      { child: 'Chi siamo', to: '/about-us' },
+      ] },
       { menu: 'Lavora con noi', className: 'menu', to: '/work-with-us' },
       { menu: 'Academy', className: 'menu', to: '/academy' },
     ])
