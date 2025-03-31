@@ -179,7 +179,7 @@
             </h6>
           </div>
           <div class="col-12">
-            <p v-html="item.Description.replace('\n', '<br>')">
+            <p v-html="item.Description.replace(/\n/g, '<br>')">
             </p>
           </div>
         </div>
@@ -450,7 +450,7 @@ export default defineComponent({
       } else {
         this.showVideo = false;
       }
-
+console.log(this.item.Description)
       this.loading = false;
     },
 
