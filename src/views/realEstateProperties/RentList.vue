@@ -221,7 +221,7 @@
               <h6><img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
               </h6>
               <p>
-                {{ item.Description.substring(0, 300) }}...
+                {{ item.Description.substring(0, 250) }}...
               </p>
                 </div>
                 <div class="read-more">
