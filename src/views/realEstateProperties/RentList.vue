@@ -208,13 +208,20 @@
               <div class="dz-info">
                 <div class="dz-meta">
                   <p>Cod. 00{{ item.Id }}</p>
-          <h1 class="sub-title text-primary">
-              <span :class="{ 'text-muted': item.Sold }" :style="item.Sold ? 'text-decoration: line-through;' : ''">
-                    € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
-              </span>
-              <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Venduto</span>
-              <span v-if="!item.Sold && item.Negotiation" class="badge ms-2" style="background-color: #c0a480;
-               color: white;">In Trattativa</span>
+                  <h1 class="sub-title text-primary">
+            <template v-if="item.PriceReduced && item.PriceReduced > 0">
+                <span>€ {{ item.PriceReduced.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00</span>
+                <small class="d-block text-muted" style="text-decoration: line-through;">
+                € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
+                </small>
+            </template>
+            <template v-else>
+                <span :class="{ 'text-muted': item.Sold }" :style="item.Sold ? 'text-decoration: line-through;' : ''">
+                € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
+                </span>
+            </template>
+                <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Venduto</span>
+                <span v-if="!item.Sold && item.Negotiation" class="badge ms-2" style="background-color: #c0a480; color: white;">In Trattativa</span>
           </h1>
               <h3> {{ item.Town }}</h3>
                 <h3><i class="fa fa-map-pin"></i> {{item.AddressLine }}</h3>

@@ -42,12 +42,19 @@
         <div class="section-head style-1">
           <h1> {{ item.Title }}</h1>
           <h1 class="sub-title text-primary">
-              <span :class="{ 'text-muted': item.Sold }" :style="item.Sold ? 'text-decoration: line-through;' : ''">
-                    € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
-              </span>
-              <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Venduto</span>
-              <span v-if="!item.Sold && item.Negotiation" class="badge ms-2" style="background-color: #c0a480;
-               color: white;">In Trattativa</span>
+            <template v-if="item.PriceReduced && item.PriceReduced > 0">
+                <span>€ {{ item.PriceReduced.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00</span>
+                <small class="d-block text-muted" style="text-decoration: line-through;">
+                € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
+                </small>
+            </template>
+            <template v-else>
+                <span :class="{ 'text-muted': item.Sold }" :style="item.Sold ? 'text-decoration: line-through;' : ''">
+                € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
+                </span>
+            </template>
+                <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Venduto</span>
+                <span v-if="!item.Sold && item.Negotiation" class="badge ms-2" style="background-color: #c0a480; color: white;">In Trattativa</span>
           </h1>
           <p>Cod. 00{{ item.Id }}</p>
         </div>
@@ -107,22 +114,28 @@
 </div>
       <div class="container">
         <div class="row mt-5">
-          <div class="col-4">
+          <div class="col-3">
             <div class="feature-item" style="display: flex; align-items: center; width: 40%;">
               <i class="fa fa-bed me-2" style="font-size: 50px;"></i>
               <strong style="font-size: 12px">{{ item.Bedrooms }} Camere</strong>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-3">
             <div class="feature-item" style="display: flex; align-items: center; width: 40%;">
               <i class="fa fa-home  me-2" style="font-size: 50px;"></i>
               <strong style="font-size: 12px">{{ item.CommercialSurfaceate }}m²</strong>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-3">
             <div class="feature-item" style="display: flex; align-items: center; width: 40%;">
               <i class="fa fa-car me-2" style="font-size: 50px;"></i>
               <strong style="font-size: 12px">{{ item.ParkingSpaces }} Posti Auto</strong>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="feature-item" style="display: flex; align-items: center; width: 40%;">
+              <i class="fa fa-tree me-2" style="font-size: 50px;"></i>
+              <strong style="font-size: 12px">Mq: {{ item.MQGarden }} </strong>
             </div>
           </div>
         </div>
@@ -130,22 +143,26 @@
 
       <div class="container">
         <div class="row mt-5">
-          <div class="col-4">
+          <div class="col-3">
             <div class="feature-item me-2" style="display: flex; align-items: center; width: 30%;">
               <i class="fa fa-thermometer-empty" style="font-size: 30px; margin-right: 8px;"></i>
               <strong style="font-size: 12px">Riscaldamento {{ item.Heating }}</strong>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-3">
             <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
               <i class="fas fa-bath me-2" style="font-size: 30px; margin-right: 8px;"></i>
               <strong style="font-size: 12px">{{ item.Bathrooms }} Bagno</strong>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-3">
             <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
               <i class="fa fa-fire me-2" aria-hidden="true" style="font-size: 30px; margin-right: 8px;"></i>
               <strong style="font-size: 12px">Classe Energetica {{ item.EnergyClass }}</strong>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
             </div>
           </div>
         </div>
@@ -359,6 +376,8 @@ export default defineComponent({
         Description: "",
         Typology: "",
         VideoUrl: "",
+        MQGarden:0,
+        PriceReduced:0,
         Photos: {
           Url: ""
         }
