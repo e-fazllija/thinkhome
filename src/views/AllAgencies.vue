@@ -16,47 +16,53 @@
       </div>
     </div>
 
-    <div class="container">
-    <div class="row" v-for="(agency, index) in agencies" :key="agency.id">
-      <div class="col-md-4">
-        <div class="agency-image-container rounded" :style="{ backgroundColor: agency.color || '#25606f' }">
-          <img src="/src/assets/images/about/pic16.jpg" :alt="agency.name" class="img-fluid rounded" />
-        </div>
-      </div>
-      <div class="col-md-8 d-flex flex-column justify-content-center">
-        <div class="agency-card p-4 shadow-sm rounded border">
-          <h3 class="agency-name mb-3">{{ agency.name }} {{ agency.lastName }}</h3>
-          <div class="row">
-            <div class="col-md-8">
-              <ul class="list-unstyled mb-0">
-                <li class="mb-2">
-                  <i style="color: #c0a480;" class="fas fa-map-marker-alt me-2"></i>
-                  <strong class="agency-detail">Indirizzo: </strong>
-                  <span class="agency-detail">{{ agency.address }}, {{ agency.town }}</span>
-                </li>
-                <li class="mb-2" v-if="agency.mobilePhone">
-                  <i style="color: #c0a480;" class="fas fa-mobile-alt me-2"></i>
-                  <strong class="agency-detail">Cellulare: </strong>
-                  <span class="agency-detail">{{ agency.mobilePhone }}</span>
-                </li>
-                <li class="mb-2">
-                  <i style="color: #c0a480;" class="fas fa-phone me-2"></i>
-                  <strong class="agency-detail">Telefono: </strong>
-                  <span class="agency-detail">{{ agency.phoneNumber }}</span>
-                </li>
-                <li class="mb-2">
-                  <i style="color: #c0a480;" class="fas fa-envelope me-2"></i>
-                  <strong class="agency-detail">Email: </strong>
-                  <span class="agency-detail">{{ agency.email }}</span>
-                </li>
-              </ul>
+    <div class="content-inner">
+      <div class="container">
+        <div v-if="loading" class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        <div v-else class="row" v-for="(agency, index) in agencies" :key="agency.id">
+          <div class="col-md-4 d-none d-md-block">
+            <div class="agency-image-container rounded" style="background-color: #25606f">
+              <img src="/src/assets/images/about/pic16.jpg" :alt="agency.name" class="img-fluid rounded" />
+            </div>
+          </div>
+          <div class="col-md-8 d-flex flex-column justify-content-center mb-3 mb-md-0">
+            <div class="agency-card p-4 shadow-sm rounded border">
+              <h3 class="agency-name mb-3">{{ agency.name }} {{ agency.lastName }}</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <i style="color: #c0a480;" class="fas fa-map-marker-alt me-2"></i>
+                      <strong class="agency-detail">Indirizzo: </strong>
+                      <span class="agency-detail">{{ agency.address }}, {{ agency.town }}</span>
+                    </li>
+                    <li class="mb-2" v-if="agency.mobilePhone">
+                      <i style="color: #c0a480;" class="fas fa-mobile-alt me-2"></i>
+                      <strong class="agency-detail">Cellulare: </strong>
+                      <span class="agency-detail">{{ agency.mobilePhone }}</span>
+                    </li>
+                    <li class="mb-2">
+                      <i style="color: #c0a480;" class="fas fa-phone me-2"></i>
+                      <strong class="agency-detail">Telefono: </strong>
+                      <span class="agency-detail">{{ agency.phoneNumber }}</span>
+                    </li>
+                    <li class="mb-2">
+                      <i style="color: #c0a480;" class="fas fa-envelope me-2"></i>
+                      <strong class="agency-detail">Email: </strong>
+                      <span class="agency-detail">{{ agency.email }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- Paginazione -->
-    <!-- <div class="row mt-4" v-if="agencies.length > 0">
+        <!-- Paginazione -->
+        <!-- <div class="row mt-4" v-if="agencies.length > 0">
       <div class="col-12">
         <nav aria-label="Page navigation">
           <ul class="pagination justify-content-center">
@@ -78,7 +84,8 @@
         </nav>
       </div>
     </div> -->
-  </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -129,7 +136,7 @@ export default defineComponent({
         const result = await axios.get(
           `https://thinkhomebe.azurewebsites.net/api/Agencies/Get?currentPage=${page}`
         );
-        
+
         this.agencies = result.data.Data.map((agency: any) => ({
           id: agency.Id,
           name: agency.Name || `${agency.LastName} ${agency.Name}`,
@@ -143,7 +150,7 @@ export default defineComponent({
           referent: agency.Referent || agency.UserName,
           color: agency.Color
         }));
-        
+
         const totalItems = result.data.Total;
         this.totalPages = totalItems > 0 ? Math.ceil(totalItems / 10) : 1;
         this.currentPage = page;
