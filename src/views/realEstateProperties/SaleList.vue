@@ -307,7 +307,7 @@ export default defineComponent({
     async getItems(_page, _filter, _typologie, _location, _code, _from, _to) {
       this.loading = true;
       const result = await axios.get(
-        `https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/Get?currentPage=${_page}&filterRequest=${_filter}&status=Vendita&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}`
+        `https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetMain?currentPage=${_page}&filterRequest=${_filter}&status=Vendita&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}`
       );
       this.results = result.data.Data;
       const totalItems = result.data.Total;
