@@ -100,18 +100,21 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="icon-content">
-        <div class="icon-bx-wraper style-7 left m-b30" >
+      <div class="icon-bx-wraper style-7 left m-b30 gap-3">
           <button class="btn btn-primary"   @click="shareProperty" aria-label="Condividi annuncio"
-           style="background-color: #c0a480;border-color: #c0a480; color: white;border-radius: 10px;
-           padding: 10px 20px; transition: all 0.3s ease; /* Transizione fluida */">
+          style="background-color: #3d6871;  color: white; border-radius: 10px; padding: 10px 30px;">
                  <i class="fa fa-share-alt"></i></button>
-        </div>
+
+          <button class="btn btn-primary" @click="printAnnuncio" aria-label="Stampa annuncio"
+          style="background-color: #3d6871;  color: white; border-radius: 10px; padding: 10px 30px;">
+          <i class="fa fa-print"> Stampa Annuncio</i> 
+      </button>
       </div>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-4">
+    </div>
   </div>
-</div>
+      </div>
       <div class="container">
         <div class="row mt-5">
           <div class="col-3">
@@ -324,6 +327,7 @@ import { Autoplay } from 'swiper/modules'
 import bannerImg from '@/assets/images/banner/1920x700.jpg'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import bg2 from '@/assets/images/background/bg2.png'
+import logoImage from '@/assets/images/work/pic5.jpg';
 import Lightgallery from 'lightgallery/vue'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
@@ -359,7 +363,7 @@ export default defineComponent({
       item: {
         Id: 0,
         Title: "",
-        Agent: { Name: "", LastName: "", Email: "", MobilePhoneNumber: "" },
+        Agent: { Name: "", LastName: "", Email: "", MobilePhoneNumber: "", Address:"", Town:"" },
         AddressLine: "",
         Town: "",
         PostCode: "",
@@ -505,6 +509,313 @@ console.log(this.item.Description)
         return "";
       }
     },
+
+    printAnnuncio() {
+  const printWindow = window.open('', '', 'width=900,height=650');
+  if (!printWindow) return;
+
+  // Prepara fino a 2 foto per la stampa
+  const displayPhotos = this.photos.slice(0, 2);
+  const mainPhoto = this.photos[0]?.Url || 'placeholder.jpg';
+  const secondPhoto = this.photos[1]?.Url || null;
+
+  // QR Code per i contatti
+  const propertyUrl = `https://www.thinkhome.it/dettaglio/${this.item.Id}`;
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&margin=10&data=${encodeURIComponent(propertyUrl)}`;
+
+  // Limita la lunghezza della descrizione
+  const maxDescriptionLength = 1000;
+  let truncatedDescription = this.item.Description;
+  if (this.item.Description.length > maxDescriptionLength) {
+    truncatedDescription = this.item.Description.substring(0, maxDescriptionLength) + ' [...]';
+  }
+
+  const agentInfo = `
+    <div style="margin-top: 20px; border-top: 1px solid #e0e0e0; padding-top: 15px;">
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+        <!-- Dettagli Agente -->
+        <div style="flex: 1; min-width: 60%;">
+          <p style="margin: 5px 0;"><strong>${this.item.Agent.Name} ${this.item.Agent.LastName}</strong></p>
+          <p style="margin: 5px 0; font-size: 14px;">
+            <i class="fas fa-map-marker-alt" style="color: #c0a480; width: 15px;"></i> 
+            ${this.item.Agent.Address || 'Via Roma, 123 - 00100 Roma'}, ${this.item.Agent.Town}
+          </p>
+          <p style="margin: 5px 0; font-size: 14px;">
+            <i class="fas fa-phone" style="color: #c0a480; width: 15px;"></i> 
+            ${this.item.Agent.MobilePhoneNumber || '+39 333 9123388'}
+          </p>
+          <p style="margin: 5px 0; font-size: 14px;">
+            <i class="fas fa-envelope" style="color: #c0a480; width: 15px;"></i> 
+            ${this.item.Agent.Email || 'info@thinkhome.it'}
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const content = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Annuncio - ${this.item.Title}</title>
+      <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+        @page {
+          size: A4;
+          margin: 15mm 10mm;
+        }
+        body { 
+          font-family: 'Arial', sans-serif; 
+          line-height: 1.4; 
+          color: #333; 
+          margin: 0; 
+          padding: 0;
+          width: 100%;
+          max-width: 210mm;
+        }
+        .main-container {
+          border: 10px solid #3d6871;
+          border-radius: 5px;
+          padding: 5mm;
+          background: white;
+          width: calc(100% - 5mm);
+          margin: 0 auto;
+          box-sizing: border-box;
+          min-height: 270mm;
+        }
+        .print-container { 
+          display: flex; 
+          flex-wrap: wrap; 
+          gap: 15px;
+          width: 100%;
+          height: calc(100% - 50px);
+        }
+        .left-column {
+          flex: 0 0 40%;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+        .right-column {
+          flex: 1;
+          min-width: 50%;
+          display: flex;
+          flex-direction: column;
+        }
+        .photo-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin-bottom: 10px;
+        }
+        .photo-grid img { 
+          width: 100%; 
+          height: auto;
+          max-height: 180px;
+          object-fit: cover;
+          border-radius: 3px;
+          border: 1px solid #e0e0e0;
+        }
+        .property-title { 
+          color: #25606f; 
+          font-size: 18px; 
+          margin: 0 0 8px 0;
+        }
+        .property-price { 
+          color: #c0a480; 
+          font-size: 16px; 
+          font-weight: bold; 
+          margin: 8px 0;
+        }
+        .property-code { 
+          font-size: 12px; 
+          color: #666; 
+          margin-bottom: 12px;
+        }
+        .property-address { 
+          font-size: 14px; 
+          margin: 12px 0; 
+          color: #444;
+        }
+        .property-features {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin: 12px 0;
+        }
+        .feature-item {
+          background: #f5f5f5;
+          padding: 6px 10px;
+          border-radius: 3px;
+          font-size: 12px;
+          border: 1px solid #e0e0e0;
+        }
+        .property-description {
+          margin: 15px 0;
+          font-size: 13px;
+          line-height: 1.5;
+          flex-grow: 1;
+          max-height: calc(60% - 380px);
+          overflow: hidden;
+          position: relative;
+        }
+        .description-fade {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 30px;
+          background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+        }
+        .continue-badge {
+          background: #3d6871;
+          color: white;
+          padding: 2px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+          margin-bottom: 5px;
+        }
+        .logo-container {
+          text-align: center; 
+          margin-bottom: 15px;
+        }
+        .logo-container img {
+          max-height: 25mm;
+          width: auto;
+        }
+        .qr-code-container {
+          text-align: center;
+          margin-top: 10px;
+          padding: 10px;
+          border: 1px solid #e0e0e0;
+          border-radius: 4px;
+        }
+        .qr-code-container img {
+          width: 100px;
+          height: 100px;
+        }
+        .qr-code-container p {
+          font-size: 12px;
+          margin-top: 5px;
+        }
+@media print {
+  body {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .main-container {
+    border: 8px solid #3d6871 !important;
+    padding: 8mm !important;
+    box-shadow: none !important;
+    min-height: auto !important;
+    max-height: 300mm !important; /* Limite massimo A4 */
+    height: 100%; 
+    box-sizing: border-box;
+    overflow: hidden; /* Evita che esca fuori */
+    page-break-inside: avoid !important; /* NON spezzare dentro */
+  }
+  .print-container, .left-column, .right-column {
+    page-break-inside: avoid !important;
+    overflow: hidden;
+  }
+}
+  .no-print {
+  display: block;
+  margin: 15px auto;
+  padding: 8px 16px;
+  background: #3d6871;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+      </style>
+    </head>
+    <body>
+      <div class="main-container">
+        <div class="logo-container">
+          <img src="${logoImage}" alt="Logo" />
+        </div>
+        
+        <div class="print-container">
+          <!-- Colonna Sinistra (Foto + QR Code) -->
+          <div class="left-column">
+            <div class="photo-grid">
+              <img src="${mainPhoto}" alt="Foto principale">
+              ${secondPhoto ? `<img src="${secondPhoto}" alt="Foto secondaria">` : ''}
+            </div>
+            
+
+            <!-- Caratteristiche Immobile -->
+            <div style="background: #f9f9f9; padding: 12px; border-radius: 4px; border: 1px solid #e0e0e0;">
+              <h4 style="margin-top: 0; color: #25606f; border-bottom: 1px solid #ddd; padding-bottom: 4px; font-size: 15px;">Dettagli</h4>
+              <div class="property-features">
+                <div class="feature-item"><i class="fas fa-ruler-combined"></i> ${this.item.CommercialSurfaceate} m²</div>
+                <div class="feature-item"><i class="fas fa-bed"></i> ${this.item.Bedrooms} camere</div>
+                <div class="feature-item"><i class="fas fa-bath"></i> ${this.item.Bathrooms} bagni</div>
+                ${this.item.ParkingSpaces ? `<div class="feature-item"><i class="fas fa-car"></i> ${this.item.ParkingSpaces} auto</div>` : ''}
+                ${this.item.MQGarden ? `<div class="feature-item"><i class="fas fa-tree"></i> Giardino (${this.item.MQGarden} m²)</div>` : ''}
+                ${this.item.Heating ? `<div class="feature-item"><i class="fas fa-fire"></i> ${this.item.Heating}</div>` : ''}
+                <div class="feature-item"><i class="fas fa-certificate"></i> Classe ${this.item.EnergyClass}</div>
+              </div>
+            <!-- QR Code -->
+            <div class="qr-code-container">
+              <img src="${qrCodeUrl}" alt="Vedi annuncio online">
+              <p>Scansiona per vedere l'annuncio</p>
+            </div>
+            </div>
+          </div>
+          
+          <!-- Colonna Destra (Dettagli) -->
+          <div class="right-column">
+            <h1 class="property-title">${this.item.Title}</h1>
+            <div class="property-price">
+              € ${this.item.Price.toLocaleString('it-IT')},00
+              ${this.item.PriceReduced > 0 ? `<br><small style="text-decoration: line-through; color: #777;">€ ${this.item.PriceReduced.toLocaleString('it-IT')},00</small>` : ''}
+            </div>
+            <div class="property-code">Codice:00${this.item.Id}</div>
+            <div class="property-address">
+              <i class="fas fa-map-marker-alt"></i> ${this.item.AddressLine}, ${this.item.Town} (${this.item.PostCode})
+            </div>
+            
+            <div class="property-description" style="max-height:180px; overflow:hidden; position:relative;">
+              ${truncatedDescription.replace(/\n/g, '<br>')} 
+              ${this.item.Description.length > maxDescriptionLength ? `
+                <div class="description-fade">
+                  <span class="continue-badge">[...]</span>
+                </div>
+              ` : ''}
+            </div>
+            
+            <!-- Sezione Agente -->
+            ${agentInfo}
+          </div>
+        </div>
+        
+        <!-- Pulsante Stampa (visibile solo in anteprima) -->
+<button class="no-print" onclick="window.print()">
+  <i class="fas fa-print"></i> Stampa Annuncio
+</button>
+      </div>
+    </body>
+    </html>
+  `;
+
+  printWindow.document.write(content);
+  printWindow.document.close();
+},
 
 
     selectImage(url: string) {
