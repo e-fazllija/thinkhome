@@ -33,7 +33,7 @@
             <div class="agency-card p-4 shadow-sm rounded border">
               <h3 class="agency-name mb-3">{{ agency.name }} {{ agency.lastName }}</h3>
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                   <ul class="list-unstyled mb-0">
                     <li class="mb-2">
                       <i style="color: #c0a480;" class="fas fa-map-marker-alt me-2"></i>
@@ -56,6 +56,12 @@
                       <span class="agency-detail">{{ agency.email }}</span>
                     </li>
                   </ul>
+                </div>
+                <div class="col-md-4 d-flex align-items-center justify-content-end">
+                  <RouterLink :to="'/immobili-in-vendita/Qualsiasi/Qualsiasi/0/0/-1/'+ agency.id" class="btn btn-primary rounded-5 py-3 px-4 w-75" 
+                  style=" background-color: #25606f; border-color: #25606f; font-size: 0.9rem;">
+                <i></i> Visualizza Immobili
+                </RouterLink>
                 </div>
               </div>
             </div>

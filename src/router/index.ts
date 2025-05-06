@@ -82,19 +82,19 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
-      path: '/immobili-in-vendita/:tipologia/:localita/:da/:codice/:a?',
+      path: '/immobili-in-vendita/:tipologia/:localita/:da/:codice/:a?/:agencyId?',
       name: 'immobili_in_vendita',
       component: () => import('../views/realEstateProperties/SaleList.vue'),
       meta: { layout3: 'layout3' }
     },
     {
-      path: '/immobili-in-affitto/:tipologia/:localita/:codice/:da/:a?',
+      path: '/immobili-in-affitto/:tipologia/:localita/:codice/:da/:a?/:agencyId?',
       name: 'immobili_in_affitto',
       component: () => import('../views/realEstateProperties/RentList.vue'),
       meta: { layout3: 'layout3' }
     },
     {
-      path: '/aste-immobiliari/:tipologia/:localita/:codice/:da/:a?',
+      path: '/aste-immobiliari/:tipologia/:localita/:codice/:da/:a?/:agencyId?',
       name: 'aste_immobiliari',
       component: () => import('../views/realEstateProperties/AuctionsList.vue'),
       meta: { layout3: 'layout3' }
