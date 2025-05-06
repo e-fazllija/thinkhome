@@ -105,10 +105,10 @@
           style="background-color: #3d6871;  color: white; border-radius: 10px; padding: 10px 30px;">
                  <i class="fa fa-share-alt"></i></button>
 
-          <button class="btn btn-primary" @click="printAnnuncio" aria-label="Stampa annuncio"
+          <!-- <button class="btn btn-primary" @click="printAnnuncio" aria-label="Stampa annuncio"
           style="background-color: #3d6871;  color: white; border-radius: 10px; padding: 10px 30px;">
           <i class="fa fa-print"> Stampa Annuncio</i> 
-      </button>
+      </button> -->
       </div>
     </div>
     <div class="col-md-4">
