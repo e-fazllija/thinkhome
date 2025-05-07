@@ -86,6 +86,7 @@
                 <option value="ROCCA PRIORA">LAZIO \ ROMA (RM) \ ROCCA PRIORA</option>
                 <option value="ROMA">LAZIO \ ROMA (RM) \ ROMA</option>
                 <option value="SAN CESAREO">LAZIO \ ROMA (RM) \ SAN CESAREO</option>
+                <option value="SAN GREGORIO DA SASSOLA">LAZIO \ ROMA (RM) \ SAN GREGORIO DA SASSOLA</option>
                 <option value="SAN VITO ROMANO">LAZIO \ ROMA (RM) \ SAN VITO ROMANO</option>
                 <option value="SUBIACO">LAZIO \ ROMA (RM) \ SUBIACO</option>
                 <option value="TIVOLI">LAZIO \ ROMA (RM) \ TIVOLI</option>
