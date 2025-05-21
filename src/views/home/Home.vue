@@ -157,6 +157,7 @@
   <option value="OSTIA LEVANTE">LAZIO \ ROMA (RM) \ ROMA \ OSTIA LEVANTE</option>
   <option value="OSTIA PONENTE">LAZIO \ ROMA (RM) \ ROMA \ OSTIA PONENTE</option>
   <option value="PANTANO BORGHESE">LAZIO \ ROMA (RM) \ ROMA \ PANTANO BORGHESE</option>
+  <option value="PIGNETO">LAZIO \ ROMA (RM) \ ROMA \ PIGNETO</option>
   <option value="PONTE GALERIA">LAZIO \ ROMA (RM) \ ROMA \ PONTE GALERIA</option>
   <option value="PONTE DI NONA">LAZIO \ ROMA (RM) \ ROMA \ PONTE DI NONA</option>
   <option value="PORTUENSE">LAZIO \ ROMA (RM) \ ROMA \ PORTUENSE</option>
