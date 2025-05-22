@@ -4,14 +4,14 @@
     <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
       <div class="container-fluid">
         <div class="dz-bnr-inr-entry">
-          <h1>Immobili in vendita</h1>
+          <h1>Immobili in Vendita</h1>
           <!-- Breadcrumb Row -->
           <nav aria-label="breadcrumb" class="breadcrumb-row">
             <ul class="breadcrumb">
               <li class="breadcrumb-item">
                 <RouterLink to="/">Home</RouterLink>
               </li>
-              <li class="breadcrumb-item">Immobili in vendita</li>
+              <li class="breadcrumb-item">Immobili in Vendita</li>
             </ul>
           </nav>
           <!-- Breadcrumb Row End -->
@@ -36,13 +36,21 @@
                 <option value="Soffitta">Soffitta</option>
                 <option value="Casale">Casale</option>
                 <option value="Rustico">Rustico</option>
-                <option value="Box singolo">Box singolo</option>
-                <option value="Box doppio">Box doppio</option>
-                <option value="Posto auto">Posto auto</option>
                 <option value="Villa Unifamiliare">Villa Unifamiliare</option>
                 <option value="Villa Bifamiliare">Villa Bifamiliare</option>
                 <option value="Villa Plurifamiliare">Villa Plurifamiliare</option>
                 <option value="Villa a Schiera">Villa a Schiera</option>
+                <option value="Locale commerciale">Locale commerciale</option>
+                <option value="Negozio">Negozio</option>
+                <option value="Ufficio">Ufficio</option>
+                <option value="Capannone artigianale">Capannone artigianale</option>
+                <option value="Capannone industriale">Capannone industriale</option>
+                <option value="Box singolo">Box singolo</option>
+                <option value="Box doppio">Box doppio</option>
+                <option value="Posto auto">Posto auto</option>
+                <option value="Edificabile">Edificabile</option>
+                <option value="Agricolo">Agricolo</option>
+                <option value="Non Edificabile">Non Edificabile</option>
               </select>
             </div>
             <div class="col-lg-4 mb-3">
@@ -55,64 +63,161 @@
             </div>
             <div class="col-lg-4 mb-3">
               <input placeholder="Località" class="form-control" list="datalistOptions" v-model="formData.Location">
-              <datalist id="datalistOptions">
-                <option value="L'AQUILA">ABRUZZO \ L'AQUILA (AQ)</option>
-                <option value="FROSINONE">LAZIO \ FROSINONE (FR)</option>
-                <option value="LATINA">LAZIO \ LATINA (LT)</option>
-                <option value="ROMA">LAZIO \ ROMA (RM)</option>
-                <option value="TAGLIACOZZO">ABRUZZO \ L'AQUILA (AQ) \ TAGLIACOZZO</option>
-                <option value="FIUGGI">LAZIO \ FROSINONE (FR) \ FIUGGI</option>
-                <option value="FROSINONE">LAZIO \ FROSINONE (FR) \ FROSINONE</option>
-                <option value="PALIANO">LAZIO \ FROSINONE (FR) \ PALIANO</option>
-                <option value="SERRONE">LAZIO \ FROSINONE (FR) \ SERRONE</option>
-                <option value="APRILIA">LAZIO \ LATINA (LT) \ APRILIA</option>
-                <option value="CORI">LAZIO \ LATINA (LT) \ CORI</option>
-                <option value="ROCCA MASSIMA">LAZIO \ LATINA (LT) \ ROCCA MASSIMA</option>
-                <option value="SABAUDIA">LAZIO \ LATINA (LT) \ SABAUDIA</option>
-                <option value="SAN FELICE CIRCEO">LAZIO \ LATINA (LT) \ SAN FELICE CIRCEO</option>
-                <option value="ALBANO LAZIALE">LAZIO \ ROMA (RM) \ ALBANO LAZIALE</option>
-                <option value="ANZIO">LAZIO \ ROMA (RM) \ ANZIO</option>
-                <option value="ARDEA">LAZIO \ ROMA (RM) \ ARDEA</option>
-                <option value="ARTENA">LAZIO \ ROMA (RM) \ ARTENA</option>
-                <option value="BELLEGRA">LAZIO \ ROMA (RM) \ BELLEGRA</option>
-                <option value="CASAPE">LAZIO \ ROMA (RM) \ CASAPE</option>
-                <option value="CASTEL SAN PIETRO ROMANO">LAZIO \ ROMA (RM) \ CASTEL SAN PIETRO ROMANO</option>
-                <option value="CAVE">LAZIO \ ROMA (RM) \ CAVE</option>
-                <option value="COLLEFERRO">LAZIO \ ROMA (RM) \ COLLEFERRO</option>
-                <option value="COLONNA">LAZIO \ ROMA (RM) \ COLONNA</option>
-                <option value="FIANO ROMANO">LAZIO \ ROMA (RM) \ FIANO ROMANO</option>
-                <option value="FIUMICINO">LAZIO \ ROMA (RM) \ FIUMICINO</option>
-                <option value="FRASCATI">LAZIO \ ROMA (RM) \ FRASCATI</option>
-                <option value="GALLICANO NEL LAZI">LAZIO \ ROMA (RM) \ GALLICANO NEL LAZIO</option>
-                <option value="GAVIGNANO">LAZIO \ ROMA (RM) \ GAVIGNANO</option>
-                <option value="GENAZZANO">LAZIO \ ROMA (RM) \ GENAZZANO</option>
-                <option value="GROTTAFERRATA">LAZIO \ ROMA (RM) \ GROTTAFERRATA</option>
-                <option value="GUIDONIA MONTECELI">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO</option>
-                <option value="LABICO">LAZIO \ ROMA (RM) \ LABICO</option>
-                <option value="LANUVIO">LAZIO \ ROMA (RM) \ LANUVIO</option>
-                <option value="LARIANO">LAZIO \ ROMA (RM) \ LARIANO</option>
-                <option value="MARINO">LAZIO \ ROMA (RM) \ MARINO</option>
-                <option value="MONTECOMPATRI">LAZIO \ ROMA (RM) \ MONTECOMPATRI</option>
-                <option value="MONTELANICO">LAZIO \ ROMA (RM) \ MONTELANICO</option>
-                <option value="NETTUNO">LAZIO \ ROMA (RM) \ NETTUNO</option>
-                <option value="OLEVANO ROMANO">LAZIO \ ROMA (RM) \ OLEVANO ROMANO</option>
-                <option value="PALESTRINA">LAZIO \ ROMA (RM) \ PALESTRINA</option>
-                <option value="POLI">LAZIO \ ROMA (RM) \ POLI</option>
-                <option value="POMEZIA">LAZIO \ ROMA (RM) \ POMEZIA</option>
-                <option value="PORTUENSE">LAZIO \ ROMA (RM) \ PORTUENSE</option>
-                <option value="RIANO">LAZIO \ ROMA (RM) \ RIANO</option>
-                <option value="ROCCA DI CAVE">LAZIO \ ROMA (RM) \ ROCCA DI CAVE</option>
-                <option value="ROCCA PRIORA">LAZIO \ ROMA (RM) \ ROCCA PRIORA</option>
-                <option value="ROMA">LAZIO \ ROMA (RM) \ ROMA</option>
-                <option value="SAN CESAREO">LAZIO \ ROMA (RM) \ SAN CESAREO</option>
-                <option value="SAN GREGORIO DA SASSOLA">LAZIO \ ROMA (RM) \ SAN GREGORIO DA SASSOLA</option>
-                <option value="SAN VITO ROMANO">LAZIO \ ROMA (RM) \ SAN VITO ROMANO</option>
-                <option value="SUBIACO">LAZIO \ ROMA (RM) \ SUBIACO</option>
-                <option value="TIVOLI">LAZIO \ ROMA (RM) \ TIVOLI</option>
-                <option value="VALMONTONE">LAZIO \ ROMA (RM) \ VALMONTONE</option>
-                <option value="VELLETRI">LAZIO \ ROMA (RM) \ VELLETRI</option>
-                <option value="ZAGAROLO">LAZIO \ ROMA (RM) \ ZAGAROLO</option>
-              </datalist>
+<datalist id="datalistOptions">
+  <!-- ABRUZZO -->
+  <option value="L'AQUILA">ABRUZZO \ L'AQUILA (AQ)</option>
+  <option value="TAGLIACOZZO">ABRUZZO \ L'AQUILA (AQ) \ TAGLIACOZZO</option>
+
+  <!-- LAZIO - FROSINONE (FR) -->
+  <option value="FROSINONE">LAZIO \ FROSINONE (FR)</option>
+  <option value="ANAGNI">LAZIO \ FROSINONE (FR) \ ANAGNI</option>
+  <option value="FIUGGI">LAZIO \ FROSINONE (FR) \ FIUGGI</option>
+  <option value="FROSINONE">LAZIO \ FROSINONE (FR) \ FROSINONE</option>
+  <option value="PALIANO">LAZIO \ FROSINONE (FR) \ PALIANO</option>
+  <option value="SERRONE">LAZIO \ FROSINONE (FR) \ SERRONE</option>
+
+  <!-- LAZIO - LATINA (LT) -->
+  <option value="LATINA">LAZIO \ LATINA (LT)</option>
+  <option value="APRILIA">LAZIO \ LATINA (LT) \ APRILIA</option>
+  <option value="CORI">LAZIO \ LATINA (LT) \ CORI</option>
+  <option value="ROCCA MASSIMA">LAZIO \ LATINA (LT) \ ROCCA MASSIMA</option>
+  <option value="SABAUDIA">LAZIO \ LATINA (LT) \ SABAUDIA</option>
+  <option value="SAN FELICE CIRCEO">LAZIO \ LATINA (LT) \ SAN FELICE CIRCEO</option>
+
+  <!-- LAZIO - ROMA (RM) -->
+  <option value="ROMA">LAZIO \ ROMA (RM)</option>
+  <option value="ALBANO LAZIALE">LAZIO \ ROMA (RM) \ ALBANO LAZIALE</option>
+  <option value="ALESSANDRINO">LAZIO \ ROMA (RM) \ ALESSANDRINO</option>
+  <option value="ANZIO">LAZIO \ ROMA (RM) \ ANZIO</option>
+  <option value="ARDEA">LAZIO \ ROMA (RM) \ ARDEA</option>
+  <option value="ARTENA">LAZIO \ ROMA (RM) \ ARTENA</option>
+  <option value="BELLEGRA">LAZIO \ ROMA (RM) \ BELLEGRA</option>
+  <option value="CAMPAGNANO DI ROMA">LAZIO \ ROMA (RM) \ CAMPAGNANO DI ROMA</option>
+  <option value="CASAPE">LAZIO \ ROMA (RM) \ CASAPE</option>
+  <option value="CASTEL SAN PIETRO ROMANO">LAZIO \ ROMA (RM) \ CASTEL SAN PIETRO ROMANO</option>
+  <option value="CAVE">LAZIO \ ROMA (RM) \ CAVE</option>
+  <option value="COLLE PALME">LAZIO \ ROMA (RM) \ CAVE \ COLLE PALME</option>
+  <option value="SAN BARTOLOMEO">LAZIO \ ROMA (RM) \ CAVE \ SAN BARTOLOMEO</option>
+  <option value="COLLEFERRO">LAZIO \ ROMA (RM) \ COLLEFERRO</option>
+  <option value="COLONNA">LAZIO \ ROMA (RM) \ COLONNA</option>
+  <option value="FIANO ROMANO">LAZIO \ ROMA (RM) \ FIANO ROMANO</option>
+  <option value="FIUMICINO">LAZIO \ ROMA (RM) \ FIUMICINO</option>
+  <option value="FRASCATI">LAZIO \ ROMA (RM) \ FRASCATI</option>
+  <option value="GALLICANO NEL LAZIO">LAZIO \ ROMA (RM) \ GALLICANO NEL LAZIO</option>
+  <option value="GAVIGNANO">LAZIO \ ROMA (RM) \ GAVIGNANO</option>
+  <option value="GENAZZANO">LAZIO \ ROMA (RM) \ GENAZZANO</option>
+  <option value="GROTTAFERRATA">LAZIO \ ROMA (RM) \ GROTTAFERRATA</option>
+  <option value="GUIDONIA MONTECELIO">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO</option>
+  <option value="ALBUCCIONE">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO \ ALBUCCIONE</option>
+  <option value="CASACALDA">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO \ CASACALDA</option>
+  <option value="CASTEL ARCIONE">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO \ CASTEL ARCIONE</option>
+  <option value="COLLE VERDE">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO \ COLLE VERDE</option>
+  <option value="LA BOTTE">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO \ LA BOTTE</option>
+  <option value="MARCO SIMONE">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO \ MARCO SIMONE</option>
+  <option value="MONTECELIO">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO \ MONTECELIO</option>
+  <option value="SETTEVILLE">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO \ SETTEVILLE</option>
+  <option value="VILLA NOVA">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO \ VILLA NOVA</option>
+  <option value="VILLALBA">LAZIO \ ROMA (RM) \ GUIDONIA MONTECELIO \ VILLALBA</option>
+  <option value="LABICO">LAZIO \ ROMA (RM) \ LABICO</option>
+  <option value="COLLE SPINA">LAZIO \ ROMA (RM) \ LABICO \ COLLE SPINA</option>
+  <option value="LANUVIO">LAZIO \ ROMA (RM) \ LANUVIO</option>
+  <option value="LARIANO">LAZIO \ ROMA (RM) \ LARIANO</option>
+  <option value="MARINO">LAZIO \ ROMA (RM) \ MARINO</option>
+  <option value="MONTE PORZIO CATONE">LAZIO \ ROMA (RM) \ MONTE PORZIO CATONE</option>
+  <option value="MONTECOMPATRI">LAZIO \ ROMA (RM) \ MONTECOMPATRI</option>
+  <option value="COLLE MATTIA">LAZIO \ ROMA (RM) \ MONTECOMPATRI \ COLLE MATTIA</option>
+  <option value="LAGHETTO">LAZIO \ ROMA (RM) \ MONTECOMPATRI \ LAGHETTO</option>
+  <option value="MONTELANICO">LAZIO \ ROMA (RM) \ MONTELANICO</option>
+  <option value="NETTUNO">LAZIO \ ROMA (RM) \ NETTUNO</option>
+  <option value="OLEVANO ROMANO">LAZIO \ ROMA (RM) \ OLEVANO ROMANO</option>
+  <option value="PALESTRINA">LAZIO \ ROMA (RM) \ PALESTRINA</option>
+  <option value="CARCHITTI">LAZIO \ ROMA (RM) \ PALESTRINA \ CARCHITTI</option>
+  <option value="VALVARINO">LAZIO \ ROMA (RM) \ PALESTRINA \ VALVARINO</option>
+  <option value="PALOMBARA SABINA">LAZIO \ ROMA (RM) \ PALOMBARA SABINA</option>
+  <option value="POLI">LAZIO \ ROMA (RM) \ POLI</option>
+  <option value="POMEZIA">LAZIO \ ROMA (RM) \ POMEZIA</option>
+  <option value="PORTUENSE">LAZIO \ ROMA (RM) \ PORTUENSE</option>
+  <option value="RIANO">LAZIO \ ROMA (RM) \ RIANO</option>
+  <option value="ROCCA DI CAVE">LAZIO \ ROMA (RM) \ ROCCA DI CAVE</option>
+  <option value="ROCCA PRIORA">LAZIO \ ROMA (RM) \ ROCCA PRIORA</option>
+  <option value="COLLE DI FUORI">LAZIO \ ROMA (RM) \ ROCCA PRIORA \ COLLE DI FUORI</option>
+  <option value="ROMA">LAZIO \ ROMA (RM) \ ROMA</option>
+  <option value="ACILIA">LAZIO \ ROMA (RM) \ ROMA \ ACILIA</option>
+  <option value="ALESSANDRINO">LAZIO \ ROMA (RM) \ ROMA \ ALESSANDRINO</option>
+  <option value="BOCCEA">LAZIO \ ROMA (RM) \ ROMA \ BOCCEA</option>
+  <option value="BORGHESIANA">LAZIO \ ROMA (RM) \ ROMA \ BORGHESIANA</option>
+  <option value="CASAL PALOCCO">LAZIO \ ROMA (RM) \ ROMA \ CASAL PALOCCO</option>
+  <option value="CASALOTTI">LAZIO \ ROMA (RM) \ ROMA \ CASALOTTI</option>
+  <option value="CASTEL FUSANO">LAZIO \ ROMA (RM) \ ROMA \ CASTEL FUSANO</option>
+  <option value="CASTELVERDE">LAZIO \ ROMA (RM) \ ROMA \ CASTELVERDE</option>
+  <option value="CENTOCELLE">LAZIO \ ROMA (RM) \ ROMA \ CENTOCELLE</option>
+  <option value="CINECITTÀ">LAZIO \ ROMA (RM) \ ROMA \ CINECITTÀ</option>
+  <option value="COLLE MONFORTANI">LAZIO \ ROMA (RM) \ ROMA \ COLLE MONFORTANI</option>
+  <option value="COLLE PRENESTINO">LAZIO \ ROMA (RM) \ ROMA \ COLLE PRENESTINO</option>
+  <option value="COLLE DEL SOLE">LAZIO \ ROMA (RM) \ ROMA \ COLLE DEL SOLE</option>
+  <option value="CORCOLLE">LAZIO \ ROMA (RM) \ ROMA \ CORCOLLE</option>
+  <option value="CORCOLLE ALTO">LAZIO \ ROMA (RM) \ ROMA \ CORCOLLE ALTO</option>
+  <option value="DON BOSCO">LAZIO \ ROMA (RM) \ ROMA \ DON BOSCO</option>
+  <option value="EUR">LAZIO \ ROMA (RM) \ ROMA \ EUR</option>
+  <option value="FINOCCHIO">LAZIO \ ROMA (RM) \ ROMA \ FINOCCHIO</option>
+  <option value="FONTE LAURENTINA">LAZIO \ ROMA (RM) \ ROMA \ FONTE LAURENTINA</option>
+  <option value="FOSSO SAN GIULIANO">LAZIO \ ROMA (RM) \ ROMA \ FOSSO SAN GIULIANO</option>
+  <option value="GIARDINETTI">LAZIO \ ROMA (RM) \ ROMA \ GIARDINETTI</option>
+  <option value="GIARDINI DI CORCOLLE">LAZIO \ ROMA (RM) \ ROMA \ GIARDINI DI CORCOLLE</option>
+  <option value="INFERNETTO">LAZIO \ ROMA (RM) \ ROMA \ INFERNETTO</option>
+  <option value="LA PISANA">LAZIO \ ROMA (RM) \ ROMA \ LA PISANA</option>
+  <option value="LA STORTA">LAZIO \ ROMA (RM) \ ROMA \ LA STORTA</option>
+  <option value="MONTE SACRO">LAZIO \ ROMA (RM) \ ROMA \ MONTE SACRO</option>
+  <option value="LUNGHEZZA">LAZIO \ ROMA (RM) \ ROMA \ LUNGHEZZA</option>
+  <option value="OSTERIA DEL CURATO">LAZIO \ ROMA (RM) \ ROMA \ OSTERIA DEL CURATO</option>
+  <option value="OSTIA">LAZIO \ ROMA (RM) \ ROMA \ OSTIA</option>
+  <option value="OSTIA ANTICA">LAZIO \ ROMA (RM) \ ROMA \ OSTIA ANTICA</option>
+  <option value="OSTIA LEVANTE">LAZIO \ ROMA (RM) \ ROMA \ OSTIA LEVANTE</option>
+  <option value="OSTIA PONENTE">LAZIO \ ROMA (RM) \ ROMA \ OSTIA PONENTE</option>
+  <option value="PANTANO BORGHESE">LAZIO \ ROMA (RM) \ ROMA \ PANTANO BORGHESE</option>
+  <option value="PIGNETO">LAZIO \ ROMA (RM) \ ROMA \ PIGNETO</option>
+  <option value="PONTE GALERIA">LAZIO \ ROMA (RM) \ ROMA \ PONTE GALERIA</option>
+  <option value="PONTE DI NONA">LAZIO \ ROMA (RM) \ ROMA \ PONTE DI NONA</option>
+  <option value="PORTUENSE">LAZIO \ ROMA (RM) \ ROMA \ PORTUENSE</option>
+  <option value="PRATO FIORITO">LAZIO \ ROMA (RM) \ ROMA \ PRATO FIORITO</option>
+  <option value="PRIMA PORTA">LAZIO \ ROMA (RM) \ ROMA \ PRIMA PORTA</option>
+  <option value="ROCCA CENCIA">LAZIO \ ROMA (RM) \ ROMA \ ROCCA CENCIA</option>
+  <option value="ROMANINA">LAZIO \ ROMA (RM) \ ROMA \ ROMANINA</option>
+  <option value="ROMA EST">LAZIO \ ROMA (RM) \ ROMA \ ROMA EST</option>
+  <option value="SAN VITTORINO">LAZIO \ ROMA (RM) \ ROMA \ SAN VITTORINO</option>
+  <option value="SAXA RUBRA">LAZIO \ ROMA (RM) \ ROMA \ SAXA RUBRA</option>
+  <option value="SETTECAMINI">LAZIO \ ROMA (RM) \ ROMA \ SETTECAMINI</option>
+  <option value="TOR BELLA MONACA">LAZIO \ ROMA (RM) \ ROMA \ TOR BELLA MONACA</option>
+  <option value="TOR TRE TESTE">LAZIO \ ROMA (RM) \ ROMA \ TOR TRE TESTE</option>
+  <option value="TOR VERGATA">LAZIO \ ROMA (RM) \ ROMA \ TOR VERGATA</option>
+  <option value="TOR DE CENCI">LAZIO \ ROMA (RM) \ ROMA \ TOR DE CENCI</option>
+  <option value="TORRE ANGELA">LAZIO \ ROMA (RM) \ ROMA \ TORRE ANGELA</option>
+  <option value="TORRE GAIA">LAZIO \ ROMA (RM) \ ROMA \ TORRE GAIA</option>
+  <option value="TORRE MAURA">LAZIO \ ROMA (RM) \ ROMA \ TORRE MAURA</option>
+  <option value="TORRE SPACCATA">LAZIO \ ROMA (RM) \ ROMA \ TORRE SPACCATA</option>
+  <option value="TUSCOLANA">LAZIO \ ROMA (RM) \ ROMA \ TUSCOLANA</option>
+  <option value="VALLERANO">LAZIO \ ROMA (RM) \ ROMA \ VALLERANO</option>
+  <option value="VERMICINO">LAZIO \ ROMA (RM) \ ROMA \ VERMICINO</option>
+  <option value="VILLA VERDE">LAZIO \ ROMA (RM) \ ROMA \ VILLA VERDE</option>
+  <option value="VILLAGGIO BREDA">LAZIO \ ROMA (RM) \ ROMA \ VILLAGGIO BREDA</option>
+  <option value="VILLAGGIO PRENESTINO">LAZIO \ ROMA (RM) \ ROMA \ VILLAGGIO PRENESTINO</option>
+  <option value="SAN CESAREO">LAZIO \ ROMA (RM) \ SAN CESAREO</option>
+  <option value="SAN GREGORIO DA SASSOLA">LAZIO \ ROMA (RM) \ SAN GREGORIO DA SASSOLA</option>
+  <option value="SAN VITO ROMANO">LAZIO \ ROMA (RM) \ SAN VITO ROMANO</option>
+  <option value="SEGNI">LAZIO \ ROMA (RM) \ SEGNI</option>
+  <option value="SUBIACO">LAZIO \ ROMA (RM) \ SUBIACO</option>
+  <option value="TIVOLI">LAZIO \ ROMA (RM) \ TIVOLI</option>
+  <option value="VALMONTONE">LAZIO \ ROMA (RM) \ VALMONTONE</option>
+  <option value="VELLETRI">LAZIO \ ROMA (RM) \ VELLETRI</option>
+  <option value="ZAGAROLO">LAZIO \ ROMA (RM) \ ZAGAROLO</option>
+  <option value="CENTRO PAESE">LAZIO \ ROMA (RM) \ ZAGAROLO \ CENTRO PAESE</option>
+  <option value="VALLE MARTELLA">LAZIO \ ROMA (RM) \ ZAGAROLO \ VALLE MARTELLA</option>
+  <option value="VIA PRENESTINA">LAZIO \ ROMA (RM) \ ZAGAROLO \ VIA PRENESTINA</option>
+
+  <!-- LAZIO - VITERBO (VT) -->
+  <option value="VITERBO">LAZIO \ VITERBO (VT)</option>
+  <option value="VITERBO">LAZIO \ VITERBO (VT) \ VITERBO</option>
+</datalist>
             </div>
           </div>
           <div class="row align-items-center about-bx3 mb-4">
