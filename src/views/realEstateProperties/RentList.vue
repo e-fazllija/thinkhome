@@ -326,7 +326,7 @@
                 € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
                 </span>
             </template>
-                <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Venduto</span>
+                <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Affittato</span>
                 <span v-if="!item.Sold && item.Negotiation" class="badge ms-2" style="background-color: #c0a480; color: white;">In Trattativa</span>
           </h1>
               <h3> {{ item.Town }}</h3>
