@@ -326,7 +326,7 @@
                 € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
                 </span>
             </template>
-                <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Venduto</span>
+                <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Affittato</span>
                 <span v-if="!item.Sold && item.Negotiation" class="badge ms-2" style="background-color: #c0a480; color: white;">In Trattativa</span>
           </h1>
               <h3> {{ item.Town }}</h3>
@@ -415,7 +415,7 @@ export default defineComponent({
     async getItems(_page, _filter, _typologie, _location, _code, _from, _to, _agencyId) {
       this.loading = true;
       const result = await axios.get(
-        `https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetMain?currentPage=${_page}&filterRequest=${_filter}&status=Affitto&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}&agencyId=${_agencyId}`
+        `https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetMain?currentPage=${_page}&filterRequest=${_filter}&status=Affitto&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}&agencyId=${_agencyId ?? ""}`
       );
       this.results = result.data.Data;
       const totalItems = result.data.Total;
