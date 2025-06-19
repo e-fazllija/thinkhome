@@ -276,7 +276,7 @@
         <div class="row text-center section-head style-2">
           <div class="col-lg-12 aos-item aos-init aos-animate">
             <h5 class="text-primary sub-title">IN EVIDENZA</h5>
-            <h2 class="title">I nostri immobili</h2>
+            <h2 class="title">I nostri immobili Online in questo momento {{ propertyCount }}</h2>
           </div>
         </div>
         <div v-if="!loading" class="row align-items-center about-bx4 mb-5">
@@ -350,7 +350,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import Home3About from '@/components/Home3About.vue'
 import Home3Services from '@/components/Home3Services.vue'
 import MainBanner from '@/components/MainBanner.vue'
@@ -394,6 +394,7 @@ export default defineComponent({
   },
   async mounted() {
     await this.getItems();
+    this.getCount();
   },
   data() {
     return {
@@ -406,6 +407,7 @@ export default defineComponent({
         From: 0,
         To: -1,
       },
+      propertyCount: null,
       results: {
         RealEstatePropertiesHighlighted: {
           Id: 0,
@@ -439,6 +441,12 @@ export default defineComponent({
       const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/Generic/GetHomeDetails");
       this.results.RealEstatePropertiesInHome = result.data.RealEstatePropertiesInHome;
       this.results.RealEstatePropertiesHighlighted = result.data.RealEstatePropertiesHighlighted;
+      this.loading = false;
+    },
+    async getCount() {
+      const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetPropertyCount");
+      this.propertyCount = result.data;
+      console.log(this.propertyCount)
       this.loading = false;
     },
     async submit() {
