@@ -413,7 +413,7 @@ export default defineComponent({
   },
   async beforeMount() {
     await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to, this.agencyId);
-    getCount();
+    await this.getCount();
   },
   methods: {
     async getCount() {
