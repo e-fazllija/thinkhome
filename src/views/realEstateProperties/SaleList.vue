@@ -13,6 +13,7 @@
               </li>
               <li class="breadcrumb-item">Immobili in Vendita</li>
             </ul>
+            <h3 style="color: white;">Online in questo momento {{ propertyCount }}</h3>
           </nav>
           <!-- Breadcrumb Row End -->
         </div>
@@ -385,6 +386,7 @@ export default defineComponent({
       page: 1,
       totalPages: 1,
       filter: "",
+      propertyCount: null,
       formData: {
         RequestType: "Vendita",
         PropertyType: "Qualsiasi",
@@ -411,8 +413,14 @@ export default defineComponent({
   },
   async beforeMount() {
     await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to, this.agencyId);
+    getCount();
   },
   methods: {
+    async getCount() {
+      const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetPropertyCount");
+      this.propertyCount = result.data;
+      this.loading = false;
+    },
     async getItems(_page, _filter, _typologie, _location, _code, _from, _to, _agencyId) {
       this.loading = true;
       console.log(_agencyId)
