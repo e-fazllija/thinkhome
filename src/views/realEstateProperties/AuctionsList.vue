@@ -133,6 +133,7 @@
   <option value="CASAL PALOCCO">LAZIO \ ROMA (RM) \ ROMA \ CASAL PALOCCO</option>
   <option value="CASALOTTI">LAZIO \ ROMA (RM) \ ROMA \ CASALOTTI</option>
   <option value="CASTEL FUSANO">LAZIO \ ROMA (RM) \ ROMA \ CASTEL FUSANO</option>
+  <option value="CASTEL GIUBILEO">LAZIO \ ROMA (RM) \ ROMA \ CASTEL GIUBILEO</option>
   <option value="CASTELVERDE">LAZIO \ ROMA (RM) \ ROMA \ CASTELVERDE</option>
   <option value="CENTOCELLE">LAZIO \ ROMA (RM) \ ROMA \ CENTOCELLE</option>
   <option value="CINECITTÀ">LAZIO \ ROMA (RM) \ ROMA \ CINECITTÀ</option>
