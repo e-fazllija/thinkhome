@@ -140,7 +140,7 @@ export default defineComponent({
       this.loading = true;
       try {
         const result = await axios.get(
-          `https://thinkhomebe.azurewebsites.net/api/Agencies/Get?currentPage=${page}`
+          `https://thinkhomebe.azurewebsites.net/api/Agencies/GetMain?currentPage=${page}`
         );
 
         this.agencies = result.data.Data.map((agency: any) => ({
