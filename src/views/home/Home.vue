@@ -205,15 +205,15 @@ import Home3Services from '@/components/Home3Services.vue'
 import MainBanner from '@/components/MainBanner.vue'
 import MainBanner3 from '@/components/MainBanner3.vue'
 import Home3Accordian from '@/components/Home3Accordian.vue'
-import { defineComponent, watchEffect, computed } from 'vue'
+import { defineComponent, watchEffect } from 'vue'
 import ClientLogo from '@/elements/ClientLogo.vue'
 import Home3Blog from '@/components/Home3Blog.vue'
 import logoWhite from '@/assets/images/TH-6.jpg'
 import logo from '@/assets/images/TH-4.jpg'
 import { RouterLink } from 'vue-router'
 import backgrouBg2 from '@/assets/images/background/bg2.png'
-import axios from 'axios'
-import { cityLocations } from '@/data/locations'
+import { apiService } from '@/services/apiService'
+import { useLocations } from '@/composables/useLocations'
 
 
 export default defineComponent({
@@ -231,26 +231,9 @@ export default defineComponent({
       }, 10)
     })
 
-    const locationOptions = computed(() => {
-      const options = []
-      
-      // Add main cities
-      Object.keys(cityLocations).forEach(city => {
-        options.push({ value: city, label: city })
-        
-        // Add sub-locations for each city
-        cityLocations[city].forEach(location => {
-          options.push({ 
-            value: location.Name, 
-            label: `${city} - ${location.Name}` 
-          })
-        })
-      })
-      
-      return options
-    })
+    const { locationOptions, loadLocations } = useLocations()
 
-    return { backgrouBg2, locationOptions }
+    return { backgrouBg2, locationOptions, loadLocations }
   },
   components: {
     MainBanner,
@@ -263,6 +246,7 @@ export default defineComponent({
     RouterLink,
   },
   async mounted() {
+    await this.loadLocations();
     await this.getItems();
     this.getCount();
   },
@@ -308,14 +292,14 @@ export default defineComponent({
   },
   methods: {
     async getItems() {
-      const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/Generic/GetHomeDetails");
-      this.results.RealEstatePropertiesInHome = result.data.RealEstatePropertiesInHome;
-      this.results.RealEstatePropertiesHighlighted = result.data.RealEstatePropertiesHighlighted;
+      const result = await apiService.getHomeDetails();
+      this.results.RealEstatePropertiesInHome = result.RealEstatePropertiesInHome;
+      this.results.RealEstatePropertiesHighlighted = result.RealEstatePropertiesHighlighted;
       this.loading = false;
     },
     async getCount() {
-      const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetPropertyCount");
-      this.propertyCount = result.data;
+      const result = await apiService.getPropertyCount();
+      this.propertyCount = result;
       console.log(this.propertyCount)
       this.loading = false;
     },
