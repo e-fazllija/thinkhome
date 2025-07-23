@@ -64,9 +64,10 @@ export default defineComponent({
     filter: String,
     typologie: String,
     location: String,
-    code: String,
-    from: String,
-    to: String,
+    code: [String, Number],
+    from: [String, Number],
+    to: [String, Number],
+    agencyId: [String, Number],
   },
   setup() {
     return {} 

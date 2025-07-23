@@ -206,42 +206,26 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue'
+import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import bnr3 from '@/assets/images/banner/bnr3.jpg'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Autoplay } from 'swiper/modules'
 import BlogPagination from '@/elements/BlogPagination.vue'
-import axios from 'axios'
-import { cityLocations } from '@/data/locations'
+import { apiService } from '@/services/apiService'
+import { useLocations } from '@/composables/useLocations'
 
 export default defineComponent({
   name: 'sale-list',
   components: { CommonBanner, Swiper, SwiperSlide, BlogPagination },
   setup() {
-    const locationOptions = computed(() => {
-      const options = []
-      
-      // Add main cities
-      Object.keys(cityLocations).forEach(city => {
-        options.push({ value: city, label: city })
-        
-        // Add sub-locations for each city
-        cityLocations[city].forEach(location => {
-          options.push({ 
-            value: location.Name, 
-            label: `${city} - ${location.Name}` 
-          })
-        })
-      })
-      
-      return options
-    })
+    const { locationOptions, loadLocations } = useLocations()
 
     return {
       bnr3,
       modules: [Navigation, Autoplay],
-      locationOptions
+      locationOptions,
+      loadLocations
     }
   },
   data() {
@@ -282,23 +266,31 @@ export default defineComponent({
     }
   },
   async beforeMount() {
+    await this.loadLocations();
     await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to, this.agencyId);
     await this.getCount();
   },
   methods: {
     async getCount() {
-      const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetPropertyCount");
-      this.propertyCount = result.data;
+      const result = await apiService.getPropertyCount();
+      this.propertyCount = result;
       this.loading = false;
     },
     async getItems(_page, _filter, _typologie, _location, _code, _from, _to, _agencyId) {
       this.loading = true;
-      console.log(_agencyId)
-      const result = await axios.get(
-        `https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetMain?currentPage=${_page}&filterRequest=${_filter}&status=Vendita&typologie=${_typologie}&location=${_location}&code=${_code}&from=${_from}&to=${_to}&agencyId=${_agencyId ?? ""}`
-      );
-      this.results = result.data.Data;
-      const totalItems = result.data.Total;
+      const result = await apiService.getRealEstateProperties({
+        currentPage: _page,
+        filterRequest: _filter,
+        status: 'Vendita',
+        typologie: _typologie,
+        location: _location,
+        code: _code,
+        from: _from,
+        to: _to,
+        agencyId: _agencyId
+      });
+      this.results = result.Data;
+      const totalItems = result.Total;
       this.totalPages = totalItems > 0 ? Math.ceil(totalItems / 10) : 1;
       this.loading = false;
     },
