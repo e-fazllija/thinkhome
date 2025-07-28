@@ -1,6 +1,6 @@
 <template>
   <Swiper class="swiper-container blog-swiper" style="min-height: 350px;" :slides-per-view="3" :space-between="30"
-    :loop="true" :autoplay="{ delay: 1500 }" :speed="1500" :breakpoints="{
+    :loop="items && items.length > 3" :autoplay="{ delay: 1500 }" :speed="1500" :breakpoints="{
       991: { slidesPerView: 3 },
       691: { slidesPerView: 2 },
       240: { slidesPerView: 1 }
@@ -8,13 +8,13 @@
     <SwiperSlide class="swiper-slide" v-for="(item, ind) in items" :key="ind">
       <div class="dz-card blog-grid style-3 aos-item h-100 rounded-0">
         <div class="dz-media">
-          <Swiper class="swiper-container post-swiper" :speed="1500" :loop="true" :modules="modules" :navigation="{
+          <Swiper class="swiper-container post-swiper" :speed="1500" :loop="item.Photos && item.Photos.length > 1" :modules="modules" :navigation="{
             prevEl: '.prev-post-swiper-btn',
             nextEl: '.next-post-swiper-btn'
           }">
           
             <SwiperSlide v-for="(photo, ind) in item.Photos" :key="ind" class="swiper-slide">
-              <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"><img :src="photo.Url" alt="" style=" border-radius: 5px; padding: 0px; width: 500px; height: 400px; object-fit: cover;"/></RouterLink>
+              <RouterLink v-if="item.Id && item.Id > 0" :to="{ name: 'dettaglio', params: { id: item.Id } }"><img :src="photo.Url" alt="" style=" border-radius: 5px; padding: 0px; width: 500px; height: 400px; object-fit: cover;"/></RouterLink>
             </SwiperSlide>
             <!-- <SwiperSlide class="swiper-slide">
               <RouterLink to="/blog-details"><img src="@/assets/images/blog/large/pic1.jpg" alt="" /></RouterLink>
@@ -142,7 +142,7 @@
               </li> -->
           </div>
           <div class="read-more">
-            <RouterLink :to="{ name: 'dettaglio', params: { id: item.Id } }"
+            <RouterLink v-if="item.Id && item.Id > 0" :to="{ name: 'dettaglio', params: { id: item.Id } }"
               class="btn btn-primary btn-rounded btn-sm hover-icon">
               <span>Più dettagli</span>
               <i class="fas fa-arrow-right"></i>

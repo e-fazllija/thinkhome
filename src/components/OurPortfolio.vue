@@ -5,7 +5,7 @@
         class="swiper-container swiper-portfolio lightgallery aos-item"
         :slides-per-view="4"
         :space-between="30"
-        :loop="true"
+        :loop="ourBlog && ourBlog.length > 4"
         :breakpoints="{
           1200: { slidesPerView: 4 },
           991: { slidesPerView: 3 },

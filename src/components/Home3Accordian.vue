@@ -7,7 +7,7 @@
               <h6 class="sub-title text-primary">IL NOSTRO PORTAFOGLIO</h6>
               <h2 class="title">ULTIMI PROGETTI</h2>
               <RouterLink to="/edilizia" class="btn-link">
-               <h7 class="title">Scopri di più <i class="fas fa-plus scale08"></i></h7>
+               <h6 class="title">Scopri di più <i class="fas fa-plus scale08"></i></h6>
                </RouterLink> 
              </div>
           </div>
@@ -40,11 +40,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.btn-link h7{
+.btn-link h6{
   color: #c3a47c; /* Colore iniziale */
 }
 
-.btn-link:hover h7{
+.btn-link:hover h6{
   color: #25606f; /* Colore al passaggio del mouse */
 }
 </style>

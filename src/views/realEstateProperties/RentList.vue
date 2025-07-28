@@ -218,13 +218,14 @@ export default defineComponent({
   name: 'sale-list',
   components: { CommonBanner, Swiper, SwiperSlide, BlogPagination },
   setup() {
-    const { locationOptions, loadLocations } = useLocations()
+    const { locationOptions, loadLocations, parseLocation } = useLocations()
 
     return {
       bnr3,
       modules: [Navigation, Autoplay],
       locationOptions,
-      loadLocations
+      loadLocations,
+      parseLocation
     }
   },
   data() {
@@ -279,7 +280,8 @@ export default defineComponent({
         code: _code,
         from: _from,
         to: _to,
-        agencyId: _agencyId
+        agencyId: _agencyId,
+        city: this.$route.params.city
       });
       this.results = result.Data;
       const totalItems = result.Total;
@@ -293,18 +295,37 @@ export default defineComponent({
 async submit() {
   this.loading = true;
   this.typologie = this.formData.PropertyType;
-  this.location = this.formData.Location ?? "Qualsiasi";
+  
+  // Parsifica la località selezionata
+  const { city, location } = this.parseLocation(this.formData.Location)
+  this.location = location || "Qualsiasi";
+  
   this.code = this.formData.Code ?? 0;
   this.from = this.formData.From;
   this.to = this.formData.To;
 
   try {
     if (this.formData.RequestType === "Affitto") {
+      // Aggiorna l'URL della pagina corrente
+      await this.$router.push({
+        name: 'immobili_in_affitto',
+        params: { 
+          tipologia: this.typologie, 
+          localita: this.location, 
+          codice: this.code, 
+          da: this.from, 
+          a: this.to, 
+          agencyId: this.agencyId,
+          city: city || ""
+        }
+      });
+      
+      // Poi fai la chiamata API
       await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to, this.agencyId);
     } else {
       let routeName;
       if (this.formData.RequestType === "Vendita") {
-        routeName = "immobili_in_affitto";
+        routeName = "immobili_in_vendita";
       } else if (this.formData.RequestType === "Aste") {
         routeName = "aste_immobiliari";
       }
@@ -317,16 +338,10 @@ async submit() {
           codice: this.code, 
           da: this.from, 
           a: this.to, 
-          agencyId: this.agencyId 
+          agencyId: this.agencyId,
+          city: city || ""
         }
       });
-      
-      // Aspetta che la nuova pagina sia pronta
-      if (this.$route.name === routeName) {
-        this.$nextTick(() => {
-          // Eventualmente triggerare il caricamente dati qui
-        });
-      }
     }
   } catch (error) {
     console.error("Submit error:", error);

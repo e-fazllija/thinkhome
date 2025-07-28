@@ -47,10 +47,11 @@ export const apiService = {
     from: number
     to: number
     agencyId?: string
+    city?: string
   }) {
-    const { currentPage, filterRequest, status, typologie, location, code, from, to, agencyId } = params
+    const { currentPage, filterRequest, status, typologie, location, code, from, to, agencyId, city } = params
     const response = await axios.get(
-      `${API_BASE_URL}/RealEstateProperty/GetMain?currentPage=${currentPage}&filterRequest=${filterRequest}&status=${status}&typologie=${typologie}&location=${location}&code=${code}&from=${from}&to=${to}&agencyId=${agencyId ?? ""}`
+      `${API_BASE_URL}/RealEstateProperty/GetMain?currentPage=${currentPage}&filterRequest=${filterRequest}&status=${status}&typologie=${typologie}&location=${location}&code=${code}&from=${from}&to=${to}&agencyId=${agencyId ?? ""}&city=${city ?? ""}`
     )
     return response.data
   }
