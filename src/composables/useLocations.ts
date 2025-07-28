@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import { apiService } from '@/services/apiService'
 import type { Location } from '@/services/apiService'
+import { cityLocations } from '@/data/locations'
 
 export function useLocations() {
   const locations = ref<Location[]>([])
@@ -18,11 +19,32 @@ export function useLocations() {
     }
   }
 
+  // Funzione per parsificare la località selezionata
+  const parseLocation = (selectedLocation: string) => {
+    if (!selectedLocation || selectedLocation === "Qualsiasi") return { city: null, location: null }
+    
+    const parts = selectedLocation.split(' / ')
+    
+    if (parts.length === 2) {
+      // Formato: "Provincia / Città" (es. "Roma / Palestrina")
+      return { city: parts[1], location: "" }
+    } else if (parts.length === 3) {
+      // Formato: "Provincia / Città / Località" (es. "Roma / Palestrina / Carchitti")
+      return { city: parts[1], location: parts[2] }
+    }
+    
+    // Fallback: tratta come località generica
+    return { city: null, location: selectedLocation }
+  }
+
   // Computed per le opzioni del datalist
   const locationOptions = computed(() => {
     const options: { value: string; label: string }[] = []
     
-    // Raggruppa per provincia e città
+    // Set per evitare duplicati
+    const uniqueValues = new Set<string>()
+    
+    // Aggiungi le località dal database
     const groupedLocations = locations.value.reduce((acc, location) => {
       const key = `${location.ProvinceName} - ${location.CityName}`
       if (!acc[key]) {
@@ -32,23 +54,62 @@ export function useLocations() {
       return acc
     }, {} as Record<string, Location[]>)
 
-    // Aggiungi le opzioni raggruppate
+    // Aggiungi le opzioni dal database
     Object.entries(groupedLocations).forEach(([cityKey, cityLocations]) => {
-      // Aggiungi la città principale
       const [province, city] = cityKey.split(' - ')
-      options.push({ 
-        value: city, 
-        label: `${city} (${province})` 
+      
+      // Aggiungi la città principale (es. "Roma / Palestrina")
+      const cityValue = `${province} / ${city}`
+      if (!uniqueValues.has(cityValue)) {
+        options.push({ 
+          value: cityValue, 
+          label: cityValue 
+        })
+        uniqueValues.add(cityValue)
+      }
+      
+      // Aggiungi le località specifiche (es. "Roma / Palestrina / Carchitti")
+      cityLocations.forEach(location => {
+        const locationValue = `${province} / ${city} / ${location.Name}`
+        if (!uniqueValues.has(locationValue)) {
+          options.push({ 
+            value: locationValue, 
+            label: locationValue 
+          })
+          uniqueValues.add(locationValue)
+        }
       })
+    })
+    
+    // Aggiungi le località statiche dal file locations.ts
+    Object.entries(cityLocations).forEach(([city, cityLocations]) => {
+      const province = cityLocations[0]?.Province || 'Roma'
+      
+      // Aggiungi la città principale
+      const cityValue = `${province} / ${city}`
+      if (!uniqueValues.has(cityValue)) {
+        options.push({ 
+          value: cityValue, 
+          label: cityValue 
+        })
+        uniqueValues.add(cityValue)
+      }
       
       // Aggiungi le località specifiche
       cityLocations.forEach(location => {
-        options.push({ 
-          value: location.Name, 
-          label: `${city} - ${location.Name} (${province})` 
-        })
+        const locationValue = `${province} / ${city} / ${location.Name}`
+        if (!uniqueValues.has(locationValue)) {
+          options.push({ 
+            value: locationValue, 
+            label: locationValue 
+          })
+          uniqueValues.add(locationValue)
+        }
       })
     })
+    
+    // Ordina le opzioni alfabeticamente
+    options.sort((a, b) => a.label.localeCompare(b.label))
     
     return options
   })
@@ -57,6 +118,7 @@ export function useLocations() {
     locations,
     loading,
     locationOptions,
-    loadLocations
+    loadLocations,
+    parseLocation
   }
 } 

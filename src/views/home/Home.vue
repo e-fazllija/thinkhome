@@ -154,7 +154,7 @@
                 {{ results.RealEstatePropertiesHighlighted.Description.substring(0, 300) }}...
               </p>
             </div>
-            <RouterLink :to="{ name: 'dettaglio', params: { id: results.RealEstatePropertiesHighlighted.Id } }"
+            <RouterLink v-if="results.RealEstatePropertiesHighlighted.Id && results.RealEstatePropertiesHighlighted.Id > 0" :to="{ name: 'dettaglio', params: { id: results.RealEstatePropertiesHighlighted.Id } }"
               class="btn btn-primary btn-rounded hover-icon">
               <span>Più dettagli</span>
               <i class="fas fa-arrow-right"></i>
@@ -231,9 +231,9 @@ export default defineComponent({
       }, 10)
     })
 
-    const { locationOptions, loadLocations } = useLocations()
+    const { locationOptions, loadLocations, parseLocation } = useLocations()
 
-    return { backgrouBg2, locationOptions, loadLocations }
+    return { backgrouBg2, locationOptions, loadLocations, parseLocation }
   },
   components: {
     MainBanner,
@@ -300,11 +300,13 @@ export default defineComponent({
     async getCount() {
       const result = await apiService.getPropertyCount();
       this.propertyCount = result;
-      console.log(this.propertyCount)
       this.loading = false;
     },
     async submit() {
       this.loading = true;
+      
+      // Parsifica la località selezionata
+      const { city, location } = this.parseLocation(this.formData.Location)
             
       let routeName;
       if (this.formData.RequestType === 'Affitto') {routeName = 'immobili_in_affitto';
@@ -313,8 +315,12 @@ export default defineComponent({
       }      
       this.$router.push({
         name: routeName, params: {
-          tipologia: this.formData.PropertyType, localita: this.formData.Location ?? "Qualsiasi", da: this.formData.From,
-          codice: this.formData.Code ?? 0, a: this.formData.To
+          tipologia: this.formData.PropertyType, 
+          localita: location || "Qualsiasi", 
+          da: this.formData.From,
+          codice: this.formData.Code ?? 0, 
+          a: this.formData.To,
+          city: city || ""
         },
       })
 

@@ -473,7 +473,7 @@ export default defineComponent({
       } else {
         this.showVideo = false;
       }
-console.log(this.item.Description)
+      
       this.loading = false;
     },
 

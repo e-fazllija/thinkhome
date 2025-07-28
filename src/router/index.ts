@@ -82,27 +82,21 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
-      path: '/immobili-in-vendita/:tipologia/:localita/:da/:codice/:a?/:agencyId?',
+      path: '/immobili-in-vendita/:tipologia/:localita/:da/:codice/:a?/:agencyId?/:city?',
       name: 'immobili_in_vendita',
       component: () => import('../views/realEstateProperties/SaleList.vue'),
       meta: { layout3: 'layout3' }
     },
     {
-      path: '/immobili-in-affitto/:tipologia/:localita/:codice/:da/:a?/:agencyId?',
+      path: '/immobili-in-affitto/:tipologia/:localita/:codice/:da/:a?/:agencyId?/:city?',
       name: 'immobili_in_affitto',
       component: () => import('../views/realEstateProperties/RentList.vue'),
       meta: { layout3: 'layout3' }
     },
     {
-      path: '/aste-immobiliari/:tipologia/:localita/:codice/:da/:a?/:agencyId?',
+      path: '/aste-immobiliari/:tipologia/:localita/:codice/:da/:a?/:agencyId?/:city?',
       name: 'aste_immobiliari',
       component: () => import('../views/realEstateProperties/AuctionsList.vue'),
-      meta: { layout3: 'layout3' }
-    },
-    {
-      path: '/dettaglio/:id',
-      name: 'dettaglio',
-      component: () => import('../views/realEstateProperties/Details.vue'),
       meta: { layout3: 'layout3' }
     },
     {

@@ -7,7 +7,7 @@
         :parallax="true"
         :modules="module"
         :pagination="pagination"
-        :loop="true"
+        :loop="false"
         :navigation="{
           prevEl: '.btn-prev',
           nextEl: '.btn-next'
