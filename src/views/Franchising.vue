@@ -1,7 +1,23 @@
 <template>
   <div class="page-content bg-white">
-    <CommonBanner :img="bnr3" title="Franchising" text="Franchising" />
-    
+    <!--<CommonBanner :img="bnr3" title="Franchising" text="Franchising" />-->
+    <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
+      <div class="container-fluid">
+        <div class="dz-bnr-inr-entry">
+          <h1>Franchising</h1>
+          <!-- Breadcrumb Row -->
+          <nav aria-label="breadcrumb" class="breadcrumb-row">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <RouterLink to="/">Home</RouterLink>
+              </li>
+              <li class="breadcrumb-item">Franchising</li>
+            </ul>
+          </nav>
+          <!-- Breadcrumb Row End -->
+        </div>
+      </div>
+    </div>
     <section class="section-full content-inner">
       <div class="container">
         <div class="row">
