@@ -62,6 +62,15 @@
                     </div>
                   </div>
                 </div>
+                
+                <!-- Immagine 9 come ultima immagine singola -->
+                <div class="row mt-4">
+                  <div class="col-12 text-center">
+                    <div class="single-image">
+                      <img :src="franchising9" alt="Franchising - Immagine finale" class="img-fluid rounded shadow-lg" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -97,18 +106,14 @@ export default defineComponent({
       franchising2,
       franchising3,
       franchising4,
-      franchising5,
       franchising6,
-      franchising7,
-      franchising8,
-      franchising9,
-      franchising10,
       franchising11
     ]
 
     return {
       bnr3,
-      franchisingImages
+      franchisingImages,
+      franchising9
     }
   },
   components: { CommonBanner }
@@ -125,7 +130,7 @@ export default defineComponent({
 }
 
 .franchising-intro {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.6;
   color: #2c3e50;
@@ -148,7 +153,7 @@ export default defineComponent({
 
 @media (max-width: 768px) {
   .franchising-intro {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     padding: 15px;
   }
 }
@@ -195,5 +200,17 @@ export default defineComponent({
 
 .franchising-gallery {
   margin-top: 50px;
+}
+
+.single-image {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.single-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 </style>
