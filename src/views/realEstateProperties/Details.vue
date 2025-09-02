@@ -42,7 +42,10 @@
         <div class="section-head style-1">
           <h1> {{ item.Title }}</h1>
           <h1 class="sub-title text-primary">
-            <template v-if="item.PriceReduced && item.PriceReduced > 0">
+            <template v-if="item.Price === -1">
+                <span>Trattativa riservata</span>
+            </template>
+            <template v-else-if="item.PriceReduced && item.PriceReduced > 0">
                 <span>€ {{ item.PriceReduced.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00</span>
                 <small class="d-block text-muted" style="text-decoration: line-through;">
                 € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
@@ -183,8 +186,14 @@
             <p>Cod. 00{{ item.Id }}</p>
           </div>
           <div class="col-12">
-            <h1 class="sub-title text-primary"> € {{ item.Price.toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ",00" }}</h1>
+            <h1 class="sub-title text-primary">
+              <template v-if="item.Price === -1">
+                Trattativa riservata
+              </template>
+              <template v-else>
+                € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ",00" }}
+              </template>
+            </h1>
           </div>
           <div class="col-12">
             <h3><i class="fa fa-map-pin"></i> {{ item.Town }}, {{
@@ -782,8 +791,10 @@ export default defineComponent({
           <div class="right-column">
             <h1 class="property-title">${this.item.Title}</h1>
             <div class="property-price">
-              € ${this.item.Price.toLocaleString('it-IT')},00
-              ${this.item.PriceReduced > 0 ? `<br><small style="text-decoration: line-through; color: #777;">€ ${this.item.PriceReduced.toLocaleString('it-IT')},00</small>` : ''}
+              ${this.item.Price === -1 ? 'Trattativa riservata' : 
+                `€ ${this.item.Price.toLocaleString('it-IT')},00
+                ${this.item.PriceReduced > 0 ? `<br><small style="text-decoration: line-through; color: #777;">€ ${this.item.PriceReduced.toLocaleString('it-IT')},00</small>` : ''}`
+              }
             </div>
             <div class="property-code">Codice:00${this.item.Id}</div>
             <div class="property-address">

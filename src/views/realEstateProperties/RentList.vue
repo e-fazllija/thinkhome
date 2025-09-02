@@ -165,7 +165,10 @@
                 <div class="dz-meta">
                   <p>Cod. 00{{ item.Id }}</p>
                   <h1 class="sub-title text-primary">
-            <template v-if="item.PriceReduced && item.PriceReduced > 0">
+            <template v-if="item.Price === -1">
+                <span>Trattativa riservata</span>
+            </template>
+            <template v-else-if="item.PriceReduced && item.PriceReduced > 0">
                 <span>€ {{ item.PriceReduced.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00</span>
                 <small class="d-block text-muted" style="text-decoration: line-through;">
                 € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00

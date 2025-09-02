@@ -34,6 +34,12 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
+      path: '/franchising',
+      name: 'franchising',
+      component: () => import('../views/Franchising.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
       path: '/send-request',
       name: 'send-request',
       component: () => import('../views/SendRequest.vue'),
