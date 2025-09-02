@@ -154,7 +154,8 @@ export default defineComponent({
       { child: 'Perizie, Stime e Tribunale', to: '/perizie-stime-tribunale' },
       { child: 'Investimenti Immobiliari', to: '/investimenti-immobiliari' },
       { child: 'Edilizia e Progettazione', to: '/edilizia' },
-      { child: 'Consulenza Creditizia e Servizi Vari', to: '/servizi-vari' }
+      { child: 'Consulenza Creditizia e Servizi Vari', to: '/servizi-vari' },
+      { child: 'Academy', to: '/academy' }
          ] },
          { menu: 'Agenzie', subMenu: [
       { child: 'Agenzie', to: '/all-agencies' },
@@ -162,7 +163,7 @@ export default defineComponent({
          ] },
       { menu: 'Invia una richiesta', className: 'menu', to: '/send-request' },
       { menu: 'Lavora con noi', className: 'menu', to: '/work-with-us' },
-      { menu: 'Academy', className: 'menu', to: '/academy' },
+      { menu: 'Franchising', className: 'menu', to: '/franchising' },
     ])
     return { headerPosition, openMenu, sidebarShow, menuArr, activemenu }
   },
