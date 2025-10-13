@@ -30,8 +30,22 @@
         </div>
         <div class="dz-info">
           <p>Cod. 00{{ item.Id }}</p>
-              <h1 class="sub-title text-primary"> € {{ item.Price.toString()
+          <h1 v-if="item.Price === -1" class="sub-title text-primary">Trattativa riservata</h1>
+
+          <div v-else-if="item.PriceReduced && item.PriceReduced > 0">
+<h1  class="sub-title text-primary"> 
+            € {{ item.PriceReduced.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00"}}
+          </h1>
+          <h4 class="d-block text-muted" style="text-decoration: line-through;">
+                € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
+          </h4>
+          </div>
+          
+
+              <h1 v-else class="sub-title text-primary"> € {{ item.Price.toString()
                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")+ ",00"}}</h1>
+
+
               <h3> {{ item.Town }}</h3>
               <h3><i class="fa fa-map-pin"></i> {{ item.AddressLine }} </h3>
               <h6> {{ item.TypeOfProperty }}</h6>
