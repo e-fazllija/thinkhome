@@ -34,6 +34,8 @@ import logoGray2 from '@/assets/images/logo/logo-gray2.jpeg'
 import logoGray3 from '@/assets/images/logo/logo-gray3.jpeg'
 import logoGray4 from '@/assets/images/logo/logo-gray4.jpeg'
 import logoGray5 from '@/assets/images/logo/listing.jpg'
+import logoGray6 from '@/assets/images/logo/pomponi.jpg'
+import logoGray7 from '@/assets/images/logo/logoeuromq.png'
 import { Autoplay } from 'swiper/modules'
 
 export default defineComponent({
@@ -46,6 +48,8 @@ export default defineComponent({
         { logo: logoGray3 },
         { logo: logoGray4 },
         { logo: logoGray5 },
+        { logo: logoGray6 },
+        { logo: logoGray7 }
       ],
       Autoplay
     }
