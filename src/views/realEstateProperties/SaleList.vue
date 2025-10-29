@@ -20,124 +20,15 @@
       </div>
     </div>
 
-    <section class="content-inner-3 bg-white line-img">
-      <form class="container" @submit.prevent="submit()">
-        <div class="contact-area aos-item mt-0">
-          <div class="section-head style-1 text-center">
-            <h6 class="sub-title text-primary">Trova il tuo immobile</h6>
-          </div>
-          <div class="row align-items-center about-bx3 mb-3">
-            <div class="col-lg-4 mb-3">
-              <select class="form-control" v-model="formData.PropertyType">
-                <option value="Qualsiasi">Tipologia</option>
-                <option value="Appartamento">Appartamento</option>
-                <option value="Attico">Attico</option>
-                <option value="Mansarda">Mansarda</option>
-                <option value="Loft">Loft</option>
-                <option value="Soffitta">Soffitta</option>
-                <option value="Casale">Casale</option>
-                <option value="Rustico">Rustico</option>
-                <option value="Villa Unifamiliare">Villa Unifamiliare</option>
-                <option value="Villa Bifamiliare">Villa Bifamiliare</option>
-                <option value="Villa Plurifamiliare">Villa Plurifamiliare</option>
-                <option value="Villa a Schiera">Villa a Schiera</option>
-                <option value="Locale commerciale">Locale commerciale</option>
-                <option value="Negozio">Negozio</option>
-                <option value="Ufficio">Ufficio</option>
-                <option value="Capannone artigianale">Capannone artigianale</option>
-                <option value="Capannone industriale">Capannone industriale</option>
-                <option value="Box singolo">Box singolo</option>
-                <option value="Box doppio">Box doppio</option>
-                <option value="Posto auto">Posto auto</option>
-                <option value="Edificabile">Edificabile</option>
-                <option value="Agricolo">Agricolo</option>
-                <option value="Non Edificabile">Non Edificabile</option>
-              </select>
-            </div>
-            <div class="col-lg-4 mb-3">
-              <select class="form-control" v-model="formData.RequestType">
-                <option value="Vendita">Vendita</option>
-                <option value="Affitto">Affitto</option>
-                <option value="Aste">Aste</option>
-
-              </select>
-            </div>
-            <div class="col-lg-4 mb-3">
-              <input placeholder="Località" class="form-control" list="datalistOptions" v-model="formData.Location">
-              <datalist id="datalistOptions">
-                <option v-for="option in locationOptions" :key="option.value" :value="option.value">
-                  {{ option.label }}
-                </option>
-              </datalist>
-            </div>
-          </div>
-          <div class="row align-items-center about-bx3 mb-4">
-            <div class="col-lg-4 mb-4">
-              <div>
-                <input type="number" class="form-control" placeholder="Cod. Immobile" v-model="formData.Code" />
-              </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-              <select class="form-control" v-model="formData.From">
-                <option value="0">Prezzo Minimo</option>
-                <option value="0">€ 0</option>
-                <option value="50000">€ 50,000</option>
-                <option value="100000">€ 100,000</option>
-                <option value="150000">€ 150,000</option>
-                <option value="200000">€ 200,000</option>
-                <option value="250000">€ 250,000</option>
-                <option value="300000">€ 300,000</option>
-                <option value="350000">€ 350,000</option>
-                <option value="400000">€ 400,000</option>
-                <option value="450000">€ 450,000</option>
-                <option value="500000">€ 500,000</option>
-                <option value="550000">€ 550,000</option>
-                <option value="600000">€ 600,000</option>
-                <option value="650000">€ 650,000</option>
-                <option value="700000">€ 700,000</option>
-                <option value="750000">€ 750,000</option>
-                <option value="800000">€ 800,000</option>
-                <option value="850000">€ 850,000</option>
-                <option value="900000">€ 900,000</option>
-                <option value="950000">€ 950,000</option>
-                <option value="1000000">€ 1,000,000</option>
-              </select>
-            </div>
-            <div class="col-lg-4 mb-4">
-              <select class="form-control" v-model="formData.To">
-                <option value="-1">Prezzo Massimo</option>
-                <option value="0">€ 0</option>
-                <option value="50000">€ 50,000</option>
-                <option value="100000">€ 100,000</option>
-                <option value="150000">€ 150,000</option>
-                <option value="200000">€ 200,000</option>
-                <option value="250000">€ 250,000</option>
-                <option value="300000">€ 300,000</option>
-                <option value="350000">€ 350,000</option>
-                <option value="400000">€ 400,000</option>
-                <option value="450000">€ 450,000</option>
-                <option value="500000">€ 500,000</option>
-                <option value="550000">€ 550,000</option>
-                <option value="600000">€ 600,000</option>
-                <option value="650000">€ 650,000</option>
-                <option value="700000">€ 700,000</option>
-                <option value="750000">€ 750,000</option>
-                <option value="800000">€ 800,000</option>
-                <option value="850000">€ 850,000</option>
-                <option value="900000">€ 900,000</option>
-                <option value="950000">€ 950,000</option>
-                <option value="1000000">€ 1,000,000</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-sm-12 text-center">
-            <button name="submit" type="submit" class="btn btn-primary btn-rounded">
-              Cerca <i class="m-l10 fas fa-caret-right"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-    </section>
+    <PropertySearchForm 
+      :default-request-type="formData.RequestType"
+      :default-property-type="formData.PropertyType"
+      :default-location="formData.Location"
+      :default-code="formData.Code"
+      :default-from="formData.From"
+      :default-to="formData.To"
+      @submit="handleSearchSubmit"
+    />
 
     <div class="content-inner">
       <div class="container">
@@ -211,25 +102,20 @@
 <script>
 import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
+import PropertySearchForm from '@/components/PropertySearchForm.vue'
 import bnr3 from '@/assets/images/banner/bnr3.jpg'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Autoplay } from 'swiper/modules'
 import BlogPagination from '@/elements/BlogPagination.vue'
 import { apiService } from '@/services/apiService'
-import { useLocations } from '@/composables/useLocations'
 
 export default defineComponent({
   name: 'sale-list',
-  components: { CommonBanner, Swiper, SwiperSlide, BlogPagination },
+  components: { CommonBanner, PropertySearchForm, Swiper, SwiperSlide, BlogPagination },
   setup() {
-    const { locationOptions, loadLocations, parseLocation } = useLocations()
-
     return {
       bnr3,
-      modules: [Navigation, Autoplay],
-      locationOptions,
-      loadLocations,
-      parseLocation
+      modules: [Navigation, Autoplay]
     }
   },
   data() {
@@ -270,7 +156,6 @@ export default defineComponent({
     }
   },
   async beforeMount() {
-    await this.loadLocations();
     await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to, this.agencyId);
     await this.getCount();
   },
@@ -303,19 +188,22 @@ export default defineComponent({
       this.page = newPage;
       await this.getItems(this.page, this.filter, this.typologie, this.location, this.code, this.from, this.to, this.agencyId);
     },
-    async submit() {
+    async handleSearchSubmit(formData) {
       this.loading = true; 
-      this.typologie = this.formData.PropertyType; 
+      this.typologie = formData.PropertyType; 
       
       // Parsifica la località selezionata
-      const { city, location } = this.parseLocation(this.formData.Location)
+      const { city, location } = formData.parseLocation(formData.Location)
       this.location = location || "Qualsiasi";
       
-      this.code = this.formData.Code ?? 0; 
-      this.from = this.formData.From; 
-      this.to = this.formData.To;
+      this.code = formData.Code ?? 0; 
+      this.from = formData.From; 
+      this.to = formData.To;
 
-      if (this.formData.RequestType === "Vendita") {
+      // Aggiorna formData locale
+      this.formData = { ...formData };
+
+      if (formData.RequestType === "Vendita") {
         // Aggiorna l'URL della pagina corrente
         await this.$router.push({
           name: 'immobili_in_vendita',
@@ -334,9 +222,9 @@ export default defineComponent({
         await this.getItems(1, "", this.typologie, this.location, this.code, this.from, this.to, this.agencyId);
       } else {
         let routeName;
-        if (this.formData.RequestType === "Affitto") {
+        if (formData.RequestType === "Affitto") {
           routeName = "immobili_in_affitto";
-        } else if (this.formData.RequestType === "Aste") {
+        } else if (formData.RequestType === "Aste") {
           routeName = "aste_immobiliari";
         }
 

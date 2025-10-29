@@ -26,7 +26,7 @@
               <ul>
                 <li><RouterLink to="/">Home</RouterLink></li>
                 <li><RouterLink to="/about-us">Chi Siamo</RouterLink></li>
-                <li><a href="https://thinkhomestorage.blob.core.windows.net/generic/rivista-thinkhome.pdf" download="rivista" target="_blank"><h6 style="color: white;">Scarica rivista</h6></a></li>
+                <li><a href="https://thinkhomestorage.blob.core.windows.net/generic/rivista-thinkhome.pdf" download="rivista" target="_blank"><h6>Scarica rivista</h6></a></li>
               </ul>
             </div>
           </div>
