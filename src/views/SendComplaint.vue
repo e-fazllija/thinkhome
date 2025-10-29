@@ -54,7 +54,7 @@
                     <form class="dz-form dzForm contact-bx" method="POST" @submit.prevent="submit()">
                         <div class="row sp10">
                             <div class="col-sm-12 m-b20">
-                                <h4>Informazioni personali</h4>
+                                <h4>Segnalaci la tua problematica</h4>
                             </div>
                             <div class="col-sm-6 m-b20">
                                 <div class="input-group">
