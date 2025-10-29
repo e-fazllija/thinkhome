@@ -219,7 +219,16 @@
           <button class="mfp-close" style="top: -23px" data-bs-dismiss="modal" aria-label="Close">
             <i class="ti-close"></i>
           </button>
-          <iframe :src="videoEmbedUrl" height="100%" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+          <iframe 
+            :src="videoEmbedUrl" 
+            height="100%" 
+            width="100%"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
         </div>
       </div>
       
@@ -511,8 +520,15 @@ export default defineComponent({
           return url;
         }
 
-        // Costruisce il link embed corretto
-        return `https://www.youtube.com/embed/${videoId}`;
+        // Ottiene l'origin del sito corrente per il parametro origin richiesto da YouTube
+        const origin = window.location.origin;
+        
+        // Costruisce il link embed corretto con parametri necessari per evitare l'errore 153
+        // origin: necessario per la sicurezza CORS quando il sito è pubblicato online
+        // enablejsapi=1: abilita l'API JavaScript di YouTube
+        // rel=0: nasconde i video correlati
+        // modestbranding=1: riduce i branding di YouTube
+        return `https://www.youtube.com/embed/${videoId}?origin=${encodeURIComponent(origin)}&enablejsapi=1&rel=0&modestbranding=1`;
       } catch (error) {
         console.error("Errore nella conversione dell'URL del video:", error);
         return "";
