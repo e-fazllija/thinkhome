@@ -137,7 +137,7 @@ import CommonBanner from '@/elements/CommonBanner.vue'
 import Loader from '@/elements/Loader.vue'
 import { defineComponent } from 'vue'
 import bnr2 from '@/assets/images/work/workwithus.jpg'
-import axios from 'axios';
+import { apiService } from '@/services/apiService'
 import Swal from 'sweetalert2'
 
 export default defineComponent({
@@ -215,7 +215,7 @@ export default defineComponent({
         this.loading = true;
 
         try {
-            await axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/WorkWithUs', this.formData);
+            await apiService.workWithUs(this.formData);
 
             // Svuota i campi solo in caso di successo
             this.formData.Name = "";

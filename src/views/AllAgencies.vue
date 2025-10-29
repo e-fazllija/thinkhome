@@ -93,7 +93,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import axios from 'axios'
+import { apiService } from '@/services/apiService'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import Loader from '@/elements/Loader.vue'
 import bannerImg from '@/assets/images/banner/1920x700.jpg'
@@ -136,11 +136,9 @@ export default defineComponent({
     async getAgencies(page: number) {
       this.loading = true;
       try {
-        const result = await axios.get(
-          `https://thinkhomebe.azurewebsites.net/api/Agencies/GetMain?currentPage=${page}`
-        );
+        const result = await apiService.getAgencies(page);
 
-        this.agencies = result.data.Data.map((agency: any) => ({
+        this.agencies = result.Data.map((agency: any) => ({
           id: agency.Id,
           name: agency.Name || `${agency.LastName} ${agency.Name}`,
           lastName: agency.LastName || `${agency.LastName} ${agency.Name}`,
@@ -154,7 +152,7 @@ export default defineComponent({
           color: agency.Color
         }));
 
-        const totalItems = result.data.Total;
+        const totalItems = result.Total;
         this.totalPages = totalItems > 0 ? Math.ceil(totalItems / 10) : 1;
         this.currentPage = page;
       } catch (error) {

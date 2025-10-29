@@ -298,7 +298,7 @@ import logoImage from '@/assets/images/work/pic5.jpg';
 import Lightgallery from 'lightgallery/vue'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
-import axios from 'axios'
+import { apiService } from '@/services/apiService'
 import Home3Accordian from '@/components/Home3Accordian.vue'
 import work_pic1 from '@/assets/images/work/work-1/pic-13.jpg'
 import Swal from 'sweetalert2'
@@ -399,8 +399,8 @@ export default defineComponent({
   this.formData.Information = this.item.Id.toString();
 
   try {
-    // Invia la richiesta con Axios
-    await axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/InformationRequest', this.formData);
+    // Invia la richiesta con il servizio centralizzato
+    await apiService.informationRequest(this.formData);
     
     // Reset dei campi del form
     this.formData.Name = "";
@@ -429,10 +429,10 @@ export default defineComponent({
 },
 
     async getItem() {
-      const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetById?id=" + this.$route.params.id);
+      const result = await apiService.getRealEstatePropertyById(Number(this.$route.params.id));
 
-      this.item = result.data;
-      this.photos = result.data.Photos;
+      this.item = result as any;
+      this.photos = result.Photos || [];
       this.imgSelected = this.photos.length > 0 ? this.photos[0].Url : '';
 
       // Controlla se esiste un VideoUrl

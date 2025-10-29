@@ -240,7 +240,7 @@ import CommonBanner from '@/elements/CommonBanner.vue'
 import Loader from '@/elements/Loader.vue'
 import { defineComponent } from 'vue'
 import bnr2 from '@/assets/images/banner/bnr2.png'
-import axios from 'axios';
+import { apiService } from '@/services/apiService'
 import Swal from 'sweetalert2'
 
 export default defineComponent({
@@ -316,7 +316,7 @@ export default defineComponent({
       }
 
       this.loading = true;
-      axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/SendEvaluationRequest', this.formData)
+      apiService.sendEvaluationRequest(this.formData)
         .then(() => {
           this.formData.RequestType = "Vendita";
           this.formData.PropertyType = "Appartamenti";

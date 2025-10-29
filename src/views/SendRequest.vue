@@ -271,7 +271,7 @@ import CommonBanner from '@/elements/CommonBanner.vue'
 import Loader from '@/elements/Loader.vue'
 import { defineComponent } from 'vue'
 import bannerImg from '@/assets/images/banner/1920x700.jpg'
-import axios from 'axios';
+import { apiService } from '@/services/apiService'
 import Swal from 'sweetalert2'
 
 export default defineComponent({
@@ -349,7 +349,7 @@ export default defineComponent({
             this.loading = true;
 
             try {
-                await axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/SendRequest', this.formData);
+                await apiService.sendRequest(this.formData);
 
                 // Reset solo se la richiesta ha successo
                 this.formData = {
