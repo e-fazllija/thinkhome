@@ -25,59 +25,6 @@
   --details-card-shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* ===== LOADING SPINNER ===== */
-.details-loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(255, 255, 255, 0.95);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  backdrop-filter: blur(5px);
-}
-
-[data-bs-theme='dark'] .details-loading {
-  background: rgba(26, 26, 26, 0.95);
-}
-
-.details-spinner-container {
-  text-align: center;
-}
-
-.details-spinner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.details-loading .spinner-border {
-  width: 4rem;
-  height: 4rem;
-  border-width: 0.3em;
-  border-color: var(--details-primary);
-  border-right-color: transparent;
-  animation: spinner-border 0.75s linear infinite;
-}
-
-.details-loading-text {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--details-primary);
-  margin: 0;
-  letter-spacing: 0.5px;
-}
-
-@keyframes spinner-border {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* ===== HEADER SECTION ===== */
 .page-content {
   padding-top: 0;

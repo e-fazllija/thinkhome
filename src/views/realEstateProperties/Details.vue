@@ -4,16 +4,7 @@
     <CommonBanner :img="bannerImg" title="Dettaglio Immobile" text="Dettaglio Immobile" />
 
     <!-- Loading State -->
-    <div v-if="loading" class="details-loading">
-      <div class="details-spinner-container">
-        <div class="details-spinner" role="status">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Caricamento...</span>
-          </div>
-          <p class="details-loading-text">Caricamento in corso...</p>
-        </div>
-      </div>
-    </div>
+    <Loader v-if="loading" :fullscreen="true" :show-text="true" />
     <!-- <div class="container1" style="display: flex; align-items: center; margin-top: 20px; margin-left: 0;">
       <div style="margin-right: 10px;">
         <img src="@/assets/images/work/pic4.jpg" alt="Icona" style="height: 350px; width: 350px; object-fit: cover;" />
@@ -277,11 +268,7 @@
                   </label>
                 </div>
               </div>
-              <div v-if="loadingRequest" class="d-flex justify-content-center">
-                <div class="spinner-border" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
-              </div>
+              <Loader v-if="loadingRequest" :fullscreen="false" :show-text="false" loading-text="Invio in corso..." />
               <div v-else class="col-sm-12 text-center">
                 <button name="submit" type="submit" class="property-form-btn" :disabled="!acceptPrivacy">
                   Invia <i class="m-l10 fas fa-caret-right"></i>
@@ -315,10 +302,11 @@ import axios from 'axios'
 import Home3Accordian from '@/components/Home3Accordian.vue'
 import work_pic1 from '@/assets/images/work/work-1/pic-13.jpg'
 import Swal from 'sweetalert2'
+import Loader from '@/elements/Loader.vue'
 import '@/assets/css/details-page.css'
 
 export default defineComponent({
-  components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner },
+  components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner, Loader },
   setup() {
     return {
       bg2,

@@ -251,11 +251,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div v-if="loading" class="d-flex justify-content-center">
-                                <div class="spinner-border" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                            </div>
+                            <Loader v-if="loading" :fullscreen="false" :show-text="false" loading-text="Invio in corso..." />
                             <div v-else class="col-sm-12 text-center">
                                 <button name="submit" type="submit" class="btn btn-primary btn-rounded"
                                     :disabled="!acceptPrivacy">
@@ -272,6 +268,7 @@
 
 <script lang="ts">
 import CommonBanner from '@/elements/CommonBanner.vue'
+import Loader from '@/elements/Loader.vue'
 import { defineComponent } from 'vue'
 import bannerImg from '@/assets/images/banner/1920x700.jpg'
 import axios from 'axios';
@@ -306,7 +303,7 @@ export default defineComponent({
             ]
         }
     },
-    components: { CommonBanner },
+    components: { CommonBanner, Loader },
     data() {
         return {
             acceptPrivacy: false,

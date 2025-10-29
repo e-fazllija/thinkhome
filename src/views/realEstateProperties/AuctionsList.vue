@@ -16,11 +16,7 @@
     <div class="content-inner">
   <div class="container">
     <div class="row">
-      <div v-if="loading" class="d-flex justify-content-center w-100">
-        <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-      </div>
+      <Loader v-if="loading" :fullscreen="false" :show-text="true" />
       <div v-if="!loading">
         <div class="row">
           <div v-for="(item, ind) in results" :key="ind" class="col-xl-6 col-lg-6 col-md-6 mb-4">
@@ -104,11 +100,12 @@ import bnr3 from '@/assets/images/banner/bnr46.jpg'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Autoplay } from 'swiper/modules'
 import BlogPagination from '@/elements/BlogPagination.vue'
+import Loader from '@/elements/Loader.vue'
 import { apiService } from '@/services/apiService'
 
 export default defineComponent({
   name: 'auctions-list',
-  components: { CommonBanner, PropertySearchForm, Swiper, SwiperSlide, BlogPagination },
+  components: { CommonBanner, PropertySearchForm, Swiper, SwiperSlide, BlogPagination, Loader },
   setup() {
     return {
       bnr3,

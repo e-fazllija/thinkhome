@@ -31,11 +31,7 @@
 
     <div class="content-inner">
       <div class="container">
-        <div v-if="loading" class="d-flex justify-content-center">
-            <div class="spinner-border" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-          </div>
+        <Loader v-if="loading" :fullscreen="false" :show-text="true" />
         <div v-else class="row">
           <div v-for="(item, ind) in results" :key="ind" class="col-xl-6 col-lg-6 col-md-6 mb-4">
             <div class="dz-card blog-grid style-1 m-b50 aos-item">
@@ -106,11 +102,12 @@ import bnr3 from '@/assets/images/banner/bnr3.jpg'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Autoplay } from 'swiper/modules'
 import BlogPagination from '@/elements/BlogPagination.vue'
+import Loader from '@/elements/Loader.vue'
 import { apiService } from '@/services/apiService'
 
 export default defineComponent({
   name: 'rent-list',
-  components: { CommonBanner, PropertySearchForm, Swiper, SwiperSlide, BlogPagination },
+  components: { CommonBanner, PropertySearchForm, Swiper, SwiperSlide, BlogPagination, Loader },
   setup() {
     return {
       bnr3,

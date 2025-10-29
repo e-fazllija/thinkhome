@@ -18,11 +18,7 @@
 
     <div class="content-inner">
       <div class="container">
-        <div v-if="loading" class="d-flex justify-content-center">
-            <div class="spinner-border" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-          </div>
+        <Loader v-if="loading" :fullscreen="false" :show-text="true" />
         <div v-else class="row" v-for="(agency, index) in agencies" :key="agency.id">
           <div class="col-md-4 d-none d-md-block">
             <div class="agency-image-container rounded" style="background-color: #25606f">
@@ -99,6 +95,7 @@
 import { defineComponent } from 'vue'
 import axios from 'axios'
 import CommonBanner from '@/elements/CommonBanner.vue'
+import Loader from '@/elements/Loader.vue'
 import bannerImg from '@/assets/images/banner/1920x700.jpg'
 import bg1 from '@/assets/images/background/bg1.png'
 
@@ -123,7 +120,7 @@ export default defineComponent({
       bg1,
     }
   },
-  components: { CommonBanner },
+  components: { CommonBanner, Loader },
   data() {
     return {
       agencies: [] as Agency[],
