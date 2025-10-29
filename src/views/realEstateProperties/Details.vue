@@ -148,7 +148,7 @@
             <div class="property-feature-icon">
               <i class="fas fa-bath"></i>
             </div>
-            <p class="property-feature-text">{{ item.Bathrooms }} Bagno{{ Number(item.Bathrooms) > 1 ? 'i' : '' }}</p>
+            <p class="property-feature-text">{{ item.Bathrooms }} {{ Number(item.Bathrooms) === 1 ? 'Bagno' : 'Bagni' }}</p>
           </div>
           <div v-if="item.EnergyClass" class="property-feature-item">
             <div class="property-feature-icon">
