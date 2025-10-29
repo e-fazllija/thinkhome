@@ -1,27 +1,16 @@
 <template>
   <div class="page-content bg-white">
+    <!-- Banner Header -->
+    <CommonBanner :img="bannerImg" title="Dettaglio Immobile" text="Dettaglio Immobile" />
 
-    <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
-      <div class="container-fluid">
-        <div class="dz-bnr-inr-entry">
-          <h1>Dettaglio Immobile</h1>
-          <!-- Breadcrumb Row -->
-          <nav aria-label="breadcrumb" class="breadcrumb-row">
-            <ul class="breadcrumb">
-              <li class="breadcrumb-item">
-                <RouterLink to="/">Home</RouterLink>
-              </li>
-              <li class="breadcrumb-item">Dettaglio Immobile</li>
-            </ul>
-          </nav>
-          <!-- Breadcrumb Row End -->
-        </div>
-      </div>
-    </div>
-    <div v-if="loading" class="container">
-      <div class="d-flex justify-content-center">
-        <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
+    <!-- Loading State -->
+    <div v-if="loading" class="details-loading">
+      <div class="details-spinner-container">
+        <div class="details-spinner" role="status">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Caricamento...</span>
+          </div>
+          <p class="details-loading-text">Caricamento in corso...</p>
         </div>
       </div>
     </div>
@@ -37,45 +26,50 @@
       </div>
     </div> -->
 
-    <section v-if="!loading" class="content-inner-1 mt-2 pb-0" :style="`background-image: url(${bg2});`">
-      <div class="container">
-        <div class="section-head style-1">
-          <h1> {{ item.Title }}</h1>
-          <h1 class="sub-title text-primary">
-            <template v-if="item.Price === -1">
-                <span>Trattativa riservata</span>
-            </template>
-            <template v-else-if="item.PriceReduced && item.PriceReduced > 0">
+    <!-- Property Content -->
+    <section v-if="!loading" class="content-inner-1 mt-2 pb-0">
+      <!-- Property Header -->
+      <div class="property-header">
+        <div class="container">
+          <h1 class="property-title">{{ item.Title }}</h1>
+          <div class="property-price-section">
+            <h2 class="property-price">
+              <template v-if="item.Price === -1">
+                Trattativa riservata
+              </template>
+              <template v-else-if="item.PriceReduced && item.PriceReduced > 0">
                 <span>€ {{ item.PriceReduced.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00</span>
-                <small class="d-block text-muted" style="text-decoration: line-through;">
-                € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
+                <small class="property-price-old d-block">
+                  € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
                 </small>
-            </template>
-            <template v-else>
-                <span :class="{ 'text-muted': item.Sold }" :style="item.Sold ? 'text-decoration: line-through;' : ''">
-                € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
+              </template>
+              <template v-else>
+                <span :class="{ 'property-price-old': item.Sold }">
+                  € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") }},00
                 </span>
-            </template>
-                <span v-if="item.Sold" class="badge ms-2" style="background-color: #3d6871; color: white;">Venduto</span>
-                <span v-if="!item.Sold && item.Negotiation" class="badge ms-2" style="background-color: #c0a480; color: white;">In Trattativa</span>
-          </h1>
-          <p>Cod. 00{{ item.Id }}</p>
+              </template>
+            </h2>
+            <span v-if="item.Sold" class="property-badge sold">Venduto</span>
+            <span v-if="!item.Sold && item.Negotiation" class="property-badge negotiation">In Trattativa</span>
+          </div>
+          <p class="property-code">Cod. 00{{ item.Id }}</p>
         </div>
       </div>
 
-      <div v-if="item" class="container-fluid">
+      <!-- Gallery Section -->
+      <div v-if="item && photos.length > 0" class="details-gallery container-fluid">
         <Lightgallery :settings="{ speed: 500, plugins: plugins, selector: '.lightimg' }">
-          <Swiper class="swiper-container swiper-portfolio lightgallery aos-item" :slides-per-view="4"
+          <Swiper class="swiper-container swiper-portfolio lightgallery aos-item" :slides-per-view="3"
             :space-between="30" :loop="true" :breakpoints="{
-              1200: { slidesPerView: 4 },
-              991: { slidesPerView: 3 },
+              1200: { slidesPerView: 3 },
+              991: { slidesPerView: 2 },
               575: { slidesPerView: 2 },
               240: { slidesPerView: 1 }
             }" :modules="module" :autoplay="{ delay: 1500 }" :speed="1500">
             <SwiperSlide class="swiper-slide" v-for="({ Url }, ind) in photos" :key="ind">
-              <div :class="`dz-box overlay style-1`">
-                <div class="dz-media" style="max-height: 300px;">
-                  <img :src="Url" alt="" />
+              <div class="dz-box overlay style-1">
+                <div class="dz-media">
+                  <img :src="Url" :alt="`Foto immobile ${ind + 1}`" />
                 </div>
                 <div class="dz-info">
                   <span :data-src="Url" class="view-btn lightimg">
@@ -87,142 +81,112 @@
           </Swiper>
         </Lightgallery>
       </div>
-      <div class="container">
-  <div class="row mt-5">
-    <div class="col-md-4">
-      <div class="icon-content">
-        <div class="icon-bx-wraper style-7 left m-b30">
-          <div class="icon-bx-sm bg-primary">
-            <span class="icon-cell"><i class="flaticon-placeholder"></i></span>
-          </div>
-          <div class="icon-content">
-            <h4 class="title m-b5">Indirizzo</h4>
-            <p>{{ item.AddressLine }} - {{ item.Town }} - {{ item.PostCode }} - {{ item.State }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="icon-bx-wraper style-7 left m-b30 gap-3">
-          <button class="btn btn-primary"   @click="shareProperty" aria-label="Condividi annuncio"
-          style="background-color: #3d6871;  color: white; border-radius: 10px; padding: 10px 30px;">
-                 <i class="fa fa-share-alt"></i></button>
-
-          <button class="btn btn-primary" @click="printAnnuncio" aria-label="Stampa annuncio"
-          style="background-color: #3d6871;  color: white; border-radius: 10px; padding: 10px 30px;">
-          <i class="fa fa-print"> Stampa Annuncio</i> 
-      </button>
-      </div>
-    </div>
-    <div class="col-md-4">
-    </div>
-  </div>
-      </div>
-      <div class="container">
-        <div class="row mt-5">
-          <div class="col-3">
-            <div class="feature-item" style="display: flex; align-items: center; width: 40%;">
-              <i class="fa fa-bed me-2" style="font-size: 50px;"></i>
-              <strong style="font-size: 12px">{{ item.Bedrooms }} Camere</strong>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="feature-item" style="display: flex; align-items: center; width: 40%;">
-              <i class="fa fa-home  me-2" style="font-size: 50px;"></i>
-              <strong style="font-size: 12px">{{ item.CommercialSurfaceate }}m²</strong>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="feature-item" style="display: flex; align-items: center; width: 40%;">
-              <i class="fa fa-car me-2" style="font-size: 50px;"></i>
-              <strong style="font-size: 12px">{{ item.ParkingSpaces }} Posti Auto</strong>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="feature-item" style="display: flex; align-items: center; width: 40%;">
-              <i class="fa fa-tree me-2" style="font-size: 50px;"></i>
-              <strong style="font-size: 12px">Mq: {{ item.MQGarden }} </strong>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row mt-5">
-          <div class="col-3">
-            <div class="feature-item me-2" style="display: flex; align-items: center; width: 30%;">
-              <i class="fa fa-thermometer-empty" style="font-size: 30px; margin-right: 8px;"></i>
-              <strong style="font-size: 12px">Riscaldamento {{ item.Heating }}</strong>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
-              <i class="fas fa-bath me-2" style="font-size: 30px; margin-right: 8px;"></i>
-              <strong style="font-size: 12px">{{ item.Bathrooms }} Bagno</strong>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
-              <i class="fa fa-fire me-2" aria-hidden="true" style="font-size: 30px; margin-right: 8px;"></i>
-              <strong style="font-size: 12px">Classe Energetica {{ item.EnergyClass }}</strong>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="feature-item" style="display: flex; align-items: center; width: 30%;">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
+      <!-- Address & Actions -->
+      <div class="container property-info-section">
         <div class="row">
-          <div class="col-12">
-            <h6 class="dz-title">
-              <p><strong>Consulente: </strong> {{ item.Agent.Name }} {{
-                item.Agent.LastName }} </p>
-            </h6>
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="property-address-card">
+              <div class="property-address-icon">
+                <i class="flaticon-placeholder"></i>
+              </div>
+              <h4 class="property-address-title">Indirizzo</h4>
+              <p class="property-address-text">
+                {{ item.AddressLine }}<br>
+                {{ item.Town }} - {{ item.PostCode }}<br>
+                {{ item.State }}
+              </p>
+            </div>
           </div>
-          <div class="col-12">
-            <p>Cod. 00{{ item.Id }}</p>
+          <div class="col-md-6 col-lg-8 mb-3">
+            <div class="property-actions">
+              <button class="property-action-btn" @click="shareProperty" aria-label="Condividi annuncio">
+                <i class="fa fa-share-alt"></i>
+                Condividi
+              </button>
+              <button class="property-action-btn" @click="printAnnuncio" aria-label="Stampa annuncio">
+                <i class="fa fa-print"></i>
+                Stampa Annuncio
+              </button>
+            </div>
           </div>
-          <div class="col-12">
-            <h1 class="sub-title text-primary">
-              <template v-if="item.Price === -1">
-                Trattativa riservata
-              </template>
-              <template v-else>
-                € {{ item.Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ",00" }}
-              </template>
-            </h1>
+        </div>
+      </div>
+      <!-- Features Grid -->
+      <div class="container">
+        <div class="property-features">
+          <div class="property-feature-item">
+            <div class="property-feature-icon">
+              <i class="fa fa-bed"></i>
+            </div>
+            <p class="property-feature-text">{{ item.Bedrooms }} Camere</p>
           </div>
-          <div class="col-12">
-            <h3><i class="fa fa-map-pin"></i> {{ item.Town }}, {{
-              item.AddressLine }}</h3>
+          <div class="property-feature-item">
+            <div class="property-feature-icon">
+              <i class="fa fa-home"></i>
+            </div>
+            <p class="property-feature-text">{{ item.CommercialSurfaceate }} m²</p>
           </div>
-          <div class="col-12">
-            <h6> {{ item.Typology }}</h6>
+          <div v-if="item.ParkingSpaces" class="property-feature-item">
+            <div class="property-feature-icon">
+              <i class="fa fa-car"></i>
+            </div>
+            <p class="property-feature-text">{{ item.ParkingSpaces }} Posti Auto</p>
           </div>
-          <div class="col-lg-12 col-md-12 align-self-center aos-item">
-            <h6><img src="@/assets/images/energy.png" style="max-width: 50px; max-height: 50px;" /> {{ item.EnergyClass
-              }}
-            </h6>
+          <div v-if="item.MQGarden" class="property-feature-item">
+            <div class="property-feature-icon">
+              <i class="fa fa-tree"></i>
+            </div>
+            <p class="property-feature-text">Giardino {{ item.MQGarden }} m²</p>
           </div>
-          <div class="col-12">
-            <p v-html="item.Description.replace(/\n/g, '<br>')">
-            </p>
+          <div v-if="item.Heating" class="property-feature-item">
+            <div class="property-feature-icon">
+              <i class="fa fa-thermometer-empty"></i>
+            </div>
+            <p class="property-feature-text">{{ item.Heating }}</p>
+          </div>
+          <div class="property-feature-item">
+            <div class="property-feature-icon">
+              <i class="fas fa-bath"></i>
+            </div>
+            <p class="property-feature-text">{{ item.Bathrooms }} Bagno{{ Number(item.Bathrooms) > 1 ? 'i' : '' }}</p>
+          </div>
+          <div v-if="item.EnergyClass" class="property-feature-item">
+            <div class="property-feature-icon">
+              <i class="fa fa-fire"></i>
+            </div>
+            <p class="property-feature-text">Classe {{ item.EnergyClass }}</p>
           </div>
         </div>
       </div>
 
-      <div v-if="showVideo" id="videoModal" class="modal-dialog modal-lg modal-dialog-centered mb-5">
-        <div class="modal-content">
-          <button class="mfp-close" style="top: -23px" data-bs-dismiss="modal" aria-label="Close">
+      <!-- Agent Info -->
+      <div class="container" v-if="item.Agent">
+        <div class="property-agent-info">
+          <p class="property-agent-name">
+            <strong>Consulente:</strong> {{ item.Agent.Name }} {{ item.Agent.LastName }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Property Details -->
+      <div class="container">
+        <div class="property-details-section">
+          <h3 class="property-details-title">Descrizione</h3>
+          <div class="property-details-content" v-html="item.Description.replace(/\n/g, '<br>')"></div>
+          <div v-if="item.Typology" class="mt-3 details-text-muted">
+            <strong>Tipologia:</strong> {{ item.Typology }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Section -->
+      <div v-if="showVideo" class="container">
+        <div class="details-video-modal">
+          <button class="details-video-close" @click="showVideo = false" aria-label="Chiudi video">
             <i class="ti-close"></i>
           </button>
           <iframe 
             :src="videoEmbedUrl" 
-            height="100%" 
-            width="100%"
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
             allowfullscreen
@@ -231,47 +195,45 @@
           </iframe>
         </div>
       </div>
-      
+      <!-- Contact Cards -->
       <div class="container">
-      <div class="row mb-lg-5 mb-3">
-        <div class="col-lg-4 icon-bx-wraper style-3 left">
-          <div class="icon-bx-sm bg-primary">
-            <span class="icon-cell"><i class="flaticon-telephone"></i></span>
-          </div>
-          <div class="icon-content">
-            <h4 class="title m-b5">Contatti</h4>
-            <ul>
+        <div class="property-contact-section">
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <i class="flaticon-telephone"></i>
+            </div>
+            <h4 class="contact-card-title">Contatti</h4>
+            <ul class="contact-card-list">
               <li><i class="las la-phone-volume"></i> +39 333/9123388</li>
               <li><i class="las la-phone-volume"></i> +39 06/95595263</li>
               <li><i class="las la-mail-bulk"></i> info@thinkhome.it</li>
             </ul>
           </div>
-        </div>
-        <div class="col-lg-4 icon-bx-wraper style-3 left">
-          <div class="icon-bx-sm bg-primary">
-            <span class="icon-cell"><i class="fa fa-calculator"></i></span>
-          </div>
-          <div class="icon-content">
-            <h4 class="title m-b5">Scopri la rata del tuo mutuo</h4>
-            <a href="https://www.affida.credit/agente/5fca6411f21fd0352c0dc3ae" class="btn btn-primary">
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <i class="fa fa-calculator"></i>
+            </div>
+            <h4 class="contact-card-title">Scopri la rata del tuo mutuo</h4>
+            <a href="https://www.affida.credit/agente/5fca6411f21fd0352c0dc3ae" class="contact-card-btn" target="_blank" rel="noopener">
               Calcola Mutuo
             </a>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-12 m-b30 aos-item">
-          <img src="@/assets/images/work/pic5.jpg" class="d-lg-block d-none" alt="" />
+          <div class="contact-card d-lg-block d-none">
+            <img src="@/assets/images/work/pic5.jpg" alt="ThinkHome" />
+          </div>
         </div>
       </div>
-    </div>
     </section>
+    <!-- Contact Form Section -->
     <section v-if="!loading" class="content-inner-1 pt-0 pb-0">
       <div class="container">
-        <div class="contact-area aos-item mt-0">
+        <div class="property-form-section">
           <div class="section-head style-1 text-center">
-            <h6 class="sub-title text-secondary">Richiedi Infromazioni</h6>
-            <h2 class="title">Inserisci i dati</h2>
+            <h6 class="sub-title text-secondary">Richiedi Informazioni</h6>
+            <h2 class="property-form-title">Inserisci i dati</h2>
+            <p class="property-form-subtitle">Compila il modulo per ricevere informazioni dettagliate sull'immobile</p>
           </div>
-          <form class="dz-form dzForm contact-bx" method="POST" @submit.prevent="submit()">
+          <form class="property-form dz-form dzForm contact-bx" method="POST" @submit.prevent="submit()">
             <input type="hidden" class="form-control" name="dzToDo" value="Contact" />
             <div class="dzFormMsg"></div>
             <div class="row sp10">
@@ -298,7 +260,7 @@
               </div>
               <div class="col-sm-12 m-b20">
                 <div class="input-group">
-                  <input type="text" class="form-control" required placeholder="Email *" v-model="formData.FromEmail" />
+                  <input type="email" class="form-control" required placeholder="Email *" v-model="formData.FromEmail" />
                 </div>
               </div>
               <div class="col-sm-12 m-b20">
@@ -308,20 +270,20 @@
                 </div>
               </div>
               <div class="col-sm-12 m-b20">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="privacyCheckbox" v-model="acceptPrivacy" required />
-              <label class="form-check-label" for="privacyCheckbox">
-                Accetto il trattamento dei dati personali in conformità alla <RouterLink to="/privacy-policy">Privacy Policy</RouterLink> *
-              </label>
-            </div>
-          </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="privacyCheckbox" v-model="acceptPrivacy" required />
+                  <label class="form-check-label" for="privacyCheckbox">
+                    Accetto il trattamento dei dati personali in conformità alla <RouterLink to="/privacy-policy">Privacy Policy</RouterLink> *
+                  </label>
+                </div>
+              </div>
               <div v-if="loadingRequest" class="d-flex justify-content-center">
                 <div class="spinner-border" role="status">
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
               <div v-else class="col-sm-12 text-center">
-                <button name="submit" type="submit" class="btn btn-primary btn-rounded" :disabled="!acceptPrivacy">
+                <button name="submit" type="submit" class="property-form-btn" :disabled="!acceptPrivacy">
                   Invia <i class="m-l10 fas fa-caret-right"></i>
                 </button>
               </div>
@@ -353,6 +315,7 @@ import axios from 'axios'
 import Home3Accordian from '@/components/Home3Accordian.vue'
 import work_pic1 from '@/assets/images/work/work-1/pic-13.jpg'
 import Swal from 'sweetalert2'
+import '@/assets/css/details-page.css'
 
 export default defineComponent({
   components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner },
@@ -894,243 +857,3 @@ export default defineComponent({
   }
 })
 </script>
-<style scoped>
-.modal-content {
-  height: 390px;
-  z-index: 99999;
-}
-
-@media screen and (max-width: 991px) {
-  .modal-content {
-    height: 282px;
-  }
-
-  .col-lg-6.col-md-6.aos-item-Foto {
-    height: 380px;
-
-  }
-
-  .col-sm-12 {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-
-  .row.mb-lg-5.mb-3 img {
-    max-height: 400px;
-    max-width: 400px;
-  }
-
-  .container1 {
-    flex-direction: column;
-    /* Dispone gli elementi verticalmente su schermi piccoli */
-    align-items: center;
-  }
-
-  .container img {
-    height: auto;
-    /* Adatta l'altezza per schermi piccoli */
-    width: 80%;
-    /* Limita la larghezza al 90% dello schermo */
-  }
-
-  .icon-content h4 {
-    font-size: 28px;
-    /* Riduce la dimensione del titolo per il mobile */
-    margin-bottom: 8px;
-    /* Aggiunge uno spazio sotto il titolo */
-  }
-
-  .icon-content p {
-    font-size: 16px;
-    /* Riduce il testo per schermi piccoli */
-    color: #666;
-    /* Un colore più morbido per il mobile */
-  }
-}
-
-@media screen and (max-width: 575px) {
-  .modal-content {
-    height: 30vmax;
-  }
-
-  .icon-content h4 {
-    font-size: 28px;
-    /* Riduce la dimensione del titolo per il mobile */
-    margin-bottom: 8px;
-    /* Aggiunge uno spazio sotto il titolo */
-  }
-
-  .col-sm-12 {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-
-  .row.mb-lg-5.mb-3 img {
-    max-height: 400px;
-    max-width: 400px;
-  }
-
-  .icon-content p {
-    font-size: 16px;
-    /* Riduce il testo per schermi piccoli */
-    color: #666;
-    /* Un colore più morbido per il mobile */
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .modal-content {
-    height: 23vmax;
-  }
-}
-
-.col-sm-12 {
-  flex: 0 0 auto;
-  width: 100%;
-}
-
-.row.mb-lg-5.mb-3 img {
-  max-height: 400px;
-  max-width: 400px;
-}
-
-.mfp-close {
-  border: none;
-  outline: none;
-  position: absolute;
-  right: 0px;
-  background-color: transparent;
-  color: white;
-}
-
-/* Stile per migliorare il layout delle frecce */
-.row {
-  position: relative;
-  /* Per posizionare i pulsanti rispetto al contenitore */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
-}
-
-button.btn.btn-outline-secondary.position-absolute {
-  position: absolute;
-  background-color: rgba(198, 164, 126, 0.4);
-  top: 50%;
-  width: 45px;
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  font-size: 20px;
-  transform: translateY(-50%);
-  z-index: 1;
-}
-
-/* 
-button:hover {
-  background: rgba(198, 164, 126, 0.2);
-  color: #eb860b4e;
-  
-}  */
-
-/* Posizioni specifiche per le frecce */
-button.left {
-  left: 300px;
-  /* Avvicina la freccia sinistra */
-}
-
-button.right {
-  right: 300px;
-  /* Avvicina la freccia destra */
-}
-
-/* Media query per schermi più piccoli */
-@media (max-width: 991px) {
-  button.btn.btn-outline-secondary.position-absolute {
-    width: 40px;
-    /* Riduci ulteriormente dimensioni pulsanti */
-    height: 40px;
-    font-size: 20px;
-  }
-
-  button.left {
-    left: -0px;
-    /* Allinea la freccia sinistra per il mobile */
-  }
-
-  button.right {
-    right: -0px;
-    /* Allinea la freccia destra per il mobile */
-  }
-}
-
-/* Per schermi molto piccoli (mobile stretto) */
-@media (max-width: 576px) {
-  button.btn.btn-outline-secondary.position-absolute {
-    width: 30px;
-    /* Riduci ulteriormente dimensioni */
-    height: 30px;
-    font-size: 16px;
-  }
-
-  button.left {
-    left: -0px;
-    /* Sposta la freccia sinistra */
-  }
-
-  button.right {
-    right: -0px;
-    /* Sposta la freccia destra */
-  }
-
-  img {
-    width: 100%;
-    /* Rendi l'immagine responsiva */
-    height: auto;
-    /* Mantieni proporzioni */
-  }
-}
-
-.row.mb-lg-5.mb-3 {
-  display: flex;
-  /* Attiva Flexbox */
-  justify-content: space-between;
-  /* Distribuisce uniformemente gli elementi */
-  align-items: stretch;
-  /* Assicura che tutti gli elementi abbiano la stessa altezza */
-  flex-wrap: wrap;
-  /* Consente agli elementi di andare a capo su schermi piccoli */
-  gap: 20px;
-  /* Spazio tra gli elementi */
-}
-
-.row.mb-lg-5.mb-3>.col-lg-4 {
-  flex: 1 1 calc(33.333% - 20px);
-  /* Ogni colonna occupa un terzo dello spazio disponibile */
-  display: flex;
-  /* Rende ogni colonna flessibile */
-  box-sizing: border-box;
-  /* Garantisce che padding e bordi non influiscano sulle dimensioni */
-  min-height: 200px;
-  /* Imposta un'altezza minima per uniformare le colonne */
-  padding: 10px;
-  /* (Facoltativo) Spazio interno per il contenuto */
-  height: 100px;
-}
-
-@media (max-width: 768px) {
-  .row.mb-lg-5.mb-3 {
-    flex-direction: column;
-    /* Dispone gli elementi verticalmente */
-  }
-
-  .row.mb-lg-5.mb-3>.col-lg-4 {
-    flex: 1 1 100%;
-    /* Ogni colonna occupa il 100% della larghezza */
-    min-height: auto;
-    /* Rimuove l'altezza minima per un migliore adattamento */
-    height: auto;
-    /* Rende l'altezza dinamica in base al contenuto */
-  }
-}
-</style>
