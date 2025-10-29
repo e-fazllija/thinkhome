@@ -1,5 +1,5 @@
 <template>
-  <div class="slidearea ps-0">
+  <div class="slidearea ps-0 main-banner3">
     <div class="silder-three">
       <Swiper
         class="swiper-container main-silder-swiper-03"
@@ -14,29 +14,21 @@
         }"
         :autoplay="{ delay: 4000 }"
       >
-      <SwiperSlide class="swiper-slide" v-for="({ img, title, description }, ind) in mainSlider" :key="ind">
-             <div class="dz-bnr-inr style-1" 
-               :style="`background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${img});
-                        background-size: cover; background-position: center;`">
-                  <div class="container-fluid" >
-                    <div class="dz-bnr-inr-entry">
-                     <h1>{{ title }}</h1>
-                     <div class="inner-text">
-                      <h3>{{ description }}</h3>
-                     </div>
-                    </div>
-                  </div>
-             </div>
-       </SwiperSlide>
-        <!-- <div class="swiper-pagination style-2"></div> -->
-        <!-- <div class="slider-three-pagination">
-          <div class="btn-prev swiper-button-prev3 swiper-button-white">
-            <i class="las la-angle-left"></i>
+        <SwiperSlide class="swiper-slide" v-for="({ img, title, description }, ind) in mainSlider" :key="ind">
+          <div 
+            class="dz-bnr-inr style-1" 
+            :style="`background-image: url(${img});`"
+          >
+            <div class="container">
+              <div class="dz-bnr-inr-entry">
+                <h1>{{ title }}</h1>
+                <div class="inner-text">
+                  <span class="text-white">{{ description }}</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="btn-next swiper-button-next3 swiper-button-white">
-            <i class="las la-angle-right"></i>
-          </div>
-        </div> -->
+        </SwiperSlide>
       </Swiper>
     </div>
   </div>
@@ -88,48 +80,3 @@ export default defineComponent({
   }
 })
 </script>
-<style>
-  .inner-text h3 {
-    font-size: 18px;
-    color: #fff;
-    text-align: center;
-    margin: -10 px;
-  }
-  .dz-bnr-inr-entry h1{
-    font-size: 18px;
-    color: #fff;
-    text-align: center;
-    margin: -10px;
-  }
-
-  @media (max-width: 768px) {
-    .inner-text h3 {
-      font-size: 14px; /* Adatta la dimensione del font per schermi più piccoli */
-      color: #fff; /* Colore leggermente più chiaro per il mobile */
-      line-height: 1.5; /* Migliora la leggibilità su schermi piccoli */
-      padding: -10px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
-    }
-    .dz-bnr-inr-entry h1 {
-      font-size: 14px; /* Adatta la dimensione del font per schermi più piccoli */
-      color: #fff; /* Colore leggermente più chiaro per il mobile */
-      line-height: 1; /* Migliora la leggibilità su schermi piccoli */
-      padding: -10px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
-    }
-  }
-  @media (max-width: 991px) {
-    .inner-text h3 {
-      font-size: 14px; /* Adatta la dimensione del font per schermi più piccoli */
-      color: #fff; /* Colore leggermente più chiaro per il mobile */
-      line-height: 1; /* Migliora la leggibilità su schermi piccoli */
-      padding: -10px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
-    }
-    .dz-bnr-inr-entry h1 {
-      font-size: 14px; /* Adatta la dimensione del font per schermi più piccoli */
-      color: #fff; /* Colore leggermente più chiaro per il mobile */
-      line-height: 1; /* Migliora la leggibilità su schermi piccoli */
-      padding: -10px; /* Aggiunge un po' di spazio interno per evitare sovrapposizioni */
-    }
-  }
-</style>
-
-<style scoped></style>

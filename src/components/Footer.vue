@@ -12,6 +12,10 @@
                     <i class="las la-mail-bulk"></i>
                     info@thinkhome.it 
                   </li>
+                  <li>
+                    <i class="las la-exclamation-triangle"></i>
+                    <RouterLink to="/send-complaint">Invia un reclamo</RouterLink>
+                  </li>
                 </ul>
               </div>
             </div>

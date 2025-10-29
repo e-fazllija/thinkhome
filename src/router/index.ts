@@ -46,6 +46,12 @@ const router = createRouter({
       meta: { layout3: 'layout3' }
     },
     {
+      path: '/send-complaint',
+      name: 'send-complaint',
+      component: () => import('../views/SendComplaint.vue'),
+      meta: { layout3: 'layout3' }
+    },
+    {
       path: '/coming-soon',
       name: 'coming_soon',
       component: () => import('../views/socialPages/ComingSoon.vue'),
