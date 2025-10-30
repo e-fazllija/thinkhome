@@ -3,7 +3,7 @@
     <div class="contact-box">
       <div class="logo-contact logo-dark">
         <RouterLink to="?"
-          ><img class="header_logo" src="@/assets/images/TH-6.jpg" alt=""
+          ><img class="header_logo" src="@/assets/images/TH-pittogramma.jpg" alt=""
         /></RouterLink>
       </div>
       <div class="m-b50 contact-text">

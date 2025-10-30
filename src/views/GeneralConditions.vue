@@ -1,22 +1,6 @@
 <template>
     <div class="page-content bg-white">
-        <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
-            <div class="container-fluid">
-                <div class="dz-bnr-inr-entry">
-                    <h1>Condizioni generali</h1>
-                    <!-- Breadcrumb Row -->
-                    <nav aria-label="breadcrumb" class="breadcrumb-row">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <RouterLink to="/">Home</RouterLink>
-                            </li>
-                            <li class="breadcrumb-item">Condizioni generali</li>
-                        </ul>
-                    </nav>
-                    <!-- Breadcrumb Row End -->
-                </div>
-            </div>
-        </div>
+        <CommonBanner :img="bannerImg" title="Condizioni generali" text="Condizioni generali" />
         <section class="section-full content-inner about-bx2">
             <div class="container">
                 <div class="row">
@@ -292,7 +276,7 @@
 <script lang="ts">
 import CommonBanner from '@/elements/CommonBanner.vue'
 import { defineComponent } from 'vue'
-import bnr3 from '@/assets/images/banner/bnr9.jpg'
+import bannerImg from '@/assets/images/TH-pittogramma-banner.jpg'
 import HomeAbout from '@/components/HomeAbout.vue'
 import OurPortfolio from '@/components/OurPortfolio.vue'
 import bg1 from '@/assets/images/background/bg1.png'
@@ -303,7 +287,7 @@ export default defineComponent({
     name: 'about_us',
     setup() {
         return {
-            bnr3,
+            bannerImg,
             bg1,
             backgrouBg2,
             workProcessArr: [

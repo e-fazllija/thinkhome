@@ -291,7 +291,8 @@
 import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
-import bannerImg from '@/assets/images/banner/1920x700.jpg'
+// import bannerImg from '@/assets/images/banner/1920x700.jpg'
+import bannerImg from '@/assets/images/TH-pittogramma-banner.jpg'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import bg2 from '@/assets/images/background/bg2.png'
 import logoImage from '@/assets/images/work/pic5.jpg';
