@@ -1,21 +1,23 @@
 <template>
-  <div class="row align-items-center">
+  <div class="row align-items-center home-services-section">
     <div class="col-xl-4 col-md-6 m-lg-b30 aos-item aos-init aos-animate" 
       v-for="({ id, icon, title, title2, description, to_name }, ind) in servicesCard" :key="ind">
-      <div style="height:520px" class="icon-bx-wraper style-9 mb-5">
-        <div class="icon-lg">
+      <div class="icon-bx-wraper style-9 mb-5 home-service-card">
+        <div class="icon-lg home-service-icon">
           <span class="icon-cell">
             <i :class="icon"></i>
           </span>
         </div>
-        <div class="icon-content" >
-          <h4 class="dz-title">{{ title }}</h4>
-          <h6 v-if="title2">{{ title2 }}</h6>
-          <p>{{ description}} </p>
-          <RouterLink style="margin-bottom: 10px" :to="{ name: to_name, params: { id: id } }" class="btn btn-primary btn-rounded btn-sm hover-icon position-absolute bottom-0 start-1">
-            <span>Dettaglio</span>
-            <i class="fas fa-arrow-right"></i>
-          </RouterLink>
+        <div class="icon-content">
+          <h4 class="dz-title home-service-title">{{ title }}</h4>
+          <h6 v-if="title2" class="home-service-title-2">{{ title2 }}</h6>
+          <p class="home-service-description">{{ description}} </p>
+          <div class="home-service-btn">
+            <RouterLink :to="{ name: to_name, params: { id: id } }" class="btn btn-primary btn-rounded btn-sm hover-icon">
+              <span>Dettaglio</span>
+              <i class="fas fa-arrow-right"></i>
+            </RouterLink>
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="clients-wrapper">
+  <div class="clients-wrapper home-partners-section">
     <div class="container">
       <Swiper
         class="swiper-container clients-swiper"

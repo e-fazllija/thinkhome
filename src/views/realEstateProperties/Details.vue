@@ -4,16 +4,7 @@
     <CommonBanner :img="bannerImg" title="Dettaglio Immobile" text="Dettaglio Immobile" />
 
     <!-- Loading State -->
-    <div v-if="loading" class="details-loading">
-      <div class="details-spinner-container">
-        <div class="details-spinner" role="status">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Caricamento...</span>
-          </div>
-          <p class="details-loading-text">Caricamento in corso...</p>
-        </div>
-      </div>
-    </div>
+    <Loader v-if="loading" :fullscreen="true" :show-text="true" />
     <!-- <div class="container1" style="display: flex; align-items: center; margin-top: 20px; margin-left: 0;">
       <div style="margin-right: 10px;">
         <img src="@/assets/images/work/pic4.jpg" alt="Icona" style="height: 350px; width: 350px; object-fit: cover;" />
@@ -277,11 +268,7 @@
                   </label>
                 </div>
               </div>
-              <div v-if="loadingRequest" class="d-flex justify-content-center">
-                <div class="spinner-border" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
-              </div>
+              <Loader v-if="loadingRequest" :fullscreen="false" :show-text="false" loading-text="Invio in corso..." />
               <div v-else class="col-sm-12 text-center">
                 <button name="submit" type="submit" class="property-form-btn" :disabled="!acceptPrivacy">
                   Invia <i class="m-l10 fas fa-caret-right"></i>
@@ -311,14 +298,15 @@ import logoImage from '@/assets/images/work/pic5.jpg';
 import Lightgallery from 'lightgallery/vue'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
-import axios from 'axios'
+import { apiService } from '@/services/apiService'
 import Home3Accordian from '@/components/Home3Accordian.vue'
 import work_pic1 from '@/assets/images/work/work-1/pic-13.jpg'
 import Swal from 'sweetalert2'
+import Loader from '@/elements/Loader.vue'
 import '@/assets/css/details-page.css'
 
 export default defineComponent({
-  components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner },
+  components: { Lightgallery, Swiper, SwiperSlide, Home3Accordian, CommonBanner, Loader },
   setup() {
     return {
       bg2,
@@ -411,8 +399,8 @@ export default defineComponent({
   this.formData.Information = this.item.Id.toString();
 
   try {
-    // Invia la richiesta con Axios
-    await axios.post('https://thinkhomebe.azurewebsites.net/api/Generic/InformationRequest', this.formData);
+    // Invia la richiesta con il servizio centralizzato
+    await apiService.informationRequest(this.formData);
     
     // Reset dei campi del form
     this.formData.Name = "";
@@ -441,10 +429,10 @@ export default defineComponent({
 },
 
     async getItem() {
-      const result = await axios.get("https://thinkhomebe.azurewebsites.net/api/RealEstateProperty/GetById?id=" + this.$route.params.id);
+      const result = await apiService.getRealEstatePropertyById(Number(this.$route.params.id));
 
-      this.item = result.data;
-      this.photos = result.data.Photos;
+      this.item = result as any;
+      this.photos = result.Photos || [];
       this.imgSelected = this.photos.length > 0 ? this.photos[0].Url : '';
 
       // Controlla se esiste un VideoUrl

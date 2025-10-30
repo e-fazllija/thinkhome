@@ -16,52 +16,79 @@
       </div>
     </div>
 
-    <div class="content-inner">
+    <!-- Content Section -->
+    <div class="agencies-content">
       <div class="container">
-        <div v-if="loading" class="d-flex justify-content-center">
-            <div class="spinner-border" role="status">
-              <span class="sr-only">Loading...</span>
+        <Loader v-if="loading" :fullscreen="false" :show-text="true" />
+        <div v-else>
+          <div v-if="agencies.length === 0" class="agencies-empty">
+            <div class="agencies-empty-icon">
+              <i class="fas fa-building"></i>
             </div>
+            <h3>Nessuna agenzia disponibile</h3>
+            <p>Al momento non ci sono agenzie da visualizzare.</p>
           </div>
-        <div v-else class="row" v-for="(agency, index) in agencies" :key="agency.id">
-          <div class="col-md-4 d-none d-md-block">
-            <div class="agency-image-container rounded" style="background-color: #25606f">
-              <img src="/src/assets/images/about/pic16.jpg" :alt="agency.name" class="img-fluid rounded" />
-            </div>
-          </div>
-          <div class="col-md-8 d-flex flex-column justify-content-center mb-3 mb-md-0">
-            <div class="agency-card p-4 shadow-sm rounded border">
-              <h3 class="agency-name mb-3">{{ agency.name }} {{ agency.lastName }}</h3>
-              <div class="row">
-                <div class="col-md-8">
-                  <ul class="list-unstyled mb-0">
-                    <li class="mb-2">
-                      <i style="color: #c0a480;" class="fas fa-map-marker-alt me-2"></i>
-                      <strong class="agency-detail">Indirizzo: </strong>
-                      <span class="agency-detail">{{ agency.address }}, {{ agency.town }}</span>
-                    </li>
-                    <li class="mb-2" v-if="agency.mobilePhone">
-                      <i style="color: #c0a480;" class="fas fa-mobile-alt me-2"></i>
-                      <strong class="agency-detail">Cellulare: </strong>
-                      <span class="agency-detail">{{ agency.mobilePhone }}</span>
-                    </li>
-                    <li class="mb-2">
-                      <i style="color: #c0a480;" class="fas fa-phone me-2"></i>
-                      <strong class="agency-detail">Telefono: </strong>
-                      <span class="agency-detail">{{ agency.phoneNumber }}</span>
-                    </li>
-                    <li class="mb-2">
-                      <i style="color: #c0a480;" class="fas fa-envelope me-2"></i>
-                      <strong class="agency-detail">Email: </strong>
-                      <span class="agency-detail">{{ agency.email }}</span>
-                    </li>
-                  </ul>
+          <div v-else class="agencies-list">
+            <div
+              v-for="(agency, index) in agencies"
+              :key="agency.id"
+              class="agency-card-wrapper"
+            >
+              <div class="agency-card-container">
+                <!-- Agency Image -->
+                <div class="agency-image-wrapper d-none d-md-block">
+                  <img
+                    src="/src/assets/images/about/pic16.jpg"
+                    :alt="`${agency.name} ${agency.lastName}`"
+                    class="img-fluid"
+                  />
                 </div>
-                <div class="col-md-4 d-flex align-items-center justify-content-end">
-                  <RouterLink :to="'/immobili-in-vendita/Qualsiasi/Qualsiasi/0/0/-1/'+ agency.id" class="btn btn-primary rounded-5 py-3 px-4 w-75" 
-                  style=" background-color: #25606f; border-color: #25606f; font-size: 0.9rem;">
-                <i></i> Visualizza Immobili
-                </RouterLink>
+                <!-- Agency Info -->
+                <div class="agency-info-section">
+                  <h3 class="agency-name">{{ agency.name }} {{ agency.lastName }}</h3>
+                  <div class="row">
+                    <div class="col-12 col-lg-8">
+                      <ul class="agency-details-list">
+                        <li>
+                          <i class="fas fa-map-marker-alt"></i>
+                          <div>
+                            <span class="agency-detail-label">Indirizzo:</span>
+                            <span class="agency-detail-value">{{ agency.address }}, {{ agency.town }}</span>
+                          </div>
+                        </li>
+                        <li v-if="agency.mobilePhone">
+                          <i class="fas fa-mobile-alt"></i>
+                          <div>
+                            <span class="agency-detail-label">Cellulare:</span>
+                            <span class="agency-detail-value">{{ agency.mobilePhone }}</span>
+                          </div>
+                        </li>
+                        <li>
+                          <i class="fas fa-phone"></i>
+                          <div>
+                            <span class="agency-detail-label">Telefono:</span>
+                            <span class="agency-detail-value">{{ agency.phoneNumber }}</span>
+                          </div>
+                        </li>
+                        <li>
+                          <i class="fas fa-envelope"></i>
+                          <div>
+                            <span class="agency-detail-label">Email:</span>
+                            <span class="agency-detail-value">{{ agency.email }}</span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-12 col-lg-4 d-flex align-items-center justify-content-start justify-content-lg-end">
+                      <RouterLink
+                        :to="`/immobili-in-vendita/Qualsiasi/Qualsiasi/0/0/-1/${agency.id}`"
+                        class="agency-action-button"
+                      >
+                        <i class="fas fa-search"></i>
+                        Visualizza Immobili
+                      </RouterLink>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -69,27 +96,27 @@
         </div>
         <!-- Paginazione -->
         <!-- <div class="row mt-4" v-if="agencies.length > 0">
-      <div class="col-12">
-        <nav aria-label="Page navigation">
-          <ul class="pagination justify-content-center">
-            <li class="page-item" :class="{ disabled: currentPage === 1 }">
-              <button class="page-link" @click="getAgencies(currentPage - 1)">Precedente</button>
-            </li>
-            <li 
-              class="page-item" 
-              v-for="page in totalPages" 
-              :key="page"
-              :class="{ active: currentPage === page }"
-            >
-              <button class="page-link" @click="getAgencies(page)">{{ page }}</button>
-            </li>
-            <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-              <button class="page-link" @click="getAgencies(currentPage + 1)">Successiva</button>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div> -->
+          <div class="col-12">
+            <nav aria-label="Page navigation">
+              <ul class="pagination justify-content-center">
+                <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                  <button class="page-link" @click="getAgencies(currentPage - 1)">Precedente</button>
+                </li>
+                <li
+                  class="page-item"
+                  v-for="page in totalPages"
+                  :key="page"
+                  :class="{ active: currentPage === page }"
+                >
+                  <button class="page-link" @click="getAgencies(page)">{{ page }}</button>
+                </li>
+                <li class="page-item" :class="{ disabled: currentPage === totalPages }">
+                  <button class="page-link" @click="getAgencies(currentPage + 1)">Successiva</button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -97,10 +124,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import axios from 'axios'
-import CommonBanner from '@/elements/CommonBanner.vue'
-import bannerImg from '@/assets/images/banner/1920x700.jpg'
-import bg1 from '@/assets/images/background/bg1.png'
+import { apiService } from '@/services/apiService'
+import Loader from '@/elements/Loader.vue'
 
 interface Agency {
   id: string;
@@ -117,13 +142,7 @@ interface Agency {
 }
 
 export default defineComponent({
-  setup() {
-    return {
-      bannerImg,
-      bg1,
-    }
-  },
-  components: { CommonBanner },
+  components: { Loader },
   data() {
     return {
       agencies: [] as Agency[],
@@ -139,11 +158,9 @@ export default defineComponent({
     async getAgencies(page: number) {
       this.loading = true;
       try {
-        const result = await axios.get(
-          `https://thinkhomebe.azurewebsites.net/api/Agencies/GetMain?currentPage=${page}`
-        );
+        const result = await apiService.getAgencies(page);
 
-        this.agencies = result.data.Data.map((agency: any) => ({
+        this.agencies = result.Data.map((agency: any) => ({
           id: agency.Id,
           name: agency.Name || `${agency.LastName} ${agency.Name}`,
           lastName: agency.LastName || `${agency.LastName} ${agency.Name}`,
@@ -157,7 +174,7 @@ export default defineComponent({
           color: agency.Color
         }));
 
-        const totalItems = result.data.Total;
+        const totalItems = result.Total;
         this.totalPages = totalItems > 0 ? Math.ceil(totalItems / 10) : 1;
         this.currentPage = page;
       } catch (error) {
@@ -171,61 +188,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* Stile per il nome dell'agenzia */
-.agency-name {
-  color: #25606f;
-  /* Colore specifico */
-  font-size: 1.5rem;
-  /* Dimensione del testo più grande */
-  font-weight: bold;
-  /* Testo in grassetto */
-}
-
-/* Stile per i dettagli dell'agenzia (indirizzo, cellulare, telefono, email) */
-.agency-detail {
-  color: #333;
-  /* Colore specifico */
-  font-size: 1.1rem;
-  /* Dimensione del testo più grande */
-}
-
-/* Stile per il bottone */
-.agency-card .btn-primary {
-  background-color: #25606f;
-  /* Colore di sfondo del bottone */
-  border-color: #25606f;
-  /* Colore del bordo del bottone */
-  max-width: 150px;
-  /* Larghezza massima del bottone */
-}
-
-.agency-card .btn-primary:hover {
-  background-color: #1a4a57;
-  /* Colore di sfondo al passaggio del mouse */
-  border-color: #1a4a57;
-}
-
-@media screen and (max-width: 991px) {
-
-  .col-sm-12 {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 575px) {
-
-  .col-sm-12 {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 400px) {
-
-  .col-sm-12 {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-}
+/* Gli stili sono gestiti dal file CSS all-agencies.css */
+/* Questo blocco può essere rimosso o utilizzato per override specifici se necessario */
 </style>

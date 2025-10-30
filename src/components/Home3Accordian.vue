@@ -1,12 +1,12 @@
 <template>
-  <section class="content-inner-2" :style="`background-image: url(${bg1});`">
+  <section class="content-inner-2 home-portfolio-section" :style="`background-image: url(${bg1});`">
       <div class="container">
         <div class="row section-head-bx align-items-center">
           <div class="col-md-5">
-            <div class="section-head style-1">
-              <h6 class="sub-title text-primary">IL NOSTRO PORTAFOGLIO</h6>
-              <h2 class="title">ULTIMI PROGETTI</h2>
-              <RouterLink to="/edilizia" class="btn-link">
+            <div class="section-head style-1 home-portfolio-head">
+              <h6 class="sub-title text-primary home-portfolio-subtitle">IL NOSTRO PORTAFOGLIO</h6>
+              <h2 class="title home-portfolio-title">ULTIMI PROGETTI</h2>
+              <RouterLink to="/edilizia" class="btn-link home-portfolio-link">
                <h6 class="title">Scopri di più <i class="fas fa-plus scale08"></i></h6>
                </RouterLink> 
              </div>
