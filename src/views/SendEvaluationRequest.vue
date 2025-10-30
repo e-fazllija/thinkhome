@@ -1,6 +1,6 @@
 <template>
   <div class="page-content bg-white">
-    <CommonBanner :img="bnr2" title="Valuta il tuo immobile" text="Valuta il tuo immobile" />
+    <CommonBanner :img="bannerImg" title="Valuta il tuo immobile" text="Valuta il tuo immobile" />
     <section class="content-inner">
       <div class="container">
         <div class="row">
@@ -239,14 +239,14 @@
 import CommonBanner from '@/elements/CommonBanner.vue'
 import Loader from '@/elements/Loader.vue'
 import { defineComponent } from 'vue'
-import bnr2 from '@/assets/images/banner/bnr2.png'
+import bannerImg from '@/assets/images/TH-pittogramma-banner.jpg'
 import { apiService } from '@/services/apiService'
 import Swal from 'sweetalert2'
 
 export default defineComponent({
   setup() {
     return {
-      bnr2,
+      bannerImg,
       contactDtail: [
         {
           dataName: '01',

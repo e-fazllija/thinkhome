@@ -1,23 +1,6 @@
 <template>
   <div class="page-content bg-white">
-
-    <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
-      <div class="container-fluid">
-        <div class="dz-bnr-inr-entry">
-          <h1>Immobili in Affitto</h1>
-          <!-- Breadcrumb Row -->
-          <nav aria-label="breadcrumb" class="breadcrumb-row">
-            <ul class="breadcrumb">
-              <li class="breadcrumb-item">
-                <RouterLink to="/">Home</RouterLink>
-              </li>
-              <li class="breadcrumb-item">Immobili in Affitto</li>
-            </ul>
-          </nav>
-          <!-- Breadcrumb Row End -->
-        </div>
-      </div>
-    </div>
+    <CommonBanner :img="bannerImg" title="Immobili in Affitto" text="Immobili in Affitto" />
 
     <PropertySearchForm 
       :default-request-type="formData.RequestType"
@@ -98,7 +81,7 @@
 import { defineComponent } from 'vue'
 import CommonBanner from '@/elements/CommonBanner.vue'
 import PropertySearchForm from '@/components/PropertySearchForm.vue'
-import bnr3 from '@/assets/images/banner/bnr3.jpg'
+import bannerImg from '@/assets/images/TH-pittogramma-banner.jpg'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Autoplay } from 'swiper/modules'
 import BlogPagination from '@/elements/BlogPagination.vue'
@@ -110,7 +93,7 @@ export default defineComponent({
   components: { CommonBanner, PropertySearchForm, Swiper, SwiperSlide, BlogPagination, Loader },
   setup() {
     return {
-      bnr3,
+      bannerImg,
       modules: [Navigation, Autoplay]
     }
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="page-content bg-white">
-    <CommonBanner :img="bnr2" title="Lavora con noi" text="Lavora con noi" />
+    <CommonBanner :img="bannerImg" title="Lavora con noi" text="Lavora con noi" />
     <section class="content-inner">
       <div class="container">
         <div class="row">
@@ -136,14 +136,14 @@
 import CommonBanner from '@/elements/CommonBanner.vue'
 import Loader from '@/elements/Loader.vue'
 import { defineComponent } from 'vue'
-import bnr2 from '@/assets/images/work/workwithus.jpg'
+import bannerImg from '@/assets/images/TH-pittogramma-banner.jpg'
 import { apiService } from '@/services/apiService'
 import Swal from 'sweetalert2'
 
 export default defineComponent({
   setup() {
     return {
-      bnr2,
+      bannerImg,
       contactDtail: [
         {
           dataName: '01',

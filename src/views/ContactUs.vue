@@ -1,6 +1,6 @@
 <template>
   <div class="page-content bg-white">
-    <CommonBanner :img="bnr2" title="Contact Us" text="Contact Us" />
+    <CommonBanner :img="bannerImg" title="Contact Us" text="Contact Us" />
     <section class="content-inner">
       <div class="container">
         <div class="row">
@@ -142,12 +142,12 @@
 <script lang="ts">
 import CommonBanner from '@/elements/CommonBanner.vue'
 import { defineComponent } from 'vue'
-import bnr2 from '@/assets/images/banner/bnr2.png'
+import bannerImg from '@/assets/images/TH-pittogramma-banner.jpg'
 
 export default defineComponent({
   setup() {
     return {
-      bnr2,
+      bannerImg,
       contactDtail: [
         {
           dataName: '01',

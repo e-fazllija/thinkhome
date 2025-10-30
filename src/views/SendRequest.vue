@@ -1,22 +1,6 @@
 <template>
     <div class="page-content bg-white">
-        <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
-            <div class="container-fluid">
-                <div class="dz-bnr-inr-entry">
-                    <h1>Invia una richiesta</h1>
-                    <!-- Breadcrumb Row -->
-                    <nav aria-label="breadcrumb" class="breadcrumb-row">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <RouterLink to="/">Home</RouterLink>
-                            </li>
-                            <li class="breadcrumb-item">Invia una richiesta</li>
-                        </ul>
-                    </nav>
-                    <!-- Breadcrumb Row End -->
-                </div>
-            </div>
-        </div>
+        <CommonBanner :img="bannerImg" title="Invia una richiesta" text="Invia una richiesta" />
         <section class="content-inner">
             <div class="container">
                 <div class="row">
@@ -270,7 +254,7 @@
 import CommonBanner from '@/elements/CommonBanner.vue'
 import Loader from '@/elements/Loader.vue'
 import { defineComponent } from 'vue'
-import bannerImg from '@/assets/images/banner/1920x700.jpg'
+import bannerImg from '@/assets/images/TH-pittogramma-banner.jpg'
 import { apiService } from '@/services/apiService'
 import Swal from 'sweetalert2'
 

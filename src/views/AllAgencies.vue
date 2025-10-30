@@ -1,20 +1,8 @@
 <template>
   <div class="page-content bg-white">
-    <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
-      <div class="container-fluid">
-        <div class="dz-bnr-inr-entry">
-          <h1>Le Nostre Agenzie</h1>
-          <nav aria-label="breadcrumb" class="breadcrumb-row">
-            <ul class="breadcrumb">
-              <li class="breadcrumb-item">
-                <RouterLink to="/">Home</RouterLink>
-              </li>
-              <li class="breadcrumb-item">Agenzie</li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
+    
+
+    <CommonBanner :img="bannerImg" title="Le nostre agenzie" text="Agenzie" />
 
     <!-- Content Section -->
     <div class="agencies-content">
@@ -126,6 +114,8 @@
 import { defineComponent } from 'vue'
 import { apiService } from '@/services/apiService'
 import Loader from '@/elements/Loader.vue'
+import CommonBanner from '@/elements/CommonBanner.vue'
+import bannerImg from '@/assets/images/TH-pittogramma-banner.jpg'
 
 interface Agency {
   id: string;
@@ -142,7 +132,12 @@ interface Agency {
 }
 
 export default defineComponent({
-  components: { Loader },
+  components: { Loader, CommonBanner },
+  setup() {
+    return {
+      bannerImg
+    }
+  },
   data() {
     return {
       agencies: [] as Agency[],

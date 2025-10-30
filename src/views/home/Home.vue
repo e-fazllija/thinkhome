@@ -85,7 +85,7 @@
     <section class="content-inner-2 service-area home-services-wrapper">
       <div class="container">
         <div class="section-head style-2 text-center">
-          <h6 class="sub-title text-primary"><img src="@/assets/images/banner/bnr12Home.jpg" /></h6>
+          <h6 class="sub-title text-primary"><img src="@/assets/images/banner/3145x700.jpg" /></h6>
           <h2 class="title">
             Servizi e consulenze
           </h2>

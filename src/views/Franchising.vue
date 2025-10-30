@@ -1,29 +1,20 @@
 <template>
   <div class="page-content bg-white">
-    <!--<CommonBanner :img="bnr3" title="Franchising" text="Franchising" />-->
-    <div class="dz-bnr-inr style-1 overlay-left" style="background-color: #25606f">
-      <div class="container-fluid">
-        <div class="dz-bnr-inr-entry">
-          <h1>Franchising</h1>
-          <!-- Breadcrumb Row -->
-          <nav aria-label="breadcrumb" class="breadcrumb-row">
-            <ul class="breadcrumb">
-              <li class="breadcrumb-item">
-                <RouterLink to="/">Home</RouterLink>
-              </li>
-              <li class="breadcrumb-item">Franchising</li>
-            </ul>
-          </nav>
-          <!-- Breadcrumb Row End -->
-        </div>
-      </div>
-    </div>
+    <CommonBanner :img="bannerImg" title="Franchising" text="Franchising" />
     <section class="section-full content-inner">
       <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-6">
+            <div class="franchising-hero mb-4">
+              <img :src="franchisingHero" alt="ThinkHome Franchising" class="franchising-hero__img" />
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-lg-12">
             <div class="franchising-content">
               <div class="franchising-text mb-5">
+                
                 <div class="main-text text-center">
                   <p class="franchising-intro">
                     Entra nel franchising <strong class="brand-name">Think Home</strong>, hai tutto il necessario per far crescere la tua agenzia: un metodo operativo testato, formazione continua, strumenti digitali avanzati, marketing pronto all'uso e totale libertà gestionale.
@@ -99,7 +90,7 @@
 <script lang="ts">
 import CommonBanner from '@/elements/CommonBanner.vue'
 import { defineComponent } from 'vue'
-import bnr3 from '@/assets/images/banner/bnr45.jpg'
+import bannerImg from '@/assets/images/TH-pittogramma-banner.jpg'
 
 // Import franchising images
 import franchising1 from '@/assets/images/franchising/1.jpeg'
@@ -113,6 +104,8 @@ import franchising8 from '@/assets/images/franchising/8.jpeg'
 import franchising9 from '@/assets/images/franchising/9.jpeg'
 import franchising10 from '@/assets/images/franchising/10.jpeg'
 import franchising11 from '@/assets/images/franchising/11.jpeg'
+import franchisingHero from '@/assets/images/bnr12.jpg'
+import '@/assets/css/franchising.css'
 
 export default defineComponent({
   name: 'franchising',
@@ -127,9 +120,10 @@ export default defineComponent({
     ]
 
     return {
-      bnr3,
+      bannerImg,
       franchisingImages,
-      franchising9
+      franchising9,
+      franchisingHero
     }
   },
   components: { CommonBanner }
