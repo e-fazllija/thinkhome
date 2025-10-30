@@ -104,7 +104,7 @@ import franchising8 from '@/assets/images/franchising/8.jpeg'
 import franchising9 from '@/assets/images/franchising/9.jpeg'
 import franchising10 from '@/assets/images/franchising/10.jpeg'
 import franchising11 from '@/assets/images/franchising/11.jpeg'
-import franchisingHero from '@/assets/images/bnr12.jpg'
+import franchisingHero from '@/assets/images/TH-4.jpg'
 import '@/assets/css/franchising.css'
 
 export default defineComponent({
