@@ -35,8 +35,14 @@
 }
 
 @media (max-width: 768px) {
+  .franchising-hero {
+    border-radius: 8px;
+    margin: 0 -15px;
+  }
+  
   .franchising-hero__img {
-    height: 110px;
+    height: auto;
+    object-fit: contain;
   }
 }
 
