@@ -40,7 +40,7 @@
           <div class="header-nav navbar-collapse justify-content-end">
             <div class="logo-header">
               <RouterLink to="/" class="logo-dark"
-                ><img src="@/assets/images/TH-4.jpg" alt=""
+                ><img src="@/assets/images/TH-pittogramma.jpg" alt=""
               /></RouterLink>
             </div>
             <ul class="nav navbar-nav navbar navbar-left">
