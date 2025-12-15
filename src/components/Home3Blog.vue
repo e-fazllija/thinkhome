@@ -44,7 +44,7 @@
           </h3>
           <div class="home-blog-details">
             <span class="home-blog-detail">{{ item.TypeOfProperty }}</span>
-            <span class="home-blog-detail">
+            <span class="home-blog-detail home-blog-detail-energy">
               <img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
             </span>
           </div>
