@@ -48,9 +48,6 @@
               <img src="@/assets/images/energy.png" /> {{ item.EnergyClass }}
             </span>
           </div>
-          <p class="home-blog-description">
-            {{ item.Description.substring(0, 300) }}...
-          </p>
           </div>
           <div class="read-more home-blog-read-more">
             <RouterLink v-if="item.Id && item.Id > 0" :to="{ name: 'dettaglio', params: { id: item.Id } }"
@@ -108,12 +105,3 @@ export default defineComponent({
 })
 </script>
 
-<style>
-.home-blog-image {
-  border-radius: 5px;
-  padding: 0;
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-}
-</style>
