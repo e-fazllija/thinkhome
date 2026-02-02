@@ -71,21 +71,10 @@
       </div>
     </section>
     <MainBanner3 />
-    <section class="content-inner-3 service-area home-partners-wrapper">
-      <div class="container">
-        <div class="row text-center section-head style-2">
-          <div class="col-lg-12 aos-item aos-init aos-animate">
-            <h5 class="text-primary sub-title">Partner ufficiali</h5>
-            <h2 class="title">I nostri partner</h2>
-          </div>
-        </div>
-        <ClientLogo />
-      </div>
-    </section>
     <section class="content-inner-2 service-area home-services-wrapper">
       <div class="container">
         <div class="section-head style-2 text-center">
-          <h6 class="sub-title text-primary"><img src="@/assets/images/banner/3145x700.jpg" /></h6>
+          <!-- <h6 class="sub-title text-primary"><img src="@/assets/images/banner/3145x700.jpg" /></h6> -->
           <h2 class="title">
             Servizi e consulenze
           </h2>
