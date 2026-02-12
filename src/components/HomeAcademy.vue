@@ -4,7 +4,7 @@
       <!-- Sezione Immagine + Testo -->
       <div class="col-lg-6">
         <div class="img3 aos-item me-5 mb-4">
-          <img src="@/assets/images/photoacademy1.jpg" alt="Academy ThinkHome" class="img-fluid rounded shadow" />
+          <img src="@/assets/images/PhotoAcademy1.jpg" alt="Academy ThinkHome" class="img-fluid rounded shadow" />
         </div>
       </div>
 
