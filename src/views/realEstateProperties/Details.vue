@@ -195,9 +195,26 @@
             </div>
             <h4 class="contact-card-title">Contatti</h4>
             <ul class="contact-card-list">
-              <li><i class="las la-phone-volume"></i> +39 333/9123388</li>
-              <li><i class="las la-phone-volume"></i> +39 06/95595263</li>
-              <li><i class="las la-mail-bulk"></i> info@thinkhome.it</li>
+              <!-- Contatti Agente -->
+              <template v-if="item.Agent">
+                <li v-if="item.Agent.MobilePhoneNumber">
+                  <i class="las la-phone-volume"></i> {{ item.Agent.MobilePhoneNumber }}
+                  <span class="contact-label">(Agente: {{ item.Agent.Name }} {{ item.Agent.LastName }})</span>
+                </li>
+                <li v-if="item.Agent.Email">
+                  <i class="las la-mail-bulk"></i> {{ item.Agent.Email }}
+                </li>
+              </template>
+              <!-- Contatti Agenzia (fallback se non ci sono dati agente) -->
+              <template v-if="!item.Agent || (!item.Agent.MobilePhoneNumber && !item.Agent.Email)">
+                <li><i class="las la-phone-volume"></i> +39 333/9123388</li>
+                <li><i class="las la-phone-volume"></i> +39 06/95595263</li>
+                <li><i class="las la-mail-bulk"></i> info@thinkhome.it</li>
+              </template>
+              <!-- Sempre mostra il numero principale dell'agenzia -->
+              <template v-if="item.Agent && (item.Agent.MobilePhoneNumber || item.Agent.Email)">
+                <li><i class="las la-phone-volume"></i> +39 06/95595263 <span class="contact-label">(Agenzia)</span></li>
+              </template>
             </ul>
           </div>
           <div class="contact-card">
