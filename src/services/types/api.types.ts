@@ -98,3 +98,49 @@ export interface HomeDetails {
 // Tipo per il conteggio delle proprietà
 export type PropertyCount = number
 
+// Tipi ottimizzati per la pagina dettaglio immobile
+export interface RealEstatePropertyDetails {
+  Id: number
+  Title: string
+  Sold: boolean
+  Negotiation: boolean
+  AddressLine: string
+  Town: string
+  State: string
+  PostCode: string
+  CommercialSurfaceate: number
+  Bedrooms: number
+  Bathrooms: number
+  ParkingSpaces: number
+  Heating?: string
+  EnergyClass?: string
+  Price: number
+  PriceReduced: number
+  MQGarden: number
+  Description: string
+  Typology?: string
+  VideoUrl?: string
+  Photos: RealEstatePropertyDetailsPhoto[]
+  Agent?: RealEstatePropertyDetailsAgent
+}
+
+export interface RealEstatePropertyDetailsPhoto {
+  Url: string
+}
+
+export interface RealEstatePropertyDetailsAgent {
+  Name: string
+  LastName: string
+  Email?: string
+  PhoneNumber?: string
+  Agency?: RealEstatePropertyDetailsAgency
+}
+
+export interface RealEstatePropertyDetailsAgency {
+  Name?: string
+  Email?: string
+  PhoneNumber?: string
+  Address?: string
+  Town?: string
+}
+
