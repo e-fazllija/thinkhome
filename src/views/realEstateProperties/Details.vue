@@ -195,25 +195,28 @@
             </div>
             <h4 class="contact-card-title">Contatti</h4>
             <ul class="contact-card-list">
-              <!-- Contatti Agente -->
-              <template v-if="item.Agent">
-                <li v-if="item.Agent.MobilePhoneNumber">
-                  <i class="las la-phone-volume"></i> {{ item.Agent.MobilePhoneNumber }}
-                  <span class="contact-label">(Agente: {{ item.Agent.Name }} {{ item.Agent.LastName }})</span>
+              <!-- Contatti Agenzia -->
+              <template v-if="item.Agent?.Agency">
+                <li v-if="item.Agent?.Agency?.PhoneNumber">
+                  <i class="las la-phone-volume"></i> {{ item.Agent?.Agency?.PhoneNumber }}
+                  <span class="contact-label">({{ item.Agent?.Agency?.Name }})</span>
                 </li>
-                <li v-if="item.Agent.Email">
-                  <i class="las la-mail-bulk"></i> {{ item.Agent.Email }}
+                <li v-if="item.Agent?.Agency?.Email">
+                  <i class="las la-mail-bulk"></i> {{ item.Agent?.Agency?.Email }}
+                  <span class="contact-label">({{ item.Agent?.Agency?.Name }})</span>
                 </li>
               </template>
-              <!-- Contatti Agenzia (fallback se non ci sono dati agente) -->
-              <template v-if="!item.Agent || (!item.Agent.MobilePhoneNumber && !item.Agent.Email)">
-                <li><i class="las la-phone-volume"></i> +39 333/9123388</li>
-                <li><i class="las la-phone-volume"></i> +39 06/95595263</li>
-                <li><i class="las la-mail-bulk"></i> info@thinkhome.it</li>
-              </template>
-              <!-- Sempre mostra il numero principale dell'agenzia -->
-              <template v-if="item.Agent && (item.Agent.MobilePhoneNumber || item.Agent.Email)">
-                <li><i class="las la-phone-volume"></i> +39 06/95595263 <span class="contact-label">(Agenzia)</span></li>
+              <!-- Contatti Agente (se disponibili, come contatto aggiuntivo) -->
+              <template v-if="item.Agent?.PhoneNumber">
+                <li v-if="item.Agent?.PhoneNumber">
+                  <i class="las la-phone-volume"></i> {{ item.Agent?.PhoneNumber }}
+                </li>
+                <li v-if="item.Agent?.Agency?.Email">
+                  <i class="las la-mail-bulk"></i> {{ item.Agent?.Email }}
+                </li>
+                <li>
+                  <span class="contact-label">(Agente: {{ item.Agent?.Name }} {{ item.Agent?.LastName }})</span>
+                </li>
               </template>
             </ul>
           </div>
@@ -317,6 +320,7 @@ import Lightgallery from 'lightgallery/vue'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
 import { apiService } from '@/services/apiService'
+import type { RealEstatePropertyDetails, RealEstatePropertyDetailsAgent, RealEstatePropertyDetailsAgency } from '@/services/apiService'
 import Home3Accordian from '@/components/Home3Accordian.vue'
 import work_pic1 from '@/assets/images/work/work-1/pic-13.jpg'
 import Swal from 'sweetalert2'
@@ -350,29 +354,29 @@ export default defineComponent({
       item: {
         Id: 0,
         Title: "",
-        Agent: { Name: "", LastName: "", Email: "", MobilePhoneNumber: "", Address:"", Town:"" },
+        Agent: { Name: "", LastName: "", Email: "", PhoneNumber: "",
+          Agency: { Name: "", Email: "", PhoneNumber: "", Address: "", Town: "" }
+        } as RealEstatePropertyDetailsAgent,
         AddressLine: "",
         Town: "",
         PostCode: "",
         State: "",
         Price: 0,
-        Sold: true,
-        Negotiation: true,
-        CommercialSurfaceate: "",
-        ParkingSpaces: "",
+        Sold: false,
+        Negotiation: false,
+        CommercialSurfaceate: 0,
+        ParkingSpaces: 0,
         Heating: "",
-        Bathrooms: "",
+        Bathrooms: 0,
         EnergyClass: "",
-        Bedrooms: "",
+        Bedrooms: 0,
         Description: "",
         Typology: "",
         VideoUrl: "",
-        MQGarden:0,
-        PriceReduced:0,
-        Photos: {
-          Url: ""
-        }
-      },
+        MQGarden: 0,
+        PriceReduced: 0,
+        Photos: []
+      } as RealEstatePropertyDetails,
       formData: {
         RequestType: "",
         PropertyType: "",
@@ -447,9 +451,8 @@ export default defineComponent({
 },
 
     async getItem() {
-      const result = await apiService.getRealEstatePropertyById(Number(this.$route.params.id));
-
-      this.item = result as any;
+      const result = await apiService.getRealEstatePropertyDetailsById(Number(this.$route.params.id));
+      this.item = result;
       this.photos = result.Photos || [];
       this.imgSelected = this.photos.length > 0 ? this.photos[0].Url : '';
 
@@ -524,24 +527,30 @@ export default defineComponent({
     truncatedDescription = this.item.Description.substring(0, maxDescriptionLength) + ' [...]';
   }
 
-  const agentInfo = `
+  const contactInfo = `
     <div style="margin-top: 20px; border-top: 1px solid #e0e0e0; padding-top: 15px;">
       <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-        <!-- Dettagli Agente -->
+        <!-- Dettagli Agenzia -->
         <div style="flex: 1; min-width: 60%;">
-          <p style="margin: 5px 0;"><strong>${this.item.Agent.Name} ${this.item.Agent.LastName}</strong></p>
+          <p style="margin: 5px 0;"><strong>${this.item.Agent?.Agency?.Name || 'ThinkHome'}</strong></p>
           <p style="margin: 5px 0; font-size: 14px;">
             <i class="fas fa-map-marker-alt" style="color: #c0a480; width: 15px;"></i> 
-            ${this.item.Agent.Address || 'Via Roma, 123 - 00100 Roma'}, ${this.item.Agent.Town}
+            ${this.item.Agent?.Agency?.Address || 'Via Roma, 123 - 00100 Roma'}, ${this.item.Agent?.Agency?.Town || 'Roma'}
           </p>
           <p style="margin: 5px 0; font-size: 14px;">
             <i class="fas fa-phone" style="color: #c0a480; width: 15px;"></i> 
-            ${this.item.Agent.MobilePhoneNumber || '+39 333 9123388'}
+            ${this.item.Agent?.Agency?.PhoneNumber || '+39 06 95595263'}
           </p>
           <p style="margin: 5px 0; font-size: 14px;">
             <i class="fas fa-envelope" style="color: #c0a480; width: 15px;"></i> 
-            ${this.item.Agent.Email || 'info@thinkhome.it'}
+            ${this.item.Agent?.Agency?.Email || 'info@thinkhome.it'}
           </p>
+          ${this.item.Agent?.Name ? `
+          <p style="margin: 15px 0 5px 0; font-size: 12px; color: #666; border-top: 1px solid #f0f0f0; padding-top: 10px;">
+            <strong>Agente di riferimento:</strong> ${this.item.Agent.Name} ${this.item.Agent.LastName}
+            ${this.item.Agent.PhoneNumber ? `<br><i class="fas fa-phone" style="color: #c0a480; width: 15px;"></i> ${this.item.Agent.PhoneNumber}` : ''}
+          </p>
+          ` : ''}
         </div>
       </div>
     </div>
@@ -795,8 +804,8 @@ export default defineComponent({
               ` : ''}
             </div>
             
-            <!-- Sezione Agente -->
-            ${agentInfo}
+            <!-- Sezione Contatti -->
+            ${contactInfo}
           </div>
         </div>
         
@@ -860,6 +869,7 @@ export default defineComponent({
   },
   async beforeMount() {
     await this.getItem();
+    console.log(this.item.Agent?.Agency?.PhoneNumber);
   }
 })
 </script>

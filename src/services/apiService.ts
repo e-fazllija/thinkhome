@@ -8,6 +8,7 @@ import type {
   PropertyCount,
   ListViewModel,
   Agency,
+  RealEstatePropertyDetails,
 } from './types/api.types'
 
 /**
@@ -152,6 +153,16 @@ export const apiService = {
     )
     return response.data
   },
+
+  /**
+   * Ottiene i dettagli ottimizzati di una proprietà immobiliare per la pagina dettaglio
+   */
+  async getRealEstatePropertyDetailsById(id: number): Promise<RealEstatePropertyDetails> {
+    const response = await apiClient.get<RealEstatePropertyDetails>(
+      `/RealEstateProperty/GetDetailsById?id=${id}`
+    )
+    return response.data
+  },
 }
 
 // Esporta i tipi per uso esterno
@@ -164,6 +175,10 @@ export type {
   PropertyCount,
   ListViewModel,
   Agency,
+  RealEstatePropertyDetails,
+  RealEstatePropertyDetailsPhoto,
+  RealEstatePropertyDetailsAgent,
+  RealEstatePropertyDetailsAgency,
 } from './types/api.types'
 
 export default apiService
